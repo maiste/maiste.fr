@@ -1,0 +1,19 @@
+highlight_code = true
+generate_feed = true
+
+base_url = "https://maiste.github.io"
+theme = "lightspeed"
+
+title = "Maiste"
+
+[extra]
+
+footer_links = [
+    {url = "$BASE_URL/about", name = "About"},
+    {url = "$BASE_URL/atom.xml", name = "RSS"},
+    {url = "https://github.com/maiste", name = "Github"},
+]
+
+author = "Étienne Marais"
+netlify = false
+maintained_with_love = true
