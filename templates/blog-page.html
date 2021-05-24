@@ -1,14 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-  {{ page.title }}
-</h1>
-<p class="subtitle">
-  <strong>{{ page.date }}</strong>
-</p>
+<div class = "block">
+  <h1 class="title">
+    {{ page.title }}
+  </h1>
+  <p class="subtitle">
+  {% if page.date %} <strong>{{ page.date }}</strong> - {% endif %}
+  {% if page.description %} {{ page.description -}} {% endif %}
+  </p>
 
-{{ page.content | safe }}
+  <hr />
+</div>
+
+
+<div class="content">
+  {{ page.content | safe }}
+</div>
 
 {% if config.extra.author %}
 <footer class="block">

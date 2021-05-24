@@ -14,7 +14,6 @@
         {{ config.title }}
         </p>
         {% if config.extra.menu_links %}
-          <hr />
           <nav class="breadcrumb has-bullet-separator" aria-label="breadcrumbs">
           <ul>
             {% for link in config.extra.menu_links %}
@@ -24,10 +23,10 @@
             {% endfor %}
           </ul>
          </nav>
-    {% endif %}
+      {% endif %}
       </div>
-      <hr/>
       <section class="section">
+        <hr/>
         <div class="container">{% block content %} {% endblock %}</div>
       </section>
     </div>

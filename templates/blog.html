@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title has-text-primary">
-  {{ section.title }}
-</h1>
-<h2>
-  {{ section.description }}
-</h2>
+<div class="block">
+  <h1 class="title has-text-primary">
+    {{ section.title }}
+  </h1>
+  <h2>
+    {{ section.description }}
+  </h2>
+</div>
 {% for page in section.pages %}
 <article class="message">
   <div class="message-header">
