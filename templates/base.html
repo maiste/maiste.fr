@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ config.title }} </title>
+    <link
+      rel="stylesheet"
+      href="/cesium.css"
+      />
+  <body>
+    <div class="container">
+      <div class="hero-body">
+        <p class="title has-text-danger">
+        {{ config.title }}
+        </p>
+        {% if config.extra.menu_links %}
+          <hr />
+          <nav class="breadcrumb has-bullet-separator" aria-label="breadcrumbs">
+          <ul>
+            {% for link in config.extra.menu_links %}
+            <li>
+              <a class = "has-text-danger" href= {{ link.url | replace(from="$BASE_URL", to=config.base_url) }}>{{ link.name }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+         </nav>
+    {% endif %}
+      </div>
+      <hr/>
+      <section class="section">
+        <div class="container">{% block content %} {% endblock %}</div>
+      </section>
+    </div>
+  </body>
+</html>

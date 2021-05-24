@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title has-text-info">
+  {{ section.title }}
+</h1>
+
+<h2>
+  {{ section.description }}
+</h2>
+
+<table class="table is-bordered">
+  <tbody>
+  {% for page in section.pages %}
+    <tr>
+      <td><a href="{{ page.permalink | safe }}">{{ page.title }}</a></td>
+      <td>
+        {% if page.description %} {{ page.description }}
+        {% else %}No description {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}

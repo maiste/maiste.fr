@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  {{ page.title }}
+</h1>
+<p class="subtitle">
+  <strong>{{ page.date }}</strong>
+</p>
+
+{{ page.content | safe }}
+
+{% if config.extra.author %}
+<footer class="block">
+  <hr/>
+  <div class="content has-text-centered">
+    <p><strong>{{ config.extra.author.name }}</strong></p>
+    <p><a href={{ config.extra.author.github }}>Github</a></p>
+  </div>
+</footer>
+{% endif %}
+{% endblock content %}
