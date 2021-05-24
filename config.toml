@@ -3,7 +3,7 @@ generate_feed = true
 compile_sass = true
 
 base_url = "https://maiste.github.io"
-title = "Maiste"
+title = "Maiste [mɑːïsté]"
 
 [extra]
 
