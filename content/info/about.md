@@ -1,6 +1,7 @@
 +++
 title="About Me !"
 path="/about"
+template="info.html"
 +++
 
 ## Hi there

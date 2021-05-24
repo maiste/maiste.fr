@@ -1,3 +1,4 @@
 +++
-path="/database"
+title = "Knowledge"
+template = "database.html"
 +++

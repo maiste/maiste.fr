@@ -1,19 +1,20 @@
 highlight_code = true
 generate_feed = true
+compile_sass = true
 
 base_url = "https://maiste.github.io"
-theme = "lightspeed"
-
 title = "Maiste"
 
 [extra]
 
-footer_links = [
+menu_links = [
     {url = "$BASE_URL/about", name = "About"},
-    {url = "$BASE_URL/atom.xml", name = "RSS"},
-    {url = "https://github.com/maiste", name = "Github"},
+    {url = "$BASE_URL/blog", name = "Blog"},
+    {url = "$BASE_URL/database", name = "Knowledge"},
+    {url = "$BASE_URL/atom.xml", name = "RSS"}
 ]
 
-author = "Étienne Marais"
+author = {name = "Étienne Marais", github = "https://github.com/maiste"}
+
 netlify = false
 maintained_with_love = true
