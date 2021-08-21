@@ -1,20 +1,65 @@
-highlight_code = true
-generate_feed = true
-compile_sass = true
+# +-------------------------+
+# | Étienne <maiste> Marais |
+# |     Zola config file    |
+# |         (C) MIT         |
+# +-------------------------+
 
+# Intel
+
+theme = "tale-zola"
 base_url = "https://maiste.github.io"
 title = "Maiste [mɑːïsté]"
+description = "Another useless blog you might find useful."
+taxonomies = [
+  {name = "tags"},
+]
+
+# Options
+
+highlight_code = true
+generate_feed = true
+
 
 [extra]
 
-menu_links = [
-    {url = "$BASE_URL/about", name = "About"},
-    {url = "$BASE_URL/blog", name = "Blog"},
-    {url = "$BASE_URL/database", name = "Knowledge"},
-    {url = "$BASE_URL/atom.xml", name = "RSS"}
-]
+# Author information
 
-author = {name = "Étienne Marais", github = "https://github.com/maiste"}
+author = "Maiste"
+github = "https://github.com/maiste/"
+email = "etienne[at]maiste.fr"
 
-netlify = false
-maintained_with_love = true
+
+## Menu {{
+
+[[extra.menu]]
+name = "Blog"
+url = "/"
+
+[[extra.menu]]
+name = "Data"
+url = "data"
+
+[[extra.menu]]
+name = "About"
+url = "about"
+
+[[extra.menu]]
+name = "Tags"
+url = "tags"
+
+## }}
+
+## Footer {{
+
+[extra.footer]
+start_year = "2020"
+info = "<a href=\"https://www.getzola.org\">Zola</a> with <a href=\"https://github.com/aaranxu/tale-zola\">Tala-Zola</a> theme."
+
+# }}
+
+# Customise names
+
+[extra.expressions]
+
+top = "Up"
+written_by = "By"
