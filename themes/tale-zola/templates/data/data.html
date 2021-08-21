@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>
+  {{ section.title }}
+</h1>
+<h2>
+  {{ section.description }}
+</h2>
+
+<table class="table is-bordered">
+  <tbody>
+  {% for subsection in section.subsections %}
+    {% set subsection_data = get_section(path=subsection) %}
+    <tr>
+      <td><a href="{{ subsection_data.path | safe }}">{{ subsection_data.title }}</a> -> </td>
+      <td>
+        {% if subsection_data.description %} {{ subsection_data.description }}
+        {% else %} No description {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
