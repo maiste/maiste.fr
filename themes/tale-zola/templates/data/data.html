@@ -10,7 +10,7 @@
 
 <table class="table is-bordered">
   <tbody>
-  {% for subsection in section.subsections %}
+  {% for subsection in section.subsections | sort %}
     {% set subsection_data = get_section(path=subsection) %}
     <tr>
       <td><a href="{{ subsection_data.path | safe }}">{{ subsection_data.title }}</a> -> </td>
