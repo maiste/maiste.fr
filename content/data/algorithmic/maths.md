@@ -1,8 +1,12 @@
 +++
 title = "Maths"
+description = "Maths ressources."
 template = "data/page.html"
+
+[extra]
+lang = "ENG"
 +++
 
 ## Maths
 
- * [Descente de Gradient](https://machinelearnia.com/descente-de-gradient/) : simplification de la descente de Gradient
+ * [Gradient descent](https://machinelearnia.com/descente-de-gradient/): simple explanation about the gradient descent.

@@ -1,6 +1,10 @@
 +++
 title = "Css"
+description = "About css."
 template = "data/page.html"
+
+[extra]
+lang = "ENG"
 +++
 
 ## Flexbox

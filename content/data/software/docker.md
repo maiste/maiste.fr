@@ -1,76 +1,76 @@
 +++
 title = "Docker"
+description = "Containers with Docker."
 template = "data/page.html"
+
+[extra]
+lang = "ENG"
 +++
 
-## Se connecter à docker
+## Connect to Hubdocker
 
 ```sh
-	docker login --username <user>
+  docker login --username <user>
 ```
 
-## Pull une image
+## Pull an image
 
 ```sh
-	docker pull <image>:<tag>
-
+  docker pull <image>:<tag>
 ```
 
-## Push une image
+## Push an image
 
 
 ```sh
-	docker push <user>:tag
-
+  docker push <user>:tag
 ```
 
-## Lancer un conteneur
+## Launch a container
 
-En intéractif:
-
+* Intractif mode:
 ```sh
-	docker run -it --name <nom> -v <volume-local>:<volume-conteneur> <image>:<tag>
-
+  docker run -it --name <nom> -v <volume-local>:<volume-conteneur> \
+             <image>:<tag>
 ```
 
-Comme un deamon:
+* Deamon mode:
 ```sh
-	docker run --rm -d --name <nom> -v <volume-local>:<volume-conteneur> \
-	-p <host-port>:<conteneur-port><image>:<tag>
+  docker run --rm -d --name <nom> -v <volume-local>:<volume-conteneur> \
+             -p <host-port>:<conteneur-port><image>:<tag>
 ```
 
-## Se connecter à un conteneur
+## Connect to a running container
+
 ```sh
 	docker exec -it <tag> <command>
 ```
 
-## Avoir les logs d'un conteneur
+## Get the container logs
 
 ```sh
-	docker logs <name ou id>
-
+  docker logs <name ou id>
 ```
 
-## Stopper un conteneur
+## Stop a containeur
 
 ```sh
-	docker stop <name>
-
+  docker stop <name>
 ```
 
-## Faire une sauvegarde d'images
+## Save docker images
 
 ```sh
-	docker commit -p <ID> tag_name
-	docker save -o <name>.tar <tag_image>
+  docker commit -p <ID> tag_name
+  docker save -o <name>.tar <tag_image>
 ```
 
-## Charger un conteneur depuis une sauvegarde
+## Load a container from a save
 
 ```sh
-	docker load -i <name>.tar
+  docker load -i <name>.tar
 ```
 
-# Ressources
+# Resources
 
- - [Bonne pratique](https://github.com/hexops/dockerfile)
+ - [Good practises](https://github.com/hexops/dockerfile)

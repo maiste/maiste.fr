@@ -16,8 +16,11 @@ taxonomies = [
 
 # Options
 
-highlight_code = true
 generate_feed = true
+
+[markdown]
+highlight_code = true
+highlight_theme = "OneHalfLight"
 
 
 [extra]

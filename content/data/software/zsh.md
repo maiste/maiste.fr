@@ -1,18 +1,20 @@
 +++
 title = "Zsh"
+description = "Zsh utilities."
 template = "data/page.html"
+
+[extra]
+lang = "ENG"
 +++
 
+### Shortcuts
 
-### Raccourcis
-
-  * __Ctrl + q__ => Mettre en attente une commande avant une autre
-  * __Ctrl + r__ => Retrouve la précédente commande avec le même mot
+  * __Ctrl + q__ => Stage a command
 
 ### Plugins
 
   * `zmv`
-    * Permet de faire un renommage de masse
-    * `autoload zmv` => charger dans zsh
+    * Massing renaming
+    * `autoload zmv` => load in zsh
     * zmv 'regex src' 'export'
   * `take dir` => `mkdir dir` + `cd dir`

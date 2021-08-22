@@ -1,82 +1,86 @@
 +++
 title = "Vim"
+description = "Stuffs about (Neo)Vim."
 template = "data/page.html"
+
+[extra]
+lang = "ENG"
 +++
 
-## Raccourcis
+## Shortcuts
 
- * Leader key   => space
- * Quitter mode =>  jk / kj
+ * space => Leader key
+ * jk / kj => Exit mode
 
 ### Par défaut
 
- * <c-<direction>> => Changer de fenetre
- * <M-<direction>> => Redimensionnement
- * <TAB>           => Changer de buffer
- * <S-TAB>         => Changer de buffer arrière
- * <leader>bd      => Delete buffer
- * <leader>ss      => Stop recherche
- * <c-a>           => Décrémente
- * <c-x>           => Incrémente
- * macro
-   * q<name><macro>q => enregistrement
-   * <nombre>@<name> => appel
+ * \<c-<direction>> => Change windows
+ * \<M-<direction>> => Change dimensions
+ * \<TAB>           => Change buffer
+ * \<S-TAB>         => Change buffer from back
+ * \<leader>bd      => Delete buffer
+ * \<leader>ss      => Stop research
+ * \<c-a>           => Decrement a number
+ * \<c-x>           => Increment a number
+ * Macros:
+   * q\<name>\<macro>q => record
+   * \<nombre>@\<name> => call
 
 ### Vim-surrounding
 
- * cs<symbole><new symbole> => Change surrounding
+ * cs\<symbole>\<new symbole> => Change surrounding
  * ds<symbole>              => Delete surrounding
  * ys => you surround
-    * ysiw<symbole>  => Surround word
-    * yss<symbole>   => Surround line
- * __VISUAL__
-    * S<symbole> => Surround selection
+    * ysiw\<symbole>  => Surround word
+    * yss\<symbole>   => Surround line
+ * __VISUAL__:
+    * S\<symbole> => Surround selection
 
 ### Nerdcommenter
 
- * <leader>cc => Commenter
- * <leader>ci => Inversion commentaires / pas commentaire
+ * \<leader>cc => Comment
+ * \<leader>ci => Inverse comment / uncomment
 
 ### Tabular
 
- * __VISUAL__
-   * <leader>t=          => Tabulation sur =
-   * <leader>tp<pattern> => Tabulation sur pattern
+ * __VISUAL__:
+   * \<leader>t=          => Tabular on =
+   * \<leader>tp\<pattern> => Tabular on pattern
 
 ### Quick-scope
 
- * f<char> => Avancer à ce charactère
- * F<char> => Reculer à ce charactère
+ * f\<char> => Move forward to character
+ * F\<char> => Move backward to character
 
 ### FZF
 
- * <leader>ff => Parcours de fichiers git
- * <leader>fg => Parcours des fichiers avec regrep
- * <leader>b => Parcours des buffers
+ * \<leader>ff => Walk through git files
+ * \<leader>fg => Walk through code
+ * \<leader>b => Walk through buffers
 
 ### NCM2
 
- * <c-e> => Expand snippets
- * <c-j> => Descendre
- * <c-k> => Monter
- * <c-c> => Annuler
- * <CR>  => Valider
- * <TAB> => Descendre
- * <S-TAB> => Monter
+ * \<c-e> => Expand snippets
+ * \<c-j> => Up in snippets
+ * \<c-k> => Down in snippets
+ * \<c-c> => Cancel
+ * \<CR>  => Apply
+ * \<TAB> => Up
+ * \<S-TAB> => Down
 
 ### LSP
 
-<leader>ld => Go to definitions
-<leader>lr => Renommage
-<leader>lf => Formattage
-<leader>lt => Aller la définition de type
-<leader>lx => Aller à la référence
-<leader>la => Modification du workspace
-<leader>lc => Completion
-<leader>lh => Information sur l'objet
-<leader>ls => Affichage des symboles du documents
-<leader>lm => Afficher le menu
+  * \<leader>ld => Go to definitions
+  * \<leader>lr => Rename
+  * \<leader>lf => Format
+  * \<leader>lt => Go to type definition
+  * \<leader>lx => Go to the reference
+  * \<leader>la => Change workspace
+  * \<leader>lc => Completion
+  * \<leader>lh => Object informations
+  * \<leader>ls => Document symbols
+  * \<leader>lm => Display menu
 
 ### Mardown
 
- * <leader>md => Vue markdown
+ * \<leader>md => Show markdown

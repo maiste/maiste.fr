@@ -1,24 +1,27 @@
 +++
 title = "Random"
+description = "Random resources about Sys Admin."
 template = "data/page.html"
+
+[extra]
+lang = "ENG"
 +++
 
 ## Backup
 
-* rsync : utilitaire de backup
+* rsync: backup tool
 ```sh
- # a is for archive, v for verbose, h for human and p for partial
- $ rsync -avhp src/ dest/
+  # a is for archive, v for verbose, h for human and p for partial
+  rsync -avhp src/ dest/
 ```
 
+## Restricting privileges with SSH
 
-## Restriction des privilèges ssh
+Use *chroot jail* wit SSH. It allows to isolate a user through ssh in a
+specific directory with limited commands.
 
-Utilisation de *chroot jail* avec SSH. Cela permet d'isoler le client dans
-un dossier avec des commandes limitées.
+Tutorial link: [chroot jail](https://allanfeid.com/content/creating-chroot-jail-ssh-access)
 
-Voir le lien suivant: [chroot jail](https://allanfeid.com/content/creating-chroot-jail-ssh-access)
+## Block connections on 22 port:
 
-## Bloquer les connexions sur le port 22:
-
-Utilisation du logiciel endlessh
+Use the tool *endlessh*

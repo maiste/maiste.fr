@@ -1,76 +1,89 @@
 +++
 title = "GPG"
+description = "Safe data with encryption."
 template = "data/page.html"
+
+[extra]
+lang = "ENG"
 +++
 
-### Lister les clefs
+### List keys
 
-* Public :
+* Public:
 ```sh
-  $ gpg --list-keys
+  gpg --list-keys
 ```
 
-* Secret :
+* Secret:
 ```sh
- $ gpg --list-secret-keys
+  gpg --list-secret-keys
 ```
 
-### Importer une clef
-* Depuis un fichier :
+### Import a key
+
+* From a file:
 ```sh
- $ gpg --import <name>.key
+  gpg --import <name>.key
 ```
 
-* Depuis un serveur :
+* From a server:
 ```sh
-  $ gpg --keyserver <server> --search-keys <mail>
+  gpg --keyserver <server> --search-keys <mail>
 ```
 
-### Vérifier l'empreinte :
-```sh
- $ gpg --fingerprint <mail>
- ```
+### Check footprint
 
-### Signer la clef
 ```sh
- $ gpg --sign-key <mail>
+  gpg --fingerprint <mail>
 ```
 
-### Rafraichir les clefs
+### Sign with a key
+
 ```sh
- $ gpg --keyserver pgp.mit.edu --refresh-keys
+  gpg --sign-key <mail>
 ```
 
-### Partager sa clef public
-* Par un fichier
+### Refresh a key server
+
 ```sh
- $ gpg --output <path/name>.key --armor --export <mail>
+  gpg --keyserver pgp.mit.edu --refresh-keys
 ```
 
-* Sur un serveur :
+### Share your public key
+
+* With a file:
 ```sh
-  $ gpg --send-keys --keyserver <server> <fingerprint>
+  gpg --output <path/name>.key --armor --export <mail>
 ```
 
-### Générer un certificat de révocation
+* On a server:
 ```sh
- $ gpg --output <path/name>.crt --gen-revoke <mail>
- $ chmod 600 <path/certificat>
+  gpg --send-keys --keyserver <server> <fingerprint>
 ```
 
-### Révoquer sa clef
+### Generate a revocation certificat
+
 ```sh
-  $ gpg --import <certificat>
-  $ gpg --keyserver pgp.mit.edu --search-keys key-ID
-  $ gpg --keyserver pgp.mit.edu --send-keys key-ID
+  gpg --output <path/name>.crt --gen-revoke <mail>
+  chmod 600 <path/certificat>
 ```
 
-### Chiffrer
+### Revoke your key
+
 ```sh
-  $ gpg --encrypt --sign --armor -r <mail> <file>
+  gpg --import <certificat>
+  gpg --keyserver pgp.mit.edu --search-keys key-ID
+  gpg --keyserver pgp.mit.edu --send-keys key-ID
 ```
 
-### Déchiffrer
+### Encrypt a file
+
 ```sh
-  $ gpg --decrypt <file> > <output>
+  gpg --encrypt --sign --armor -r <mail> <file>
+```
+
+### Decrypt a file
+
+```sh
+  gpg --decrypt <file> > <output>
 ```

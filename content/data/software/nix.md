@@ -1,13 +1,18 @@
 +++
 title = "Nix"
+description = "Commands and resources."
 template = "data/page.html"
+
+[extra]
+lang = "ENG"
 +++
 
 ### NixEnv
 
-  * Faire une recherche : `nix-env -q`
-  * Installer un paquet : `nix-env -i`
-  * Enlever un paquet : `nix-env -e`
+  * Do a research: `nix-env -q`
+  * Install a package: `nix-env -i`
+  * Remove a package: `nix-env -e`
 
 ### Nix garbage
-  * Lancer le garbage collector : `nix-collect-garbage`
+
+  * Launch the garbage collector: `nix-collect-garbage`
