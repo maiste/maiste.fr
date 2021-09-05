@@ -17,6 +17,7 @@ taxonomies = [
 # Options
 
 generate_feed = true
+hard_link_static = true
 
 [markdown]
 highlight_code = true
