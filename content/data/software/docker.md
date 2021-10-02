@@ -7,23 +7,48 @@ template = "data/page.html"
 lang = "ENG"
 +++
 
-## Connect to Hubdocker
+## Connect to hub.docker.com
 
 ```sh
   docker login --username <user>
 ```
 
-## Pull an image
+## Connect to another website (UNSECURE way)
+
+```sh
+  TOKEN=<your website token>
+  echo $TOKEN | docker login <url> -u <username> --password-stdin
+```
+
+### Build a docker image from a Dockerfile
+
+```sh
+  docker build -t <NAME>:<VERSION> -f <FILENAME> <PATH>
+```
+
+## Pull an image from hub.docker.com
 
 ```sh
   docker pull <image>:<tag>
 ```
 
-## Push an image
+## Pull an image from another website
+
+```sh
+  docker pull <website_url>/<image>:<tag>
+```
+
+## Push an image to hub.docker.com
 
 
 ```sh
-  docker push <user>:tag
+  docker push <user>/<image>:tag
+```
+
+## Push an image to another website
+
+```sh
+  docker push <website_url>/<user>/<image>:<tag>
 ```
 
 ## Launch a container
