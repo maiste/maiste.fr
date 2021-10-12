@@ -8,7 +8,7 @@
 
 theme = "tale-zola"
 base_url = "https://maiste.github.io"
-title = "Maiste [mɑːïsté]"
+title = "Étienne \"maiste\" Marais"
 description = "Another useless blog you might find useful."
 taxonomies = [
   {name = "tags"},
