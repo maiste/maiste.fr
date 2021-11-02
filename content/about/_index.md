@@ -9,6 +9,8 @@ As I like both languages, there might be some French and some English in this bl
 
 If you want to discuss with me, feel free to reach me. Below, see some links that could interest you:
 
-* my mail: etienne[at]maiste.fr
-* my github: [https://github.com/maiste](https://github.com/maiste)
-* the rss: [https://maiste.github.io/atom.xml](https://maiste.github.io/atom.xml)
+* Mail: etienne[at]maiste.fr
+* Github: [https://github.com/maiste](https://github.com/maiste)
+* Rss: [https://maiste.github.io/atom.xml](https://maiste.github.io/atom.xml)
+
+If you would like me to made a change or improve something, you can ask on the [GitHub issues](https://github.com/maiste/maiste.github.io/issues) of the blog :)
