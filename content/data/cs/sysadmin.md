@@ -1,5 +1,5 @@
 +++
-title = "Random"
+title = "Sysadmin"
 description = "Random resources about Sys Admin."
 template = "data/page.html"
 
@@ -20,7 +20,7 @@ lang = "ENG"
 Use *chroot jail* wit SSH. It allows to isolate a user through ssh in a
 specific directory with limited commands.
 
-Tutorial link: [chroot jail](https://allanfeid.com/content/creating-chroot-jail-ssh-access)
+* Tutorial link: [chroot jail](https://allanfeid.com/content/creating-chroot-jail-ssh-access)
 
 ## Block connections on 22 port:
 

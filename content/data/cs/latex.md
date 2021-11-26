@@ -40,17 +40,19 @@ in `PdfLaTex`:
 ```
 More examples in: [here](https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted)
 
-## Installation of the Metropolis theme
+## Installation of latex and minted with Arch based
+
+__TODO__
+
+## Installation of the Metropolis theme 
 
 * Install dependencies:
-```sh
-  sudo apt install latexmk texlive-xetex
-```
-
+  * Ubuntu:
+  ```sh
+    sudo apt install latexmk texlive-xetex
+  ```
 * Install Metropolis with Git:
-
 Link for the git repo: [here](https://github.com/matze/mtheme)
-
 ```sh
   cd /tmp
   git clone git@github.com:matze/mtheme.git
@@ -60,6 +62,7 @@ Link for the git repo: [here](https://github.com/matze/mtheme)
 
 Then you just need to change your latex with `\usetheme{metropolis}`.
 To use __minted__ with Beamer, remember to add the `[fragile]` keyword:
+
 ```latex
   \begin{frame}[fragile]{Frame}
     \begin{minted}{c}
@@ -69,6 +72,34 @@ To use __minted__ with Beamer, remember to add the `[fragile]` keyword:
     }
     \end{minted}
   \end{frame}
+```
+
+## Makefile example with XeLaTeX
+
+```Makefile
+MAIN = main
+MAIN_LATEX = $(MAIN).tex
+PDF_TARGET = $(MAIN_LATEX:.tex=.pdf)
+TARGET ?= $(PDF_TARGET)
+LATEX = xelatex
+FLAGS = --shell-escape -output-directory `pwd`/build
+# BIBTEX = biber
+
+all:
+	mkdir -p build
+	TEXINPUTS=$$TEXINPUTS $(LATEX) $(FLAGS) $(MAIN_LATEX)
+	cp build/$(PDF_TARGET) $(TARGET)
+
+release:
+	mkdir -p build
+	TEXINPUTS=$$TEXINPUTS $(LATEX) $(FLAGS) $(MAIN_LATEX)
+  # $(BIBTEX) build/$(MAIN)
+	TEXINPUTS=$$TEXINPUTS $(LATEX) $(FLAGS) $(MAIN_LATEX)
+	cp build/$(PDF_TARGET) $(TARGET)
+
+clean:
+	rm -rf build $(PDF_TARGET)
+
 ```
 
 ## Resources

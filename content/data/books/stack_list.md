@@ -4,7 +4,8 @@ description = "Books I'd like to read."
 template = "data/page.html"
 
 [extra]
-lang = "ENG"
+lang = "FR"
 +++
 
-* _Où va l'argent des pauvres_, Denis Colombi
+* Où va l'argent des pauvres, *Denis Colombi*
+* Computer Network, *Andrew Tanenbaum*
