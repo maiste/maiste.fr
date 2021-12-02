@@ -9,3 +9,5 @@ lang = "FR"
 
 * Où va l'argent des pauvres, *Denis Colombi*
 * Computer Network, *Andrew Tanenbaum*
+* Remote: Office Not Required, *David Heinemeir & Jason Fried*
+* L'art d'avoir toujours raison, *Arthur Schopenhauer*
