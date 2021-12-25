@@ -3,6 +3,16 @@
 {% block content %}
 <div class="post">
 	<div class="post-info">
+        {% if page.extra.author -%}
+            <span>{{ config.extra.expressions.written_by | default(value="Written by") }}</span> {{ page.extra.author }}<br>
+        {% elif config.extra.author -%}
+            <span>{{ config.extra.expressions.written_by | default(value="Written by") }}</span> {{ config.extra.author }}<br>
+        {%- endif %}
+        {% if page.extra.lang -%}
+            <br><span>Lang</span> {{ page.extra.lang }}<br>
+        {% else -%}
+            <br><span>Lang</span> ENG<br>
+        {%- endif %}
 	</div>
 	<h1 class="post-title">{{ page.title }}</h1>
 	<div class="post-line"></div>
