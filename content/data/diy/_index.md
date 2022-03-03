@@ -1,5 +1,5 @@
 +++
-title = "Builder"
+title = "DIY"
 description = "How to build some stuffs."
 template = "data/section.html"
 +++
