@@ -31,6 +31,12 @@ lang = "ENG"
   gpg --keyserver <server> --search-keys <mail>
 ```
 
+### Export a key
+
+```sh
+  gpg --armor --export [key_id]
+```
+
 ### Check footprint
 
 ```sh
