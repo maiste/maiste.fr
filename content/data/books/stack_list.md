@@ -19,14 +19,14 @@ Technical:
 
 Friend suggestions - 2022:
 * La plus secrète mémoire des hommes, *Mohamed Mbougar Sarr*
-* Défaire le discours sexiste dans les médias, *Rose Lamy*
 * Asta, *Jon K. Stefansson*
 * American Pastoral, *Philip Roth*
 * L'amour au temps du Choléra, *G. Marquez*
 * The catcher in the Rye, *Sallinger*
-* Le pendule de Foucault, *Umberto Eco*
+* Le pendule de Foucault, *Umberto Eco* $
 * Alexis et le traité du vain combat, *Youcenar*
 * L'art de perdre, *Alice Zeniter*
+* Comme un empire, dans un empire, *Alice Zeniter*
 * Le diable et Sherlock Holmes, *David Grann*
 * Axiomatic, *Greg Ega*
 * Trilogie: Le Problème à trois corps, *Liu Cixin*
