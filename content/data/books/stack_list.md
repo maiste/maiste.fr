@@ -13,7 +13,6 @@ General:
 * L'assassin royal, *Robin Hobbs*
 
 Technical:
-* Computer Network, *Andrew Tanenbaum*
 * Types and Programming Languages, *Benjamin C. Pierce*
 * Remote: Office Not Required, *David Heinemeir & Jason Fried*
 
@@ -23,10 +22,8 @@ Friend suggestions - 2022:
 * American Pastoral, *Philip Roth*
 * L'amour au temps du Choléra, *G. Marquez*
 * The catcher in the Rye, *Sallinger*
-* Le pendule de Foucault, *Umberto Eco* $
 * Alexis et le traité du vain combat, *Youcenar*
 * L'art de perdre, *Alice Zeniter*
-* Comme un empire, dans un empire, *Alice Zeniter*
 * Le diable et Sherlock Holmes, *David Grann*
 * Axiomatic, *Greg Ega*
 * Trilogie: Le Problème à trois corps, *Liu Cixin*
