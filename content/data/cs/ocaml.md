@@ -72,3 +72,4 @@ time. It's very powerful but also very complicated.
 * [Tarides blog post](https://tarides.com/blog/2019-05-09-an-introduction-to-ocaml-ppx-ecosystem)
 * [Ppxlib documentation](https://ppxlib.readthedocs.io/en/latest/ppx-for-plugin-authors.html#getting-started)
 * [Github Ppxlib example](https://github.com/ocaml-ppx/ppxlib/blob/master/examples/simple-extension-rewriter/dune)
+* [Write a website with Dream](https://ceramichacker.com/blog/26-1x-full-stack-webdev-in-ocaml-intro)
