@@ -138,4 +138,8 @@ git format-patch <branch or commit range> --stdout > <name>.patch
 git am <name>.patch
 ```
 
+## Co Authored patch
 
+```
+Co-authored-by: author-name <name@xxx.com>
+```
