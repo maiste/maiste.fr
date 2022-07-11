@@ -22,6 +22,8 @@ lang = "ENG"
  * \<leader>ss      => Stop research
  * \<c-a>           => Decrement a number
  * \<c-x>           => Increment a number
+ * \<c-o>           => Go to the previous point before jump
+ * \<c-i>           => Go to the next point before jump
  * Macros:
    * q\<name>\<macro>q => record
    * \<nombre>@\<name> => call
@@ -84,3 +86,4 @@ lang = "ENG"
 ### Mardown
 
  * \<leader>md => Show markdown
+ * \<leader>wp => Use glow to display the markdown
