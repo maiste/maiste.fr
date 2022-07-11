@@ -25,6 +25,30 @@ Use the tool *endlessh*
 
 ## FileSystem
 
+### Create swap memory
+
+* First, you need to create the file:
+```bash
+sudo dd if=/dev/zero of=/swapfile bs=1024 count=1000000
+```
+* Then, format the swap file:
+```bash
+sudo mkswap /swapfile
+```
+* After that, restrict the permission:
+```
+sudo chmod 600 /swapfile
+```
+* Activate the swap:
+```
+sudo swapon /swapfile
+```
+* (Optional) Depending if you need to have it online when you restart the computer, you need to edit `/etc/fstab` as follow:
+```bash
+# FS          mountpoint  type  option(s) dump pass
+/path/to/swap    none     swap      sw      0    0
+```
+
 ### Resources
 
 <hr />
