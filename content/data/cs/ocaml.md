@@ -99,3 +99,4 @@ let rec g x =
 
 * [Write a website with Dream](https://ceramichacker.com/blog/26-1x-full-stack-webdev-in-ocaml-intro)
 * [Realworld OCaml](https://dev.realworldocaml.org/index.html)
+* [OCaml Programming Guidelines](https://ocaml.org/docs/guidelines)
