@@ -104,6 +104,15 @@ git rebase <rebase onto> [from]
 git rebase --interactive  [--autosquash]
 ```
 
+## Rewrite commit while rebasing
+
+```sh
+git rebase --interactive  [--autosquash]
+# For each stage
+git reset HEAD^
+git commit ...
+```
+
 ## Continue a rebase
 
 ```sh
