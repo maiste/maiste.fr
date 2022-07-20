@@ -101,13 +101,13 @@ git rebase <rebase onto> [from]
 ## Rebase in interactive mode (optionnaly with fixup squashing)
 
 ```sh
-git rebase --interactive  [--autosquash]
+git rebase --interactive  [--autosquash] [range]
 ```
 
 ## Rewrite commit while rebasing
 
 ```sh
-git rebase --interactive  [--autosquash]
+git rebase --interactive [range]
 # For each stage
 git reset HEAD^
 git commit ...
