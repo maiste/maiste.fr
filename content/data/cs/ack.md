@@ -43,3 +43,16 @@ lang = "ENG"
   $ ack -c <pattern>
 
 ```
+
+## Print the files that matches the expression
+
+```sh
+$ ack <pattern> -l
+```
+
+
+## Print the files that doesn't match the expression
+
+```sh
+$ ack <pattern> -L
+```
