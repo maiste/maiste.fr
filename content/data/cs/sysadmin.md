@@ -7,6 +7,15 @@ template = "data/page.html"
 lang = "ENG"
 +++
 
+## Apps
+
+### Resources
+
+* [Syncthing](https://syncthing.net/): tool to keep sync up to date
+* [Nextcloud](https://nextcloud.com/): cloud interface
+
+<hr />
+
 ## Backup
 
 * rsync: backup tool
@@ -16,6 +25,10 @@ lang = "ENG"
 ```
 
 <hr />
+
+### Resources
+
+* [Rclone](https://rclone.org/docs/): a tool to manage backup with cloud providers
 
 ## Block connections on 22 port
 
@@ -63,21 +76,33 @@ sudo swapon /swapfile
 
 <hr />
 
-## Restricting privileges with SSH
+## Nginx
 
-### Definition
+### Resources
+
+* [Proxy_pass](https://dev.to/danielkun/nginx-everything-about-proxypass-2ona): tutorial about nginx `proxy_pass` directive
+
+<hr />
+
+## SSH
+
+### Chroot jail
+
+#### Definition
 
 Use *chroot jail* wit SSH. It allows to isolate a user through ssh in a
 specific directory with limited commands.
 
 ### Resources
 
-* Tutorial link: [chroot jail](https://allanfeid.com/content/creating-chroot-jail-ssh-access)
+* [chroot jail](https://allanfeid.com/content/creating-chroot-jail-ssh-access): how to build a Chroot jail
+* [Bastion SSH (FR)](https://blog.octo.com/le-bastion-ssh/): how to create a SSH bastion
 
+<hr />
 
-## App
+## VPN
 
 ### Resources
 
-* [Syncthing](https://syncthing.net/): tool to keep sync up to date
-* [Nextcloud](https://nextcloud.com/): cloud interface
+* [Buil a VPN with Wireguard](https://fedoramagazine.org/build-a-virtual-private-network-with-wireguard/): Fedora magazine post about how to build aVPN with Wireguard
+

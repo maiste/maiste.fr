@@ -25,3 +25,4 @@ lang = "ENG"
 ## Resources
 
 * [Tools for better thinking](https://untools.co/)
+* [Twelve-Factor App](https://12factor.net/): good practises to write SAAS (Software As a Service)

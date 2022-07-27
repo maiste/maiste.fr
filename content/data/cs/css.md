@@ -20,3 +20,7 @@ A way to organize items in Css as grids
 ## Fonts
 
 * [Google fonts](https://fonts.google.com)
+
+## Resources
+
+* [Defensive CSS](https://ishadeed.com/article/defensive-css/): protect yourself against bad CSS behaviour
