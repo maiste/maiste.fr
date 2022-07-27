@@ -97,6 +97,7 @@ let rec g x =
 
 ### Resources
 
-* [Write a website with Dream](https://ceramichacker.com/blog/26-1x-full-stack-webdev-in-ocaml-intro)
-* [Realworld OCaml](https://dev.realworldocaml.org/index.html)
-* [OCaml Programming Guidelines](https://ocaml.org/docs/guidelines)
+* [Write a website with Dream](https://ceramichacker.com/blog/26-1x-full-stack-webdev-in-ocaml-intro): Dream is an OCaml web framework
+* [Realworld OCaml](https://dev.realworldocaml.org/index.html): tutorial about OCaml
+* [OCaml Programming Guidelines](https://ocaml.org/docs/guidelines): OCaml guidelines for beter code
+* [Sherlocode](https://doc.sherlocode.com/): tool to search throught the OPAM codebase
