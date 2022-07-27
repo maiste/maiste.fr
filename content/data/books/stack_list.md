@@ -15,6 +15,7 @@ General:
 Technical:
 * Types and Programming Languages, *Benjamin C. Pierce*
 * Remote: Office Not Required, *David Heinemeir & Jason Fried*
+* Code, 2nd Edition, *Charles Petzold*
 
 Friend suggestions - 2022:
 * La plus secrète mémoire des hommes, *Mohamed Mbougar Sarr*
