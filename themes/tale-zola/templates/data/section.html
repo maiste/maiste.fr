@@ -14,7 +14,7 @@
   <tbody>
   {% for page in section.pages | sort(attribute="title") %}
     <tr>
-      <td><a href="{{ page.permalink | safe }}">{{ page.title }}</a>: </td>
+      <td><a href="{{ page.permalink | safe }}">{{ page.title }}</a>/   </td>
       <td>
         {% if page.description %} {{ page.description }}
         {% else %}No description{% endif %}
