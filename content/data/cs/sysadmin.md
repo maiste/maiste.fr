@@ -51,6 +51,8 @@ sudo swapon /swapfile
 
 ### Resources
 
+* [ZFS partition](https://unix.stackexchange.com/questions/672151/create-zfs-partition-on-existing-drive): how to create a ZFS partition
+
 <hr />
 
 ## Firewall
@@ -72,3 +74,10 @@ specific directory with limited commands.
 
 * Tutorial link: [chroot jail](https://allanfeid.com/content/creating-chroot-jail-ssh-access)
 
+
+## App
+
+### Resources
+
+* [Syncthing](https://syncthing.net/): tool to keep sync up to date
+* [Nextcloud](https://nextcloud.com/): cloud interface
