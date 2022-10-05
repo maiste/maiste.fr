@@ -47,3 +47,4 @@ lang = "ENG"
 * [End of Life](https://endoflife.date/): information about End Of Life of various projects
 * [Pingdom](https://tools.pingdom.com/): tests the speed of your website
 * [Naming Schemes](https://namingschemes.com/): helper to find names
+* [Website Carbon](https://www.websitecarbon.com/): estimate web page consumption
