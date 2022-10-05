@@ -26,3 +26,4 @@ lang = "ENG"
 
 * [Tools for better thinking](https://untools.co/)
 * [Twelve-Factor App](https://12factor.net/): good practises to write SAAS (Software As a Service)
+* [Eco-conception-web-les-115-bonnes-pratiques](http://raphael-lemaire.com/2018/05/22/resume-de-livre-eco-conception-web-les-115-bonnes-pratiques/)
