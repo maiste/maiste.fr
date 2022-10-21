@@ -19,13 +19,14 @@ lang = "ENG"
   gpg --list-secret-keys
 ```
 
+<hr />
+
 ### Import a key
 
 * From a file:
 ```sh
   gpg --import <name>.key
 ```
-
 * From a server:
 ```sh
   gpg --keyserver <server> --search-keys <mail>
@@ -55,6 +56,8 @@ lang = "ENG"
   gpg --keyserver pgp.mit.edu --refresh-keys
 ```
 
+<hr />
+
 ### Share your public key
 
 * With a file:
@@ -82,6 +85,8 @@ lang = "ENG"
   gpg --keyserver pgp.mit.edu --send-keys key-ID
 ```
 
+<hr />
+
 ### Encrypt a file
 
 ```sh
@@ -92,4 +97,10 @@ lang = "ENG"
 
 ```sh
   gpg --decrypt <file> > <output>
+```
+
+### Encrypt a file with symmetric encryption
+
+```sh
+  gpg -c --cipher-algo <algo> -o <file>
 ```
