@@ -13,6 +13,10 @@ lang = "ENG"
 2. Logging data is *important*: a debug mode should always be available for medium to big programs.
 3. `git-diff` is a good friend, that the first step to debugging
 
+## Fix issues
+
+1. When debugging `docker` run issues, if __something___ vanishes, looking at the `volumes` is a really nice practise.
+
 ## Coding style
 
 1. The style is often *subjective*. However, it matters to stay consistent.
