@@ -106,3 +106,17 @@ specific directory with limited commands.
 
 * [Buil a VPN with Wireguard](https://fedoramagazine.org/build-a-virtual-private-network-with-wireguard/): Fedora magazine post about how to build aVPN with Wireguard
 
+<hr />
+
+## Sudo & su
+
+## Su
+
+* Execute a command with the default shell for a specific user
+  ```sh
+  su <user> -c <command>
+  ```
+* Execute a specific shell for a specific user
+  ```sh
+  su <user> -s <shell>
+  ```
