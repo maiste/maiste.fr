@@ -45,6 +45,8 @@ git commit -S [KEYID]
 git commit --amend
 ```
 
+<hr />
+
 # Branch
 
 ## List branches
@@ -90,6 +92,8 @@ git switch -c <name> [origin]
 git switch -d <commit or branch>
 ```
 
+<hr />
+
 # Rebase
 
 ## Rebase a branch
@@ -125,6 +129,56 @@ git rebase --continue
 git rebase --abort
 ```
 
+
+## Rebase conflicts
+
+First, it is better to use `diff3` to get the parent content and see what the issue is. In a rebase,
+you are trying to apply the commits from a branch as `patches` into a `target branch`. The conflict
+happens when the branch has been modified on both branches. All the following examples are coming
+from [codeinthehole](https://codeinthehole.com/guides/resolving-conflicts-during-a-git-rebase/).
+
+1. Show conflicting commit
+
+```sh
+git rebase --show-current-patch
+# On git < 2.17 do
+# git am --show-current-patch
+
+```
+2. Use the `REBASE_HEAD` pseudo ref to show various stuff:
+```sh
+git show REBASE_HEAD # View the current commit
+git rev-parse REBASE_HEAD # Show the sha of the commit
+```
+3. Check the diff with the target branch:
+```sh
+git diff REBASE_HEAD...<target_branch> -- <FILEPATH>
+```
+4. Check the log history:
+```sh
+git log REBASE_HEAD..<target_branch> -- <FILEPATH>
+```
+5. Resolve conflict directly between _master_ and _example_
+```diff
+<<<<<<<< HEAD
+I like apples and pears
+|||||||| merged common ancestors
+I like apples
+========
+I love apples
+>>>>>>> working-branch
+```
+If you want to keep the change from the target branch (HEAD), you can use:
+```sh
+git checkout --ours -- <FILEPATH>
+```
+If you want to keep the one of the branch you are rebasing (working-branch), you can use 
+```sh
+git checkout --theirs -- <FILEPATH>
+```
+
+
+
 # Cherry pick
 
 ## Cherry pick one commit
@@ -132,6 +186,8 @@ git rebase --abort
 ```sh
 git cherry-pick <commit>
 ```
+
+<hr />
 
 # Patch
 
