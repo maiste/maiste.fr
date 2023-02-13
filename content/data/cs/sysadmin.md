@@ -97,6 +97,7 @@ specific directory with limited commands.
 
 * [chroot jail](https://allanfeid.com/content/creating-chroot-jail-ssh-access): how to build a Chroot jail
 * [Bastion SSH (FR)](https://blog.octo.com/le-bastion-ssh/): how to create a SSH bastion
+* [Visual Guide to SSH Tunnels](https://iximiuz.com/en/posts/ssh-tunnels/)
 
 <hr />
 

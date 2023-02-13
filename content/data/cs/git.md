@@ -208,3 +208,9 @@ git am <name>.patch
 ```
 Co-authored-by: author-name <name@xxx.com>
 ```
+
+<hr />
+
+## Resources
+
+* [How to add submodules](https://devconnected.com/how-to-add-and-update-git-submodules/) (TO TRANSLATE)

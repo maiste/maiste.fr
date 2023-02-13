@@ -24,6 +24,8 @@ lang = "ENG"
  * \<c-x>           => Increment a number
  * \<c-o>           => Go to the previous point before jump
  * \<c-i>           => Go to the next point before jump
+ * \<c-e>           => Scroll up
+ * \<c-y>           => Scroll down
  * Macros:
    * q\<name>\<macro>q => record
    * \<nombre>@\<name> => call
@@ -87,3 +89,9 @@ lang = "ENG"
 
  * \<leader>md => Show markdown
  * \<leader>wp => Use glow to display the markdown
+
+
+## Resources
+
+* [10 VIim shortcuts](https://catonmat.net/top-10-vim-shortcuts) (TO TRANSLATE)
+* [Vim-advanced](https://thevaluable.dev/vim-advanced/) (TO TRANSLATE)

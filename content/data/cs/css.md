@@ -21,6 +21,11 @@ A way to organize items in Css as grids
 
 * [Google fonts](https://fonts.google.com)
 
+## Charts
+
+* [Charts.css](https://chartscss.org/)
+
 ## Resources
 
 * [Defensive CSS](https://ishadeed.com/article/defensive-css/): protect yourself against bad CSS behaviour
+* [Visual Design Rules](https://anthonyhobday.com/sideprojects/saferules/)

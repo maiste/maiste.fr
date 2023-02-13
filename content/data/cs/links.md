@@ -39,6 +39,7 @@ lang = "ENG"
 ## Web Provides
 
 * [Netifly](https://app.netlify.com/): web provider - free for small static website or small build one
+* [Disposable root servers](https://blog.thc.org/disposable-root-servers): free root servers in ssh for Hackers
 
 <hr />
 
@@ -48,3 +49,11 @@ lang = "ENG"
 * [Pingdom](https://tools.pingdom.com/): tests the speed of your website
 * [Naming Schemes](https://namingschemes.com/): helper to find names
 * [Website Carbon](https://www.websitecarbon.com/): estimate web page consumption
+* [Open Source tool list](https://blog.scaleway.com/40-open-source-projects/?utm_source=linkedin&utm_medium=social&utm_term=&utm_content=&utm_campaign=default): open source tools suggestions from Scalway
+
+<hr />
+
+## Free Programming books or Tutorials
+
+* [Programming Languages: Application and Interpretation](https://www.plai.org/3/2/PLAI%20Version%203.2.1%20electronic.pdf)
+* [Crafting Intepreters](https://craftinginterpreters.com/)
