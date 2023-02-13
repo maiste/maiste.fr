@@ -1,7 +1,6 @@
 +++
 title = "Addresses"
 description = "Addresses I want to keep."
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

@@ -1,7 +1,6 @@
 +++
 title = "Games"
 description = "Rules and list of Board Games."
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

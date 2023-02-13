@@ -1,7 +1,6 @@
 +++
 title = "Sysadmin"
 description = "Random resources about Sys Admin."
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

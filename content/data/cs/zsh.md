@@ -1,7 +1,6 @@
 +++
 title = "Zsh"
 description = "Zsh utilities."
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

@@ -6,38 +6,27 @@
 
 # Intel
 
-theme = "tale-zola"
 base_url = "https://maiste.github.io"
 title = "Maiste"
 description = "Another useless blog you might find useful."
-taxonomies = [
-  {name = "tags"},
-]
 
 # Options
-
 generate_feed = true
-hard_link_static = true
+feed_filename = "rss.xml"
+compile_sass = true
 
 [markdown]
 highlight_code = true
-highlight_theme = "OneHalfLight"
+highlight_theme = "css"
 
 
 [extra]
-
-# Author information
-
-author = "Maiste"
-github = "https://github.com/maiste/"
-email = "etienne[at]maiste.fr"
-
 
 ## Menu {{
 
 [[extra.menu]]
 name = "Blog"
-url = "/"
+url = "/blog"
 
 [[extra.menu]]
 name = "Data"
@@ -47,23 +36,4 @@ url = "data"
 name = "About"
 url = "about"
 
-[[extra.menu]]
-name = "Tags"
-url = "tags"
-
 ## }}
-
-## Footer {{
-
-[extra.footer]
-start_year = "2020"
-info = "<a href=\"https://www.getzola.org\">Zola</a> with <a href=\"https://github.com/aaranxu/tale-zola\">Tala-Zola</a> theme."
-
-# }}
-
-# Customise names
-
-[extra.expressions]
-
-top = "Up"
-written_by = "By"

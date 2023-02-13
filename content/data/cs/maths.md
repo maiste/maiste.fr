@@ -1,7 +1,6 @@
 +++
 title = "Maths"
 description = "Maths ressources."
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

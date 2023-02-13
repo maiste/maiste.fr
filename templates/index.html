@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<article>
+    {{ section.content | safe }}
+    <ul>
+{% if section.pages %}
+    {% for page in section.pages %}
+      <li>
+          <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+          <p>{{ page.summary }} <p/>
+      </li>
+    {% endfor %}
+{% endif %}
+{% if section.subsections %}
+    {% for subsection in section.subsections %}
+    {% set subsection = get_section(path=subsection) %}
+      <li>
+          <a href="{{ subsection.permalink | safe }}">{{ subsection.title | safe }}</a>
+          <p>{{ subsection.description | safe }}</p>
+      </li>
+    {% endfor %}
+{% endif %}
+    </ul>
+</article>
+{% endblock content %}

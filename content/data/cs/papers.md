@@ -1,7 +1,6 @@
 +++
 title = "Papers"
 description = "Content related to papers and presentation."
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

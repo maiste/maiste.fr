@@ -1,7 +1,6 @@
 +++
 title = "OCaml"
 description = "About OCaml."
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

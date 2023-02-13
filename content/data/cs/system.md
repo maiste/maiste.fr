@@ -1,7 +1,6 @@
 +++
 title = "System Management"
 description = "Random resources about System computer management."
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

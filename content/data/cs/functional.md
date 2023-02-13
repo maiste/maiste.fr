@@ -1,7 +1,6 @@
 +++
 title = "Functional Programming"
 description = "Generic data about functional programming"
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

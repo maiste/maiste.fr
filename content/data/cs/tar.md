@@ -1,7 +1,6 @@
 +++
 title = "Tar"
 description = "About the tar archive system."
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

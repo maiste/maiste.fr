@@ -1,7 +1,6 @@
 +++
 title = "Operating systems"
 description = "Random resources about OS."
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

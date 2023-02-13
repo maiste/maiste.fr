@@ -1,7 +1,6 @@
 +++
 title = "Web"
 description = "General stuff about web"
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

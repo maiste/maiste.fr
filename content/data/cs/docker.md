@@ -1,7 +1,6 @@
 +++
 title = "Docker"
 description = "Containers with Docker."
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

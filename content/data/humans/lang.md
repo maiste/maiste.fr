@@ -1,7 +1,6 @@
 +++
 title = "Personal Development"
 description = "Lessons about personal development"
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

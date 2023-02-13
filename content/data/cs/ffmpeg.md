@@ -1,7 +1,6 @@
 +++
 title = "FFmepg"
 description = "How to use FFmpeg"
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

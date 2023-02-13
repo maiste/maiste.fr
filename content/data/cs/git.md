@@ -1,7 +1,6 @@
 +++
 title = "Git"
 description = "How to use Git"
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

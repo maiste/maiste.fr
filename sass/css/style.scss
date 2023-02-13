@@ -1,0 +1,40 @@
+
+
+@import "pico/pico.scss";
+
+.container {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+header {
+    nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            h1 {
+                margin-bottom: 0px;
+            }
+        }
+    }
+
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    header {
+        nav {
+            flex-direction: column;
+        }
+    }
+}
