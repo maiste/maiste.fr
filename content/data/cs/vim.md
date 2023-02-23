@@ -9,13 +9,13 @@ lang = "ENG"
 ## Shortcuts
 
  * <kbd>space</kbd> => Leader key
- * jk / kj => Exit mode
+ * <kbd>jk</kbd> / kj => Exit mode
 
 ### Par défaut
 
  * \<c-<direction>> => Change windows
- * \<M-<direction>> => Change dimensions
- * \<TAB>           => Change buffer
+ * <kbd>Shift</kbd><kbd>direction</kbd> => Change dimensions
+ * <kdb>TAB</kbd>  => Change buffer
  * \<S-TAB>         => Change buffer from back
  * \<leader>bd      => Delete buffer
  * \<leader>ss      => Stop research
