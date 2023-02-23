@@ -1,7 +1,6 @@
 +++
 title = "Links"
 description = "Useful links for computer science"
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

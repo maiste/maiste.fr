@@ -1,7 +1,6 @@
 +++
 title = "Good Practises"
 description = "Lessons about CS I've learnt"
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

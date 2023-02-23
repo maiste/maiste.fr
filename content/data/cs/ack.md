@@ -1,7 +1,6 @@
 +++
 title = "Ack"
 description = "Commandline tool ack"
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

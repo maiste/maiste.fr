@@ -1,6 +1,5 @@
 +++
 title = "About"
-template = "about/section.html"
 +++
 
 French computer scientist curious about everything, I've started this blog to centralise my knowledge and share some pieces of my mind with others if it can help. Everything written in this website is my opinion. It doesn't reflect the ideas of my employers, my family or anyone else.

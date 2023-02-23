@@ -1,7 +1,6 @@
 +++
 title = "Flutter"
 description = "How to use Flutter"
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

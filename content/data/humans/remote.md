@@ -1,7 +1,6 @@
 +++
 title = "Remote"
 description = "Guide to remote work"
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

@@ -1,7 +1,6 @@
 +++
 title = "Scp"
 description = "Commandline tool scp"
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

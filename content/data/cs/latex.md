@@ -1,7 +1,6 @@
 +++
 title = "LaTex"
 description = "About LaTex"
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

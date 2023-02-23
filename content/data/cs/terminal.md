@@ -1,7 +1,6 @@
 +++
 title = "Terminal"
 description = "Random resources about Terminal and CLI."
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

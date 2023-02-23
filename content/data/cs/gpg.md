@@ -1,7 +1,6 @@
 +++
 title = "GPG"
 description = "Safe data with encryption."
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

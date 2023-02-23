@@ -1,7 +1,6 @@
 +++
 title = "Transports"
 description = "All about transportations"
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

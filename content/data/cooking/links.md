@@ -1,7 +1,6 @@
 +++
 title = "Links"
 description = "Links about cooking"
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

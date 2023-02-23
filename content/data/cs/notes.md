@@ -1,7 +1,6 @@
 +++
 title = "Computer Note taking"
 description = "Generic data about notes taking"
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

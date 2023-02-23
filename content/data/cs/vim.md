@@ -1,7 +1,6 @@
 +++
 title = "Vim"
 description = "Stuffs about (Neo)Vim."
-template = "data/page.html"
 
 [extra]
 lang = "ENG"
@@ -9,7 +8,7 @@ lang = "ENG"
 
 ## Shortcuts
 
- * space => Leader key
+ * <kbd>space</kbd> => Leader key
  * jk / kj => Exit mode
 
 ### Par défaut

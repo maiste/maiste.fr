@@ -1,11 +1,14 @@
 +++
 title = "Web"
 description = "General stuff about web"
-template = "data/page.html"
 
 [extra]
 lang = "ENG"
 +++
+
+## Module Bundlers: Webpack
+
+Webpack is a module bundler that allows to resolve dependencies to make file exportable via the web.
 
 ## Optimise the code
 

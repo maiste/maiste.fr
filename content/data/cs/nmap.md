@@ -1,7 +1,6 @@
 +++
 title = "NMap"
 description = "Commands and resources."
-template = "data/page.html"
 
 [extra]
 lang = "ENG"

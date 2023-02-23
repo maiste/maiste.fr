@@ -1,7 +1,6 @@
 +++
 title = "Python"
 description = "About Python"
-template = "data/page.html"
 
 [extra]
 lang = "ENG"
