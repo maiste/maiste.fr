@@ -15,6 +15,7 @@ lang = "ENG"
 ## Fix issues
 
 1. When debugging `docker` run issues, if __something___ vanishes, looking at the `volumes` is a really nice practise.
+2. Take your time before reaching conclusions. Having a reproduce state of the bug is important.
 
 ## Coding style
 
@@ -24,6 +25,10 @@ lang = "ENG"
 
 1. Pencils and papers are your friends, feel free to fill a lot of them with notes, graphs or anything relevant: it frees your mind.
 2. A good way to design a good API is actually to try to explain it with documentation ie. always start by a .mli, give a few hints on the general idea behind the API and give a few explanations on how users are supposed to use it. Writing a few examples is always a good way to find the right function and types names and the proper API to compose them ([quote @samoht](https://github.com/mirage/irmin/pull/1817)).
+
+## DevOps
+
+1. __NEVER DEPLOY__ on Fridays.
 
 ## Resources
 
