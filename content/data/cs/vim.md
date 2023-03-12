@@ -8,23 +8,23 @@ lang = "ENG"
 
 ## Shortcuts
 
- * <kbd>space</kbd> => Leader key
- * <kbd>jk</kbd> / kj => Exit mode
+ * <kbd>space</kbd>: Leader key
+ * <kbd>jk</kbd> / <kbd>kj</kbd> : Exit mode
 
 ### Par défaut
 
- * \<c-<direction>> => Change windows
- * <kbd>Shift</kbd><kbd>direction</kbd> => Change dimensions
- * <kdb>TAB</kbd>  => Change buffer
- * \<S-TAB>         => Change buffer from back
- * \<leader>bd      => Delete buffer
- * \<leader>ss      => Stop research
- * \<c-a>           => Decrement a number
- * \<c-x>           => Increment a number
- * \<c-o>           => Go to the previous point before jump
- * \<c-i>           => Go to the next point before jump
- * \<c-e>           => Scroll up
- * \<c-y>           => Scroll down
+ * <kbd>Ctrl</kbd> + <kbd>direction</kbd> : Change windows
+ * <kbd>Shift</kbd> + <kbd>direction</kbd> : Change dimensions
+ * <kbd>TAB</kbd> : Change buffer
+ * <kbd>Shift</kbd> + <kbd>TAB</kbd> : Change buffer from back
+ * <kbd>leader</kbd> + <kbd>bd</kbd> : Delete buffer
+ * <kbd>leader</kbd> + <kbd>ss</kbd> : Stop research
+ * <kbd>Ctrl</kbd> + <kbd>a</kbd> : Decrement a number
+ * <kbd>Ctrl</kbd> + <kbd>x</kbd> : Increment a number
+ * <kbd>Ctrl</kbd> + <kbd>o</kbd> : Go to the previous point before jump
+ * <kbd>Ctrl</kbd> + <kbd>i</kbd> : Go to the next point before jump
+ * <kbd>Ctrl</kbd> + <kbd>e</kbd> : Scroll up
+ * <kbd>Ctrl</kbd> + <kbd>y</kbd> : Scroll down
  * Macros:
    * q\<name>\<macro>q => record
    * \<nombre>@\<name> => call
@@ -41,53 +41,35 @@ lang = "ENG"
 
 ### Nerdcommenter
 
- * \<leader>cc => Comment
- * \<leader>ci => Inverse comment / uncomment
+ * <kbd>leader</kbd> + <kbd>cc</kbd> : Comment
+ * <kbd>leader</kbd> + <kbd>ci</kbd> : Inverse comment / uncomment
 
-### Tabular
+### Telescope
 
- * __VISUAL__:
-   * \<leader>t=          => Tabular on =
-   * \<leader>tp\<pattern> => Tabular on pattern
+ * <kbd>leader</kbd> + <kbd>ff</kbd> : Walk through git files
+ * <kbd>leader</kbd> + <kbd>fg</kbd> : Walk through code
+ * <kbd>leader</kbd> + <kbd>b</kbd> : Walk through buffers
 
-### Quick-scope
+## Completion
 
- * f\<char> => Move forward to character
- * F\<char> => Move backward to character
-
-### FZF
-
- * \<leader>ff => Walk through git files
- * \<leader>fg => Walk through code
- * \<leader>b => Walk through buffers
-
-### NCM2
-
- * \<c-e> => Expand snippets
- * \<c-j> => Up in snippets
- * \<c-k> => Down in snippets
- * \<c-c> => Cancel
- * \<CR>  => Apply
- * \<TAB> => Up
- * \<S-TAB> => Down
+__TODO__
 
 ### LSP
 
-  * \<leader>ld => Go to definitions
-  * \<leader>lr => Rename
-  * \<leader>lf => Format
-  * \<leader>lt => Go to type definition
-  * \<leader>lx => Go to the reference
-  * \<leader>la => Change workspace
-  * \<leader>lc => Completion
-  * \<leader>lh => Object informations
-  * \<leader>ls => Document symbols
-  * \<leader>lm => Display menu
+  * <kbd>leader</kbd> + <kbd>ld</kbd> => Go to definitions
+  * <kbd>leader</kbd> + <kbd>lr</kbd> => Rename
+  * <kbd>leader</kbd> + <kbd>lf</kbd> => Format
+  * <kbd>leader</kbd> + <kbd>lt</kbd> => Go to type definition
+  * <kbd>leader</kbd> + <kbd>lx</kbd> => Go to the reference
+  * <kbd>leader</kbd> + <kbd>la</kbd> => Change workspace
+  * <kbd>leader</kbd> + <kbd>lc</kbd> => Completion
+  * <kbd>leader</kbd> + <kbd>lh</kbd> => Object informations
+  * <kbd>leader</kbd> + <kbd>ls</kbd> => Document symbols
+  * <kbd>leader</kbd> + <kbd>lm</kbd> => Display menu
 
 ### Mardown
 
- * \<leader>md => Show markdown
- * \<leader>wp => Use glow to display the markdown
+ * <kbd>leader</kbd> + <kbd>wp</kbd> => Show markdown
 
 
 ## Resources
