@@ -1,0 +1,33 @@
+name: Deploy
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: deploy
+    steps:
+      - name: Checkout to the current branch
+        uses: actions/checkout@v3
+      - name: Initialise SSH-AGENT
+        uses: webfactory/ssh-agent@v0.4.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Install Zola
+        run: sudo snap install zola --edge
+      - name: Build website
+        run: zola build
+      - name: Scan host key
+        run: mkdir -p ~/.ssh/ && ssh-keyscan -H -p $DEPLOY_PORT $DEPLOY_SERVER >> ~/.ssh/known_hosts
+        env:
+          DEPLOY_SERVER: ${{ secrets.DEPLOY_SERVER }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+      - name: Deploy website
+        run: >-
+          rsync -avx --delete -e "ssh -p $DEPLOY_PORT" public/ $DEPLOY_USER@$DEPLOY_SERVER:./blog/
+        env:
+          DEPLOY_SERVER: ${{ secrets.DEPLOY_SERVER }}
+          DEPLOY_USER: ${{ secrets.deploy_USER }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
