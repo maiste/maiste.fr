@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Maiste</title>
+      <link>https://maiste.fr</link>
+      <description>Another useless blog you might find useful.</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://maiste.fr/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 21 Oct 2022 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Up-to-date Online Documentation</title>
+          <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://maiste.fr/blog/2022/repost/</link>
+          <guid>https://maiste.fr/blog/2022/repost/</guid>
+          <description>&lt;p&gt;I wrote an article about &lt;code&gt;OCurrent&lt;&#x2F;code&gt; on &lt;code&gt;Tarides.com&lt;&#x2F;code&gt;. It describes how the &lt;code&gt;ocurrent.org&lt;&#x2F;code&gt; pipeline was written. It&#x27;s a good base to understand how to write an &lt;code&gt;ocurrent&lt;&#x2F;code&gt; pipeline.
+Here is the link of the article: https:&#x2F;&#x2F;tarides.com&#x2F;blog&#x2F;2022-10-20-up-to-date-online-documentation&lt;&#x2F;p&gt;
+&lt;!--
+
+## Into the Fire
+
+The OCaml ecosystem relies on various resources and infrastructure such as [ocaml.org](https:&#x2F;&#x2F;ocaml.org), [OCaml Docker images](https:&#x2F;&#x2F;hub.docker.com&#x2F;r&#x2F;ocaml&#x2F;opam), [ocaml-repo-ci](http:&#x2F;&#x2F;check.ocamllabs.io&#x2F;), that are built and deployed using [OCurrent](ocurrent.org). OCurrent is a library to express workflows and keep things up to date. As many of these projects are created using the same technology, it was interesting to centralise the documentation as it was spread throughout the various repositories. This post is about how we used OCurrent itself to automate this problem. We think it might also demonstrate how you can use OCurrent to automate some of yours!
+
+## Can&#x27;t Keep My Eyes Off You
+
+Before digging into the logic, it&#x27;s essential to thoroughly define the problems in the documentation. The first problem was that the documentation lives in many GitHub repositories. Indeed, to make sure we update it whenever we modify the associated code, we keep the documentation closest to the code. The result is a repository organisation like this:
+
+![Tracking](&#x2F;2022&#x2F;ocurrent&#x2F;tracker.png)
+
+It&#x27;s not a good judgement to count on humans&#x27; actions to monitor changes in all these repositories. As they fluctuate on their own time, we can&#x27;t expect maintainers to backport documentation changes to the `ocurrent.org` website for each modification. To say it more technically, we need to track many files and keep them up to date. These actions should also update incrementally which matches with OCurrent nicely.
+
+In addition, this documentation needs to stay up to date. Even if we centralise the documentation automatically, we must rebuild it regularly and fetch the changes from the repositories we track. Otherwise, the documentation will start to be outdated quickly. This is the opposite of what we want.
+
+Furthermore, the system has to scale and be updated easily. Indeed, we would like to have the possibility to introduce new documents and repositories without having to install more applications. For instance, it would be beneficial to simply make a pull request somewhere.
+
+In the next section, we will focus on the OCurrent pipeline design, which will automate our tasks and solve these problems.
+
+## Here I Dreamt I Was an Architect
+
+The project is composed of several blocks we want to write to achieve our work:
+- Fetch files from GitHub
+- Rebuild a subset of the code
+- Make the system modular
+- Store and deploy the data easily
+
+One aspect that will make our work a bit easier is to have it all concentrated in the same place, GitHub. As OCurrent provides a plugin to fetch information from GitHub, `current_github`, we don&#x27;t have to worry about it. Furthermore, everything is cached thanks to OCurrent itself. We don&#x27;t have to care about the incremental build. The only requirement is wisely choosing the data we want to cache.
+
+Our architecture uses a `trackers.yml` file describing how the pipeline should interact with our heterogeneous repositories. It describes the files we want to track and where we would like them in the final website structure. The configuration gives a way to achieve modularity at a low cost, as we only have to open a PR on the repository that contains the tracker file to update them. Additionally, it allows us to track the repositories we want quickly. Once it&#x27;s followed, we don&#x27;t have to worry about the monitoring, as OCurrent can be set to rebuild stuff at the regular cycle. In our case, we want to control every week that the code hasn&#x27;t mutated. In the present version of `trackers.yml`, we can specify the files we want to copy and the indexes we want to create to build our structure. This file is stored in the repository on which the `GitHub App` is installed.
+
+Another critical component in the architecture is handling new files from the remote repository and integrating them into the website structure. This element is in charge of moving the piece from one part of the system to another. Moreover, it will have to ensure the paths are consistent and fail if not.
+
+The last item must push the code to a specific Git repository because we decided to use `GitHub Pages` to store the website. To avoid issues with account management, it needs `ssh` to get access to a specific repository.
+
+In the end, the pipeline design would look like this:
+![Pipeline](&#x2F;2022&#x2F;ocurrent&#x2F;pipeline.png)
+
+Now that we have our workflow let&#x27;s see how it is implemented in practice!
+
+## This is How We Do It
+
+In this section, we will focus on the way to implement this infrastructure. We won&#x27;t view all the elements in detail, but we will try to concentrate on the most important ones, like how to create a custom `ocurrent` component and chain them together to build a pipeline.
+
+### `current_github`
+
+Let&#x27;s focus on a standard structure in an OCurrent project: the way to get the HEAD of a branch on GitHub and fetch the commit with Git. In the related code, we find the HEAD, then ask GitHub to give us information about the HEAD commit on the default branch and finally get the content with Git (it returns the related commit):
+
+```ocaml
+let fetch_commit ~github ~repo () =
+  let head = Current_github.API.head_commit GitHub repo in
+  let commit_id =
+    Current.map Current_github.Api.Commit.id head
+  in
+  let commit =
+    Current_git.fetch commit_id
+  in
+  commit
+
+let main =
+  let github = (* GitHub App code *) in
+  let commit = fetch_commit ~github ~repo () in
+  (* Use the commit code *)
+```
+
+The documentation of `current_github` and `current_git` is available [online](https:&#x2F;&#x2F;www.ocurrent.org&#x2F;ocurrent&#x2F;index.html).
+
+### Fetching the Files
+
+As we know how to extract data from GitHub, applying the process to various repositories will be easy. It can be noticed that the `commit` element is of type `Commit.t Current.t`. To work with `Current.t`, we need to &quot;unwrap&quot; the object with specific functions like `map` and `bind`. This post does not present how to load the content from a `Yaml` file. We assume that we get a `selection list Current.t`, where `selection` is defined as:
+
+```ocaml
+type selection = {
+  repo : string;
+  commit : Current_git.Commit.t Current.t;
+  files : &#x27;a list;
+}
+```
+
+It contains the source repository, the commit associated with the specified branch, and the list of files to monitor from this repository.
+
+To `git clone` the content, we must apply the `fetch_commit` function.
+
+### Copy the Content
+
+In this subsection, we will see how we can define a custom component and how to make it interact with the rest of our code.
+
+The component is in charge of fetching the content of the files from the source directory and storing it in memory. To trigger the action only when the content changes, we will define a `Current_cache` element. Thanks to OCurrent, the content is cached and only rebuilt on change or request.
+
+It manipulates some `File.info` (source, destination, ...) and produces a `File.t` when the content is read. `File.t` is simply a:
+
+```ocaml
+type File.t = {
+    metadata: File.info;
+    content: string list;
+}
+```
+
+Our file is represented as a `string list`, as we need to be able to add more information. We know the size of the files is limited, so it is not an issue for us.
+The component is defined as a `Current_cache.BUILDER` with whom the signature looks like this:
+
+```ocaml
+module type BUILDER = sig
+
+type context
+
+module Key : sig
+  type t
+  val digest:
+end
+
+module Value : sig
+    type t
+    val marshall : t -&gt; string
+    val unmarshall : string -&gt; t
+end
+
+val build :
+    context -&gt;
+    Current.Job.t -&gt;
+    Key.t -&gt;
+    Value.t Current.or_error Lwt.t
+end
+```
+
+As the `Value` and the `Key` modules only use functions to manipulate `JSON`, we can focus on the `build` function definition:
+
+```ocaml
+  let build files job { Key.commit; Key.repo; _ } =
+    Current.Job.start job ~level:Current.Level.Average &gt;&gt;= fun () -&gt;
+    Current_git.with_checkout ~job commit @@ fun dir -&gt;
+    extract ~job ~dir repo files
+    &gt;&gt;= Lwt_result.return
+```
+
+It creates a temporary directory with the content fetched from Git. Then, it extracts the data as a `File.t` and returns the result. The interesting detail here is `Current_git.with_checkout fn`. It is used to copy our code somewhere in the system temporarily. `Current.Job.start` is just some boilerplate code to start a job asynchronously.
+
+Consequently, we can give the builder a functor to construct our cache system. Moreover, we create a function associated with it thanks to the `Content` module newly created:
+```ocaml
+module Content = Current_cache.Make (Content)
+
+let weekly = Current_cache.Schedule.v ~valid_for:(Duration.of_day 7) ()
+
+let fetch ~repo ~ commit files =
+  Current.component &quot;fetch-doc&quot; |&gt;
+  let&gt; commit = commit in
+  Content.get ~schedule:weekly files
+    {content.Key.repo; Content.Key.commit }
+```
+
+We specify the date when the cache is invalidated to trigger the rebuild at least every week.
+
+### Build &amp; Deploy
+
+In this last subsection, we discuss how to write all the files stored in the cache to the right place in the filesystem. We use `hugo` to build the website and `git` with `ssh` to deploy it. As we expect the information to be cached, we build a `Current_cache` module again, where the `build` function is:
+
+```ocaml
+let build { files; indexes; conf } job { Key.commit; _ } =
+    Current.Job.start job ~level:Current.Level.Average &gt;&gt;= fun () -&gt;
+    Current_git.with_checkout ~job commit @@ fun dir -&gt;
+    write_all job dir files indexes &gt;&gt;= fun () -&gt;
+    Lwt_result.bind (hugo ~cwd:dir job) (fun () -&gt;
+        let f cwd =
+          let commit = Current_git.Commit.hash commit in
+          deploy_over_git ~cwd ~job ~conf dir commit
+        in
+        Current.Process.with_tmpdir f)
+```
+
+In this context, the pipeline creates an `indexes` file as `_index.md`. It&#x27;s used by Hugo to build the directory structure. This function uses the same `Current_git.checkout` process to create a temporary directory containing the website&#x27;s skeleton. All the work is done in the `deploy_over_git` function, but this is not relevant to go further in detail. The component writes all the `File.t.content` to the destination specified in their metadata. Once we have successfully written them, we generate the website with `hugo --minify --output-dir=public&#x2F;`. Last but not least, we copy the content of the `public` repository to a fresh temporary one, so we can add the files with a `git init` and push our work to GitHub. Finally, on the target repository, GitHub Pages will deploy the website.
+
+And voila, our website is up-to-date and online!
+
+## Happy Together
+
+This blog post has described how we handle our distributed documentation and centralise it on our website. We have seen how to use some `Current_*` plugins and how to write our own. It was also the occasion to speak about various OCurrent structures.
+
+If you are curious, you can check the code in the [ocurrent&#x2F;ocurrent.org](https:&#x2F;&#x2F;github.com&#x2F;ocurrent&#x2F;ocurrent.org) repository. Feel free to look at the [ocurrent.org](https:&#x2F;&#x2F;ocurrent.org) built with this pipeline. The description of the pipeline is also available in the [bin](https:&#x2F;&#x2F;github.com&#x2F;ocurrent&#x2F;ocurrent.org&#x2F;tree&#x2F;master&#x2F;bin) repository. --&gt;
+</description>
+      </item>
+      <item>
+          <title>The Humble Programmer</title>
+          <pubDate>Sat, 25 Dec 2021 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://maiste.fr/blog/2021/humble/</link>
+          <guid>https://maiste.fr/blog/2021/humble/</guid>
+          <description>&lt;blockquote&gt;
+&lt;p&gt;Je ne sais qu&#x27;une chose, c&#x27;est que je ne sais rien&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Bonjour à toutes et à tous,
+En cette période de Noël, je souhaitais vous faire découvrir un sujet peu abordé en informatique : l&#x27;importance de l&#x27;humilité en développement logiciel.&lt;&#x2F;p&gt;
+&lt;p&gt;A mon entrée dans le monde de l&#x27;entreprise, j&#x27;ai découvert l&#x27;importance de cultiver sa part d&#x27;humilité lors de la production de code. &lt;&#x2F;p&gt;
+&lt;p&gt;En effet, je me suis parfois retrouvé bloqué devant un problème sans oser chercher la solution auprès de personnes plus compétentes que moi, par peur du ridicule. D&#x27;une autre façon, devant un point de vue différent du mien, il m&#x27;est arrivé de ne pas réussir à m&#x27;extraire de la vision binaire que je m&#x27;étais construite. Ayant appris de ces erreurs et continuant à en tirer des apprentissages, je souhaitais partager avec vous mon point de vue sur le sujet afin de vous amener à y réfléchir.&lt;&#x2F;p&gt;
+&lt;p&gt;Le premier point, consiste à d&#x27;abord produire un code simple sans chercher à l&#x27;optimiser de façon prématurée. Qui ne s&#x27;est jamais retrouvé confronté à une optimisation incompréhensible qui perturbait la fluidité du raisonnement initial ? La rédaction d&#x27;un code naïf mais lisible prévaut à l&#x27;écriture d&#x27;un code optimisé mais immaintenable.&lt;&#x2F;p&gt;
+&lt;p&gt;L&#x27;excès de confiance nous pousse parfois à considérer la rédaction de documentation comme une étape négligeable. Pourtant, lorsque nous oublions le sens que nous souhaitions donner au code, cette documentation nous rappelle les motivations qui nous ont amené.e.s à le rédiger ainsi.&lt;&#x2F;p&gt;
+&lt;p&gt;Face à la quantité astronomique de contenu proposé sur Internet (tutoriels, cours en ligne, etc.), il est aisé de se sentir à la fois submergé par tant d&#x27;informations et en même temps de se considérer expert dans un domaine. Cependant, le ou la programmeur.se compétent.e se distingue par sa capacité à reconnaître ses propres limites plutôt qu&#x27;à la somme de ses connaissances. Ce pragmatisme lui permet de savoir quant vient le temps de se former.&lt;&#x2F;p&gt;
+&lt;p&gt;Enfin, en informatique tout comme dans de nombreux domaines, savoir se remettre en question est la clé de l&#x27;intelligence collective. Questionner ses propres choix et les étudier sous divers angles en ayant conscience des biais qui nous habitent permet de concevoir des solutions sortant de nos schémas de pensées habituels. En outre, mettre à l&#x27;épreuve les raisonnements de nos collègues ouvre la porte à de nouvelles perspectives qu&#x27;il aurait été compliqué d&#x27;imaginer seul. Continuer de s&#x27;améliorer et d&#x27;apprendre requiert de savoir ranger son ego de côté. &lt;&#x2F;p&gt;
+&lt;p&gt;Si vous n&#x27;aviez qu&#x27;une chose à retenir de cet article, ce serait de se rappeler que nous ne sommes que des humains avec nos limites, nos biais et nos imperfections. Des humains qui apprennent de leurs erreurs pour aller plus toujours plus loin et repousser ses limites.&lt;&#x2F;p&gt;
+&lt;p&gt;J&#x27;espère, via ces quelques mots, vous avoir amené.e à réfléchir sur l&#x27;importance de l&#x27;humilité. Dans le cas où vous seriez tenté.e.s de vous aventurer au-delà de ce texte, l&#x27;artcile d&#x27;Edsger Dikjstra développe les caractéristiques d&#x27;un bon programmeur et a servi d&#x27;inspiration à ce texte.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;The Humble Programmer&lt;&#x2F;em&gt; : &lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;https:&#x2F;&#x2F;www.cs.utexas.edu&#x2F;users&#x2F;EWD&#x2F;transcriptions&#x2F;EWD03xx&#x2F;EWD340.html&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;par &lt;em&gt;Un pirate parti naviguer sur les dunes d&#x27;OCaml, secondé par un poulpe minutieux.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>Doc on GitHub pages with Odoc and Actions</title>
+          <pubDate>Sun, 22 Aug 2021 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://maiste.fr/blog/2021/odoc/</link>
+          <guid>https://maiste.fr/blog/2021/odoc/</guid>
+          <description>&lt;h2 id=&quot;context&quot;&gt;Context&lt;&#x2F;h2&gt;
+&lt;p&gt;I will not surprise anyone if I say that documenting your code is important.
+If you host your code on GitHub, you might have heard about &lt;a href=&quot;https:&#x2F;&#x2F;pages.github.com&#x2F;&quot;&gt;GitHub Pages&lt;&#x2F;a&gt;.
+This project allows GitHub users to deploy some static websites using GitHub.
+For example, &lt;a href=&quot;https:&#x2F;&#x2F;maiste.fr&#x2F;blog&#x2F;2021&#x2F;odoc&#x2F;maiste.fr&quot;&gt;this website&lt;&#x2F;a&gt; is stored on my GitHub account.&lt;&#x2F;p&gt;
+&lt;p&gt;An interesting point is that you can use this feature to store piece of
+documentations at a specific URL. If your OCaml code is on GitHub, you can
+deploy the configuration the way I will show you.&lt;&#x2F;p&gt;
+&lt;p&gt;First, your code must follow the &lt;a href=&quot;https:&#x2F;&#x2F;ocaml.org&#x2F;manual&#x2F;ocamldoc.html&quot;&gt;ocamldoc&lt;&#x2F;a&gt; convention. Also,
+the &lt;a href=&quot;https:&#x2F;&#x2F;opam.ocaml.org&#x2F;packages&#x2F;odoc&#x2F;&quot;&gt;odoc&lt;&#x2F;a&gt; generator must be in your package dependencies (maybe with the
+&lt;code&gt;{with-doc}&lt;&#x2F;code&gt; specification.&lt;&#x2F;p&gt;
+&lt;p&gt;Below, you can see a partial example of a &lt;code&gt;.opam&lt;&#x2F;code&gt;, I have created:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ocaml&quot; class=&quot;language-ocaml z-code&quot;&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;z-source z-ocaml&quot;&gt;depends: &lt;span class=&quot;z-meta z-list z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-list z-begin z-ocaml&quot;&gt;[&lt;&#x2F;span&gt;
+  &lt;span class=&quot;z-string z-quoted z-double z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;ocaml&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-record z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-record z-ocaml&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-symbol z-ocaml&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-infix z-ocaml&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;4.12.0&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-record z-ocaml&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+  &lt;span class=&quot;z-string z-quoted z-double z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;dune&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-record z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-record z-ocaml&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-symbol z-ocaml&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-infix z-ocaml&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;2.5&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-record z-ocaml&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+  &lt;span class=&quot;z-string z-quoted z-double z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;odoc&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-record z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-record z-ocaml&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-other z-language z-ocaml&quot;&gt;with&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-infix z-ocaml&quot;&gt;-&lt;&#x2F;span&gt;doc&lt;span class=&quot;z-punctuation z-definition z-record z-ocaml&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-punctuation z-definition z-list z-end z-ocaml&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+build: &lt;span class=&quot;z-meta z-list z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-list z-begin z-ocaml&quot;&gt;[&lt;&#x2F;span&gt;
+  &lt;span class=&quot;z-meta z-list z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-list z-begin z-ocaml&quot;&gt;[&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;dune&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;subst&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-list z-end z-ocaml&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-record z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-record z-ocaml&quot;&gt;{&lt;&#x2F;span&gt;pinned&lt;span class=&quot;z-punctuation z-definition z-record z-ocaml&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+  &lt;span class=&quot;z-meta z-list z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-list z-begin z-ocaml&quot;&gt;[&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-string z-quoted z-double z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;dune&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-string z-quoted z-double z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;build&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-string z-quoted z-double z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;-p&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    name
+    &lt;span class=&quot;z-string z-quoted z-double z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;-j&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    jobs
+    &lt;span class=&quot;z-string z-quoted z-double z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;@install&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-string z-quoted z-double z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;@runtest&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-record z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-record z-ocaml&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-other z-language z-ocaml&quot;&gt;with&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-infix z-ocaml&quot;&gt;-&lt;&#x2F;span&gt;test&lt;span class=&quot;z-punctuation z-definition z-record z-ocaml&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-string z-quoted z-double z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;@doc&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ocaml&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-record z-ocaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-record z-ocaml&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-other z-language z-ocaml&quot;&gt;with&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-infix z-ocaml&quot;&gt;-&lt;&#x2F;span&gt;doc&lt;span class=&quot;z-punctuation z-definition z-record z-ocaml&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+  &lt;span class=&quot;z-punctuation z-definition z-list z-end z-ocaml&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-punctuation z-definition z-list z-end z-ocaml&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Now we have our documentation, it&#x27;s time to automatize the process with
+GitHub Actions.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;setup-github-actions&quot;&gt;Setup GitHub Actions&lt;&#x2F;h2&gt;
+&lt;p&gt;At the root of your repository, you must create (if it&#x27;s not already the case)
+a &lt;strong&gt;.github&#x2F;workflows&#x2F;&lt;&#x2F;strong&gt; directory. In it, you must create a &lt;name&gt;.yml file.
+The content of the file is:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;yaml&quot; class=&quot;language-yaml z-code&quot;&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;z-source z-yaml&quot;&gt;&lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;name&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&amp;lt;Display title&amp;gt;&lt;&#x2F;span&gt;
+
+&lt;span class=&quot;z-constant z-language z-boolean z-yaml&quot;&gt;on&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+  &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;push&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;branches&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-punctuation z-definition z-block z-sequence z-item z-yaml&quot;&gt;-&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&amp;lt;Regex describing the branch on which this action must be trigger&amp;gt;&lt;&#x2F;span&gt;
+
+&lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;jobs&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+  &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;deploy&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;runs-on&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;ubuntu-latest&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;steps&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+      &lt;span class=&quot;z-punctuation z-definition z-block z-sequence z-item z-yaml&quot;&gt;-&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;uses&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;actions&#x2F;checkout@v2&lt;&#x2F;span&gt;
+      &lt;span class=&quot;z-punctuation z-definition z-block z-sequence z-item z-yaml&quot;&gt;-&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;uses&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;ocaml&#x2F;setup-ocaml@v2&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;with&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+          &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;ocaml-compiler&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-single z-yaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-yaml&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&amp;lt;version number&amp;gt;&lt;span class=&quot;z-punctuation z-definition z-string z-end z-yaml&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+      &lt;span class=&quot;z-punctuation z-definition z-block z-sequence z-item z-yaml&quot;&gt;-&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;name&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;Dependencies&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;run&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;opam install -d . --deps-only&lt;&#x2F;span&gt;
+      &lt;span class=&quot;z-punctuation z-definition z-block z-sequence z-item z-yaml&quot;&gt;-&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;name&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;Building docs&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;run&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;opam exec -- dune build @doc&lt;&#x2F;span&gt;
+      &lt;span class=&quot;z-punctuation z-definition z-block z-sequence z-item z-yaml&quot;&gt;-&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;name&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;Deploying to github pages&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;uses&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;peaceiris&#x2F;actions-gh-pages@v3&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;with&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;
+          &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;github_token&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;${{ secrets.GITHUB_TOKEN }}&lt;&#x2F;span&gt;
+          &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;publish_dir&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&amp;lt;.&#x2F;_build&#x2F;default&#x2F;_doc&#x2F;_html&#x2F; or directory where your doc is stored&amp;gt;&lt;&#x2F;span&gt;
+          &lt;span class=&quot;z-meta z-flow-sequence z-yaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-sequence z-begin z-yaml&quot;&gt;[&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-flow-pair z-key z-yaml&quot;&gt;&lt;span class=&quot;z-string z-unquoted z-plain z-in z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;d&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-unquoted z-plain z-in z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;estination_dir&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-flow-pair z-yaml&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-flow-pair z-value z-yaml&quot;&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-in z-yaml&quot;&gt;no_mammut&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-sequence z-end z-yaml&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;&amp;lt;optional&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;push the doc in a different directory&amp;gt;&lt;&#x2F;span&gt;
+          &lt;span class=&quot;z-meta z-flow-sequence z-yaml&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-sequence z-begin z-yaml&quot;&gt;[&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-flow-pair z-key z-yaml&quot;&gt;&lt;span class=&quot;z-string z-unquoted z-plain z-in z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;e&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-unquoted z-plain z-in z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;nable_jekyll&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-flow-pair z-yaml&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-flow-pair z-value z-yaml&quot;&gt; &lt;span class=&quot;z-constant z-language z-boolean z-yaml&quot;&gt;true&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-sequence z-end z-yaml&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;&lt;span class=&quot;z-entity z-name z-tag z-yaml&quot;&gt;&amp;lt;optional&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-key-value z-mapping z-yaml&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-unquoted z-plain z-out z-yaml&quot;&gt;allow jekyll like website&amp;gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Thanks to this file, each time the action is triggered, it will push a new commit in the
+&lt;code&gt;gh-pages&lt;&#x2F;code&gt; branch of your repository.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;take-the-mouse-back-and-update-github&quot;&gt;Take the mouse back and update Github&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;You need to go to your repository settings:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;2021&#x2F;tuto_odoc&#x2F;github_1.png&quot; alt=&quot;Github settings&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Then, you must go to the &lt;strong&gt;Pages&lt;&#x2F;strong&gt; settings:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;2021&#x2F;tuto_odoc&#x2F;github_2.png&quot; alt=&quot;Github Pages&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Finally, you must select the branch on which your pages are built. Here it is
+&lt;code&gt;gh-pages&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;2021&#x2F;tuto_odoc&#x2F;github_3.png&quot; alt=&quot;Github branch&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;And, you are done! If everything has worked well you can check your documentation at: &lt;br &#x2F;&gt;
+&lt;strong&gt;&amp;lt;user&amp;gt;.github.io&#x2F;&amp;lt;repo name&amp;gt;&#x2F;&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;&#x2F;h2&gt;
+&lt;p&gt;I hope this tutorial can be useful to you! Feel free to send me correction if
+I have made a mistake.&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>First Post!</title>
+          <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://maiste.fr/blog/2021/first/</link>
+          <guid>https://maiste.fr/blog/2021/first/</guid>
+          <description>&lt;p&gt;If you are here for the first time, I welcome you in this knowledge temple !
+I created this blog to share my knowledge database, sometimes express my
+point of view, improve my English skills and build a place where I can just
+share what I want.&lt;&#x2F;p&gt;
+&lt;p&gt;It&#x27;s always nice to have some feedback so you can reach me on this &lt;a href=&quot;mailto:etienne@maiste.fr&quot;&gt;mail&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;In the following months, I will do my best to improve the content and the quality
+of this website.&lt;&#x2F;p&gt;
+&lt;p&gt;Hope you&#x27;ll enjoy it!&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>
