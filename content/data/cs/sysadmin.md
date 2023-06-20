@@ -28,6 +28,8 @@ lang = "ENG"
 ### Resources
 
 * [Rclone](https://rclone.org/docs/): a tool to manage backup with cloud providers
+* [Object Storage - Scalway](https://www.scaleway.com/en/docs/tutorials/migrate-data-rclone/): how to use Object Storage and Rclone with Scalway
+* [Encrypted Object Storage - Scalway](https://www.scaleway.com/en/docs/tutorials/encrypt-s3-data-rclone/): how to use object storage with encrypted buckets
 
 ## Block connections on 22 port
 
