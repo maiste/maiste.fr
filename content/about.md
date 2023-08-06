@@ -8,7 +8,7 @@ As I like both languages, there might be some French and some English in this bl
 
 If you want to discuss with me, feel free to reach me. Below, see some links that could interest you:
 
-* Mail: etienne[at]maiste.fr
+* Mail: dev[at]maiste.fr
 * Github: [maiste](https://github.com/maiste)
 * Rss: [flux](https://maiste.github.io/atom.xml)
 
