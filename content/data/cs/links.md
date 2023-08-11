@@ -17,7 +17,7 @@ lang = "ENG"
 
 * [Equinix](https://console.equinix.com): bare metal server for quick executions
 * [Digital Ocean](https://cloud.digitalocean.com/): cheap VPS if you need a small size
-* [Scalway](https://console.scaleway.com/): European base VPS - still expensive
+* [Scaleway](https://console.scaleway.com/): European base VPS - still expensive
 
 <hr />
 
@@ -48,7 +48,7 @@ lang = "ENG"
 * [Pingdom](https://tools.pingdom.com/): tests the speed of your website
 * [Naming Schemes](https://namingschemes.com/): helper to find names
 * [Website Carbon](https://www.websitecarbon.com/): estimate web page consumption
-* [Open Source tool list](https://blog.scaleway.com/40-open-source-projects/?utm_source=linkedin&utm_medium=social&utm_term=&utm_content=&utm_campaign=default): open source tools suggestions from Scalway
+* [Open Source tool list](https://blog.scaleway.com/40-open-source-projects/?utm_source=linkedin&utm_medium=social&utm_term=&utm_content=&utm_campaign=default): open source tools suggestions from Scaleway
 
 <hr />
 
