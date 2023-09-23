@@ -1,6 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% if page.extra.mermaid %}
+<script src="/js/mermaid.10.4.0.min.js">
+    mermaid.initialize({
+        startOnLoad: true,
+        flowchart: {
+            useMaxWidth: true,
+            htmlLabels: true
+        }
+    });
+</script>
+{% endif %}
+
 <nav aria-label="breadcrumb">
     <ul>
     {% set url = "/" %}
