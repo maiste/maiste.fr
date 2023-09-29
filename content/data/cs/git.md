@@ -176,7 +176,7 @@ If you want to keep the one of the branch you are rebasing (working-branch), you
 git checkout --theirs -- <FILEPATH>
 ```
 
-
+<hr />
 
 # Cherry pick
 
@@ -184,6 +184,34 @@ git checkout --theirs -- <FILEPATH>
 
 ```sh
 git cherry-pick <commit>
+```
+
+<hr />
+
+# Remote
+
+## Add a remote
+
+```sh
+git remote add <name> <url>
+```
+
+## Remove a remote
+
+```sh
+git remote remove <name>
+```
+
+## Update a remote
+
+````sh
+git remote set-url <name> <new_url>
+```
+
+## Prune branches from a remote
+
+```sh
+git remote prune <remote>
 ```
 
 <hr />
