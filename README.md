@@ -1,3 +1,5 @@
+:warning: This website is still active but is under a complet redesign :safety_vest: New stuffs incoming! :camel:
+
 ## Personal blog
 
 This blog is built with the wonderful Rust framework `Zola` and the `Tale-zola`theme.
@@ -18,10 +20,4 @@ have to set it manually in the file header with:
 [extra]
 mermaid = true
 ```
-
-## TODO
-
-- [ ] Update the deployer system.
-- [X] Support `mermaid.js`
-- [ ] Support `katex`
 
