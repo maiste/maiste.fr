@@ -11,8 +11,8 @@ title = "Maiste"
 description = "Another useless blog you might find useful."
 
 # Options
-generate_feed = true
-feed_filename = "rss.xml"
+generate_feeds = true
+feed_filenames = [ "rss.xml" ]
 compile_sass = true
 
 [markdown]
