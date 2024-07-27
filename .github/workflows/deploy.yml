@@ -10,24 +10,39 @@ jobs:
     environment: deploy
     steps:
       - name: Checkout to the current branch
-        uses: actions/checkout@v3
-      - name: Initialise SSH-AGENT
-        uses: webfactory/ssh-agent@v0.4.1
+        uses: actions/checkout@v4
+
+      - name: Setup OCaml with cache
+        uses: ocaml/setup-ocaml@v3
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Install Zola
-        run: sudo snap install zola --edge
+          ocaml-compiler: "5.1.1"
+          dune-cache: true
+
+      - name: Install deps
+        run: opam install . -y --deps-only
+
       - name: Build website
-        run: zola build
-      - name: Scan host key
-        run: mkdir -p ~/.ssh/ && ssh-keyscan -H -p $DEPLOY_PORT $DEPLOY_SERVER >> ~/.ssh/known_hosts
-        env:
-          DEPLOY_SERVER: ${{ secrets.DEPLOY_SERVER }}
-          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
-      - name: Deploy website
-        run: >-
-          rsync -avx --delete -e "ssh -p $DEPLOY_PORT" public/ $DEPLOY_USER@$DEPLOY_SERVER:./blog/
-        env:
-          DEPLOY_SERVER: ${{ secrets.DEPLOY_SERVER }}
-          DEPLOY_USER: ${{ secrets.deploy_USER }}
-          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+        run: opam exec -- dune exec ./bin/maiste.exe
+
+      - name: Clean dir
+        run: |
+          rm -rf bin contents dune-project LICENSE maiste-web.opam maiste-web.opam.templatepages README.md templates
+          mv _build/public /tmp
+          mv _opam /tmp
+
+      # "--allow-empty" ensures we have a trace of when the CI is triggered.
+      - name: Import content and push to GitHub Pages branch
+        run: |
+          git config --global user.name 'Archimedes'
+          git config --global user.email 'owl@users.noreply.github.com'
+          git fetch origin gh-pages
+          git switch gh-pages
+          rm -rf ./*
+          mv /tmp/public/* ./
+          git add -A .
+          git commit -m "Blog v$(date +'%Y-%m-%d')" --allow-empty
+          git push origin gh-pages
+
+      # We need to move opam dir to make sure it doesn't break the cache.
+      - name: Restore Opam state
+        run: mv /tmp/_opam ./
