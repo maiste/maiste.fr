@@ -1,104 +1,76 @@
 <!DOCTYPE html>
-<html>
-    <!-- Extract this in a partial part -->
-    <head>
-        <title>Maiste</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <link href="/css/style.css" rel="stylesheet">
-        <link href="/css/light.css" rel="stylesheet">
-        <link href="/css/dark.css" rel="stylesheet">
-    </head>
+<html lang="en">
 
-    <body>
-        <header class="container">
-            <nav>
-                <div class="menu">
-                <h1><a href="/">Maiste</a></h1>
-                <a href="https://github.com/maiste" class="contrast" aria-label="Maiste GitHub">
-                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" height="30px"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
-                </a>
-                <a href="https://fosstodon.org/@maiste" class="contrast" aria-label="Maiste Mastodon">
-<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" focusable="false" height="30px"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="currentColor" d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"/></svg>
-                </a>
-                </div>
-                
-                <ul>
-                  
-                    <li><a href="https://maiste.fr/blog" role = "button">Blog</a></li>
-                  
-                    <li><a href="https://maiste.fr/data" role = "button">Data</a></li>
-                  
-                    <li><a href="https://maiste.fr/about" role = "button">About</a></li>
-                  
-                </ul>
-                
-            </nav>
-        </header>
-        <main class="container">
-            
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Maiste.fr</title>
+    <link href="/main.css" rel="stylesheet" />
 
-<nav aria-label="breadcrumb">
-    <ul>
-    
-    
-    
-    
-        
-        
-        <li><a href="&#x2F;blog&#x2F;">Blog</a></li>
-    
-        
-        
-        <li><a href="&#x2F;blog&#x2F;2021&#x2F;">2021</a></li>
-    
-        
-        
-        <li><a href="&#x2F;blog&#x2F;2021&#x2F;humble&#x2F;">Humble</a></li>
-    
-    
-    </ul>
-</nav>
+    <!-- FIXME: replace me with a local version of the fonts i.e. NO GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!-- FIXME: replace me with local version of the css + script load from local. -->
+    <link href="/code.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
 
-<article>
-    <header>
-        <h1>
-            The Humble Programmer
-        </h1>
+<body>
+    <!-- Umami -->
+    <script defer src="https://analytics.maiste.fr/script.js"
+        data-website-id="b1e6219d-8044-47d9-9e91-44db862e2732"></script>
+    <!-- End Umami Code -->
+
+    <header class="container">
+        <nav>
+            <h2><a href="/">Maiste</a></h2>
+            <ul>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/wiki">Wiki</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <hr />
     </header>
-    
-    <div class = "content">
-    <blockquote>
+    <main class="container"><h1>The Humble Programmer</h1>
+<div class="metadata">
+    <p>date: 2021-12-25</p>
+    <p>lang: FR
+    </p>
+</div>
+<p><blockquote>
 <p>Je ne sais qu'une chose, c'est que je ne sais rien</p>
 </blockquote>
 <p>Bonjour à toutes et à tous,
 En cette période de Noël, je souhaitais vous faire découvrir un sujet peu abordé en informatique : l'importance de l'humilité en développement logiciel.</p>
-<p>A mon entrée dans le monde de l'entreprise, j'ai découvert l'importance de cultiver sa part d'humilité lors de la production de code. </p>
+<p>A mon entrée dans le monde de l'entreprise, j'ai découvert l'importance de cultiver sa part d'humilité lors de la production de code.</p>
 <p>En effet, je me suis parfois retrouvé bloqué devant un problème sans oser chercher la solution auprès de personnes plus compétentes que moi, par peur du ridicule. D'une autre façon, devant un point de vue différent du mien, il m'est arrivé de ne pas réussir à m'extraire de la vision binaire que je m'étais construite. Ayant appris de ces erreurs et continuant à en tirer des apprentissages, je souhaitais partager avec vous mon point de vue sur le sujet afin de vous amener à y réfléchir.</p>
 <p>Le premier point, consiste à d'abord produire un code simple sans chercher à l'optimiser de façon prématurée. Qui ne s'est jamais retrouvé confronté à une optimisation incompréhensible qui perturbait la fluidité du raisonnement initial ? La rédaction d'un code naïf mais lisible prévaut à l'écriture d'un code optimisé mais immaintenable.</p>
 <p>L'excès de confiance nous pousse parfois à considérer la rédaction de documentation comme une étape négligeable. Pourtant, lorsque nous oublions le sens que nous souhaitions donner au code, cette documentation nous rappelle les motivations qui nous ont amené.e.s à le rédiger ainsi.</p>
 <p>Face à la quantité astronomique de contenu proposé sur Internet (tutoriels, cours en ligne, etc.), il est aisé de se sentir à la fois submergé par tant d'informations et en même temps de se considérer expert dans un domaine. Cependant, le ou la programmeur.se compétent.e se distingue par sa capacité à reconnaître ses propres limites plutôt qu'à la somme de ses connaissances. Ce pragmatisme lui permet de savoir quant vient le temps de se former.</p>
-<p>Enfin, en informatique tout comme dans de nombreux domaines, savoir se remettre en question est la clé de l'intelligence collective. Questionner ses propres choix et les étudier sous divers angles en ayant conscience des biais qui nous habitent permet de concevoir des solutions sortant de nos schémas de pensées habituels. En outre, mettre à l'épreuve les raisonnements de nos collègues ouvre la porte à de nouvelles perspectives qu'il aurait été compliqué d'imaginer seul. Continuer de s'améliorer et d'apprendre requiert de savoir ranger son ego de côté. </p>
+<p>Enfin, en informatique tout comme dans de nombreux domaines, savoir se remettre en question est la clé de l'intelligence collective. Questionner ses propres choix et les étudier sous divers angles en ayant conscience des biais qui nous habitent permet de concevoir des solutions sortant de nos schémas de pensées habituels. En outre, mettre à l'épreuve les raisonnements de nos collègues ouvre la porte à de nouvelles perspectives qu'il aurait été compliqué d'imaginer seul. Continuer de s'améliorer et d'apprendre requiert de savoir ranger son ego de côté.</p>
 <p>Si vous n'aviez qu'une chose à retenir de cet article, ce serait de se rappeler que nous ne sommes que des humains avec nos limites, nos biais et nos imperfections. Des humains qui apprennent de leurs erreurs pour aller plus toujours plus loin et repousser ses limites.</p>
 <p>J'espère, via ces quelques mots, vous avoir amené.e à réfléchir sur l'importance de l'humilité. Dans le cas où vous seriez tenté.e.s de vous aventurer au-delà de ce texte, l'artcile d'Edsger Dikjstra développe les caractéristiques d'un bon programmeur et a servi d'inspiration à ce texte.</p>
-<p><em>The Humble Programmer</em> : </p>
+<p><em>The Humble Programmer</em> :</p>
 <blockquote>
 <p>https://www.cs.utexas.edu/users/EWD/transcriptions/EWD03xx/EWD340.html</p>
 </blockquote>
 <p>par <em>Un pirate parti naviguer sur les dunes d'OCaml, secondé par un poulpe minutieux.</em></p>
+</p>
+</main>
 
-    </div>
-</article>
+    <footer class="container">
+        <hr />
+        <p> Website written with <a href="https://gitlab.com/funkywork/yocaml">Yocaml</a> ♡</p>
+        <p><a href="https://maiste.fr">Content under this website</a> is written by Etienne "Maiste" Marais and is
+            licensed
+            under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1">CC BY-NC 4.0</a></p>
+    </footer>
 
-        </main>
-        <footer class="container">
-            <small>
-                Website written with <a href = "https://www.getzola.org/">zola</a> with ♡
-                •
-                Css built with <a href="https://picocss.com">Pico</a>
-                <br />
-                Copyright © Maiste 2020 - 2023
-            </small>
-        </footer>
-    </body>
+    <script>hljs.highlightAll();</script>
+</body>
+
 </html>

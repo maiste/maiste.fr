@@ -1,96 +1,51 @@
 <!DOCTYPE html>
-<html>
-    <!-- Extract this in a partial part -->
-    <head>
-        <title>Maiste</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <link href="/css/style.css" rel="stylesheet">
-        <link href="/css/light.css" rel="stylesheet">
-        <link href="/css/dark.css" rel="stylesheet">
-    </head>
+<html lang="en">
 
-    <body>
-        <header class="container">
-            <nav>
-                <div class="menu">
-                <h1><a href="/">Maiste</a></h1>
-                <a href="https://github.com/maiste" class="contrast" aria-label="Maiste GitHub">
-                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" height="30px"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
-                </a>
-                <a href="https://fosstodon.org/@maiste" class="contrast" aria-label="Maiste Mastodon">
-<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" focusable="false" height="30px"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="currentColor" d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"/></svg>
-                </a>
-                </div>
-                
-                <ul>
-                  
-                    <li><a href="https://maiste.fr/blog" role = "button">Blog</a></li>
-                  
-                    <li><a href="https://maiste.fr/data" role = "button">Data</a></li>
-                  
-                    <li><a href="https://maiste.fr/about" role = "button">About</a></li>
-                  
-                </ul>
-                
-            </nav>
-        </header>
-        <main class="container">
-            
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Maiste.fr</title>
+    <link href="/main.css" rel="stylesheet" />
 
-<nav aria-label="breadcrumb">
-    <ul>
-    
-    
-    
-    
-        
-        
-        <li><a href="&#x2F;blog&#x2F;">Blog</a></li>
-    
-        
-        
-        <li><a href="&#x2F;blog&#x2F;2021&#x2F;">2021</a></li>
-    
-        
-        
-        <li><a href="&#x2F;blog&#x2F;2021&#x2F;odoc&#x2F;">Odoc</a></li>
-    
-    
-    </ul>
-</nav>
+    <!-- FIXME: replace me with a local version of the fonts i.e. NO GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!-- FIXME: replace me with local version of the css + script load from local. -->
+    <link href="/code.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
 
-<article>
-    <header>
-        <h1>
-            Doc on GitHub pages with Odoc and Actions
-        </h1>
-    </header>
-    
-    <div class = "toc">
-        <h2>
-            Table Of Content
-        </h2>
-        <ul>
-        
-            <li><a href = "https://maiste.fr/blog/2021/odoc/#context">Context</a></li>
-        
-            <li><a href = "https://maiste.fr/blog/2021/odoc/#setup-github-actions">Setup GitHub Actions</a></li>
-        
-            <li><a href = "https://maiste.fr/blog/2021/odoc/#take-the-mouse-back-and-update-github">Take the mouse back and update Github</a></li>
-        
-            <li><a href = "https://maiste.fr/blog/2021/odoc/#conclusion">Conclusion</a></li>
-        
-        </ul>
+<body>
+    <!-- Umami -->
+    <script defer src="https://analytics.maiste.fr/script.js"
+        data-website-id="b1e6219d-8044-47d9-9e91-44db862e2732"></script>
+    <!-- End Umami Code -->
+
+    <header class="container">
+        <nav>
+            <h2><a href="/">Maiste</a></h2>
+            <ul>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/wiki">Wiki</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
         <hr />
-    </div>
-    
-    <div class = "content">
-    <h2 id="context">Context</h2>
+    </header>
+    <main class="container"><h1>Doc on GitHub pages with Odoc and Actions</h1>
+<div class="metadata">
+    <p>date: 2021-08-20</p>
+    <p>lang: EN
+    </p>
+</div>
+<p><h2>Context</h2>
 <p>I will not surprise anyone if I say that documenting your code is important.
 If you host your code on GitHub, you might have heard about <a href="https://pages.github.com/">GitHub Pages</a>.
 This project allows GitHub users to deploy some static websites using GitHub.
-For example, <a href="https://maiste.fr/blog/2021/odoc/maiste.fr">this website</a> is stored on my GitHub account.</p>
+For example, <a href="maiste.fr">this website</a> is stored on my GitHub account.</p>
 <p>An interesting point is that you can use this feature to store piece of
 documentations at a specific URL. If your OCaml code is on GitHub, you can
 deploy the configuration the way I will show you.</p>
@@ -98,95 +53,94 @@ deploy the configuration the way I will show you.</p>
 the <a href="https://opam.ocaml.org/packages/odoc/">odoc</a> generator must be in your package dependencies (maybe with the
 <code>{with-doc}</code> specification.</p>
 <p>Below, you can see a partial example of a <code>.opam</code>, I have created:</p>
-<pre data-lang="ocaml" class="language-ocaml z-code"><code class="language-ocaml" data-lang="ocaml"><span class="z-source z-ocaml">depends: <span class="z-meta z-list z-ocaml"><span class="z-punctuation z-definition z-list z-begin z-ocaml">[</span>
-  <span class="z-string z-quoted z-double z-ocaml"><span class="z-punctuation z-definition z-string z-begin z-ocaml">&quot;</span>ocaml<span class="z-punctuation z-definition z-string z-end z-ocaml">&quot;</span></span> <span class="z-meta z-record z-ocaml"><span class="z-punctuation z-definition z-record z-ocaml">{</span><span class="z-keyword z-operator z-symbol z-ocaml">&gt;</span><span class="z-keyword z-operator z-infix z-ocaml">=</span> <span class="z-string z-quoted z-double z-ocaml"><span class="z-punctuation z-definition z-string z-begin z-ocaml">&quot;</span>4.12.0<span class="z-punctuation z-definition z-string z-end z-ocaml">&quot;</span></span><span class="z-punctuation z-definition z-record z-ocaml">}</span></span>
-  <span class="z-string z-quoted z-double z-ocaml"><span class="z-punctuation z-definition z-string z-begin z-ocaml">&quot;</span>dune<span class="z-punctuation z-definition z-string z-end z-ocaml">&quot;</span></span> <span class="z-meta z-record z-ocaml"><span class="z-punctuation z-definition z-record z-ocaml">{</span><span class="z-keyword z-operator z-symbol z-ocaml">&gt;</span><span class="z-keyword z-operator z-infix z-ocaml">=</span> <span class="z-string z-quoted z-double z-ocaml"><span class="z-punctuation z-definition z-string z-begin z-ocaml">&quot;</span>2.5<span class="z-punctuation z-definition z-string z-end z-ocaml">&quot;</span></span><span class="z-punctuation z-definition z-record z-ocaml">}</span></span>
-  <span class="z-string z-quoted z-double z-ocaml"><span class="z-punctuation z-definition z-string z-begin z-ocaml">&quot;</span>odoc<span class="z-punctuation z-definition z-string z-end z-ocaml">&quot;</span></span> <span class="z-meta z-record z-ocaml"><span class="z-punctuation z-definition z-record z-ocaml">{</span><span class="z-keyword z-other z-language z-ocaml">with</span><span class="z-keyword z-operator z-infix z-ocaml">-</span>doc<span class="z-punctuation z-definition z-record z-ocaml">}</span></span>
-<span class="z-punctuation z-definition z-list z-end z-ocaml">]</span></span>
-build: <span class="z-meta z-list z-ocaml"><span class="z-punctuation z-definition z-list z-begin z-ocaml">[</span>
-  <span class="z-meta z-list z-ocaml"><span class="z-punctuation z-definition z-list z-begin z-ocaml">[</span><span class="z-string z-quoted z-double z-ocaml"><span class="z-punctuation z-definition z-string z-begin z-ocaml">&quot;</span>dune<span class="z-punctuation z-definition z-string z-end z-ocaml">&quot;</span></span> <span class="z-string z-quoted z-double z-ocaml"><span class="z-punctuation z-definition z-string z-begin z-ocaml">&quot;</span>subst<span class="z-punctuation z-definition z-string z-end z-ocaml">&quot;</span></span><span class="z-punctuation z-definition z-list z-end z-ocaml">]</span></span> <span class="z-meta z-record z-ocaml"><span class="z-punctuation z-definition z-record z-ocaml">{</span>pinned<span class="z-punctuation z-definition z-record z-ocaml">}</span></span>
-  <span class="z-meta z-list z-ocaml"><span class="z-punctuation z-definition z-list z-begin z-ocaml">[</span>
-    <span class="z-string z-quoted z-double z-ocaml"><span class="z-punctuation z-definition z-string z-begin z-ocaml">&quot;</span>dune<span class="z-punctuation z-definition z-string z-end z-ocaml">&quot;</span></span>
-    <span class="z-string z-quoted z-double z-ocaml"><span class="z-punctuation z-definition z-string z-begin z-ocaml">&quot;</span>build<span class="z-punctuation z-definition z-string z-end z-ocaml">&quot;</span></span>
-    <span class="z-string z-quoted z-double z-ocaml"><span class="z-punctuation z-definition z-string z-begin z-ocaml">&quot;</span>-p<span class="z-punctuation z-definition z-string z-end z-ocaml">&quot;</span></span>
+<pre><code class="language-ocaml">depends: [
+  &quot;ocaml&quot; {&gt;= &quot;4.12.0&quot;}
+  &quot;dune&quot; {&gt;= &quot;2.5&quot;}
+  &quot;odoc&quot; {with-doc}
+]
+build: [
+  [&quot;dune&quot; &quot;subst&quot;] {pinned}
+  [
+    &quot;dune&quot;
+    &quot;build&quot;
+    &quot;-p&quot;
     name
-    <span class="z-string z-quoted z-double z-ocaml"><span class="z-punctuation z-definition z-string z-begin z-ocaml">&quot;</span>-j<span class="z-punctuation z-definition z-string z-end z-ocaml">&quot;</span></span>
+    &quot;-j&quot;
     jobs
-    <span class="z-string z-quoted z-double z-ocaml"><span class="z-punctuation z-definition z-string z-begin z-ocaml">&quot;</span>@install<span class="z-punctuation z-definition z-string z-end z-ocaml">&quot;</span></span>
-    <span class="z-string z-quoted z-double z-ocaml"><span class="z-punctuation z-definition z-string z-begin z-ocaml">&quot;</span>@runtest<span class="z-punctuation z-definition z-string z-end z-ocaml">&quot;</span></span> <span class="z-meta z-record z-ocaml"><span class="z-punctuation z-definition z-record z-ocaml">{</span><span class="z-keyword z-other z-language z-ocaml">with</span><span class="z-keyword z-operator z-infix z-ocaml">-</span>test<span class="z-punctuation z-definition z-record z-ocaml">}</span></span>
-    <span class="z-string z-quoted z-double z-ocaml"><span class="z-punctuation z-definition z-string z-begin z-ocaml">&quot;</span>@doc<span class="z-punctuation z-definition z-string z-end z-ocaml">&quot;</span></span> <span class="z-meta z-record z-ocaml"><span class="z-punctuation z-definition z-record z-ocaml">{</span><span class="z-keyword z-other z-language z-ocaml">with</span><span class="z-keyword z-operator z-infix z-ocaml">-</span>doc<span class="z-punctuation z-definition z-record z-ocaml">}</span></span>
-  <span class="z-punctuation z-definition z-list z-end z-ocaml">]</span></span>
-<span class="z-punctuation z-definition z-list z-end z-ocaml">]</span></span>
-</span></code></pre>
+    &quot;@install&quot;
+    &quot;@runtest&quot; {with-test}
+    &quot;@doc&quot; {with-doc}
+  ]
+]
+</code></pre>
 <p>Now we have our documentation, it's time to automatize the process with
 GitHub Actions.</p>
-<h2 id="setup-github-actions">Setup GitHub Actions</h2>
+<h2>Setup GitHub Actions</h2>
 <p>At the root of your repository, you must create (if it's not already the case)
 a <strong>.github/workflows/</strong> directory. In it, you must create a <name>.yml file.
 The content of the file is:</p>
-<pre data-lang="yaml" class="language-yaml z-code"><code class="language-yaml" data-lang="yaml"><span class="z-source z-yaml"><span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">name</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">&lt;Display title&gt;</span>
+<pre><code class="language-yaml">name: &lt;Display title&gt;
 
-<span class="z-constant z-language z-boolean z-yaml">on</span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
-  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">push</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
-    <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">branches</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
-    <span class="z-punctuation z-definition z-block z-sequence z-item z-yaml">-</span> <span class="z-string z-unquoted z-plain z-out z-yaml">&lt;Regex describing the branch on which this action must be trigger&gt;</span>
+on:
+  push:
+    branches:
+    - &lt;Regex describing the branch on which this action must be trigger&gt;
 
-<span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">jobs</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
-  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">deploy</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
-    <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">runs-on</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">ubuntu-latest</span>
-    <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">steps</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
-      <span class="z-punctuation z-definition z-block z-sequence z-item z-yaml">-</span> <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">uses</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">actions/checkout@v2</span>
-      <span class="z-punctuation z-definition z-block z-sequence z-item z-yaml">-</span> <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">uses</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">ocaml/setup-ocaml@v2</span>
-        <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">with</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
-          <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">ocaml-compiler</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-quoted z-single z-yaml"><span class="z-punctuation z-definition z-string z-begin z-yaml">&#39;</span>&lt;version number&gt;<span class="z-punctuation z-definition z-string z-end z-yaml">&#39;</span></span>
-      <span class="z-punctuation z-definition z-block z-sequence z-item z-yaml">-</span> <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">name</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">Dependencies</span>
-        <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">run</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">opam install -d . --deps-only</span>
-      <span class="z-punctuation z-definition z-block z-sequence z-item z-yaml">-</span> <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">name</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">Building docs</span>
-        <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">run</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">opam exec -- dune build @doc</span>
-      <span class="z-punctuation z-definition z-block z-sequence z-item z-yaml">-</span> <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">name</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">Deploying to github pages</span>
-        <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">uses</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">peaceiris/actions-gh-pages@v3</span>
-        <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">with</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
-          <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">github_token</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">${{ secrets.GITHUB_TOKEN }}</span>
-          <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">publish_dir</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">&lt;./_build/default/_doc/_html/ or directory where your doc is stored&gt;</span>
-          <span class="z-meta z-flow-sequence z-yaml"><span class="z-punctuation z-definition z-sequence z-begin z-yaml">[</span><span class="z-meta z-flow-pair z-key z-yaml"><span class="z-string z-unquoted z-plain z-in z-yaml"><span class="z-entity z-name z-tag z-yaml">d</span></span></span><span class="z-string z-unquoted z-plain z-in z-yaml"><span class="z-entity z-name z-tag z-yaml">estination_dir</span></span><span class="z-meta z-flow-pair z-yaml"><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span></span><span class="z-meta z-flow-pair z-value z-yaml"> <span class="z-string z-unquoted z-plain z-in z-yaml">no_mammut</span></span><span class="z-punctuation z-definition z-sequence z-end z-yaml">]</span></span> <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">&lt;optional</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">push the doc in a different directory&gt;</span>
-          <span class="z-meta z-flow-sequence z-yaml"><span class="z-punctuation z-definition z-sequence z-begin z-yaml">[</span><span class="z-meta z-flow-pair z-key z-yaml"><span class="z-string z-unquoted z-plain z-in z-yaml"><span class="z-entity z-name z-tag z-yaml">e</span></span></span><span class="z-string z-unquoted z-plain z-in z-yaml"><span class="z-entity z-name z-tag z-yaml">nable_jekyll</span></span><span class="z-meta z-flow-pair z-yaml"><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span></span><span class="z-meta z-flow-pair z-value z-yaml"> <span class="z-constant z-language z-boolean z-yaml">true</span></span><span class="z-punctuation z-definition z-sequence z-end z-yaml">]</span></span> <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">&lt;optional</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">allow jekyll like website&gt;</span>
-</span></code></pre>
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ocaml/setup-ocaml@v2
+        with:
+          ocaml-compiler: '&lt;version number&gt;'
+      - name: Dependencies
+        run: opam install -d . --deps-only
+      - name: Building docs
+        run: opam exec -- dune build @doc
+      - name: Deploying to github pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: &lt;./_build/default/_doc/_html/ or directory where your doc is stored&gt;
+          [destination_dir: no_mammut] &lt;optional: push the doc in a different directory&gt;
+          [enable_jekyll: true] &lt;optional: allow jekyll like website&gt;
+</code></pre>
 <p>Thanks to this file, each time the action is triggered, it will push a new commit in the
 <code>gh-pages</code> branch of your repository.</p>
-<h2 id="take-the-mouse-back-and-update-github">Take the mouse back and update Github</h2>
+<h2>Take the mouse back and update GitHub</h2>
 <ul>
 <li>
 <p>You need to go to your repository settings:</p>
-<p><img src="/2021/tuto_odoc/github_1.png" alt="Github settings" /></p>
+<p><img src="/2021/tuto_odoc/github_1.png" alt="Github settings" ></p>
 </li>
 <li>
 <p>Then, you must go to the <strong>Pages</strong> settings:</p>
-<p><img src="/2021/tuto_odoc/github_2.png" alt="Github Pages" /></p>
+<p><img src="/2021/tuto_odoc/github_2.png" alt="Github Pages" ></p>
 </li>
 <li>
 <p>Finally, you must select the branch on which your pages are built. Here it is
 <code>gh-pages</code>:</p>
-<p><img src="/2021/tuto_odoc/github_3.png" alt="Github branch" /></p>
+<p><img src="/2021/tuto_odoc/github_3.png" alt="Github branch" ></p>
 </li>
 </ul>
 <p>And, you are done! If everything has worked well you can check your documentation at: <br />
 <strong>&lt;user&gt;.github.io/&lt;repo name&gt;/</strong>.</p>
-<h2 id="conclusion">Conclusion</h2>
+<h2>Conclusion</h2>
 <p>I hope this tutorial can be useful to you! Feel free to send me correction if
 I have made a mistake.</p>
+</p>
+</main>
 
-    </div>
-</article>
+    <footer class="container">
+        <hr />
+        <p> Website written with <a href="https://gitlab.com/funkywork/yocaml">Yocaml</a> ♡</p>
+        <p><a href="https://maiste.fr">Content under this website</a> is written by Etienne "Maiste" Marais and is
+            licensed
+            under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1">CC BY-NC 4.0</a></p>
+    </footer>
 
-        </main>
-        <footer class="container">
-            <small>
-                Website written with <a href = "https://www.getzola.org/">zola</a> with ♡
-                •
-                Css built with <a href="https://picocss.com">Pico</a>
-                <br />
-                Copyright © Maiste 2020 - 2023
-            </small>
-        </footer>
-    </body>
+    <script>hljs.highlightAll();</script>
+</body>
+
 </html>
