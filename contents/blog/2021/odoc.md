@@ -1,6 +1,7 @@
-+++
-title = "Doc on GitHub pages with Odoc and Actions"
-+++
+---
+title: "Doc on GitHub pages with Odoc and Actions"
+date: 2021-08-20
+---
 
 ## Context
 
@@ -81,7 +82,7 @@ jobs:
 Thanks to this file, each time the action is triggered, it will push a new commit in the
 `gh-pages` branch of your repository.
 
-## Take the mouse back and update Github
+## Take the mouse back and update GitHub
 
 * You need to go to your repository settings:
 

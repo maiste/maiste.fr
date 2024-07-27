@@ -1,9 +1,8 @@
-+++
-title = "The Humble Programmer"
-
-[extra]
-lang = "FR"
-+++
+---
+title: "The Humble Programmer"
+date: 2021-12-25
+lang: "FR"
+---
 
 > Je ne sais qu'une chose, c'est que je ne sais rien
 

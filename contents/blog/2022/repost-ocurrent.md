@@ -1,9 +1,7 @@
-+++
-title = "Up-to-date Online Documentation"
-
-[extra]
-lang = "ENG"
-+++
+---
+title: "Up-to-date Online Documentation"
+date: 2022-10-21
+---
 
 I wrote an article about `OCurrent` on `Tarides.com`. It describes how the `ocurrent.org` pipeline was written. It's a good base to understand how to write an `ocurrent` pipeline.
 Here is the link of the article: [https://tarides.com/blog/2022-10-20-up-to-date-online-documentation](https://tarides.com/blog/2022-10-20-up-to-date-online-documentation)
