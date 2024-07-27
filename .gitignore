@@ -1,2 +1,3 @@
-# Zola generated
-public/
+# OCaml
+_build/
+_opam/
