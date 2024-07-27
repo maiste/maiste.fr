@@ -4,6 +4,17 @@ page_title: "Hellloooooo!"
 
 ## Welcome!
 
-This is what I call my **Digital Garden**, a place where I grow my online presence. It is a minimal website that try to fit in the 512kB club.
+This is what I call my **Digital Garden**, a place where I grow my online
+presence. It is a minimal website that tries to fit in the 512kB club. Of
+course, it's written using OCaml, as it wouldn't be me if it was in another
+language!
 
 ## Explore...
+- The [blog](/blog) (Still need some refactoring 🔧)
+- The [wiki](/wiki) (This part is under construction ⚙️)
+- Who [I](/about) am (Not really a nice page but, it will improve over time 🤞)
+
+## Important ⚠️
+This website is still under heavy development and lack a lot of features. It
+will improve over time but, I wanted to have a decent base first (hence the
+code does not look good actually!).
