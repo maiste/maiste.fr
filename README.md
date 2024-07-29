@@ -2,7 +2,7 @@
 
 ## Personal blog
 
-This blog is built with the wonderful Rust framework `YOCaml`.
+This blog is built with the wonderful OCaml framework `YOCaml`.
 
 Feel free to inspire yourself from it!
 
