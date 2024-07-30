@@ -80,3 +80,5 @@ module Process = struct
     in
     aux actions (Eff.return cache)
 end
+
+include Yocaml

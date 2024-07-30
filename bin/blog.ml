@@ -1,4 +1,3 @@
-open Yocaml
 open Core
 
 module Model = struct
