@@ -1,4 +1,4 @@
-open Core
+open Yocaml
 
 module Make (R : sig
     val source : Path.t
@@ -11,24 +11,39 @@ struct
     let static = Path.(R.source / "static")
     let css = Path.(static / "css")
     let pages = Path.(static / "pages")
-    let templates = Path.(R.source / "templates")
+    let templates = Path.(static / "templates")
     let template file = Path.(templates / file)
     let content = Path.(R.source / "content")
     let blog = Path.(content / "blog")
+    let posts year = Path.(blog / year)
     let wiki = Path.(content / "wiki")
+    let wiki_section section = Path.(wiki / section)
     let index = Path.(content / "index.md")
   end
 
   module Target = struct
     let root = R.target
-    let website = Path.(R.target / "public")
     let cache = Path.(R.target / "yocaml-cache")
-    let pages = website
-    let blog = Path.(website / "blog")
-    let wiki = Path.(website / "wiki")
+    let static = Path.(R.target / "static")
+    let css = Path.(static / "css")
+    let pages = R.target
+    let blog = Path.(R.target / "blog")
+    let posts year = Path.(blog / year)
+    let wiki = Path.(R.target / "wiki")
+    let wiki_section section = Path.(wiki / section)
 
     let from_source src =
-      Path.to_pair src |> snd |> List.to_seq |> Seq.drop 1 |> List.of_seq
+      Format.printf "DEBUG(from_source): old path  is %s\n" (Path.to_string src);
+      let path = Path.to_pair src |> snd |> List.to_seq |> Seq.drop 1 |> List.of_seq in
+      Format.printf "DEBUG(from_content): new path %s\n" (String.concat "/" path);
+      Path.(R.target ++ path)
+    ;;
+
+    let from_content src =
+      Format.printf "DEBUG(from_content): old path  is %s\n" (Path.to_string src);
+      let path = Path.to_pair src |> snd |> List.to_seq |> Seq.drop 2 |> List.of_seq in
+      Format.printf "DEBUG(from_content): new path %s\n" (String.concat "/" path);
+      Path.(R.target ++ path)
     ;;
 
     let as_html ~into file = file |> Path.move ~into |> Path.change_extension "html"
@@ -38,4 +53,7 @@ struct
       Path.(into / subpath / "index.html")
     ;;
   end
+
+  let truncate src n = Path.to_pair src |> snd |> List.to_seq |> Seq.drop n |> List.of_seq
+  let truncate_and_move ~into src n = truncate src n |> Path.( ++ ) into
 end

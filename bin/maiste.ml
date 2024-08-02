@@ -1,5 +1,6 @@
-open Core
+open Yocaml
 
+(* FIXME: turn me into a First class module *)
 module P = Resolver.Make (struct
     let source = Path.rel []
     let target = Path.rel [ "target" ]
@@ -25,14 +26,11 @@ let process_index =
 
 let process_all () =
   let open Eff in
-  Action.restore_cache Target.cache
-  >>= Static.process_css
-  >>= Static.process_css_code
+  Action.restore_cache P.Target.cache
   >>= process_index
   >>= Pages.process
-  >>= Blog.process
-  >>= Wiki.process_books
-  >>= Action.store_cache Target.cache
+  >>= Actions.eval
+  >>= Action.store_cache P.Target.cache
 ;;
 
 let () =
