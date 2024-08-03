@@ -36,7 +36,7 @@ module Blog = struct
   ;;
 
   let get_url = function
-    | Dir p | File (p, _) -> String.concat "/" (P.truncate p 1)
+    | Dir p | File (p, _) -> P.truncate p 1 |> Path.abs |> Path.to_string
   ;;
 
   let normalize_elt elt =

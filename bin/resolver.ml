@@ -31,21 +31,6 @@ struct
     let posts year = Path.(blog / year)
     let wiki = Path.(R.target / "wiki")
     let wiki_section section = Path.(wiki / section)
-
-    let from_source src =
-      Format.printf "DEBUG(from_source): old path  is %s\n" (Path.to_string src);
-      let path = Path.to_pair src |> snd |> List.to_seq |> Seq.drop 1 |> List.of_seq in
-      Format.printf "DEBUG(from_content): new path %s\n" (String.concat "/" path);
-      Path.(R.target ++ path)
-    ;;
-
-    let from_content src =
-      Format.printf "DEBUG(from_content): old path  is %s\n" (Path.to_string src);
-      let path = Path.to_pair src |> snd |> List.to_seq |> Seq.drop 2 |> List.of_seq in
-      Format.printf "DEBUG(from_content): new path %s\n" (String.concat "/" path);
-      Path.(R.target ++ path)
-    ;;
-
     let as_html ~into file = file |> Path.move ~into |> Path.change_extension "html"
 
     let as_html_index ~into file =
