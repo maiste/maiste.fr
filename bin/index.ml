@@ -75,7 +75,7 @@ module Blog = struct
           let+ model, _content =
             read_file_with_metadata (module Yocaml_yaml) (module Model) ~on file
           in
-          let into = P.(truncate_and_move ~into:Target.root path 2) in
+          let into = P.(truncate_and_move ~into:Target.root path 1) in
           File (P.Target.as_html_index ~into file, model)
       in
       List.traverse f files)
