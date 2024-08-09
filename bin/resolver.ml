@@ -1,10 +1,6 @@
 open Yocaml
 
-module Make (R : sig
-    val source : Path.t
-    val target : Path.t
-  end) =
-struct
+module Make (R : S.Resolvable) : S.Resolver = struct
   module Source = struct
     let root = R.source
     let binary = Path.rel [ Sys.argv.(0) ]
