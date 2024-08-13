@@ -1,6 +1,9 @@
 open Yocaml
 
-let process cache =
+let process (module R : S.RESOLVER) cache =
   let open Eff in
-  Blog.process cache >>= Css.process >>= Wiki.process >>= Page.process
+  Blog.process (module R) cache
+  >>= Css.process (module R)
+  >>= Wiki.process (module R)
+  >>= Page.process (module R)
 ;;

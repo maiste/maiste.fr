@@ -1,33 +1,27 @@
 open Yocaml
 
-(* FIXME: turn me into a First class module *)
-module P = Resolver.Make (struct
-    let source = Path.rel []
-    let target = Path.rel [ "target" ]
-  end)
-
-let process_page ~into file =
-  let file_target = P.Target.(as_html_index ~into file) in
+let process_page (module R : S.RESOLVER) ~into file =
+  let file_target = R.Target.(as_html_index ~into file) in
   let open Task in
   Action.write_static_file
     file_target
-    (Pipeline.track_file P.Source.binary
+    (Pipeline.track_file R.Source.binary
      >>> Yocaml_yaml.Pipeline.read_file_with_metadata (module Archetype.Page) file
      >>> Yocaml_cmarkit.content_to_html ()
      >>> Yocaml_jingoo.Pipeline.as_template
            (module Archetype.Page)
-           (P.Source.template "page.html")
+           (R.Source.template "page.html")
      >>> Yocaml_jingoo.Pipeline.as_template
            (module Archetype.Page)
-           (P.Source.template "base.html")
+           (R.Source.template "base.html")
      >>> drop_first ())
 ;;
 
-let process_books : Action.t =
+let process_books (module R : S.RESOLVER) : Action.t =
   Utils.process_markdown
     ~only:`Files
-    (P.Source.wiki_section "books")
-    (process_page ~into:(P.Target.wiki_section "books"))
+    (R.Source.wiki_section "books")
+    (process_page (module R) ~into:(R.Target.wiki_section "books"))
 ;;
 
-let process = process_books
+let process (module R : S.RESOLVER) = process_books (module R)
