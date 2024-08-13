@@ -2,3 +2,5 @@
  (name maiste)
  (public_name maiste_web)
  (libraries yocaml yocaml_jingoo yocaml_yaml yocaml_cmarkit yocaml_eio))
+
+(include_subdirs qualified)
