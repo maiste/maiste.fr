@@ -6,4 +6,5 @@ let process (module R : S.RESOLVER) cache =
   >>= Css.process (module R)
   >>= Wiki.process (module R)
   >>= Page.process (module R)
+  >>= Tree.process (module R) (R.Source.wiki)
 ;;

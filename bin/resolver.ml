@@ -33,6 +33,11 @@ module Make (R : S.RESOLVABLE) : S.RESOLVER = struct
       let subpath = Path.remove_extension file |> Path.basename |> Option.get in
       Path.(into / subpath / "index.html")
     ;;
+
+    let as_html_index_untouched file =
+      let into = Path.dirname file in
+      as_html_index ~into file
+    ;;
   end
 
   let truncate src n = Path.to_pair src |> snd |> List.to_seq |> Seq.drop n |> List.of_seq
