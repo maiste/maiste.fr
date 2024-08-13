@@ -1,10 +1,8 @@
-+++
-title = "Technical books"
-description = "The books about tech I want to remember."
-
-[extra]
-lang = "ENG"
-+++
+---
+title: "Technical books"
+description: "The books about tech I want to remember."
+lang: "ENG"
+---
 
 # O'Reilly
 

@@ -1,10 +1,8 @@
-+++
-title = "Reading stack list"
-description = "Books I'd like to read."
-
-[extra]
-lang = "FR"
-+++
+---
+title: "Reading stack list"
+description: "Books I'd like to read."
+lang: "FR"
+---
 
 General:
 * ($) Où va l'argent des pauvres, *Denis Colombi*
