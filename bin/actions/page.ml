@@ -23,4 +23,4 @@ let process_page ?(into = P.Target.pages) file =
      >>> drop_first ())
 ;;
 
-let process = Generator.process_markdown ~only:`Files P.Source.pages process_page
+let process = Utils.process_markdown ~only:`Files P.Source.pages process_page
