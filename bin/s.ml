@@ -1,11 +1,11 @@
 open Yocaml
 
-module type Resolvable = sig
+module type RESOLVABLE = sig
   val source : Path.t
   val target : Path.t
 end
 
-module type Resolver = sig
+module type RESOLVER = sig
   (** Provide some resolvers for the website. *)
 
   module Source : sig
