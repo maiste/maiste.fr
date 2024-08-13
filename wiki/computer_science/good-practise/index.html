@@ -36,11 +36,41 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1></h1>
-<p><p>+++
-title = &quot;Books&quot;
-description = &quot;All I want to keep about books.&quot;
-+++</p>
+    <main class="container"><h1>Good Practises</h1>
+<div class="metadata"><p>description: Lessons about CS I&apos;ve learnt</p><p>lang: EN
+    </p>
+</div>
+<p><h2>Debugging</h2>
+<ol>
+<li>Even if it's seemed bad, often a <code>Printf</code> is quicked than a debugging tool</li>
+<li>Logging data is <em>important</em>: a debug mode should always be available for medium to big programs.</li>
+<li><code>git-diff</code> is a good friend, that the first step to debugging</li>
+</ol>
+<h2>Fix issues</h2>
+<ol>
+<li>When debugging <code>docker</code> run issues, if <strong>something</strong>_ vanishes, looking at the <code>volumes</code> is a really nice practise.</li>
+<li>Take your time before reaching conclusions. Having a reproduce state of the bug is important.</li>
+</ol>
+<h2>Coding style</h2>
+<ol>
+<li>The style is often <em>subjective</em>. However, it matters to stay consistent.</li>
+</ol>
+<h2>Coding methods</h2>
+<ol>
+<li>Pencils and papers are your friends, feel free to fill a lot of them with notes, graphs or anything relevant: it frees your mind.</li>
+<li>A good way to design a good API is actually to try to explain it with documentation ie. always start by a .mli, give a few hints on the general idea behind the API and give a few explanations on how users are supposed to use it. Writing a few examples is always a good way to find the right function and types names and the proper API to compose them (<a href="https://github.com/mirage/irmin/pull/1817">quote @samoht</a>).</li>
+</ol>
+<h2>DevOps</h2>
+<ol>
+<li><strong>NEVER DEPLOY</strong> on Fridays.</li>
+</ol>
+<h2>Resources</h2>
+<ul>
+<li><a href="https://untools.co/">Tools for better thinking</a></li>
+<li><a href="https://12factor.net/">Twelve-Factor App</a>: good practises to write SAAS (Software As a Service)</li>
+<li><a href="http://raphael-lemaire.com/2018/05/22/resume-de-livre-eco-conception-web-les-115-bonnes-pratiques/">Eco-conception-web-les-115-bonnes-pratiques</a></li>
+<li><a href="https://web.archive.org/web/20210810063956/http://boringtechnology.club/">Choose boring technologies</a></li>
+</ul>
 </p>
 </main>
 

@@ -36,77 +36,36 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1>2022</h1>
-<div class="metadata"><p>description: The books I have read in 2022</p><p>lang: FR
+    <main class="container"><h1>Tar</h1>
+<div class="metadata"><p>description: About the tar archive system.</p><p>lang: EN
     </p>
 </div>
-<p><ul>
-<li>
-<p>Janvier:</p>
-<ul>
-<li>Grimpow, l'élu des Templiers, <em>Rafael Abalos</em></li>
-<li>Intuitio, <em>Laurent Gounelle</em></li>
-<li>Le symbole perdu, <em>Dan Brown</em></li>
-<li>Un bon écrivain est un écrivain mort, <em>Guillaume Chérel</em></li>
-<li>Voyage extraordinaire au centre du cerveau, <em>Jean-Didier Vincent</em></li>
-<li>Deception Point, <em>Dan Brown</em></li>
-<li>Les âmes croisées, <em>Pierre Bottero</em></li>
-</ul>
-</li>
-<li>
-<p>Février:</p>
-<ul>
-<li>Comment j'ai arrêté de manger les animaux, <em>Hugo Clément</em></li>
-<li>Les guerres nous attendent 2030-2060, <em>Red Team</em></li>
-</ul>
-</li>
-<li>
-<p>Mars:</p>
-<ul>
-<li>Petit Manuel de Résistance Contemporaine, <em>Cyril Dion</em></li>
-<li>L'art d'avoir toujours raison, <em>Arthur Schopenhauer</em></li>
-</ul>
-</li>
-<li>
-<p>Avril:</p>
-<ul>
-<li>Une histoire de l'écologie politique, <em>Arthur Nazaret</em></li>
-<li>Défaire le discours sexiste dans les médias, <em>Rose Lamy</em></li>
-<li>Le Sorceleur, Livre III, Le sang des Elfes, <em>Andrzej Sapkowski</em></li>
-<li>Comme un empire dans un empire, <em>Alice Zeniter</em></li>
-</ul>
-</li>
-<li>
-<p>Mai:</p>
-<ul>
-<li>La parole est un sport de combat, <em>Bertrand Périer</em></li>
-</ul>
-</li>
-<li>
-<p>Juin:</p>
-<ul>
-<li>Un rien peut tout changer, <em>James Clear</em></li>
-</ul>
-</li>
-<li>
-<p>Septembre:</p>
-<ul>
-<li>Permaculture, le livre pour bien debuter, <em>Annie Lagueyrie</em></li>
-</ul>
-</li>
-<li>
-<p>Novembre:</p>
-<ul>
-<li>The Manager Path, <em>Camille Fournier</em></li>
-</ul>
-</li>
-<li>
-<p>Decembre:</p>
-<ul>
-<li>Permaculture : Le Guide Pour Bien Débuter, <em>Annie Lagueyrie</em></li>
-</ul>
-</li>
-</ul>
+<p><h2>Create an archive</h2>
+<pre><code class="language-sh"> tar cf &lt;name&gt;.tar [objs]
+</code></pre>
+<h2>Extract an archive</h2>
+<pre><code class="language-sh">  tar xf &lt;name&gt;.tar
+</code></pre>
+<hr />
+<h2>Create a gzip archive</h2>
+<pre><code class="language-sh">  tar czf &lt;name&gt;.tgz [objs]
+</code></pre>
+<h2>Extract a gzip archive</h2>
+<pre><code class="language-sh">  tar xzf &lt;name&gt;.tgz
+</code></pre>
+<h2>Activate verbose mode</h2>
+<pre><code class="language-sh"> tar v [cmd]
+</code></pre>
+<h2>Extract on flight an archive with http</h2>
+<pre><code class="language-sh">  wget -c http[s]://host/path/to/file.tgz -O - | tar -xz
+</code></pre>
+<hr />
+<h2>Encrypt tar with GPG</h2>
+<pre><code class="language-sh">  tar czpvf - &lt;name&gt; | gpg -c [--batch --yes --passphrase &lt;password&gt;] --cipher-algo aes256 -o &lt;name&gt;.gz.gpg
+</code></pre>
+<h2>Decrypt tar with GPG</h2>
+<pre><code class="language-sh">  gpg -d [--batch --yes --passphrase azerty12] &lt;tar file&gt; | tar xzvf -
+</code></pre>
 </p>
 </main>
 

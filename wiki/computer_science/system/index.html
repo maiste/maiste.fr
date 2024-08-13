@@ -36,76 +36,39 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1>2022</h1>
-<div class="metadata"><p>description: The books I have read in 2022</p><p>lang: FR
+    <main class="container"><h1>System Management</h1>
+<div class="metadata"><p>description: Random resources about System computer management.</p><p>lang: EN
     </p>
 </div>
-<p><ul>
-<li>
-<p>Janvier:</p>
+<p><h2>Update Fireware</h2>
+<h3>Commands</h3>
 <ul>
-<li>Grimpow, l'élu des Templiers, <em>Rafael Abalos</em></li>
-<li>Intuitio, <em>Laurent Gounelle</em></li>
-<li>Le symbole perdu, <em>Dan Brown</em></li>
-<li>Un bon écrivain est un écrivain mort, <em>Guillaume Chérel</em></li>
-<li>Voyage extraordinaire au centre du cerveau, <em>Jean-Didier Vincent</em></li>
-<li>Deception Point, <em>Dan Brown</em></li>
-<li>Les âmes croisées, <em>Pierre Bottero</em></li>
+<li>Check detected devices:</li>
 </ul>
-</li>
-<li>
-<p>Février:</p>
+<pre><code>fwupdmgr get-devices
+</code></pre>
 <ul>
-<li>Comment j'ai arrêté de manger les animaux, <em>Hugo Clément</em></li>
-<li>Les guerres nous attendent 2030-2060, <em>Red Team</em></li>
+<li>Refresh latest metadata:</li>
 </ul>
-</li>
-<li>
-<p>Mars:</p>
+<pre><code> fwupdmgr refresh
+</code></pre>
 <ul>
-<li>Petit Manuel de Résistance Contemporaine, <em>Cyril Dion</em></li>
-<li>L'art d'avoir toujours raison, <em>Arthur Schopenhauer</em></li>
+<li>List available update:</li>
 </ul>
-</li>
-<li>
-<p>Avril:</p>
+<pre><code>fwupdmgr get-updates
+</code></pre>
 <ul>
-<li>Une histoire de l'écologie politique, <em>Arthur Nazaret</em></li>
-<li>Défaire le discours sexiste dans les médias, <em>Rose Lamy</em></li>
-<li>Le Sorceleur, Livre III, Le sang des Elfes, <em>Andrzej Sapkowski</em></li>
-<li>Comme un empire dans un empire, <em>Alice Zeniter</em></li>
+<li>Install update:</li>
 </ul>
-</li>
-<li>
-<p>Mai:</p>
+<pre><code>fwupdmgr update
+</code></pre>
+<h3>Resources</h3>
 <ul>
-<li>La parole est un sport de combat, <em>Bertrand Périer</em></li>
-</ul>
-</li>
-<li>
-<p>Juin:</p>
-<ul>
-<li>Un rien peut tout changer, <em>James Clear</em></li>
-</ul>
-</li>
-<li>
-<p>Septembre:</p>
-<ul>
-<li>Permaculture, le livre pour bien debuter, <em>Annie Lagueyrie</em></li>
-</ul>
-</li>
-<li>
-<p>Novembre:</p>
-<ul>
-<li>The Manager Path, <em>Camille Fournier</em></li>
-</ul>
-</li>
-<li>
-<p>Decembre:</p>
-<ul>
-<li>Permaculture : Le Guide Pour Bien Débuter, <em>Annie Lagueyrie</em></li>
-</ul>
-</li>
+<li><a href="https://wiki.archlinux.org/title/Fwupd">Archwiki fwupd</a></li>
+<li><a href="https://wiki.archlinux.org/title/Keyboard_shortcuts">Shortcut for kernel crash</a></li>
+<li><a href="https://www.computerhope.com/unix/losetup.htm">Losetup</a>: handle loop devices</li>
+<li><a href="https://megalithic.io/thoughts/weechat-setup-with-irc-bitlbee-slack">Weechat bridge</a>: bridge for weechat</li>
+<li><a href="https://www.cyberciti.biz/security/howto-linux-hard-disk-encryption-with-luks-cryptsetup-command/">Encrypt external hardrive</a>: how to encrypt a hard drive</li>
 </ul>
 </p>
 </main>

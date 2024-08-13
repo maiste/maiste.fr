@@ -36,76 +36,73 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1>2022</h1>
-<div class="metadata"><p>description: The books I have read in 2022</p><p>lang: FR
+    <main class="container"><h1>Css</h1>
+<div class="metadata"><p>description: About css.</p><p>lang: EN
     </p>
 </div>
-<p><ul>
-<li>
-<p>Janvier:</p>
+<p><h1>Flexbox</h1>
+<h2>Resources</h2>
+<p>A way to organize items as movable elements in CSS.</p>
 <ul>
-<li>Grimpow, l'élu des Templiers, <em>Rafael Abalos</em></li>
-<li>Intuitio, <em>Laurent Gounelle</em></li>
-<li>Le symbole perdu, <em>Dan Brown</em></li>
-<li>Un bon écrivain est un écrivain mort, <em>Guillaume Chérel</em></li>
-<li>Voyage extraordinaire au centre du cerveau, <em>Jean-Didier Vincent</em></li>
-<li>Deception Point, <em>Dan Brown</em></li>
-<li>Les âmes croisées, <em>Pierre Bottero</em></li>
+<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">Guide</a></li>
 </ul>
-</li>
-<li>
-<p>Février:</p>
+<h1>Grid</h1>
+<h2>Center elements</h2>
+<pre><code class="language-css">display: grid;
+place-items: center;
+</code></pre>
+<h2>Resources</h2>
+<p>A way to organize items in Css as grids</p>
 <ul>
-<li>Comment j'ai arrêté de manger les animaux, <em>Hugo Clément</em></li>
-<li>Les guerres nous attendent 2030-2060, <em>Red Team</em></li>
+<li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/">Guide</a></li>
 </ul>
-</li>
-<li>
-<p>Mars:</p>
+<h1>Fonts</h1>
+<h2>Resources</h2>
 <ul>
-<li>Petit Manuel de Résistance Contemporaine, <em>Cyril Dion</em></li>
-<li>L'art d'avoir toujours raison, <em>Arthur Schopenhauer</em></li>
+<li><a href="https://fonts.google.com">Google fonts</a></li>
 </ul>
-</li>
-<li>
-<p>Avril:</p>
+<h1>Charts</h1>
+<h2>Resources</h2>
 <ul>
-<li>Une histoire de l'écologie politique, <em>Arthur Nazaret</em></li>
-<li>Défaire le discours sexiste dans les médias, <em>Rose Lamy</em></li>
-<li>Le Sorceleur, Livre III, Le sang des Elfes, <em>Andrzej Sapkowski</em></li>
-<li>Comme un empire dans un empire, <em>Alice Zeniter</em></li>
+<li><a href="https://chartscss.org/">Charts.css</a></li>
 </ul>
-</li>
-<li>
-<p>Mai:</p>
+<h1>Custom components</h1>
+<h2>Create a homemade radio button</h2>
 <ul>
-<li>La parole est un sport de combat, <em>Bertrand Périer</em></li>
+<li>Thanks Pierre-Louis for the trick:</li>
 </ul>
-</li>
-<li>
-<p>Juin:</p>
+<pre><code class="language-html">      &lt;label class=&quot;order-radio selected&quot;&gt;
+        &lt;div class=&quot;circle selected&quot;&gt;
+          &lt;div class=&quot;inside-circle&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;input type=&quot;radio&quot; checked=&quot;true&quot; name=&quot;radio&quot; /&gt;
+        &lt;p&gt;Livraison gratuite (5 jours ouvrés)&lt;/p&gt;
+      &lt;/label&gt;
+</code></pre>
+<pre><code class="language-css">  .circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+    background: #aaaaaa;
+
+    display: grid;
+    place-items: center;
+  }
+
+  .inside-circle {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+
+    background-color: white;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+  }
+</code></pre>
+<h1>Resources</h1>
 <ul>
-<li>Un rien peut tout changer, <em>James Clear</em></li>
-</ul>
-</li>
-<li>
-<p>Septembre:</p>
-<ul>
-<li>Permaculture, le livre pour bien debuter, <em>Annie Lagueyrie</em></li>
-</ul>
-</li>
-<li>
-<p>Novembre:</p>
-<ul>
-<li>The Manager Path, <em>Camille Fournier</em></li>
-</ul>
-</li>
-<li>
-<p>Decembre:</p>
-<ul>
-<li>Permaculture : Le Guide Pour Bien Débuter, <em>Annie Lagueyrie</em></li>
-</ul>
-</li>
+<li><a href="https://ishadeed.com/article/defensive-css/">Defensive CSS</a>: protect yourself against bad CSS behaviour</li>
+<li><a href="https://anthonyhobday.com/sideprojects/saferules/">Visual Design Rules</a></li>
 </ul>
 </p>
 </main>

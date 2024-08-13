@@ -36,77 +36,76 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1>2022</h1>
-<div class="metadata"><p>description: The books I have read in 2022</p><p>lang: FR
+    <main class="container"><h1>GPG</h1>
+<div class="metadata"><p>description: Safe data with encryption.</p><p>lang: EN
     </p>
 </div>
-<p><ul>
-<li>
-<p>Janvier:</p>
+<p><h3>List keys</h3>
 <ul>
-<li>Grimpow, l'élu des Templiers, <em>Rafael Abalos</em></li>
-<li>Intuitio, <em>Laurent Gounelle</em></li>
-<li>Le symbole perdu, <em>Dan Brown</em></li>
-<li>Un bon écrivain est un écrivain mort, <em>Guillaume Chérel</em></li>
-<li>Voyage extraordinaire au centre du cerveau, <em>Jean-Didier Vincent</em></li>
-<li>Deception Point, <em>Dan Brown</em></li>
-<li>Les âmes croisées, <em>Pierre Bottero</em></li>
+<li>Public:</li>
 </ul>
-</li>
-<li>
-<p>Février:</p>
+<pre><code class="language-sh">  gpg --list-keys
+</code></pre>
 <ul>
-<li>Comment j'ai arrêté de manger les animaux, <em>Hugo Clément</em></li>
-<li>Les guerres nous attendent 2030-2060, <em>Red Team</em></li>
+<li>Secret:</li>
 </ul>
-</li>
-<li>
-<p>Mars:</p>
+<pre><code class="language-sh">  gpg --list-secret-keys
+</code></pre>
+<hr />
+<h3>Import a key</h3>
 <ul>
-<li>Petit Manuel de Résistance Contemporaine, <em>Cyril Dion</em></li>
-<li>L'art d'avoir toujours raison, <em>Arthur Schopenhauer</em></li>
+<li>From a file:</li>
 </ul>
-</li>
-<li>
-<p>Avril:</p>
+<pre><code class="language-sh">  gpg --import &lt;name&gt;.key
+</code></pre>
 <ul>
-<li>Une histoire de l'écologie politique, <em>Arthur Nazaret</em></li>
-<li>Défaire le discours sexiste dans les médias, <em>Rose Lamy</em></li>
-<li>Le Sorceleur, Livre III, Le sang des Elfes, <em>Andrzej Sapkowski</em></li>
-<li>Comme un empire dans un empire, <em>Alice Zeniter</em></li>
+<li>From a server:</li>
 </ul>
-</li>
-<li>
-<p>Mai:</p>
+<pre><code class="language-sh">  gpg --keyserver &lt;server&gt; --search-keys &lt;mail&gt;
+</code></pre>
+<h3>Export a key</h3>
+<pre><code class="language-sh">  gpg --armor --export [key_id]
+</code></pre>
+<h3>Check footprint</h3>
+<pre><code class="language-sh">  gpg --fingerprint &lt;mail&gt;
+</code></pre>
+<h3>Sign with a key</h3>
+<pre><code class="language-sh">  gpg --sign-key &lt;mail&gt;
+</code></pre>
+<h3>Refresh a key server</h3>
+<pre><code class="language-sh">  gpg --keyserver pgp.mit.edu --refresh-keys
+</code></pre>
+<hr />
+<h3>Share your public key</h3>
 <ul>
-<li>La parole est un sport de combat, <em>Bertrand Périer</em></li>
+<li>With a file:</li>
 </ul>
-</li>
-<li>
-<p>Juin:</p>
+<pre><code class="language-sh">  gpg --output &lt;path/name&gt;.key --armor --export &lt;mail&gt;
+</code></pre>
 <ul>
-<li>Un rien peut tout changer, <em>James Clear</em></li>
+<li>On a server:</li>
 </ul>
-</li>
-<li>
-<p>Septembre:</p>
-<ul>
-<li>Permaculture, le livre pour bien debuter, <em>Annie Lagueyrie</em></li>
-</ul>
-</li>
-<li>
-<p>Novembre:</p>
-<ul>
-<li>The Manager Path, <em>Camille Fournier</em></li>
-</ul>
-</li>
-<li>
-<p>Decembre:</p>
-<ul>
-<li>Permaculture : Le Guide Pour Bien Débuter, <em>Annie Lagueyrie</em></li>
-</ul>
-</li>
-</ul>
+<pre><code class="language-sh">  gpg --send-keys --keyserver &lt;server&gt; &lt;fingerprint&gt;
+</code></pre>
+<h3>Generate a revocation certificat</h3>
+<pre><code class="language-sh">  gpg --output &lt;path/name&gt;.crt --gen-revoke &lt;mail&gt;
+  chmod 600 &lt;path/certificat&gt;
+</code></pre>
+<h3>Revoke your key</h3>
+<pre><code class="language-sh">  gpg --import &lt;certificat&gt;
+  gpg --keyserver pgp.mit.edu --search-keys key-ID
+  gpg --keyserver pgp.mit.edu --send-keys key-ID
+</code></pre>
+<hr />
+<h3>Encrypt a file</h3>
+<pre><code class="language-sh">  gpg --encrypt --sign --armor -r &lt;mail&gt; &lt;file&gt;
+</code></pre>
+<h3>Decrypt a file</h3>
+<pre><code class="language-sh">  gpg --decrypt &lt;file&gt; &gt; &lt;output&gt;
+</code></pre>
+<h3>Encrypt a file with symmetric encryption</h3>
+<pre><code class="language-sh">  gpg -c --cipher-algo &lt;algo&gt; -o &lt;file&gt;
+</code></pre>
 </p>
 </main>
 

@@ -36,77 +36,28 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1>2022</h1>
-<div class="metadata"><p>description: The books I have read in 2022</p><p>lang: FR
+    <main class="container"><h1>Ripgrep</h1>
+<div class="metadata"><p>description: Commandline tool rg</p><p>lang: EN
     </p>
 </div>
-<p><ul>
-<li>
-<p>Janvier:</p>
-<ul>
-<li>Grimpow, l'élu des Templiers, <em>Rafael Abalos</em></li>
-<li>Intuitio, <em>Laurent Gounelle</em></li>
-<li>Le symbole perdu, <em>Dan Brown</em></li>
-<li>Un bon écrivain est un écrivain mort, <em>Guillaume Chérel</em></li>
-<li>Voyage extraordinaire au centre du cerveau, <em>Jean-Didier Vincent</em></li>
-<li>Deception Point, <em>Dan Brown</em></li>
-<li>Les âmes croisées, <em>Pierre Bottero</em></li>
-</ul>
-</li>
-<li>
-<p>Février:</p>
-<ul>
-<li>Comment j'ai arrêté de manger les animaux, <em>Hugo Clément</em></li>
-<li>Les guerres nous attendent 2030-2060, <em>Red Team</em></li>
-</ul>
-</li>
-<li>
-<p>Mars:</p>
-<ul>
-<li>Petit Manuel de Résistance Contemporaine, <em>Cyril Dion</em></li>
-<li>L'art d'avoir toujours raison, <em>Arthur Schopenhauer</em></li>
-</ul>
-</li>
-<li>
-<p>Avril:</p>
-<ul>
-<li>Une histoire de l'écologie politique, <em>Arthur Nazaret</em></li>
-<li>Défaire le discours sexiste dans les médias, <em>Rose Lamy</em></li>
-<li>Le Sorceleur, Livre III, Le sang des Elfes, <em>Andrzej Sapkowski</em></li>
-<li>Comme un empire dans un empire, <em>Alice Zeniter</em></li>
-</ul>
-</li>
-<li>
-<p>Mai:</p>
-<ul>
-<li>La parole est un sport de combat, <em>Bertrand Périer</em></li>
-</ul>
-</li>
-<li>
-<p>Juin:</p>
-<ul>
-<li>Un rien peut tout changer, <em>James Clear</em></li>
-</ul>
-</li>
-<li>
-<p>Septembre:</p>
-<ul>
-<li>Permaculture, le livre pour bien debuter, <em>Annie Lagueyrie</em></li>
-</ul>
-</li>
-<li>
-<p>Novembre:</p>
-<ul>
-<li>The Manager Path, <em>Camille Fournier</em></li>
-</ul>
-</li>
-<li>
-<p>Decembre:</p>
-<ul>
-<li>Permaculture : Le Guide Pour Bien Débuter, <em>Annie Lagueyrie</em></li>
-</ul>
-</li>
-</ul>
+<p><h2>Find a pattern in files</h2>
+<pre><code class="language-sh">  $ rg &lt;pattern&gt;
+</code></pre>
+<h2>List files according to pattern</h2>
+<pre><code class="language-sh">  $ rg -l &lt;pattern&gt;
+</code></pre>
+<h2>Find a word in files</h2>
+<pre><code class="language-sh">  $ rg -w &lt;word&gt;
+</code></pre>
+<h2>Find a pattern in files but restrict the file format</h2>
+<pre><code class="language-sh">  $ rg -t [ python | c | yaml | json | .. ] &lt;pattern&gt;
+</code></pre>
+<h2>Find the number of occurences of a pattern by file</h2>
+<pre><code class="language-sh">  $ rg -c &lt;pattern&gt;
+</code></pre>
+<h2>Print the files that doesn't match the expression</h2>
+<pre><code class="language-sh">$ rg --files-without-match &lt;pattern&gt;
+</code></pre>
 </p>
 </main>
 

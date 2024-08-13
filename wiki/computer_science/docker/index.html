@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Maiste.fr</title>
+    <link href="/static/css/main.css" rel="stylesheet" />
+    <link rel="me" href="https://fosstodon.org/@maiste" />
+
+    <!-- FIXME: replace me with a local version of the fonts i.e. NO GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!-- FIXME: replace me with local version of the css + script load from local. -->
+    <link href="/static/css/code.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+
+<body>
+    <!-- Umami -->
+    <script defer src="https://analytics.maiste.fr/script.js"
+        data-website-id="b1e6219d-8044-47d9-9e91-44db862e2732"></script>
+    <!-- End Umami Code -->
+
+    <header class="container">
+        <nav>
+            <h2><a href="/">Maiste</a></h2>
+            <ul>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/wiki">Wiki</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <hr />
+    </header>
+    <main class="container"><h1>Docker</h1>
+<div class="metadata"><p>description: Containers with Docker.</p><p>lang: EN
+    </p>
+</div>
+<p><h2>Connect to hub.docker.com</h2>
+<pre><code class="language-sh">  docker login --username &lt;user&gt;
+</code></pre>
+<h2>Connect to another website (UNSECURE way)</h2>
+<pre><code class="language-sh">  TOKEN=&lt;your website token&gt;
+  echo $TOKEN | docker login &lt;url&gt; -u &lt;username&gt; --password-stdin
+</code></pre>
+<h3>Build a docker image from a Dockerfile</h3>
+<pre><code class="language-sh">  docker build -t &lt;NAME&gt;:&lt;VERSION&gt; -f &lt;FILENAME&gt; &lt;PATH&gt;
+</code></pre>
+<h2>Pull an image from hub.docker.com</h2>
+<pre><code class="language-sh">  docker pull &lt;image&gt;:&lt;tag&gt;
+</code></pre>
+<h2>Pull an image from another website</h2>
+<pre><code class="language-sh">  docker pull &lt;website_url&gt;/&lt;image&gt;:&lt;tag&gt;
+</code></pre>
+<h2>Push an image to hub.docker.com</h2>
+<pre><code class="language-sh">  docker push &lt;user&gt;/&lt;image&gt;:tag
+</code></pre>
+<h2>Push an image to another website</h2>
+<pre><code class="language-sh">  docker push &lt;website_url&gt;/&lt;user&gt;/&lt;image&gt;:&lt;tag&gt;
+</code></pre>
+<h2>Launch a container</h2>
+<ul>
+<li>Intractif mode:</li>
+</ul>
+<pre><code class="language-sh">  docker run -it --name &lt;nom&gt; -v &lt;volume-local&gt;:&lt;volume-conteneur&gt; \
+             &lt;image&gt;:&lt;tag&gt;
+</code></pre>
+<ul>
+<li>Deamon mode:</li>
+</ul>
+<pre><code class="language-sh">  docker run --rm -d --name &lt;nom&gt; -v &lt;volume-local&gt;:&lt;volume-conteneur&gt; \
+             -p &lt;host-port&gt;:&lt;conteneur-port&gt;&lt;image&gt;:&lt;tag&gt;
+</code></pre>
+<h2>Connect to a running container</h2>
+<pre><code class="language-sh">	docker exec -it &lt;tag&gt; &lt;command&gt;
+</code></pre>
+<h2>Get the container logs</h2>
+<pre><code class="language-sh">  docker logs &lt;name ou id&gt;
+</code></pre>
+<h2>Stop a containeur</h2>
+<pre><code class="language-sh">  docker stop &lt;name&gt;
+</code></pre>
+<h2>Save docker images</h2>
+<pre><code class="language-sh">  docker commit -p &lt;ID&gt; tag_name
+  docker save -o &lt;name&gt;.tar &lt;tag_image&gt;
+</code></pre>
+<h2>Load a container from a save</h2>
+<pre><code class="language-sh">  docker load -i &lt;name&gt;.tar
+</code></pre>
+<h1>Resources</h1>
+<ul>
+<li><a href="https://github.com/hexops/dockerfile">Good practises</a></li>
+</ul>
+</p>
+</main>
+
+    <footer class="container">
+        <hr />
+        <p> Website written proudly with <a href="https://gitlab.com/funkywork/yocaml">Yocaml</a> ♡ This site is part of
+            the
+            <a href="https://ring.muhokama.fun">Muhokama ring</a>
+            (<a href="https://ring.muhokama.fun/u/maiste/pred">Previous</a> - <a
+                href="https://ring.muhokama.fun/u/maiste/succ">Next</a>)
+        </p>
+        <p><a href="https://maiste.fr">Content under this website</a> is written by Etienne "Maiste" Marais and is
+            licensed
+            under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1">CC BY-NC 4.0</a></p>
+    </footer>
+
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>
