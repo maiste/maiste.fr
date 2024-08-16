@@ -1,27 +1,32 @@
 ---
-title: "Reading stack list"
-description: "Books I'd like to read."
-lang: "FR"
+id: stack_list
+aliases: []
+tags: []
+description: Books I'd like to read.
+lang: FR
+title: Reading stack list
 ---
 
-General:
-* ($) Où va l'argent des pauvres, *Denis Colombi*
-* ($) La promesse de l'Aube, *Romain Gary*
-* L'assassin royal, *Robin Hobbs*
+- General:
+  - ($) Où va l'argent des pauvres, _Denis Colombi_
+  - L'assassin royal, _Robin Hobbs_
+  - Ainsi parlait Zarathoustra, _Nietzsche_
 
-Technical:
-* Types and Programming Languages, *Benjamin C. Pierce*
-* Remote: Office Not Required, *David Heinemeir & Jason Fried*
-* ($:Tarides) Code, 2nd Edition, *Charles Petzold*
+- Techniques :
+  - Types and Programming Languages, _Benjamin C. Pierce_
+  - Remote: Office Not Required, _David Heinemeir & Jason Fried_
+  - ($:Tarides) Code, 2nd Edition, _Charles Petzold_
 
-Friend suggestions - 2022:
-* ($) La plus secrète mémoire des hommes, *Mohamed Mbougar Sarr*
-* Asta, *Jon K. Stefansson*
-* American Pastoral, *Philip Roth*
-* L'amour au temps du Choléra, *G. Marquez*
-* The catcher in the Rye, *Sallinger*
-* Alexis et le traité du vain combat, *Youcenar*
-* ($) L'art de perdre, *Alice Zeniter*
-* Le diable et Sherlock Holmes, *David Grann*
-* Axiomatic, *Greg Ega*
-* Trilogie: Le Problème à trois corps, *Liu Cixin*
+- Humains :
+    - S'estimer et s'oublier, _Christophe André_
+
+- Suggestion d'ami.e.s - 2022:
+  - Asta, _Jon K. Stefansson_
+  - American Pastoral, _Philip Roth_
+  - L'amour au temps du Choléra, _G. Marquez_
+  - The catcher in the Rye, _Sallinger_
+  - Alexis et le traité du vain combat, _Youcenar_
+  - ($) L'art de perdre, _Alice Zeniter_
+  - Le diable et Sherlock Holmes, _David Grann_
+  - Axiomatic, _Greg Ega_
+  - Trilogie: Le Problème à trois corps, _Liu Cixin_
