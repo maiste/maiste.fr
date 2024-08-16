@@ -36,33 +36,32 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1>Section Wiki</h1>
-<ul class="index"><li>
-        <h3> - <a href="/wiki/books/index.html">Books</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/computer_science/index.html">Computer Science</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/cooking/index.html">Cooking</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/diy/index.html">Diy</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/humans/index.html">Humans</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    </ul>
+    <main class="container"><h1>TCPDump</h1>
+<div class="metadata"><p>description: Network Analyzer - Commandline tool</p><p>lang: ENG
+    </p>
+</div>
+<p><h2>List available interfaces</h2>
+<pre><code class="language-sh">tcpdump -D
+</code></pre>
+<h2>Run TCPDump on a specific interface</h2>
+<pre><code class="language-sh">tcpdump -i &lt;if&gt;
+</code></pre>
+<h3>Run TCPDump and display brut ASCII</h3>
+<pre><code class="language-sh">tcpdump -A
+</code></pre>
+<h3>Limit the number of captured packets</h3>
+<pre><code class="language-sh">tcpdump -c &lt;number&gt;
+</code></pre>
+<h3>Print the result in line</h3>
+<pre><code class="language-sh">tcpdump -l
+</code></pre>
+<h3>Read from a file</h3>
+<pre><code class="language-sh">tcpdump -r &lt;file&gt;
+</code></pre>
+<h3>Export to a file</h3>
+<pre><code class="language-sh">tcpdump -w &lt;file&gt;
+</code></pre>
+</p>
 </main>
 
     <footer class="container">

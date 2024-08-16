@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Maiste.fr</title>
+    <link href="/static/css/main.css" rel="stylesheet" />
+    <link rel="me" href="https://fosstodon.org/@maiste" />
+
+    <!-- FIXME: replace me with a local version of the fonts i.e. NO GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!-- FIXME: replace me with local version of the css + script load from local. -->
+    <link href="/static/css/code.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+
+<body>
+    <!-- Umami -->
+    <script defer src="https://analytics.maiste.fr/script.js"
+        data-website-id="b1e6219d-8044-47d9-9e91-44db862e2732"></script>
+    <!-- End Umami Code -->
+
+    <header class="container">
+        <nav>
+            <h2><a href="/">Maiste</a></h2>
+            <ul>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/wiki">Wiki</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <hr />
+    </header>
+    <main class="container"><h1>REST Api</h1>
+<div class="metadata"><p>description: Deal with REST in Java</p><p>lang: FR
+    </p>
+</div>
+<p><h3>TL;DR</h3>
+<ul>
+<li>Les <strong>Data Transfert_Object</strong> sont utilisés en I/O. Permet de simplifier les échanges.</li>
+</ul>
+<h3>DTO</h3>
+<p>C'est un objet qui permet de cacher au niveau de l'API le vrai contenu des entités. Ils sont gérés
+par les <em>Controllers</em>. Un <em>DTO</em> vient toujours avec un Mapper. Les <code>record</code> sont particulièrement adaptés à cela.</p>
+<h4>Example</h4>
+<ul>
+<li>Entity:</li>
+</ul>
+<pre><code class="language-java">@Entity
+public class Person {
+    private String name;
+    private String gender;
+    private String address;
+
+    /* Getters / Setters */
+}
+</code></pre>
+<ul>
+<li>DTO (souvent un record mais attention à la version de Spring):</li>
+</ul>
+<pre><code class="language-java">public record PersonDto(
+    String name,
+    String gender
+) {}
+</code></pre>
+<ul>
+<li>Mapper (soit un composant <em>Spring</em>, soit une classe &quot;static&quot;):</li>
+</ul>
+<pre><code class="language-java">@Component
+public class PersonDtoMapper {
+    public PersonDto fromModel(Person p) {
+        return new PersonDto(
+            p.getName(),
+            p.getGender()
+        );
+    }
+}
+
+</code></pre>
+<h3>JsonView (peu utilisé)</h3>
+<p><code>@JsonView</code> définit un ensemble de propriétés qui seront exportées en <em>JSON</em>. On peut annoter les
+propiétés avec une vue pour qu'elle soit associée à celle-ci. Quand un controller mapping est annoté
+avec une <code>@JsonView</code>, il utilisera les gens qui fonctionnent pour produire la vue associé en <em>JSON</em>.
+On peut utiliser l'héritage pour étendre le scoe des vues.</p>
+<h4>Example</h4>
+<ul>
+<li>Entity:</li>
+</ul>
+<pre><code class="language-java">@JsonView(Views.LIGHT.class)
+public class Person {
+    @JsonView(View.ID.class)
+    private Long id;
+
+    private String name;
+    private String gender;
+    private String address;
+
+    public static class Views {
+        public interface ID {}
+        public interface LIGHT extends ID {}
+        public interface PAGE extends LIGHT {}
+        public interface FULLL extends PAGE {}
+    }
+}
+</code></pre>
+<ul>
+<li>Method call:</li>
+</ul>
+<pre><code class="language-java">@GetMapping
+@JsonView(Person.Views.LIGHT.class)
+public Page&lt;Person&gt; fetchPage() {
+    return personService.findAll();
+}
+</code></pre>
+<h3>JsonIdentity</h3>
+<h4>JsonIdentityInfo</h4>
+<p>Permet de dédupliquer les champs envoyés:</p>
+<pre><code class="language-java">@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = &quot;id&quot;)
+public class Person { /* ... */}
+</code></pre>
+<h4>JsonTypeInfo</h4>
+<p>Ajoute un field type pour les cas où il y a du polymorphisme. Cela permet de désérialiser dans le front.</p>
+<ul>
+<li>Par exemple, avec une classe mère:</li>
+</ul>
+<pre><code class="language-java">@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, defaultImpl = Product.class)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Book.class),
+        @JsonSubTypes.Type(value = VideoGame.class),
+        @JsonSubTypes.Type(value = Phone.class)
+})
+public class Product { /* ... */ }
+
+</code></pre>
+<ul>
+<li>Dans la classe fille:</li>
+</ul>
+<pre><code class="language-java">@JsonTypeName(&quot;book&quot;)
+public class Book extends Product { /* ... */ }
+</code></pre>
+<h3>Resources &amp; HTTP statuses</h3>
+<h4>Status codes</h4>
+<ul>
+<li><strong>2XX</strong>
+<ul>
+<li><em>200</em> OK</li>
+<li><em>201</em> CREATED</li>
+</ul>
+</li>
+<li><strong>3XX</strong></li>
+<li><strong>4XX</strong>:
+<ul>
+<li><strong>400</strong>: Bad Request</li>
+<li><strong>401</strong>: Unauthorized</li>
+<li><strong>403</strong>: Forbidden</li>
+<li><strong>404</strong>: Not Found</li>
+<li><strong>406</strong>: Not acceptable</li>
+<li><strong>409</strong>: Conflict</li>
+<li><strong>410</strong>: Gone</li>
+</ul>
+</li>
+<li><strong>5XX</strong>:
+<ul>
+<li><strong>500</strong>: Internal Server Error</li>
+</ul>
+</li>
+</ul>
+<h4>In Spring</h4>
+<pre><code class="language-java">@ResponseStatus(HttpStatus.status)
+&lt;type&gt; &lt;method_name&gt;(){}
+</code></pre>
+<h3>Exception Handler</h3>
+<p>Cf <a href="https://www.baeldung.com/exception-handling-for-rest-with-spring">here</a></p>
+<p>Possible de faire une entity pour renvoyer des erreurs. Ça permet de controller la granularité.</p>
+<ul>
+<li>Exception avec l'annotation <code>@ResponseStatus</code> sont retournés avec le bon http code.</li>
+<li>Exception Handler pour controlleur unique:</li>
+</ul>
+<pre><code class="language-java">public class Controller {
+    @ExceptionHandler({ Exception1.class, Exception2.class})
+    public void handler() {
+        // Handle Here
+    }
+}
+</code></pre>
+<ul>
+<li><code>DefaultHandlerExceptionResolver</code> définit par défaut à partir de <em>Spring.3</em></li>
+<li><code>ResponseStatusExcetionREsolver</code>: permet de redéfinir avec un <code>@ResponseStatus</code> le code d'erreur des exceptions. Il faut que la classe avec le <code>@ResponseStatus</code> extends <code>RuntimeException</code>.</li>
+<li><code>@ControllerAdvice</code> permet de faire un handler global:</li>
+</ul>
+<pre><code class="language-java">@ControllerAdvice
+public class RestResponseEntityExceptionHandler 
+  extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(value 
+      = { IllegalArgumentException.class, IllegalStateException.class })
+    protected ResponseEntity&lt;Object&gt; handleConflict(
+      RuntimeException ex, WebRequest request) {
+        String bodyOfResponse = &quot;This should be application specific&quot;;
+        return handleExceptionInternal(ex, bodyOfResponse, 
+          new HttpHeaders(), HttpStatus.CONFLICT, request);
+    }
+}
+</code></pre>
+<ul>
+<li>For REST use <code>@RestControllerAdvice</code> instead.</li>
+</ul>
+<h4>Reminder:</h4>
+<ul>
+<li>
+<p>DO:</p>
+<ul>
+<li>If you need an error code/message, put it in the exception at the time you throw it</li>
+<li>Use <code>@ControllerAdvice</code> or <code>@RestControllerAdvice</code> to handle all general purpose exceptions</li>
+<li>Box all exceptions into a single <code>ApiException</code> with a uniformed shape</li>
+</ul>
+</li>
+<li>
+<p>DON'T:</p>
+<ul>
+<li>Try-catch business-level exception everywhere in your controllers, to box them into <code>ApiException</code> with error message.</li>
+<li>Write your own custom exception where <code>java.lang</code> or <code>java.util</code> has already a standard exception for the same purpose
+eg: Do not write <code>NotFoundException</code>, use java.util.NoSuchElementException.</li>
+<li>Let your API output exceptions of various shape</li>
+</ul>
+</li>
+</ul>
+<h3>Hateoas</h3>
+<blockquote>
+<p>HAL - Hypertext Application Language</p>
+</blockquote>
+<ul>
+<li>Import du package suivant:</li>
+</ul>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-hateoas&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<ul>
+<li>Pour mettre un lien dans le header <strong>location</strong>, il faut modifier le code Java avec:</li>
+</ul>
+<pre><code class="language-java">    import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+    import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+    
+    public ResponseEntity&lt;Customer&gt; create(/* Args */) {
+        Customer c = createCustomer();
+        URI uri = linkTo(methodOn(CustomerApi.class).getCustomer(customer.getId())).toUri();
+        return ResponseEntity.created(uri).body(customer);
+    }
+</code></pre>
+<ul>
+<li>Pour rajouter les liens dans le corps du <em>Json</em>, il faut utiliser:</li>
+</ul>
+<pre><code class="language-java">    public ResponseEntity&lt;Customer&gt; create(/* Args */) {
+        Customer c = createCustomer();
+        Link selfLink = linkTo(methodOn(CustomerApi.class).getCustomer(customer.getId())).withSelfRel();
+        Link cartLink = linkTo(methodOn(CartApi.class).getCart(customer.getId(), customer.getCart().getId())).withRel(&quot;cart&quot;);
+        return ResponseEntity.created(selfLink.toUri()).body(EntityModel.of(customer, selfLink, cartLink));
+    }
+</code></pre>
+<ul>
+<li>On peut utiliser le <code>RepresentationModelAssembler</code> pour créer les liens des entités automatiquement (comme les <em>serializers</em> et les <em>generators</em>).</li>
+</ul>
+<h3>OpenAPI (ex Swagger)</h3>
+<ul>
+<li>To generate the <em>OpenAPI</em> specification, we have to add the following packages:</li>
+</ul>
+<pre><code class="language-xml">&lt;!-- Spring OpenAPI doc --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springdoc&lt;/groupId&gt;
+    &lt;artifactId&gt;springdoc-openapi-ui&lt;/artifactId&gt;
+    &lt;version&gt;${springdoc.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!--support for hateoas --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springdoc&lt;/groupId&gt;
+    &lt;artifactId&gt;springdoc-openapi-hateoas&lt;/artifactId&gt;
+    &lt;version&gt;${springdoc.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!-- support for Pageable--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springdoc&lt;/groupId&gt;
+    &lt;artifactId&gt;springdoc-openapi-data-rest&lt;/artifactId&gt;
+    &lt;version&gt;${springdoc.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<ul>
+<li>The Bean should be added to the configuration:</li>
+</ul>
+<pre><code class="language-java">OpenAPI openApi() {
+    Contact contact = new Contact();
+    contact.setName(&quot;Étienne Marais&quot;);
+    contact.setEmail(&quot;emarais@takima.fr&quot;);
+    return new OpenAPI().info(new Info()
+        .contact(contact)
+        .title(&quot;Takima-store Backend API&quot;)
+        .license(new License().name(&quot;ISC&quot;)));
+}
+</code></pre>
+<ul>
+<li>The API is available on:
+<ul>
+<li><a href="http://localhost:8080/swagger-ui.html">Swagger-ui</a></li>
+<li><a href="http://localhost:8080/v3/api-docs">JSON</a></li>
+<li><a href="http://localhost:8080/v3/api-docs.yaml">YAML</a></li>
+</ul>
+</li>
+<li>These annotations can be used to be more user friendly:
+<ul>
+<li><code>@Parameter</code>:</li>
+<li><code>@Schema</code>:</li>
+<li><code>@Content</code>:</li>
+<li><code>@Tag</code>: Marque une classe comme une ressource swagger</li>
+<li><code>@Operation</code>: Décrit une opération ou une méthode HTTP spécifique pour le chemin en question</li>
+<li><code>@ApiResponse</code>: Décrit une réponse possible à l'opération</li>
+</ul>
+</li>
+</ul>
+</p>
+</main>
+
+    <footer class="container">
+        <hr />
+        <p> Website written proudly with <a href="https://gitlab.com/funkywork/yocaml">Yocaml</a> ♡ This site is part of
+            the
+            <a href="https://ring.muhokama.fun">Muhokama ring</a>
+            (<a href="https://ring.muhokama.fun/u/maiste/pred">Previous</a> - <a
+                href="https://ring.muhokama.fun/u/maiste/succ">Next</a>)
+        </p>
+        <p><a href="https://maiste.fr">Content under this website</a> is written by Etienne "Maiste" Marais and is
+            licensed
+            under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1">CC BY-NC 4.0</a></p>
+    </footer>
+
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Maiste.fr</title>
+    <link href="/static/css/main.css" rel="stylesheet" />
+    <link rel="me" href="https://fosstodon.org/@maiste" />
+
+    <!-- FIXME: replace me with a local version of the fonts i.e. NO GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!-- FIXME: replace me with local version of the css + script load from local. -->
+    <link href="/static/css/code.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+
+<body>
+    <!-- Umami -->
+    <script defer src="https://analytics.maiste.fr/script.js"
+        data-website-id="b1e6219d-8044-47d9-9e91-44db862e2732"></script>
+    <!-- End Umami Code -->
+
+    <header class="container">
+        <nav>
+            <h2><a href="/">Maiste</a></h2>
+            <ul>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/wiki">Wiki</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <hr />
+    </header>
+    <main class="container"><h1>Kubernetes</h1>
+<div class="metadata"><p>description: Comment faire tourner un cluster kube</p><p>lang: FR
+    </p>
+</div>
+<p><h3>Concepts</h3>
+<h4>Terminologie</h4>
+<ul>
+<li><em>Infrastructure As Code</em>: management et provisionnement d'infrastructures via du code.</li>
+<li><em>APM</em>: Application Performant Manager: monitorer et manager les performances et la disponibilité d'un service.</li>
+<li>Containers:
+<ul>
+<li><code>Containers Runtime Low Level</code>: permettent l'execution de conteneur au format OCI</li>
+<li><code>Container Runtime High Level</code>: transport d'image</li>
+</ul>
+</li>
+<li>Pour <em>Kubernetes</em>, tout est <strong>resources</strong>:
+<ul>
+<li><code>Pod</code>: c'est la ressources minimale que l'on peut déployer dans <em>Kubernetes</em>. C'est un groupe d'un ou plusieurs containers qui partagent du stockage et un réseau.</li>
+<li><em>ReplicaSet</em>: permet de gérer la replication des <em>Pods</em></li>
+<li><em>Deployment</em>: <em>ReplicaSet</em> mais avec la gestion du cycle de vie en plus.
+<ul>
+<li>`Utilise la méthode du <em>RollingUpgrade</em> pour migrer les pods vers une nouvelle version.</li>
+</ul>
+</li>
+<li><em>Namespace</em>: permet de séparer les ressources de Kubernetes</li>
+<li><em>Node</em>:
+<ul>
+<li><em>Worker Node</em>: est équivalent à un serveur. Contient un un <em>kubelet</em> qui intéragit avec le <em>container runtime</em>.</li>
+<li><code>Master / Controller Node</code> s'occupe de gérer les <code>worker nodes</code>.
+<ul>
+<li><code>etcd</code>: la base de données kube. Permet de synchroniser les noeuds.</li>
+<li><code>Controller manager</code> : s'occupe de discuter avec l'API</li>
+<li><code>Scheduler</code>: organise les nodes</li>
+<li><code>Kube Api</code>: discute avec le <em>kubelet</em>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Deux façons de faire:
+<ul>
+<li>déclarative (méthode préférée): on explique l'état auquel on veut arriver.</li>
+<li>impérative: elle exécute ce qu'on lui demande.</li>
+</ul>
+</li>
+</ul>
+<h3>ReplicaSet</h3>
+<pre><code class="language-yaml">kind: ReplicaSet
+metadata:
+  name: unicorn-front-replicaset
+  labels:
+    app: unicorn-front
+spec:
+  template:
+    metadata:
+      name: unicorn-front-pod
+      labels:
+        app: unicorn-front
+    spec:
+      containers:
+      - name: unicorn-front
+        image: registry.takima.io/school/proxy/nginx
+  replicas: 3
+  selector:
+    matchLabels:
+      app: unicorn-front
+</code></pre>
+<ul>
+<li>Le <code>selector.matchLabels</code> doit matcher le label de la <code>spec</code> pour pouvoir gérer les replicas. Le nom du pod dans <code>template.metadata.name</code> est override par <code>metadata.name</code>.</li>
+<li>Dans le cas où on delete un <code>ReplicaSet</code>, on delete tous ses pods.</li>
+</ul>
+<h3>Déploiement</h3>
+<h4>Control des ressources</h4>
+<pre><code class="language-yaml">resources:
+  requests:
+    memory: &quot;64Mi&quot;
+    cpu: &quot;250m&quot;
+  limits:
+    memory: &quot;128Mi&quot;
+    cpu: &quot;500m&quot;
+</code></pre>
+<ul>
+<li>Dans <code>spec.container</code>, cela permet de gérer les ressources pour le cluster. <code>requests</code> correspond aux ressources nécessaires pour setup le pod. Cela permet de ne pas le scheduler dans un pod qui n'a pas les ressoruces nécessaire. <code>limit</code> correspond à la ressource max que le container peut utiliser.</li>
+<li>En cas d'erreur de mémoire, on obtient :</li>
+</ul>
+<pre><code class="language-sh"> Last State:     Terminated
+      Reason:       OOMKilled
+</code></pre>
+<ul>
+<li>Le controle CPU s'assure que la consommation ne dépasse pas. Il bloque en dessous de la limit.</li>
+</ul>
+<h3>Services</h3>
+<p>Il agit comme un <em>load balancer</em> en transmettant les requêtes aux pods auxquels il est rattaché.</p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: unicorn-front-service
+spec:
+  selector:
+    app: unicorn-front
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+</code></pre>
+<ul>
+<li><code>spec.ports.port</code> est le port sur lequel le service écoute et <code>spec.ports.targetPort</code> est le port exposé par le container. On peut utiliser les noms définis dans <code>spec.template.spec.containers[].ports[].name</code>.</li>
+<li>Par défaut le service fonctionne en <code>ClusterIp</code>, ce qui fait qu'il est accessible que depuis l'intérieur du cluster. Pour pallier au problème d'exposition, on peut faire une <em>NodePort</em> qui expose l'ensemble des services ou <em>LoadBalancer</em> pour provisionner un load balancer</li>
+<li>On peut aussi faire un <em>Ingress</em> qui agit comme un reverse proxy.</li>
+</ul>
+<h3>Ingress</h3>
+<p>C'est un peu un load balancer pour le service.</p>
+<pre><code class="language-yaml">apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+ annotations:
+   kubernetes.io/ingress.class: nginx
+ name: unicorn-front-ingress
+spec:
+ rules:
+ - host: replace-with-your-url
+   http:
+     paths:
+     - backend:
+         service:
+           name: unicorn-front-service
+           port:
+             number: 80
+       path: /
+       pathType: Prefix
+</code></pre>
+<ul>
+<li>Le CertManager permet aux utilisateur de créer un Ingress en demandant l'utilisation d'un cluster-issuer de certificat.</li>
+</ul>
+<h3>CertManager</h3>
+<p>Il faut rajouter les paramètres suivants et avoir un <code>cluster-issuer</code> à disposition dans le cluster.</p>
+<pre><code class="language-yaml"># metadata:
+#  annotations:
+#    kubernetes.io/ingress.class: nginx
+     cert-manager.io/cluster-issuer: letsencrypt-staging
+     kubernetes.io/tls-acme: 'true'
+
+# [...]
+# spec:
+#   rules:
+    tls:
+      - hosts:
+        - replace-with-your-url
+        secretName: unicorn-front-tls
+</code></pre>
+<ul>
+<li>Si on a besoin d'un certificat <code>Wildcart</code>, il faut enlever <code>cert-manager.io/cluster-issuer</code> et <code>kubernetes.io/tls-acme</code> et utiliser le <code>secretName</code> pour avoir le bon certificat stocké dans les secrets.</li>
+</ul>
+<h3>Registry privé</h3>
+<ul>
+<li>Pour utiliser les registry privés, bien souvent, il faut setup les accès. Pour ce faire on crée un secret de type <code>docker-registry</code>.</li>
+</ul>
+<pre><code class="language-yaml"># spec:
+#   template:
+#     spec:
+imagePullSecrets:
+  - name: takima-school-registry
+</code></pre>
+<h3>Variable d'env</h3>
+<p>On peut ajouter des variables d'environnement</p>
+<pre><code class="language-yaml"># spec:
+#   template:
+#     spec:
+#       container:
+#         - name:
+#           env:
+- name: K8S_NODE_NAME
+  valueFrom:
+    fieldRef:
+      fieldPath: spec.nodeName
+</code></pre>
+<h3>ConfigMap</h3>
+<p>Le <em>ConfigMap</em> stocke les données non-confidentielles. On enregistre les données comme suit:</p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-app
+data:
+  # property-like keys; each key maps to a simple value
+  color: &quot;#220&quot;
+</code></pre>
+<p>On récupère les données comme suit dans le <em>deployment</em>.</p>
+<pre><code class="language-yaml">env:
+  - name: CUSTOM_COLOR # Vrai key de la variable d'env. Peut être différent de la valeur dans le config map
+    valueFrom:
+      configMapKeyRef:
+        name: web-app  # Nom du configmap
+        key: color     # nom de la clef dans le config map
+</code></pre>
+<p>/!\ Il faut penser à restart !</p>
+<h3>Secret</h3>
+<p>Pour les données confidentielles, on utilise les secrets de deux façons:</p>
+<ol>
+<li><code>kubectl create secret generic my-secret --from-literal=username=user</code>: on peut mettre plusieur littérals à la suite</li>
+<li>Via le <code>yaml</code>:</li>
+</ol>
+<ul>
+<li>On doit générer le hash nous même</li>
+</ul>
+<pre><code class="language-sh">echo -n 'user' | base64
+echo -n 'test123*' | base64
+</code></pre>
+<ul>
+<li>Puis l'ajouter au yaml</li>
+</ul>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Secret
+metadata:
+  name: hello-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+</code></pre>
+<p>On peut ensuite l'utiliser avec:</p>
+<pre><code class="language-yaml"># container.[].env
+- name: CUSTOM_COLOR
+  valueFrom:
+    secretKeyRef:
+      name: secret-color
+      key: color     # nom de la clef dans le config map
+</code></pre>
+<p>/!\ Dans lens, il est en <strong>base64</strong>, il faut penser à le <strong>convertir</strong>.</p>
+<h3>Checkhealth</h3>
+<p>Permet d'appeler un endpoint réguliérement pour vérifier qu'il est sein.</p>
+<pre><code class="language-yaml"># container.[]
+livenessProbe:
+  httpGet:
+    path: /health
+    port: 3000
+    # httpHeaders:
+    # - name: Custom-Header
+    #   value: Awesome
+  initialDelaySeconds: 1 # Initial check
+  failureThreshold: 5 # Nombre de tentatives
+  periodSeconds: 3   # Timing pour les checks
+</code></pre>
+<h3>HorizontalPodAutoscaler: mise à l'échelle automatique</h3>
+<p>Peut être créer en utilisant le <code>-o yaml</code> de <code>autoscale</code>.</p>
+<h3>NetworkPolicy</h3>
+<p>Permet de contrôler les flux entre les pods.</p>
+<h3>Redirection interne</h3>
+<p>Pour accèder à un service depuis un autre service, on peut utiliser le DNS interne. Pour un service <code>api</code> dans le namespace <code>test</code>, on peut appeler
+<code>http://api.test</code>. S'ils sont dans le même namespace, on peut juste utiliser le nom du service: <code>http://api</code>.</p>
+<h3>Persistence Volume</h3>
+<p>Cela correspond à l'abstraction du volume physique mappé sur les serveurs. Il s'agit d'une resources. Les <em>Persistence Volume Claims</em> sont une demande de stockage par l'utilisateur. On peut définir différents types de stockages avec les <em>StorageClass</em>. Les volumes peuvent être statiques ou dynamiques.</p>
+<ul>
+<li>On peut définir un système de stockage comme suit:</li>
+</ul>
+<pre><code class="language-yaml">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pg-pvc
+spec:
+  storageClassName: gp2
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 3Gi
+</code></pre>
+<ul>
+<li>Pour déclarer le bloc, il faut faire:</li>
+</ul>
+<pre><code class="language-yaml"># spec:
+#   template:
+#       spec:
+volumes:
+- name: pg-data
+  persistentVolumeClaim:
+    claimName: pg-pvc
+</code></pre>
+<ul>
+<li>Pour le monter sur un container:</li>
+</ul>
+<pre><code class="language-yaml"># spec:
+#   template:
+#     spec:
+#       container:
+volumeMounts:
+- mountPath: /var/lib/postgresql/data
+  name: pg-data
+</code></pre>
+<h3>StatefulSet</h3>
+<p>Cela permet de scaler les ressources utilisées par un pod. Cependant, ça casse le fonctionnement du DNS.</p>
+<pre><code class="language-yaml"># kind: StatefulSet
+# spec:
+  serviceName: pg-service
+  volumeClaimTemplates:
+  - metadata:
+      name: pg-data
+    spec:
+      accessModes: [ &quot;ReadWriteOnce&quot; ]
+      resources:
+        requests:
+          storage: 1Gi
+</code></pre>
+<p>Il faut modifier le lien d'accès car le load balancer ne fonctionne plus. On doit pointer vers <code>pod.service</code> au lieu de <code>service</code>.</p>
+<h3>CronJob</h3>
+<p>Ressource qui permet de faire des jobs en fond à intervalle régulier.</p>
+<h3>Operators</h3>
+<p>Cela correspond à une resource personalisée. On peut le faire grâce à une <em>Custom Resource Definition</em>.</p>
+<h3>Helm</h3>
+<p>Helm est le &quot;package manager&quot; de Kubernetes. Il permet de faire des templates de toutes les ressources yaml d’une application donnée et les déployer sur Kubernetes. On peut déployer des stacks applicatives directement.</p>
+<p>La stack applicative s'appelle une <strong>Chart Helm</strong>. On utilise les <em>values</em> pour faire des <em>templates</em> helm. On peut utiliser un système de variables grâce à _templates/<em>helpers.tpl</em> (il s'agit de templates Go).</p>
+<h3>Argo CD</h3>
+<p>Permet de faire du <em>GitOps</em> en faisant le lien entre l'<em>Infra-As-Code</em> et l'<em>Infrastructure</em>.</p>
+<h3>Cheatsheet</h3>
+<ul>
+<li>
+<p><code>kubectl</code>:</p>
+<ul>
+<li><code>config</code>: permet modifier et de visualiser la configuration.
+<ul>
+<li><code>view</code>: affiche la configuration</li>
+<li><code>current-context</code>: affiche le contexte courant</li>
+</ul>
+</li>
+<li><code>get</code>:
+<ul>
+<li><code>pods</code>:
+<ul>
+<li><code>&lt;name&gt;</code>: permet d'afficher un pod en particulier</li>
+<li><code>-n &lt;namespace&gt;</code>: afficher les pods gérés dans le contexte courant</li>
+</ul>
+</li>
+<li><code>replicasets</code>: affiche les replicaSet disponible</li>
+<li><code>deployements</code>: affiche les deployements</li>
+<li><code>secrets</code>: permet de récupérer les secrets</li>
+<li><code>all</code>: affiche tout</li>
+</ul>
+</li>
+<li><code>apply</code>: appliquer une spécification yaml sur un cluster et mettre à jour les changements
+<ul>
+<li><code>-f &lt;yaml spec&gt;</code>: utiliser une specification yaml</li>
+</ul>
+</li>
+<li><code>create</code>: créer une ressource
+<ul>
+<li><code>-f &lt;yaml spec&gt;</code>: utiliser une specification</li>
+<li><code>-o yaml</code>: permet d'export au format yaml</li>
+<li><code>--dry-run=client</code>: peut être combiner avec <code>-o</code> pour produire les yaml en sortie.</li>
+<li><code>secret</code>: permet de faire des secrets
+<ul>
+<li><code>docker-registry</code>: type de secret spécial pour les registry
+<ul>
+<li><code>&lt;secret name&gt;</code>:</li>
+<li><code>--docker-server=&lt;registry.gitlab.com&gt;</code>: l'adresse du registry</li>
+<li><code>--docker-username=&lt;readregcred&gt;</code>: le username du registry</li>
+<li><code>--docker-password=&lt;mdp&gt;</code>: le mot de passe du registry</li>
+</ul>
+</li>
+<li><code>generic</code>:
+<ul>
+<li><code>&lt;secret name&gt;</code></li>
+<li><code>--from-literal=key=value</code>: créer un secret à partir du key/value</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>run</code>: start a container
+<ul>
+<li><code>&lt;pod name&gt;</code>: the name of the pod</li>
+<li><code>--image &lt;image docker&gt;</code>: image à consommer</li>
+</ul>
+</li>
+<li><code>delete</code>: suppression d'un pod
+<ul>
+<li><code>pods</code>
+<ul>
+<li><code>&lt;pod name&gt;</code>: nom du pod à supprimer</li>
+</ul>
+</li>
+<li><code>replicasets</code>:
+<ul>
+<li><code>&lt;replica name&gt;</code>: nom du replicaSet à supprimer</li>
+</ul>
+</li>
+<li><code>deployements</code>:
+<ul>
+<li><code>&lt;deployement name&gt;</code>: nom du deployement</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>exec</code>: executer une commande sur un <em>pod</em>
+<ul>
+<li><code>&lt;pod name&gt;</code>: le nom du pod</li>
+<li><code>-it &lt;cmdline&gt;</code>: executer une commande en particulier</li>
+</ul>
+</li>
+<li><code>logs</code>: afficher les logs d'un pod
+<ul>
+<li><code>&lt;pod name&gt;</code>: le nom du pod</li>
+<li><code>-f</code>: suivre les logs</li>
+</ul>
+</li>
+<li><code>set</code>:
+<ul>
+<li><code>&lt;deployement spec&gt;</code>: ressource à modifier</li>
+<li><code>image</code>: modification sur l'image</li>
+</ul>
+</li>
+<li><code>describe</code>: decrit la configuration
+<ul>
+<li><code>deployements</code>: pour les déployements</li>
+<li><code>hpa</code>: horizontal scale</li>
+</ul>
+</li>
+<li><code>edit</code>:
+<ul>
+<li><code>&lt;deployement name&gt;</code>: the name of the deployement to edit</li>
+</ul>
+</li>
+<li><code>rollout</code>:
+<ul>
+<li><code>status</code>:
+<ul>
+<li><code>deployment/&lt;name&gt;</code></li>
+</ul>
+</li>
+<li><code>history</code>: affiche l'historique des versions
+<ul>
+<li><code>deployment/&lt;name&gt;</code></li>
+<li><code>--revision=&lt;number&gt;</code>: afficher une révision en particulier</li>
+</ul>
+</li>
+<li>`pause:
+<ul>
+<li><code>deployement/&lt;name&gt;</code>: met le déploiement en pause</li>
+</ul>
+</li>
+<li><code>resume</code>:
+<ul>
+<li><code>deployement/&lt;name&gt;</code>: relance un déploiement mis en pause</li>
+</ul>
+</li>
+<li><code>undo</code>:
+<ul>
+<li><code>deployment/&lt;name&gt;</code></li>
+<li><code>--to-revision=&lt;number&gt;</code>: revient à une révision en particulier. Si non spécifié, revient à la version précédente.</li>
+</ul>
+</li>
+<li><code>restart</code>: restart something</li>
+</ul>
+</li>
+<li><code>scale</code>:
+<ul>
+<li><code>&lt;deployement name&gt;</code>: nom du deploiement</li>
+<li><code>--replicas=&lt;number&gt;</code>: changer le nombre de replica.</li>
+</ul>
+</li>
+<li><code>top</code>: affiche les ressources
+<ul>
+<li><code>pod</code>:
+<ul>
+<li><code>&lt;pod name&gt;</code>: affiche les ressources du pod en question.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>api-resources</code>: affiche toutes les resources utilisables par l'api</li>
+<li><code>autoscale</code>: permettre d'autoscale
+<ul>
+<li><code>deployment</code>: type sur lequel ça s'applique
+<ul>
+<li><code>&lt;name&gt;</code>: le nom</li>
+<li><code>--cpu-percent=50</code>: condition pour laquelle le CPU spawn un nouveau</li>
+<li><code>--min=1</code>: minimum pods</li>
+<li><code>--max=10</code>: maximum pods</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>helm</code>:</p>
+<ul>
+<li><code>template</code>: genère le template
+<ul>
+<li><code>--values | -f</code>: le fichier <em>values</em> utiliser. Ils sont lus dans l'ordre et s'il y a plusieurs fichiers, ils sont merged.</li>
+<li><code>--output-dir &lt;dir&gt;</code>: export les templates vers un dossier spécifique.</li>
+</ul>
+</li>
+<li><code>install</code>: permet de créer le fichier et de déployer les resources.
+<ul>
+<li><code>--dry-run</code>: n'effectue pas les actions.</li>
+<li><code>--debug</code>: affiche les actions effectuées.</li>
+<li>1.<code>&lt;name&gt;</code>: spécifie le nom.</li>
+<li>2.<code>&lt;dir&gt;</code>: spécifie le dossier où il y a les templates.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>argocd</code>:</p>
+<ul>
+<li><code>cluster</code>: work on the cluster
+<ul>
+<li><code>add</code>: ajouter
+<code>service-account@cluster-host</code>:  le cluster en question</li>
+</ul>
+</li>
+<li><code>proj</code>:
+<ul>
+<li><code>create</code>:
+<ul>
+<li><code>&lt;proj name&gt;</code>: ensemble d'applicatif</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>create</code>:
+<ul>
+<li><code>&lt;appname&gt;</code>: lien entre <code>helm</code> et son <code>values</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+</main>
+
+    <footer class="container">
+        <hr />
+        <p> Website written proudly with <a href="https://gitlab.com/funkywork/yocaml">Yocaml</a> ♡ This site is part of
+            the
+            <a href="https://ring.muhokama.fun">Muhokama ring</a>
+            (<a href="https://ring.muhokama.fun/u/maiste/pred">Previous</a> - <a
+                href="https://ring.muhokama.fun/u/maiste/succ">Next</a>)
+        </p>
+        <p><a href="https://maiste.fr">Content under this website</a> is written by Etienne "Maiste" Marais and is
+            licensed
+            under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1">CC BY-NC 4.0</a></p>
+    </footer>
+
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Maiste.fr</title>
+    <link href="/static/css/main.css" rel="stylesheet" />
+    <link rel="me" href="https://fosstodon.org/@maiste" />
+
+    <!-- FIXME: replace me with a local version of the fonts i.e. NO GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!-- FIXME: replace me with local version of the css + script load from local. -->
+    <link href="/static/css/code.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+
+<body>
+    <!-- Umami -->
+    <script defer src="https://analytics.maiste.fr/script.js"
+        data-website-id="b1e6219d-8044-47d9-9e91-44db862e2732"></script>
+    <!-- End Umami Code -->
+
+    <header class="container">
+        <nav>
+            <h2><a href="/">Maiste</a></h2>
+            <ul>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/wiki">Wiki</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <hr />
+    </header>
+    <main class="container"><h1>NeoVIM</h1>
+<div class="metadata"><p>description: Stuffs about (Neo)Vim.</p><p>lang: ENG
+    </p>
+</div>
+<p><h2>Shortcuts</h2>
+<ul>
+<li><kbd>space</kbd>: Leader key</li>
+<li><kbd>jk</kbd> / <kbd>kj</kbd> : Exit mode</li>
+</ul>
+<h3>Par défaut</h3>
+<ul>
+<li><kbd>Ctrl</kbd> + <kbd>direction</kbd> : Change windows</li>
+<li><kbd>Shift</kbd> + <kbd>direction</kbd> : Change dimensions</li>
+<li><kbd>TAB</kbd> : Change buffer</li>
+<li><kbd>Shift</kbd> + <kbd>TAB</kbd> : Change buffer from back</li>
+<li><kbd>leader</kbd> + <kbd>bd</kbd> : Delete buffer</li>
+<li><kbd>leader</kbd> + <kbd>ss</kbd> : Stop research</li>
+<li><kbd>Ctrl</kbd> + <kbd>a</kbd> : Decrement a number</li>
+<li><kbd>Ctrl</kbd> + <kbd>x</kbd> : Increment a number</li>
+<li><kbd>Ctrl</kbd> + <kbd>o</kbd> : Go to the previous point before jump</li>
+<li><kbd>Ctrl</kbd> + <kbd>i</kbd> : Go to the next point before jump</li>
+<li><kbd>Ctrl</kbd> + <kbd>e</kbd> : Scroll up</li>
+<li><kbd>Ctrl</kbd> + <kbd>y</kbd> : Scroll down</li>
+<li>Macros:
+<ul>
+<li><kbd>q</kbd>&lt;name&gt;&lt;macro&gt;<kbd>q</kbd> =&gt; record</li>
+<li>&lt;nombre&gt;<kbd>@</kbd>&lt;name&gt; =&gt; call</li>
+</ul>
+</li>
+</ul>
+<h3>Vim-surrounding</h3>
+<ul>
+<li><kbd>cs</kbd>&lt;symbole&gt;&lt;new symbole&gt; =&gt; Change surrounding</li>
+<li><kbd>ds</kbd>&lt;symbole&gt;              =&gt; Delete surrounding</li>
+<li><kbd>ys</kbd> =&gt; you surround
+<ul>
+<li><kbd>ysiw</kbd>&lt;symbole&gt;  =&gt; Surround word</li>
+<li><kbd>yss</kbd>&lt;symbole&gt;   =&gt; Surround line</li>
+</ul>
+</li>
+<li><strong>VISUAL</strong>:
+<ul>
+<li><kbd>S</kbd>&lt;symbole&gt; =&gt; Surround selection</li>
+</ul>
+</li>
+</ul>
+<h3>Nerdcommenter</h3>
+<ul>
+<li><kbd>leader</kbd> + <kbd>cc</kbd> : Comment</li>
+<li><kbd>leader</kbd> + <kbd>ci</kbd> : Inverse comment / uncomment</li>
+</ul>
+<h3>Telescope</h3>
+<ul>
+<li><kbd>leader</kbd> + <kbd>ff</kbd> : Walk through git files</li>
+<li><kbd>leader</kbd> + <kbd>fg</kbd> : Walk through code</li>
+<li><kbd>leader</kbd> + <kbd>b</kbd> : Walk through buffers</li>
+</ul>
+<h2>Completion</h2>
+<p><strong>TODO</strong></p>
+<h3>LSP</h3>
+<ul>
+<li><kbd>leader</kbd> + <kbd>ld</kbd> =&gt; Go to definitions</li>
+<li><kbd>leader</kbd> + <kbd>lr</kbd> =&gt; Rename</li>
+<li><kbd>leader</kbd> + <kbd>lf</kbd> =&gt; Format</li>
+<li><kbd>leader</kbd> + <kbd>lt</kbd> =&gt; Go to type definition</li>
+<li><kbd>leader</kbd> + <kbd>lx</kbd> =&gt; Go to the reference</li>
+<li><kbd>leader</kbd> + <kbd>la</kbd> =&gt; Change workspace</li>
+<li><kbd>leader</kbd> + <kbd>lc</kbd> =&gt; Completion</li>
+<li><kbd>leader</kbd> + <kbd>lh</kbd> =&gt; Object informations</li>
+<li><kbd>leader</kbd> + <kbd>ls</kbd> =&gt; Document symbols</li>
+<li><kbd>leader</kbd> + <kbd>lm</kbd> =&gt; Display menu</li>
+</ul>
+<h3>Mardown</h3>
+<ul>
+<li><kbd>leader</kbd> + <kbd>wp</kbd> =&gt; Show markdown</li>
+<li>Format paragraphs:
+<ul>
+<li><kbd>v</kbd> (and selection) + <kbd>gw</kbd>: unify size for line (old version)</li>
+</ul>
+<ul>
+<li><kbd>v</kbd> (and selection) + <kbd>gq</kbd>: unify size for line (old version of Neovim)</li>
+</ul>
+</li>
+</ul>
+<h2>Resources</h2>
+<ul>
+<li><a href="https://catonmat.net/top-10-vim-shortcuts">10 VIim shortcuts</a> (TO TRANSLATE)</li>
+<li><a href="https://thevaluable.dev/vim-advanced/">Vim-advanced</a> (TO TRANSLATE)</li>
+</ul>
+</p>
+</main>
+
+    <footer class="container">
+        <hr />
+        <p> Website written proudly with <a href="https://gitlab.com/funkywork/yocaml">Yocaml</a> ♡ This site is part of
+            the
+            <a href="https://ring.muhokama.fun">Muhokama ring</a>
+            (<a href="https://ring.muhokama.fun/u/maiste/pred">Previous</a> - <a
+                href="https://ring.muhokama.fun/u/maiste/succ">Next</a>)
+        </p>
+        <p><a href="https://maiste.fr">Content under this website</a> is written by Etienne "Maiste" Marais and is
+            licensed
+            under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1">CC BY-NC 4.0</a></p>
+    </footer>
+
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>

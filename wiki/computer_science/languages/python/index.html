@@ -36,33 +36,31 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1>Section Wiki</h1>
-<ul class="index"><li>
-        <h3> - <a href="/wiki/books/index.html">Books</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/computer_science/index.html">Computer Science</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/cooking/index.html">Cooking</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/diy/index.html">Diy</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/humans/index.html">Humans</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    </ul>
+    <main class="container"><h1>Python</h1>
+<div class="metadata"><p>description: The Python Programming Language</p><p>lang: ENG
+    </p>
+</div>
+<p><h2>Execute shell command</h2>
+<pre><code class="language-python">from subprocess import run, CalledProcessError
+  try:
+    run([&quot;echo&quot;, [&quot;...&quot;]], capture_output=True, text=True, check=True, shell=True)
+  except CalledProcessError as error:
+	pass
+</code></pre>
+<ul>
+<li>The first argument is a <code>list[str]</code> with argument separated. <code>shlex.split(&quot;my cmd&quot;)</code> can be used to get the array. If it's used with the <code>shell=True</code>, the argument <strong>must</strong> be <code>[&quot;all you command in one place&quot;]</code>.</li>
+<li><code>capture_output=True</code> asks to get the output</li>
+<li><code>text=True</code> requires the stdout &amp; stderr to be <code>str</code></li>
+<li><code>shell=True</code> execute the command as a shell command. Use with <strong>cautious</strong> and not when using external inputs!</li>
+</ul>
+<hr />
+<h2>Good libraries</h2>
+<ul>
+<li>Rich: library to create a format text into the terminal</li>
+<li>Mkdocs: create a documentation</li>
+<li>Xml2rfc: transform an xml document into an rfc format, see <a href="https://xml2rfc.tools.ietf.org/xml2rfc-doc.html">docs</a> and <a href="https://xml2rfc.tools.ietf.org/authoring/draft-mrose-writing-rfcs.html">writting</a></li>
+</ul>
+</p>
 </main>
 
     <footer class="container">

@@ -36,33 +36,75 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1>Section Wiki</h1>
-<ul class="index"><li>
-        <h3> - <a href="/wiki/books/index.html">Books</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/computer_science/index.html">Computer Science</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/cooking/index.html">Cooking</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/diy/index.html">Diy</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/humans/index.html">Humans</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    </ul>
+    <main class="container"><h1>CSS</h1>
+<div class="metadata"><p>description: About css.</p><p>lang: ENG
+    </p>
+</div>
+<p><h1>Flexbox</h1>
+<h2>Resources</h2>
+<p>A way to organize items as movable elements in CSS.</p>
+<ul>
+<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">Guide</a></li>
+</ul>
+<h1>Grid</h1>
+<h2>Center elements</h2>
+<pre><code class="language-css">display: grid;
+place-items: center;
+</code></pre>
+<h2>Resources</h2>
+<p>A way to organize items in Css as grids</p>
+<ul>
+<li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/">Guide</a></li>
+</ul>
+<h1>Fonts</h1>
+<h2>Resources</h2>
+<ul>
+<li><a href="https://fonts.google.com">Google fonts</a></li>
+</ul>
+<h1>Charts</h1>
+<h2>Resources</h2>
+<ul>
+<li><a href="https://chartscss.org/">Charts.css</a></li>
+</ul>
+<h1>Custom components</h1>
+<h2>Create a homemade radio button</h2>
+<ul>
+<li>Thanks Pierre-Louis for the trick:</li>
+</ul>
+<pre><code class="language-html">      &lt;label class=&quot;order-radio selected&quot;&gt;
+        &lt;div class=&quot;circle selected&quot;&gt;
+          &lt;div class=&quot;inside-circle&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;input type=&quot;radio&quot; checked=&quot;true&quot; name=&quot;radio&quot; /&gt;
+        &lt;p&gt;Livraison gratuite (5 jours ouvrés)&lt;/p&gt;
+      &lt;/label&gt;
+</code></pre>
+<pre><code class="language-css">  .circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+    background: #aaaaaa;
+
+    display: grid;
+    place-items: center;
+  }
+
+  .inside-circle {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+
+    background-color: white;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+  }
+</code></pre>
+<h1>Resources</h1>
+<ul>
+<li><a href="https://ishadeed.com/article/defensive-css/">Defensive CSS</a>: protect yourself against bad CSS behaviour</li>
+<li><a href="https://anthonyhobday.com/sideprojects/saferules/">Visual Design Rules</a></li>
+</ul>
+</p>
 </main>
 
     <footer class="container">

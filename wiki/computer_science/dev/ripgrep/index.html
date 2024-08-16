@@ -36,33 +36,29 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1>Section Wiki</h1>
-<ul class="index"><li>
-        <h3> - <a href="/wiki/books/index.html">Books</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/computer_science/index.html">Computer Science</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/cooking/index.html">Cooking</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/diy/index.html">Diy</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/humans/index.html">Humans</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    </ul>
+    <main class="container"><h1>Ripgrep</h1>
+<div class="metadata"><p>description: Commandline tool rg</p><p>lang: ENG
+    </p>
+</div>
+<p><h2>Find a pattern in files</h2>
+<pre><code class="language-sh">  $ rg &lt;pattern&gt;
+</code></pre>
+<h2>List files according to pattern</h2>
+<pre><code class="language-sh">  $ rg -l &lt;pattern&gt;
+</code></pre>
+<h2>Find a word in files</h2>
+<pre><code class="language-sh">  $ rg -w &lt;word&gt;
+</code></pre>
+<h2>Find a pattern in files but restrict the file format</h2>
+<pre><code class="language-sh">  $ rg -t [ python | c | yaml | json | .. ] &lt;pattern&gt;
+</code></pre>
+<h2>Find the number of occurences of a pattern by file</h2>
+<pre><code class="language-sh">  $ rg -c &lt;pattern&gt;
+</code></pre>
+<h2>Print the files that doesn't match the expression</h2>
+<pre><code class="language-sh">$ rg --files-without-match &lt;pattern&gt;
+</code></pre>
+</p>
 </main>
 
     <footer class="container">

@@ -36,33 +36,39 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1>Section Wiki</h1>
-<ul class="index"><li>
-        <h3> - <a href="/wiki/books/index.html">Books</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/computer_science/index.html">Computer Science</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/cooking/index.html">Cooking</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/diy/index.html">Diy</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/humans/index.html">Humans</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    </ul>
+    <main class="container"><h1>TypeScript</h1>
+<div class="metadata"><p>description: Typed JavaScript</p><p>lang: ENG
+    </p>
+</div>
+<p><h2>Rest Parameters &amp; Spread syntax</h2>
+<p>You can copy an object by doing:</p>
+<pre><code class="language-ts">const object = { /* Whatever */ };
+const copye = { ...object };
+</code></pre>
+<p>To get a part of your object you can do:</p>
+<pre><code class="language-ts">const object : MyObject = 
+	  {
+		  stuff: string,
+		  otherStuff: string,
+		  other: /* Whatever */
+	  };
+
+function doStuff({
+	stuff,
+	...rest
+}: MyObject) {
+	console.log(stuff);
+	return { ...rest }; /* Contains otherStuff and other */
+}
+</code></pre>
+<h3>Resources</h3>
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/understanding-destructuring-rest-parameters-and-spread-syntax-in-javascript">Digital Ocean</a></li>
+</ul>
+<h2>TS Config</h2>
+<h3>Resources</h3>
+<p>-<a href="https://www.totaltypescript.com/tsconfig-cheat-sheet">TS Config Cheat Sheet</a></p>
+</p>
 </main>
 
     <footer class="container">

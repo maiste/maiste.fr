@@ -36,33 +36,37 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1>Section Wiki</h1>
-<ul class="index"><li>
-        <h3> - <a href="/wiki/books/index.html">Books</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/computer_science/index.html">Computer Science</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/cooking/index.html">Cooking</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/diy/index.html">Diy</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/humans/index.html">Humans</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    </ul>
+    <main class="container"><h1>Tar</h1>
+<div class="metadata"><p>description: An archive system</p><p>lang: ENG
+    </p>
+</div>
+<p><h2>Create an archive</h2>
+<pre><code class="language-sh"> tar cf &lt;name&gt;.tar [objs]
+</code></pre>
+<h2>Extract an archive</h2>
+<pre><code class="language-sh">  tar xf &lt;name&gt;.tar
+</code></pre>
+<hr />
+<h2>Create a gzip archive</h2>
+<pre><code class="language-sh">  tar czf &lt;name&gt;.tgz [objs]
+</code></pre>
+<h2>Extract a gzip archive</h2>
+<pre><code class="language-sh">  tar xzf &lt;name&gt;.tgz
+</code></pre>
+<h2>Activate verbose mode</h2>
+<pre><code class="language-sh"> tar v [cmd]
+</code></pre>
+<h2>Extract on flight an archive with http</h2>
+<pre><code class="language-sh">  wget -c http[s]://host/path/to/file.tgz -O - | tar -xz
+</code></pre>
+<hr />
+<h2>Encrypt tar with GPG</h2>
+<pre><code class="language-sh">  tar czpvf - &lt;name&gt; | gpg -c [--batch --yes --passphrase &lt;password&gt;] --cipher-algo aes256 -o &lt;name&gt;.gz.gpg
+</code></pre>
+<h2>Decrypt tar with GPG</h2>
+<pre><code class="language-sh">  gpg -d [--batch --yes --passphrase azerty12] &lt;tar file&gt; | tar xzvf -
+</code></pre>
+</p>
 </main>
 
     <footer class="container">

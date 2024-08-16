@@ -36,33 +36,24 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1>Section Wiki</h1>
-<ul class="index"><li>
-        <h3> - <a href="/wiki/books/index.html">Books</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/computer_science/index.html">Computer Science</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/cooking/index.html">Cooking</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/diy/index.html">Diy</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/humans/index.html">Humans</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    </ul>
+    <main class="container"><h1>Printer Management</h1>
+<div class="metadata"><p>description: How to configure a printer</p><p>lang: ENG
+    </p>
+</div>
+<p><h2>HP</h2>
+<ol>
+<li>Install the packages <code>cups</code> and <code>hplip</code></li>
+<li>Execute the following command:</li>
+</ol>
+<pre><code class="language-sh">ping &lt;printer_ip&gt;
+hp-makeuri &lt;printer_ip&gt;
+</code></pre>
+<ol start="3">
+<li>Copy the given URI</li>
+<li>Open the <a href="http://localhost:631">CUPS interface</a>.</li>
+<li>Add a new printer and paste the previous URL.</li>
+</ol>
+</p>
 </main>
 
     <footer class="container">

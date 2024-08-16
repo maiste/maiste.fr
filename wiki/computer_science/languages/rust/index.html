@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Maiste.fr</title>
+    <link href="/static/css/main.css" rel="stylesheet" />
+    <link rel="me" href="https://fosstodon.org/@maiste" />
+
+    <!-- FIXME: replace me with a local version of the fonts i.e. NO GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!-- FIXME: replace me with local version of the css + script load from local. -->
+    <link href="/static/css/code.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+
+<body>
+    <!-- Umami -->
+    <script defer src="https://analytics.maiste.fr/script.js"
+        data-website-id="b1e6219d-8044-47d9-9e91-44db862e2732"></script>
+    <!-- End Umami Code -->
+
+    <header class="container">
+        <nav>
+            <h2><a href="/">Maiste</a></h2>
+            <ul>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/wiki">Wiki</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <hr />
+    </header>
+    <main class="container"><h1>Rust</h1>
+<div class="metadata"><p>description: Rust Programming Language - Low level language</p><p>lang: ENG
+    </p>
+</div>
+<p><h2>Basics</h2>
+<ul>
+<li><code>std</code> is the standard <code>rust</code> library.</li>
+<li>Libraries brought into the scope by <code>rust</code> from the <code>std</code> library are called <em>the prelude</em>.</li>
+<li><em>Statements</em> are instructions that perform some action and do not return a value.</li>
+<li><em>Expressions</em> evaluate to a resultant value. They don't end with a <em>semicolon</em>.</li>
+</ul>
+<h2>Syntax</h2>
+<h3>Comments</h3>
+<ul>
+<li>They are always the same:</li>
+</ul>
+<pre><code class="language-rust">// Rust use only the one line comment
+// so you don't have to worry about various
+// styles!
+</code></pre>
+<h3>Main</h3>
+<ul>
+<li>This is how you start a rust program:</li>
+</ul>
+<pre><code class="language-rust">fn main() {
+    // Program
+}
+</code></pre>
+<h3>Imports</h3>
+<ul>
+<li>Bring some library into the scope:</li>
+</ul>
+<pre><code class="language-rust">use std::io;
+</code></pre>
+<h3>Constants and variables</h3>
+<ul>
+<li>Immutable variable:</li>
+</ul>
+<pre><code class="language-rust">let x = 5;
+let x = 6;
+// Forbidden: x = 6
+</code></pre>
+<ul>
+<li>Mutable variable:</li>
+</ul>
+<pre><code class="language-rust">let mut x = 5;
+x = 6;
+</code></pre>
+<ul>
+<li>Constants:</li>
+</ul>
+<pre><code class="language-rust">const I_AM_A_CONSTANT: u32 = 42;
+</code></pre>
+<h3>Tuples</h3>
+<pre><code class="language-rust">let tuple: (i32, f32, bool, char) = (500, 6.4, true, 'a');
+let (i,f,b,c) = tuple; // Deconstruction
+let f = tuple.1; // Field access
+</code></pre>
+<h3>Arrays</h3>
+<pre><code class="language-rust">let x = [1,2,3,4,4];
+let x: [i32; 5] = [1,2,3,4,4];
+let x = [4; 5]; // = [4, 4, 4, 4, 4];
+let first = x[0];
+</code></pre>
+<h3>Functions</h3>
+<pre><code class="language-rust">fn function_name(arg: i32) -&gt; i32 {
+    return arg + 2;
+}
+</code></pre>
+<h3>Printing</h3>
+<ul>
+<li>We can print value using <code>println!</code> placeholders:</li>
+</ul>
+<pre><code class="language-rust">let x = 1;
+let y = 2;
+
+println!(&quot;x = {x}, y = {}&quot;, y);
+</code></pre>
+<h3>Pattern matching</h3>
+<pre><code class="language-rust">let x = match res {
+    Ok(num) =&gt; num,
+    Err(_) =&gt; continue,
+}
+</code></pre>
+<h3>If-then-else</h3>
+<ul>
+<li><code>if-then-else</code> acts like a variable and can be consume by a variable or as a return expression from a function.</li>
+</ul>
+<pre><code class="language-rust">if boolean_expression {
+    // Case one!
+} else if another_expression {
+    // Another case!
+} else {
+    // Final case!
+}
+</code></pre>
+<h3>Loop</h3>
+<ul>
+<li><em>Infinity loop</em>:</li>
+</ul>
+<pre><code class="language-rust">loop {
+    // Need a break; to leave this loop.
+}
+</code></pre>
+<ul>
+<li><em>Infinite loop</em> with return result:</li>
+</ul>
+<pre><code class="language-rust">let mut counter = 0;
+let result = loop {
+    counter += 1;
+    if counter == 10 {
+        break counter * 2;
+    }
+};
+</code></pre>
+<ul>
+<li>Loop <em>label</em>:</li>
+</ul>
+<pre><code class="language-rust">'label: loop {
+    break 'label;
+}
+</code></pre>
+<ul>
+<li><em>While</em> loop:</li>
+</ul>
+<pre><code class="language-rust">let mut number = 10;
+while number != 0 {
+    number -= 1;
+}
+</code></pre>
+<ul>
+<li><em>For</em> loop:</li>
+</ul>
+<pre><code class="language-rust">for element in collection {
+    // Do something.
+}
+</code></pre>
+<pre><code class="language-rust">for number in (0..4) {
+    // Do something too.
+}
+</code></pre>
+<h2>Cmdline</h2>
+<h3>Rustc</h3>
+<ul>
+<li>To compile a code, just run:</li>
+</ul>
+<pre><code class="language-sh">rustc file.rs
+./file
+</code></pre>
+<h3>Cargo</h3>
+<h4>Create a new project</h4>
+<pre><code class="language-sh">cargo new &lt;project_name&gt;
+</code></pre>
+<h4>Build a project</h4>
+<pre><code class="language-sh">cargo build
+</code></pre>
+<h4>Build and run a project</h4>
+<pre><code class="language-sh">cargo run
+</code></pre>
+<h4>Check the code is correct</h4>
+<pre><code class="language-sh">cargo check
+</code></pre>
+<h2>Resources</h2>
+<h3>Library docs</h3>
+<ul>
+<li><a href="https://doc.rust-lang.org/stable/std/prelude/index.html">Rust Prelude</a></li>
+</ul>
+<h3>Learning</h3>
+<ul>
+<li><a href="https://doc.rust-lang.org/stable/book">Rust Book</a></li>
+</ul>
+</p>
+</main>
+
+    <footer class="container">
+        <hr />
+        <p> Website written proudly with <a href="https://gitlab.com/funkywork/yocaml">Yocaml</a> ♡ This site is part of
+            the
+            <a href="https://ring.muhokama.fun">Muhokama ring</a>
+            (<a href="https://ring.muhokama.fun/u/maiste/pred">Previous</a> - <a
+                href="https://ring.muhokama.fun/u/maiste/succ">Next</a>)
+        </p>
+        <p><a href="https://maiste.fr">Content under this website</a> is written by Etienne "Maiste" Marais and is
+            licensed
+            under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1">CC BY-NC 4.0</a></p>
+    </footer>
+
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>

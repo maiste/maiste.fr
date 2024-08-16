@@ -36,33 +36,26 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1>Section Wiki</h1>
-<ul class="index"><li>
-        <h3> - <a href="/wiki/books/index.html">Books</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/computer_science/index.html">Computer Science</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/cooking/index.html">Cooking</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/diy/index.html">Diy</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/humans/index.html">Humans</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    </ul>
+    <main class="container"><h1>UFW</h1>
+<div class="metadata"><p>description: Firewall</p><p>lang: ENG
+    </p>
+</div>
+<p><h2>Description</h2>
+<p><code>ufw</code> is a firewall on top of <code>iptableQ</code></p>
+<h2>Commands</h2>
+<h3>Status</h3>
+<pre><code class="language-sh">ufw status [verbose]
+</code></pre>
+<h3>Enabled</h3>
+<pre><code class="language-sh">ufw enable
+</code></pre>
+<h3>Allow port from anywhere (IPv4-6)</h3>
+<pre><code class="language-sh">ufw allow &lt;PORT&gt;
+</code></pre>
+<h3>Deny incoming by default</h3>
+<pre><code class="language-sh">ufw default deny incoming
+</code></pre>
+</p>
 </main>
 
     <footer class="container">

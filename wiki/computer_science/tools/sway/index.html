@@ -36,33 +36,19 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1>Section Wiki</h1>
-<ul class="index"><li>
-        <h3> - <a href="/wiki/books/index.html">Books</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/computer_science/index.html">Computer Science</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/cooking/index.html">Cooking</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/diy/index.html">Diy</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/humans/index.html">Humans</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    </ul>
+    <main class="container"><h1>Sway</h1>
+<div class="metadata"><p>description: Sway Window Manager</p><p>lang: ENG
+    </p>
+</div>
+<p><h2>GTK App &amp; Desktop slow to start</h2>
+<p>This is issue can be created by <code>xdg-desktop-portal-gnome</code>. One way to fix the problem is to <code>mask</code> the service <em>(symlink point to /dev/null)</em> for <code>systemd</code> as follow:</p>
+<pre><code>systemctl --user mask xdg-desktop-portal-gnome
+</code></pre>
+<h3>Resources</h3>
+<ul>
+<li><a href="https://bbs.archlinux.org/viewtopic.php?id=285590">Bug for xdg-desktop-portal-gnome</a></li>
+</ul>
+</p>
 </main>
 
     <footer class="container">

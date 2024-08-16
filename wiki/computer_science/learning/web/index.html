@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Maiste.fr</title>
+    <link href="/static/css/main.css" rel="stylesheet" />
+    <link rel="me" href="https://fosstodon.org/@maiste" />
+
+    <!-- FIXME: replace me with a local version of the fonts i.e. NO GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!-- FIXME: replace me with local version of the css + script load from local. -->
+    <link href="/static/css/code.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+
+<body>
+    <!-- Umami -->
+    <script defer src="https://analytics.maiste.fr/script.js"
+        data-website-id="b1e6219d-8044-47d9-9e91-44db862e2732"></script>
+    <!-- End Umami Code -->
+
+    <header class="container">
+        <nav>
+            <h2><a href="/">Maiste</a></h2>
+            <ul>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/wiki">Wiki</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <hr />
+    </header>
+    <main class="container"><h1>WebDev - Front</h1>
+<div class="metadata"><p>description: Javascript, Typescript and Co. Messy notes to be split</p><p>lang: FR
+    </p>
+</div>
+<p><h3>Terminologie</h3>
+<ul>
+<li><em>DOM</em>: Document Object Model. Représentation du Document.</li>
+<li><em>Bundler</em>: create a unique file with all the code needed. Avoid dealing with <code>import</code>.</li>
+<li><em>SPA</em>: Single Page Application: the application lives in a single html page.</li>
+<li><em>IIFE</em>:  Immediately Invoked Function Expression i.e ancêtre de <em>ESModule</em></li>
+</ul>
+<h3>NPM</h3>
+<ul>
+<li><code>npm install</code> or <code>: installe le packages spécifié dans le </code>package.json``</li>
+<li><code>npm install -D</code>: installe le package spécifié dans le <code>package.json</code> comme une dépendances dev</li>
+<li><code>npm &lt;script&gt;</code>: run the script specified in the <code>package.json</code></li>
+</ul>
+<h2>Javascript</h2>
+<h3>Pièges</h3>
+<ul>
+<li>Attention au scope de <code>this</code> qui est dans une <code>function() {}</code> car il prend le scope de l'appelant:</li>
+</ul>
+<pre><code class="language-js">class Truc {
+    constructor(this) {
+        this.msg;
+    }
+    print() {
+        setTimeout(function(){
+            console.log(msg);
+        }.bind(thi))
+    }
+ 
+
+    /* Sont équivalents */
+    print() {
+        setTimeout(() =&gt; ){
+            console.log(msg);
+        })
+    }
+}
+</code></pre>
+<h3>Import / export</h3>
+<ul>
+<li><code>export</code> ne peut être utiliser qu'à la racine du fichier.</li>
+<li>On a le <code>default</code> import mais pour permettre le <em>Tree Shaking</em>, on doit utiliser <code>import { X, Y } from &quot;./path&quot;;</code></li>
+</ul>
+<h3>Typescript</h3>
+<h4>Infos</h4>
+<ul>
+<li>Activer les <code>compilerOptions</code> à <code>&quot;strict&quot; : true</code> pour s'assurer qu'il fasse le
+maximum.</li>
+</ul>
+<h4>Types</h4>
+<p>On peut avoir une énumération de string à partir des clefs d'un objet:</p>
+<pre><code class="language-typescript">type Point = {
+    x: number,
+    y: number
+}
+
+// &quot;x&quot; | &quot;y&quot;
+type KeyPoint = keyof Point
+
+// z = &quot;x&quot; ou z = &quot;y&quot;
+function call(z : KeyPoint) {
+    return z;
+}
+</code></pre>
+<h3>Webrowser</h3>
+<ul>
+<li>Utiliser la console pour débugguer, c'est fait pour.</li>
+</ul>
+<h3>Storage</h3>
+<h4>LocalStorage</h4>
+<p>Stockage natif des browser mais n'utilise pas <code>indexedDB</code> donc moins de fonctionnalités.</p>
+<h4>LocalForage</h4>
+<p>Stockage qui repose sur localStorage mais support l'asynchrone.</p>
+<h2>Bundler</h2>
+<ul>
+<li>Il résout les imports en faisant un fichier avec tout !</li>
+<li>Il fonctionne avec <code>require/module.exports</code> et les <code>export/import</code>.</li>
+</ul>
+<h3>Webpack</h3>
+<ul>
+<li>La configuration se fait dans un <code>webpack.config.js</code>. Le fichier produit est dans <code>dist/main.js</code></li>
+<li>Il prend un unique point d'entrée.</li>
+<li>En cas de changement dans le <code>webpack.config.js</code>, il faut restart le serveur.</li>
+</ul>
+<h3>Transpiler</h3>
+<ul>
+<li><code>Babel</code> transpile vers du &quot;vieux&quot; (ES5) Js pour assurer la compatibilité des fonctions JS. <em>Polyfills</em> étends les capacités de &quot;transpilage&quot; de Babel.</li>
+<li><code>Core-js</code> est un <em>Polyfills</em>.</li>
+<li><code>Babel</code> a besoin d'avoir <code>babel-loader</code> pour fonctionner avec <code>webpack</code>.</li>
+</ul>
+<h2>SASS</h2>
+<ul>
+<li>Un <code>css</code> est un <code>sass</code> valide.</li>
+<li>On définit les données partielles dans les fichiers commençant par <code>_name.scss</code>. Il peut ensuite être chargé à un autre endroit via <code>@use &quot;./name&quot;;</code>.</li>
+<li><code>min-heigth: 100vh</code> signifie que le composant prend au moins la taille de la vue. En utilisant un container  <code>flex, column</code> et en assignant &quot;`margin-top: auto&quot;, le composant
+se place en bas.</li>
+</ul>
+<h2>CSS</h2>
+<ul>
+<li>Pour merger facilement les propriétés de tailwind :
+<pre><code class="language-js">import { type ClassValue, clsx } from &quot;clsx&quot;;
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</code></pre>
+</li>
+</ul>
+<h2>Tools</h2>
+<h3>ESLint</h3>
+<ul>
+<li>Avec <code>create-react-app</code>, tout est déjà installer. Il faut juste lancer <code>npm init @eslint/config</code> et ne pas installer les dépendances.</li>
+<li>Il faut ajouter <code>plugin:react/jsx-runtime</code> dans la list <code>extends</code> du <em>.eslintrc.json</em>.</li>
+</ul>
+<h3>Prettier</h3>
+<ul>
+<li>
+<p>On peut l'installer avec: <code>npm install prettier@^version -D --save-exact</code></p>
+</li>
+<li>
+<p><code>npx prettier --check .</code>: permet de vérifier les règles dans le code.</p>
+</li>
+<li>
+<p><code>npx prettier --write .</code>: modifier les fichiers avec le bon formatage.</p>
+</li>
+<li>
+<p><code>npm install --save-dev eslint-config-prettier@^8.5.0</code> permet de partager la config du linter et du formateur</p>
+</li>
+<li>
+<p><code>npm install --save-dev eslint-plugin-prettier@^4.2.1</code> permet d'avoir un plugin de linter pour eslint qui regarde le formatage.</p>
+</li>
+<li>
+<p>Dans ce cas, il faut penser à étendre la configuration <em>.eslintrc.json</em> avec:</p>
+</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;extends&quot;: [
+    &quot;some-other-config-you-use&quot;,
+    &quot;plugin:prettier/recommended&quot;
+  ]
+  ...
+  &quot;plugins&quot;: [..., &quot;prettier&quot;]
+}
+</code></pre>
+<h3>Mrm</h3>
+<ul>
+<li>Permet d'automatiser la configuration des fichiers en se basant sur la configuration présente.</li>
+</ul>
+<h3>Husky</h3>
+<ul>
+<li>Git hooks pour en JS.</li>
+</ul>
+<h2>CJS vs ESM</h2>
+<ul>
+<li>Lire la doc de https://antfu.me/posts/publish-esm-and-cjs</li>
+</ul>
+<h2>Module Bundlers: Webpack</h2>
+<p>Webpack is a module bundler that allows to resolve dependencies to make file exportable via the web.</p>
+<h2>Optimise the code</h2>
+<ul>
+<li><a href="https://www.joshwcomeau.com/performance/embracing-modern-image-formats/">You might not need jQuery</a>: when you can do it in CSS and vanilla JavaScript</li>
+<li><a href="https://www.joshwcomeau.com/performance/embracing-modern-image-formats/">Embracing modern image format</a>: use webP if you can</li>
+</ul>
+</p>
+</main>
+
+    <footer class="container">
+        <hr />
+        <p> Website written proudly with <a href="https://gitlab.com/funkywork/yocaml">Yocaml</a> ♡ This site is part of
+            the
+            <a href="https://ring.muhokama.fun">Muhokama ring</a>
+            (<a href="https://ring.muhokama.fun/u/maiste/pred">Previous</a> - <a
+                href="https://ring.muhokama.fun/u/maiste/succ">Next</a>)
+        </p>
+        <p><a href="https://maiste.fr">Content under this website</a> is written by Etienne "Maiste" Marais and is
+            licensed
+            under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1">CC BY-NC 4.0</a></p>
+    </footer>
+
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>

@@ -36,33 +36,46 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1>Section Wiki</h1>
-<ul class="index"><li>
-        <h3> - <a href="/wiki/books/index.html">Books</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/computer_science/index.html">Computer Science</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/cooking/index.html">Cooking</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/diy/index.html">Diy</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    <li>
-        <h3> - <a href="/wiki/humans/index.html">Humans</a></h3>
-        <div class="metadata">
-        </div>
-    </li>
-    </ul>
+    <main class="container"><h1>Java</h1>
+<div class="metadata"><p>description: Java Programming Language</p><p>lang: FR
+    </p>
+</div>
+<p><h2>Extra</h2>
+<h3>Reified type for function</h3>
+<ul>
+<li>En Java, pour permettre au typeur d'avoir le type on doit normalement faire :</li>
+</ul>
+<pre><code class="language-java">public &lt;T&gt; T function(Class&lt;T&gt; valueType) {
+	// Content
+}
+
+// Call
+Truc t = function(Truc.class) 
+
+</code></pre>
+<ul>
+<li>Une méthode pour pourvoir rendre le typeur heureux sans avoir à passer la classe est d'utiliser les types réifiés qui fonctionnent en Java sur les tableaux (pas les génériques).
+<pre><code class="language-java">public &lt;T&gt; T function(T... reified) {
+ // Content
+}
+// Call
+Truc t = function()
+```
+
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>Source : <a href="https://maciejwalkowiak.com/blog/java-reified-generics/">ici</a></p>
+</blockquote>
+<h2>Spring</h2>
+<h3>Json</h3>
+<ul>
+<li>Pour supporter le nommage en snake case :</li>
+</ul>
+<pre><code class="language-java">@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
+</code></pre>
+</p>
 </main>
 
     <footer class="container">

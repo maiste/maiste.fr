@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Maiste.fr</title>
+    <link href="/static/css/main.css" rel="stylesheet" />
+    <link rel="me" href="https://fosstodon.org/@maiste" />
+
+    <!-- FIXME: replace me with a local version of the fonts i.e. NO GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!-- FIXME: replace me with local version of the css + script load from local. -->
+    <link href="/static/css/code.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+
+<body>
+    <!-- Umami -->
+    <script defer src="https://analytics.maiste.fr/script.js"
+        data-website-id="b1e6219d-8044-47d9-9e91-44db862e2732"></script>
+    <!-- End Umami Code -->
+
+    <header class="container">
+        <nav>
+            <h2><a href="/">Maiste</a></h2>
+            <ul>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/wiki">Wiki</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <hr />
+    </header>
+    <main class="container"><h1>Kotlin</h1>
+<div class="metadata"><p>description: Kotlin Programming Language</p><p>lang: FR
+    </p>
+</div>
+<p><h2>Overview</h2>
+<ul>
+<li>Équivalent de bibliotèques Java:
+<ul>
+<li><code>MockK</code>: Mocking</li>
+<li><code>KtLint</code>: Linter</li>
+<li><code>Koin</code>: injection de dépendances.</li>
+</ul>
+</li>
+</ul>
+<h2>Variables</h2>
+<ul>
+<li>Possède l'inférence de types.</li>
+<li>Déclaration :
+<ul>
+<li><code>val</code> déclare une valeur immutable.</li>
+<li><code>var</code> une valeur mutable.</li>
+</ul>
+</li>
+<li>Pas de getter et de setter</li>
+<li>pas de mot clef <code>static</code>.</li>
+<li>On peut <em>override</em> les <em>getters</em> et les <em>setters</em> (en utilisant le mot clef <code>field</code>):
+<pre><code class="language-kotlin">val truc : Int = 0
+    get() = field + 1
+
+var mutableInt =°
+    set(value) {
+        field = value
+    }
+</code></pre>
+</li>
+<li>On peut définir des constantes avec <code>const</code>.</li>
+<li><code>lateinit var x : Truc</code> permet de choisir la valeur via une méthode.</li>
+<li><em>Null safety</em>:
+<ul>
+<li>Pas de <code>null</code> par défaut.</li>
+<li>On ajoute <code>?</code> pour autoriser le <code>null</code> avec:</li>
+</ul>
+<pre><code class="language-kotlin">var null : String? = null
+</code></pre>
+<ul>
+<li><code>if (b != null) {}</code> pour checker sur les valeurs immutables.</li>
+<li><code>x?.length</code> renvoie <code>null</code> ou la valeur.</li>
+<li><code>val x = l ?: -1</code> renvoie l s'il n'est pas null, -1 sinon.</li>
+<li><code>value!!.length</code> transfort la valeur de gauche en un non-<code>null</code>.</li>
+</ul>
+</li>
+</ul>
+<h2>Méthodes</h2>
+<ul>
+<li>On définit une méthode comme suit:</li>
+</ul>
+<pre><code class="language-kotlin">fun &lt;name&gt;(param : Type, param: Type = &lt;défaut&gt;) : Type {
+
+}
+</code></pre>
+<ul>
+<li>Le type de retour par défaut est <code>Unit</code></li>
+<li>On peut utiliser les paramètres nommées.</li>
+<li>On peut définir des paramètres par défaut.</li>
+<li>On peut faire des méthodes expression et des méthodes infix:</li>
+</ul>
+<pre><code class="language-kotlin">// Expression
+fun plusOne(param : Int) : Int = param + 1
+
+// Infix
+infix fun plusOne(param : Int) : Int = param + 1
+</code></pre>
+<ul>
+<li>On peut étendre des classes avec des nouvelles méthodes :</li>
+</ul>
+<pre><code class="language-kptlin">fun &lt;Class&gt;.method() : String {
+    return &quot;$This?&quot;
+}
+</code></pre>
+<ul>
+<li><code>inline</code> copie le corps de la méthode où il est appelé. Bien pour les <em>getters</em>, les <em>setters</em> et les petites <em>lambdas</em>.</li>
+<li>On peut overloader les opérateurs <code>+</code>, <code>-</code>, <code>*</code> et <code>/</code> avec:</li>
+</ul>
+<pre><code class="language-kotlin">operator fun plus(param : Type) : Type {
+    val newValue = param.value + 1
+    return new Type(newValue)
+}
+</code></pre>
+<ul>
+<li>Utilisation des lambdas :</li>
+</ul>
+<pre><code class="language-kotlin">val x : (t : Type) -&gt; AutreType = { variables -&gt; corps}
+</code></pre>
+<ul>
+<li>On peut faire une lambda sans variable avec <code>{ corps }</code></li>
+</ul>
+<h2>Classe</h2>
+<ul>
+<li>Constructeur par défaut vide ou complet en fonction des paramètres.</li>
+<li>Possible d'ajouter des constructeurs avec :</li>
+</ul>
+<pre><code class="language-kotlin">class Truc(truc : Type) {
+    constructor(param : Int, param2 : Int) : this(Type(param + parm2))
+}
+class Truc(var truc : Type) {
+    // truc est un class field ici.
+}
+</code></pre>
+<ul>
+<li>Par défaut, classes et membres <code>final</code>. Il faut ajouter <code>open</code> pour permettre l'héritage et <code>open</code> sur les méthodes pour permettre l'héritage :</li>
+</ul>
+<pre><code class="language-kotlin">open class C {
+open val myValue = 1
+}
+
+class D : C() {
+    override val myValue = 0
+}
+</code></pre>
+<ul>
+<li>On peut utiliser <code>init { }</code> comme bloc constructeur.</li>
+<li>On peut faire un bloc <code>static</code> en ajoutant soit la valeur au <em>top level</em>, soit un <code>object / companion object { }</code>.</li>
+<li>Le <em>nesting</em> est autorisé.</li>
+<li><code>data class</code> est un équivalent des records.</li>
+<li>Les enumérations sont déclarées avec le mot clef <code>enum class {}</code></li>
+<li><code>object</code> permet de faire des <em>singletons</em>.</li>
+</ul>
+<h2>Flot de contrôle</h2>
+<h3>For</h3>
+<ul>
+<li><code>for (i in start..end)</code></li>
+<li><code>for(i in start until end)</code></li>
+<li><code>for (i in start until end step inc)</code></li>
+<li><code>for (content in data)</code></li>
+<li><code>data.forEach()</code></li>
+</ul>
+<h3>If</h3>
+<ul>
+<li>Fonctionne pour checker <code>null</code>, mais sur les <code>val</code> uniquement.</li>
+<li><code>if'(truc) corps else corpsElse</code> est une expression.</li>
+</ul>
+<h3>When</h3>
+<ul>
+<li>Remplace le mot clef <code>switch</code>.</li>
+<li>Permet de faire du pattern matching :</li>
+</ul>
+<pre><code class="language-kotlin">when(i) {
+    is Int -&gt; truc
+    is String -&gt; truc
+    else -&gt; default case ou {}
+}
+</code></pre>
+<ul>
+<li>Plusieurs mot clefs :</li>
+</ul>
+<pre><code class="language-kotlin">when(i) {
+    0 -&gt; truc
+    1 -&gt; autre truc
+    in start..end -&gt; truc
+    else -&gt; default case
+}
+``
+- Il s'agit d'expression également donc on peut l'assigner.
+</code></pre>
+<h2>Scope functions</h2>
+<ul>
+<li><code>data.let { }</code> permet d'accès à l'objet via le mot clef <code>it</code>. Renvoie le resultat de la lambda.</li>
+<li><code>with(data) { }</code> fait la même chose que <code>let</code> mais référence l'objet avec <code>this</code> et n'est pas une méthode sur un objet. Renvoie le resultat de la lambda.</li>
+<li><code>data.run { }</code> fonctionne pareil que <code>let</code> mais en important l'object comme <code>this</code> et non comme une variable. Renvoie le resultat de la lambda.</li>
+<li><code>data.apply {}</code> prend l'objet et fait la même chose que <code>run</code> avec <code>this</code>. Il renvoie l'objet lui même cependant.</li>
+</ul>
+<h2>Interfaces</h2>
+<ul>
+<li>Permet de définir des valeurs par défaut et <em>getters</em> et <em>setters</em>.</li>
+</ul>
+<pre><code class="language-kotlin">interface Truc {
+    var test  : Int get() = 1
+}
+
+class Bidule : Truc, Truc2 {
+ // corps
+}
+</code></pre>
+<h2>Abstract class</h2>
+<ul>
+<li>À faire.</li>
+</ul>
+<h2>Génériques</h2>
+<ul>
+<li>On peut déclarer des génériques de la même manière que Java</li>
+</ul>
+<pre><code class="language-kotlin">class Truc&lt;T&gt; {
+    // Corps
+}
+</code></pre>
+<ul>
+<li>Kotlin fournit <code>in</code> et <code>out</code> pour spécifier les types d'entrée et de sortie :</li>
+<li><code>out T</code> ne peut qu'être utilisé en sortie.</li>
+</ul>
+<pre><code class="language-kotlin">interface Produce&lt;out T&gt; {
+    fun produce() : T
+}
+</code></pre>
+<ul>
+<li><code>in T</code> ne peut être utilisé qu'en entrée :</li>
+</ul>
+<pre><code class="language-kotlin">interface Consume&lt;in T&gt; {
+    fun consume(t :T)
+}
+</code></pre>
+<ul>
+<li>On peut passer des contraintes comme Java avec <code>&lt;T : Type&gt;</code></li>
+<li>Si on ne connait pas le type que l'on doit créer, on peut passer <code>*</code>.</li>
+<li>On peut utilise <code>reified</code> avec les méthodes <code>inline</code> pour vérifier le type de retour :</li>
+</ul>
+<pre><code class="language-kotlin">inline fun &lt;reified T&gt; method(p : Any) {
+    return p as T
+}
+</code></pre>
+<h2>Type alias</h2>
+<ul>
+<li>Ajoute du sucre syntaxique pour les types avec <code>typealias Truc = Int</code></li>
+</ul>
+<h2>Modifiers</h2>
+<ul>
+<li>Par défaut ce qui est à top level est <code>public</code>.</li>
+<li>On peut ajouter le mot clefs <code>private</code> pour rendre privé à la classe. Attention ce n'est pas accessible depuis les classes mères.</li>
+<li><code>internal</code> est privé au module.</li>
+<li><code>protected</code> authorise aux sous classes aussi.</li>
+</ul>
+<h2>Coroutines</h2>
+<ul>
+<li>Threads légères. Une coroutine est coopérative à la différence d'une thread.</li>
+<li>On peut récupérer le resultat avec <code>Class.async</code>.</li>
+<li>On peut utiliser <code>await()</code> pour avoir le resultat et <code>cancel()</code> pour stopper.</li>
+</ul>
+</p>
+</main>
+
+    <footer class="container">
+        <hr />
+        <p> Website written proudly with <a href="https://gitlab.com/funkywork/yocaml">Yocaml</a> ♡ This site is part of
+            the
+            <a href="https://ring.muhokama.fun">Muhokama ring</a>
+            (<a href="https://ring.muhokama.fun/u/maiste/pred">Previous</a> - <a
+                href="https://ring.muhokama.fun/u/maiste/succ">Next</a>)
+        </p>
+        <p><a href="https://maiste.fr">Content under this website</a> is written by Etienne "Maiste" Marais and is
+            licensed
+            under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1">CC BY-NC 4.0</a></p>
+    </footer>
+
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>

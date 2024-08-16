@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Maiste.fr</title>
+    <link href="/static/css/main.css" rel="stylesheet" />
+    <link rel="me" href="https://fosstodon.org/@maiste" />
+
+    <!-- FIXME: replace me with a local version of the fonts i.e. NO GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!-- FIXME: replace me with local version of the css + script load from local. -->
+    <link href="/static/css/code.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+
+<body>
+    <!-- Umami -->
+    <script defer src="https://analytics.maiste.fr/script.js"
+        data-website-id="b1e6219d-8044-47d9-9e91-44db862e2732"></script>
+    <!-- End Umami Code -->
+
+    <header class="container">
+        <nav>
+            <h2><a href="/">Maiste</a></h2>
+            <ul>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/wiki">Wiki</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <hr />
+    </header>
+    <main class="container"><h1>Svelte</h1>
+<div class="metadata"><p>description: Frontend Javascript &amp; Typescript</p><p>lang: FR
+    </p>
+</div>
+<p><h2>Syntaxe</h2>
+<ul>
+<li>Utilise les extensions <code>.svelte</code>.</li>
+</ul>
+<h3>Variables</h3>
+<ul>
+<li>On ajoute la partie scripting via les balises <code>script</code>.</li>
+<li>On peut appeler les variables en utilisant <code>{var_name}</code>.</li>
+</ul>
+<pre><code class="language-html">&lt;script&gt;
+    let name = &quot;Mon nom&quot;
+&lt;/script&gt;
+
+&lt;h1&gt;Tu es {name}&lt;/h1&gt;
+</code></pre>
+<ul>
+<li>Dans le cas où l'attribut a le même nom que la variable on peut faire un raccourci synthaxique :</li>
+</ul>
+<pre><code class="language-html">&lt;script&gt;
+    let src = &quot;./file.gif&quot;;
+&lt;/script&gt;
+
+&lt;img src={src} /&gt;
+&lt;!-- est équivalent à --&gt;
+&lt;img {src} /&gt;
+</code></pre>
+<ul>
+<li>On peut aussi permettre l'utilisation de code Html <strong>non vérifié</strong>:</li>
+</ul>
+<pre><code class="language-html">&lt;script&gt;
+    let balise = &quot;&lt;strong&gt;Code en gras&lt;/strong&gt;
+&lt;/script&gt;
+
+&lt;p&gt;{@html balise}&lt;/p&gt;
+</code></pre>
+<h3>Style</h3>
+<ul>
+<li>On peut rajouter du style grâce à la balise <code>&lt;style&gt;</code>.</li>
+<li>Ce style ne s'applique qu'au composant associé.</li>
+</ul>
+<pre><code class="language-html">&lt;p&gt;Coucou&lt;/p&gt;
+
+&lt;style&gt;
+    p {
+        background-color: green;
+    }
+&lt;/style&gt;
+</code></pre>
+<h3>Reactivité</h3>
+<ul>
+<li>Quand l'état du composant change, <em>Svelte</em> met automatiquement l'état à jour.</li>
+<li>On peut synchroniser l'état de l'application avec l'état du DOM en réponse à des événements :</li>
+</ul>
+<pre><code class="language-html">&lt;button on:click={increment}&gt;
+	Clicked {count}
+	{count === 1 ? 'time' : 'times'}
+&lt;/button&gt;
+</code></pre>
+<ul>
+<li>L'attribut <code>on:&lt;event&gt;={&lt;function&gt;}</code> permet de spécifier l'événement et la fonction à utiliser.</li>
+<li>On peut ajouter des <em>modifiers</em> avec <code>on:&lt;event&gt;|&lt;modifier&gt;|&lt;modifier&gt;={&lt;function&gt;}</code>. Ils peuvent être :
+<ul>
+<li><code>preventDefault</code> évite le comportement par défaut.</li>
+<li><code>stopPropagation</code> ne propage pas aux autres éléments.</li>
+<li><code>passive</code> améliore le <em>scroll</em>.</li>
+<li><code>nonpassive</code>: <em>set</em> <code>passive</code> à <code>false</code>.</li>
+<li><code>capture</code> lance le handler pendant la phase de <em>capture</em> plutôt que la phase <em>bubbling</em>. Dans les faits inverses le rapport de gestion des événements du haut vers le bas.</li>
+<li><code>once</code> ne lance l'événement qu'une fois.</li>
+<li><code>self</code> ne s'active que si la <em>target</em> de l'<em>event</em> est nous-même.</li>
+<li><code>trusted</code> ne s'active que si les éléments est <em>trusted</em> parce qu'il a été déclenché par un action utilisateur plutôt que du code <em>JavaScript</em>.</li>
+</ul>
+</li>
+<li>On peut avoir des <em>events</em> de composants :
+<ul>
+<li><em>Inner.svelte</em>:</li>
+</ul>
+<pre><code class="language-html">&lt;script&gt;
+    import { createEventDispatcher } from 'svelte';
+
+    const dispatch = createEventDispatcher();
+
+    function sayHello() {
+        dispatch('message', {
+            text: 'Hello!'
+        });
+    }
+&lt;/script&gt;
+
+&lt;button on:click={sayHello}&gt;
+    Click to say hello
+&lt;/button&gt;
+</code></pre>
+<ul>
+<li><em>App.svelte</em>:</li>
+</ul>
+<pre><code class="language-html">&lt;script&gt;
+    import Inner from './Inner.svelte';
+
+    function handleMessage(event) {
+        alert(event.detail.text);
+    }
+&lt;/script&gt;
+
+&lt;Inner on:message={handleMessage} /&gt;
+</code></pre>
+<ul>
+<li>Dans le cas où l'on a des composants avec des événements (du DOM ou générer par l'utilisateur) que l'on veut forward, on peut le passer avec :</li>
+</ul>
+<pre><code class="language-html">&lt;Component on:message /&gt;
+</code></pre>
+</li>
+<li>Pour dire à un composant enfant de mettre à jour la valeur parent, on peut utiliser <code>bind</code> :</li>
+</ul>
+<pre><code class="language-html">&lt;script&gt;
+    let name = &quot;truc&quot;;
+&lt;/script&gt;
+
+&lt;input bind:value={name} /&gt;
+</code></pre>
+<ul>
+<li><code>bind:group={variable}</code> permet de <em>binder</em> plusieurs <em>inputs</em> sur la même variable.</li>
+<li>Un <code>&lt;select&gt;</code> avec <code>multiple</code> permet de faire un <code>bind:value={variable}</code> qui va mettre à jour la valeur comme un tableau.</li>
+<li>Les <em>Reactive declarations</em> permettent à <em>Svelte</em> de recalculer des variables à partir d'autres :</li>
+</ul>
+<pre><code class="language-html">&lt;script&gt;
+    let count = 0;
+    $: doubled = count * 2
+&lt;/script&gt;
+</code></pre>
+<ul>
+<li>Ces <em>Reactive Declarations</em> peuvent être utilisés avec des blocs, des <code>if</code>, etc :</li>
+</ul>
+<pre><code class="language-html">&lt;script&gt;
+$: {
+    // Put something here
+}
+
+$: if (condition) {
+    // Do something!
+} /* else {
+
+} */
+&lt;/script&gt;
+</code></pre>
+<ul>
+<li>La réactivité de <em>Svelte</em> n'est <em>trigger</em> que grâce à des <strong>assignations</strong>. Ce qui veut dire que les méthodes de modifications <strong>en place</strong> ne marchent pas. Il faut faire un réassignation pour que cela soit effectif !</li>
+<li>Pour les objets, il faut que cela soit fait directement sur l'objet qui contient la <strong>propriété</strong>. Cela ne fonctionne pas avec les alias tel que :</li>
+</ul>
+<pre><code class="language-html">&lt;script&gt;
+let foo = obj.foo;
+foo.bar = &quot;bar&quot;; // Don't redraw obj
+&lt;/script&gt;
+</code></pre>
+<h3>Export</h3>
+<ul>
+<li>On peut exporter les propriétés d'un fichier via <code>export</code> et passer en paramêtre :
+<ul>
+<li><em>App.svelte</em>:</li>
+</ul>
+<pre><code class="language-html">    &lt;script&gt;
+        import Nested from './Nested.svelte';
+    &lt;/script&gt;
+
+    &lt;Nested answer={42} /&gt;
+</code></pre>
+<ul>
+<li><em>Nested.svelte</em>:</li>
+</ul>
+<pre><code class="language-html">    &lt;script&gt;
+        export let answer;
+    &lt;/script&gt;
+
+    &lt;p&gt;La réponse est {answer}&lt;/p&gt;
+</code></pre>
+</li>
+<li>On peut définir une valeur par défaut avec :</li>
+</ul>
+<pre><code class="language-html">    &lt;script&gt;
+        export let anwser = &quot;Default value&quot;;
+    &lt;/script&gt;
+</code></pre>
+<ul>
+<li>Dans le cas où les propriétés d'un <strong>objet</strong> sont les mêmes que celles du composant, on peut passer le composant. Pour le cas du <code>Nested</code> au dessus, on pourrait faire :</li>
+</ul>
+<pre><code class="language-html">    const obj = {
+        answer: 42
+    };
+
+    &lt;Nested {...obj} /&gt;
+</code></pre>
+<h3>Structures de contrôles</h3>
+<ul>
+<li>On peut faire des blocs de <code>if</code> :</li>
+</ul>
+<pre><code class="language-html">{#if condition}
+    &lt;!-- Code html --&gt;
+{/if}
+</code></pre>
+<ul>
+<li>Il y a également un bloc <code>else</code> :</li>
+</ul>
+<pre><code class="language-html">{#if condition}
+    &lt;!-- Code html --&gt;
+{:else}
+    &lt;!-- Autre code html --&gt;
+{/if}
+</code></pre>
+<ul>
+<li>Il y a un bloc <code>else-if</code> :</li>
+</ul>
+<pre><code class="language-html">{#if condition}
+    &lt;!-- Code html --&gt;
+{:else if condition}
+    &lt;!-- Code html 2 --&gt;
+{:else}
+    &lt;!-- Code html 3 --&gt;
+{/if}
+
+</code></pre>
+<ul>
+<li>On peut faire des boucles <code>for</code> :</li>
+</ul>
+<pre><code class="language-html">{#each iterables as iterable}
+    &lt;!-- Code html --&gt;
+{/each}
+</code></pre>
+<ul>
+<li>On peut récupérer l'index avec de la boucle <code>for</code> :</li>
+</ul>
+<pre><code class="language-html">{#each iterables as iterable, index}
+    &lt;!-- Code html --&gt;
+{/each}
+</code></pre>
+<ul>
+<li>Dans le cas où l'on manipule des objets complexes, il faut spécifier dans la boucle comment identifier les objets à afficher pour que <em>Svelte</em> sache comment garder le <em>DOM</em> cohérent. Ici, l'attribut est identifié avec son <code>id</code> :</li>
+</ul>
+<pre><code class="language-html">{#each things as thing (thing.id)}
+	&lt;Thing name={thing.name}/&gt;
+{/each}
+</code></pre>
+<h3>Asynchrone</h3>
+<ul>
+<li>On peut faire un bloc <code>async / await</code> :</li>
+</ul>
+<pre><code class="language-html">{#await promise}
+    &lt;!-- Code html d'attente --&gt;
+{:then res}
+    &lt;!-- Code html de résolution --&gt;
+{:catch error}
+    &lt;!-- Code html de gestion d'erreur --&gt;
+{/await}
+</code></pre>
+<ul>
+<li>On peut simplifier ce bloc en cas de besoin:</li>
+</ul>
+<pre><code class="language-html">{#await promise then number}
+    &lt;!-- Code html --&gt;
+{/await}
+</code></pre>
+<h2>Cycle de vie</h2>
+<ul>
+<li><code>onMount</code> correspond au moment où le composant est rendu pour la première fois au niveau du DOM.</li>
+<li><code>beforeUpdate</code> correspond au moment juste avant la mise à jour du DOM.</li>
+<li><code>afterUpdate</code> correspond au moment juste après la synchronisation du DOM.</li>
+<li><code>tick</code> renvoie une <code>Promise</code> qui est appelée quand n'importe quel changement a été appliqué au DOM.</li>
+<li><code>onDestroy</code> correspond au moment où un composant est détruit.</li>
+</ul>
+<h2>Stores</h2>
+<ul>
+<li>On peut créer des stores avec :</li>
+</ul>
+<pre><code class="language-js">import { writable } from 'svelte/store';
+
+export const count = writable(0);
+</code></pre>
+<ul>
+<li>On peut ensuite souscrire aux modifications d'un store :</li>
+</ul>
+<pre><code class="language-js">const unsubscribe = count.subscribe((value) =&gt; {
+    // Action
+})
+</code></pre>
+<ul>
+<li>On peut utiliser le méchanisme d'auto souscription avec :</li>
+</ul>
+<pre><code class="language-html">&lt;script&gt;
+let v = $count
+&lt;/script&gt;
+&lt;!-- Ou dans le HTML --&gt;
+&lt;h1&gt;La valeur est {$count}&lt;/h1&gt;
+</code></pre>
+<ul>
+<li>Un store peut être seulement en lecture seule :</li>
+</ul>
+<pre><code class="language-js">export const time = readable(new Date(), function start(set) {
+	const interval = setInterval(() =&gt; {
+		set(new Date());
+	}, 1000);
+
+	return function stop() {
+		clearInterval(interval);
+	};
+});
+</code></pre>
+<ul>
+<li>On peut utiliser des stores qui fonctionnent à partir d'autres stores :</li>
+</ul>
+<pre><code class="language-js">const start = new Date();
+
+export const elapsed = derived(
+	time,
+	($time) =&gt; Math.round(($time - start) / 1000)
+);
+</code></pre>
+<ul>
+<li>On peut également fabriquer des <em>stores</em> <em>customs</em> :</li>
+</ul>
+<pre><code class="language-js">function createCount() {
+	const { subscribe, set, update } = writable(0);
+
+	return {
+		subscribe,
+		increment: () =&gt; update((n) =&gt; n + 1),
+		decrement: () =&gt; update((n) =&gt; n - 1),
+		reset: () =&gt; set(0)
+	};
+}
+</code></pre>
+<ul>
+<li>Un store peut être associé à une valeur changeante avec <code>bind</code>.</li>
+</ul>
+</p>
+</main>
+
+    <footer class="container">
+        <hr />
+        <p> Website written proudly with <a href="https://gitlab.com/funkywork/yocaml">Yocaml</a> ♡ This site is part of
+            the
+            <a href="https://ring.muhokama.fun">Muhokama ring</a>
+            (<a href="https://ring.muhokama.fun/u/maiste/pred">Previous</a> - <a
+                href="https://ring.muhokama.fun/u/maiste/succ">Next</a>)
+        </p>
+        <p><a href="https://maiste.fr">Content under this website</a> is written by Etienne "Maiste" Marais and is
+            licensed
+            under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1">CC BY-NC 4.0</a></p>
+    </footer>
+
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>

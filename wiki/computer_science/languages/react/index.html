@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Maiste.fr</title>
+    <link href="/static/css/main.css" rel="stylesheet" />
+    <link rel="me" href="https://fosstodon.org/@maiste" />
+
+    <!-- FIXME: replace me with a local version of the fonts i.e. NO GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!-- FIXME: replace me with local version of the css + script load from local. -->
+    <link href="/static/css/code.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+
+<body>
+    <!-- Umami -->
+    <script defer src="https://analytics.maiste.fr/script.js"
+        data-website-id="b1e6219d-8044-47d9-9e91-44db862e2732"></script>
+    <!-- End Umami Code -->
+
+    <header class="container">
+        <nav>
+            <h2><a href="/">Maiste</a></h2>
+            <ul>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/wiki">Wiki</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <hr />
+    </header>
+    <main class="container"><h1>React</h1>
+<div class="metadata"><p>description: Bibliotèque React JS</p><p>lang: FR
+    </p>
+</div>
+<p><h2>Philosophie</h2>
+<h3>Introduction</h3>
+<ul>
+<li>Dev par Facebook en 2013</li>
+<li>JSX (aujourd'hui TSX)</li>
+<li>Approche composant avec une gestion du cycle de vie et des états locaux (states)</li>
+</ul>
+<h3>Version notables</h3>
+<ul>
+<li><code>16.0</code> (2017) -&gt; <code>Fragments</code>, changement dans le cycle de vie, Server Side Rendering</li>
+<li><code>16.3</code> (2018) -&gt; <code>Context API</code></li>
+<li><code>16.8</code> (2019) -&gt; <code>Hooks</code></li>
+<li><code>18</code> (2022) -&gt; <code>Concurrent</code> management</li>
+</ul>
+<h3>Architecture</h3>
+<pre><code class="language-ascii">                        ┌───────────────────┐
+                        │                   │
+                        │  React Component  │
+     Props  ──────────► │                   │ ──────────►   render
+                        │  - State          │
+                        │                   │
+                        └───────────────────┘
+</code></pre>
+<h4>Props</h4>
+<ul>
+<li>C'est récupéré depuis le composant qui instancie. C'est une ressource immutable :</li>
+</ul>
+<pre><code class="language-tsx">class Cat extends React.Component {
+  render() {
+    return &lt;h1&gt;{this.props.name} section&lt;/h1&gt;;
+  }
+}
+
+class App extends React.Component {
+  render() {
+  return (
+    &lt;div&gt;
+     &lt;Cat name=”Jim” /&gt;
+    &lt;/div&gt;
+  );
+  }
+}
+</code></pre>
+<h4>States</h4>
+<ul>
+<li>C'est limité au composant, modifiable et asynchrone:</li>
+</ul>
+<pre><code class="language-tsx">class Cat extends React.Component {
+
+ constructor(props) {
+   super(props);
+   this.state = {
+	name: “Jim”
+   };
+ }
+
+  render() {
+    return &lt;div&gt;{ this.state.name }&lt;/div&gt;;
+  }
+}
+</code></pre>
+<h4>Nouvelle version</h4>
+<ul>
+<li>On est passé d'une approche <code>Class component</code> à une approche <code>Functional component</code>:</li>
+</ul>
+<pre><code class="language-tsx">class Cat extends React.Component {
+  render() {
+    return &lt;h1&gt;Hello, {this.props.name}&lt;/h1&gt;;
+  }
+}
+</code></pre>
+<p>devient</p>
+<pre><code class="language-tsx">function Cat(props) {
+    return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;;
+}
+</code></pre>
+<h3>Cycle de Vie</h3>
+<pre><code class="language-ascii">
+             ┌─────────────────────────┐    ┌──────────────────────┐   ┌────────────────────────┐
+             │                         │    │                      │   │                        │
+             │   Mounting              │    │   Updating           │   │ Unmounting             │
+             │                         │    │                      │   │                        │
+             │                         │    │                      │   │     │                  │
+             │   Constructor           │    │                      │   │     │                  │
+             │                         │    │                      │   │     │                  │
+             │         │               │    │                      │   │     │                  │
+             │         │               │    │                      │   │     │                  │
+             │         │               │    │                      │   │     │                  │
+             │         │               │    │                      │   │     │                  │
+             │    ┌────▼───────────────┼────┼─────────────┐        │   │     │                  │
+             │    │                    │    │             │        │   │     │                  │
+             │    │           render   │    │             │        │   │     │                  │
+             │    │                    │    │             │        │   │     │                  │
+             │    └────────┬───────────┼────┼────────┬────┘        │   │     │                  │
+             │             │           │    │        │             │   │     │                  │
+             │             │           │    │        │             │   │     ▼                  │
+             │             ▼           │    │        ▼             │   │                        │
+             │                         │    │                      │   │                        │
+             │   ComponentDidMount     │    │ ComponentDidUpdate   │   │  ComponentDidUnmount   │
+             │                         │    │                      │   │                        │
+             │                         │    │                      │   │                        │
+             └─────────────────────────┘    └──────────────────────┘   └────────────────────────┘
+
+</code></pre>
+<hr />
+<h2>Code</h2>
+<h3>Fragments</h3>
+<ul>
+<li>Permet de rendre des composants HTML au même niveau sans avoir besoin de &quot;nested&quot;:</li>
+</ul>
+<pre><code class="language-tsx">&lt;&gt;
+    /* Mon code */
+&lt;/&gt;
+</code></pre>
+<p>est équivalent à</p>
+<pre><code class="language-tsx">&lt;Fragment&gt;
+/* Mon code */
+&lt;/Fragment&gt;
+</code></pre>
+<h3>Keys</h3>
+<ul>
+<li>Penser à utiliser les <em>keys</em> dans les composant pour permettre à <code>React</code> de faire le rendu dans le bon sens.</li>
+</ul>
+<h3>Get Started</h3>
+<p>Pour créer une app <code>React</code> avec <code>npx</code>, on utilise <em>Create React App</em> (CRA) :</p>
+<pre><code class="language-sh">  npx create-react-app front --template typescript
+  cd front
+  npm start
+</code></pre>
+<hr />
+<h2>Router</h2>
+<ul>
+<li>Avec react on peut avoir un router qui manipule l'API <code>history</code> du DOM Html. Le package à installer est le suivant: <code>react-router-dom@6</code></li>
+</ul>
+<hr />
+<h2>Context</h2>
+<p>Les <em>Context</em> permettent de partager des données en profondeur dans l'arbre sans avoir besoin de passer les éléments à travers les <code>props</code>.
+Il possède deux éléments clefs:</p>
+<ul>
+<li><code>Provider</code> qui déclare et fournit les données du contexte.</li>
+<li><code>Consumer</code> qui conomme et récupère les données du contexte</li>
+</ul>
+<hr />
+<h2>Redux</h2>
+<ul>
+<li>Permet de faire ce que fait les <em>Context</em> avant leur introduction.</li>
+<li>Il possède un état global appelé le <strong>Store</strong>.</li>
+<li>C'est une _<em>conteneur à état prédictible</em>: en fonction des inputs, on peut prévoir l'état suivant.</li>
+<li>Les <em>actions</em> sont déclenchées par les composants <em>React</em> et modifie l'état du Store</li>
+<li>La réponse est produite et récupérée par un <em>reducer</em> qui fabrique un nouvel état du store à partir de l'état <strong>précédent</strong> et de la réponse de l'<strong>action</strong>.</li>
+<li>Pour l'action, utilisation de <strong>fonctions pures</strong> : (pas de variations de sorties pour les mêmes arguments + pas d'effets de bord).</li>
+<li>Les <em>selectors</em> permettent d'obtenir le resultat depuis le store.</li>
+</ul>
+<hr />
+<h2>Test</h2>
+<h3>React Testing Library (RTL)</h3>
+<ul>
+<li>Permet d'interagir avec les composants <em>React</em>.</li>
+</ul>
+<h3>Smoke test</h3>
+<ul>
+<li>Permet de vérifier qu'un composant s'affiche sans crash.</li>
+</ul>
+<h3>Snapshot test</h3>
+<ul>
+<li>Vérifier si le rendu d'un html est bon.</li>
+</ul>
+<h3>Mock test</h3>
+<ul>
+<li>permet de vérifier que les composants s'affichent comme il le faut.</li>
+</ul>
+<hr />
+<h2>Formulaire</h2>
+<h3>Uncontrolled vs controlled component</h3>
+<ul>
+<li>Les <em>Uncontrolled components</em> sont des composants qui sont gérés par le <code>DOM</code> html.</li>
+<li>Les <em>Controlled components</em> sont des composants dont l'état interne est géré par React.</li>
+</ul>
+<h3>Uncontrolled</h3>
+<p>Pour faire un <em>uncontrolled</em>, on définit une référence que l'on donne en attribut :</p>
+<pre><code class="language-tsx">// Valeur de input est accessible via nameInputRef.current.value
+// Nous devons utiliser defaultValue pour initialiser l'input
+function NameFormUncontrolled({defaultValue}: {defaultValue: string}) {
+  const nameInputRef = useRef&lt;HTMLInputElement&gt;(null);
+  return (
+    &lt;div&gt;
+      &lt;input defaultValue={defaultValue} ref={nameInputRef} placeholder=&quot;name&quot; /&gt;
+    &lt;/div&gt;
+  );
+
+</code></pre>
+<h3>Controlled</h3>
+<ul>
+<li>On récupère l'état interne via un <em>State</em> :</li>
+</ul>
+<pre><code class="language-tsx">function NameFormControlled() {
+  const [name, setName] = useState(&quot;&quot;);
+  return (
+    &lt;div&gt;
+      &lt;input
+        onChange={(inputEvent) =&gt; setName(inputEvent.target.value)}
+        defaultValue={name}
+      /&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<h3>React Hook Form</h3>
+<p>Il s'agit d&quot;une bibliotèque permettant de construire un formulaire sans avoir trop de code redondant.</p>
+<pre><code class="language-sh">npm install react-hook-form
+</code></pre>
+</p>
+</main>
+
+    <footer class="container">
+        <hr />
+        <p> Website written proudly with <a href="https://gitlab.com/funkywork/yocaml">Yocaml</a> ♡ This site is part of
+            the
+            <a href="https://ring.muhokama.fun">Muhokama ring</a>
+            (<a href="https://ring.muhokama.fun/u/maiste/pred">Previous</a> - <a
+                href="https://ring.muhokama.fun/u/maiste/succ">Next</a>)
+        </p>
+        <p><a href="https://maiste.fr">Content under this website</a> is written by Etienne "Maiste" Marais and is
+            licensed
+            under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1">CC BY-NC 4.0</a></p>
+    </footer>
+
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>
