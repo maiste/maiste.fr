@@ -1,8 +1,8 @@
-<h1>Wiki - {{ title }}</h1>
+<h1>{{ title }}</h1>
 <ul class="index">
     {%- for item in index -%}
     <li>
-        <h3> - <a href="{{ item.url }}">{{ item.title }}</a></h3>
+        <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
         <div class="metadata">
             {%- if item.has_description -%}
             <p>description: {{ item.description }}</p>
