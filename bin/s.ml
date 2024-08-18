@@ -15,6 +15,7 @@ module type RESOLVER = sig
     val binary : Path.t
     val static : Path.t
     val css : Path.t
+    val js : Path.t
     val pages : Path.t
     val templates : Path.t
     val template : string -> Path.t
@@ -33,6 +34,7 @@ module type RESOLVER = sig
     val cache : Path.t
     val static : Path.t
     val css : Path.t
+    val js : Path.t
     val pages : Path.t
     val blog : Path.t
     val posts : string -> Path.t
