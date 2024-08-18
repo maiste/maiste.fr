@@ -10,7 +10,9 @@
 */
 
 pre {
+    color: #F5F5F5;
     background-color: #0d1117;
+    overflow-x: scroll;
 }
 
 .hljs {

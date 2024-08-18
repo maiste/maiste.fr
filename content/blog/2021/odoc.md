@@ -19,7 +19,7 @@ the [odoc](https://opam.ocaml.org/packages/odoc/) generator must be in your pack
 `{with-doc}` specification.
 
 Below, you can see a partial example of a `.opam`, I have created:
-```ocaml
+```
 depends: [
   "ocaml" {>= "4.12.0"}
   "dune" {>= "2.5"}
@@ -84,18 +84,19 @@ Thanks to this file, each time the action is triggered, it will push a new commi
 
 ## Take the mouse back and update GitHub
 
-* You need to go to your repository settings:
+- You need to go to your repository settings:
 
-  ![Github settings](/2021/tuto_odoc/github_1.png)
-* Then, you must go to the __Pages__ settings:
+  ![Github settings](/static/images/blog/2021/github_1.png)
+- Then, you must go to the __Pages__ settings:
 
-  ![Github Pages](/2021/tuto_odoc/github_2.png)
-* Finally, you must select the branch on which your pages are built. Here it is
+  ![Github Pages](/static/images/blog/2021/github_2.png)
+- Finally, you must select the branch on which your pages are built. Here it is
   `gh-pages`:
 
-  ![Github branch](/2021/tuto_odoc/github_3.png)
+  ![Github branch](/static/images/blog/2021/github_3.png)
 
-And, you are done! If everything has worked well you can check your documentation at: <br />
+And, you are done! If everything has worked well you can check your documentation at:
+
 __\<user\>.github.io/\<repo name\>/__.
 
 ## Conclusion
