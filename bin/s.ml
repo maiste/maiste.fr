@@ -16,6 +16,7 @@ module type RESOLVER = sig
     val static : Path.t
     val css : Path.t
     val js : Path.t
+    val images : Path.t
     val pages : Path.t
     val templates : Path.t
     val template : string -> Path.t
@@ -35,6 +36,7 @@ module type RESOLVER = sig
     val static : Path.t
     val css : Path.t
     val js : Path.t
+    val images : Path.t
     val pages : Path.t
     val blog : Path.t
     val posts : string -> Path.t
