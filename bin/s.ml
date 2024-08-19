@@ -50,3 +50,26 @@ module type RESOLVER = sig
   val truncate : Path.t -> int -> string list
   val truncate_and_move : into:Path.t -> Path.t -> int -> Path.t
 end
+
+module type DATA_REINJECTABLE = sig
+  (** Union of the [DATA_PROVIDER] and the [DATA_INJECTABLE] module. *)
+
+  (** Describe the type of a the content. *)
+  type t
+
+  include Required.DATA_READABLE with type t := t
+  include Required.DATA_INJECTABLE with type t := t
+end
+
+module type DATA_TREE = sig
+  (** A representation of tree structure. *)
+
+  (** Extremity nodes *)
+  module Leaf : DATA_REINJECTABLE
+
+  (** Nodes *)
+  module Node : DATA_REINJECTABLE
+
+  val node_to_action : Node.t -> Action.t
+  val leaf_to_action : Leaf.t -> Action.t
+end
