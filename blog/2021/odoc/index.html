@@ -54,7 +54,7 @@ deploy the configuration the way I will show you.</p>
 the <a href="https://opam.ocaml.org/packages/odoc/">odoc</a> generator must be in your package dependencies (maybe with the
 <code>{with-doc}</code> specification.</p>
 <p>Below, you can see a partial example of a <code>.opam</code>, I have created:</p>
-<pre><code class="language-ocaml">depends: [
+<pre><code>depends: [
   &quot;ocaml&quot; {&gt;= &quot;4.12.0&quot;}
   &quot;dune&quot; {&gt;= &quot;2.5&quot;}
   &quot;odoc&quot; {with-doc}
@@ -113,20 +113,20 @@ jobs:
 <ul>
 <li>
 <p>You need to go to your repository settings:</p>
-<p><img src="/2021/tuto_odoc/github_1.png" alt="Github settings" ></p>
+<p><img src="/static/images/blog/2021/github_1.png" alt="Github settings" ></p>
 </li>
 <li>
 <p>Then, you must go to the <strong>Pages</strong> settings:</p>
-<p><img src="/2021/tuto_odoc/github_2.png" alt="Github Pages" ></p>
+<p><img src="/static/images/blog/2021/github_2.png" alt="Github Pages" ></p>
 </li>
 <li>
 <p>Finally, you must select the branch on which your pages are built. Here it is
 <code>gh-pages</code>:</p>
-<p><img src="/2021/tuto_odoc/github_3.png" alt="Github branch" ></p>
+<p><img src="/static/images/blog/2021/github_3.png" alt="Github branch" ></p>
 </li>
 </ul>
-<p>And, you are done! If everything has worked well you can check your documentation at: <br />
-<strong>&lt;user&gt;.github.io/&lt;repo name&gt;/</strong>.</p>
+<p>And, you are done! If everything has worked well you can check your documentation at:</p>
+<p><strong>&lt;user&gt;.github.io/&lt;repo name&gt;/</strong>.</p>
 <h2>Conclusion</h2>
 <p>I hope this tutorial can be useful to you! Feel free to send me correction if
 I have made a mistake.</p>
