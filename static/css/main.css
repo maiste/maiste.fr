@@ -32,7 +32,7 @@ h4 {
 
 h1 {
     font-size: 3rem;
-    color: var(--bg-color);
+    color: var(--font-color);
     background-color: var(--primary);
     padding: 5px 5px 5px 10px;
 }
@@ -116,14 +116,30 @@ header {
     flex-direction: column;
     align-items: center;
     color: var(--primary);
-    background-color: var(--bg-color);
+    background-color: transparent;
     font-weight: bold;
 }
 
+header h2 {
+    position: relative;
+}
+
 header h2 a {
-    color: var(--bg-color);
-    background-color: var(--primary);
+    color: var(--font-color);
     padding: 5px;
+}
+
+header h2 a::before {
+    background-color: var(--primary);
+
+    content: "";
+    position: absolute;
+    width: calc(100% + 10px);
+    height: 70%;
+    left: -2px;
+    bottom: -10px;
+    z-index: -1;
+    transform: rotate(-2deg);
 }
 
 header nav {
