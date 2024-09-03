@@ -140,11 +140,13 @@ header h2 a::before {
     bottom: -10px;
     z-index: -1;
     transform: rotate(-2deg);
+    margin-bottom: 10px;
 }
 
 header nav {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
@@ -159,6 +161,7 @@ header nav ul {
     display: flex;
     align-items: center;
     column-gap: 2rem;
+    padding: 0;
 }
 
 header nav li::before {
@@ -254,6 +257,10 @@ footer p {
     }
 
     .metadata {
+        flex-direction: column;
+    }
+
+    header nav {
         flex-direction: column;
     }
 
