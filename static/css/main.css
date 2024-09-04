@@ -21,7 +21,7 @@ body {
     flex-direction: column;
     align-items: center;
     font-weight: 400;
-    font-family: "Inter", sans-serif;
+    font-family: "Overpass", "Inter", sans-serif;
 }
 
 h2,
@@ -31,6 +31,7 @@ h4 {
 }
 
 h1 {
+    font-family: "Playfair Display SC";
     font-size: 3rem;
     color: var(--font-color);
     background-color: var(--primary);
@@ -54,11 +55,11 @@ img {
 }
 
 p {
+    font-size: 1rem;
     margin: 0;
     padding: 0;
     line-height: 1.2;
     text-align: justify;
-    font-family: "Inter";
 }
 
 p em {
@@ -121,6 +122,7 @@ header {
 }
 
 header h2 {
+    font-size: 3rem;
     position: relative;
 }
 
@@ -141,6 +143,10 @@ header h2 a::before {
     z-index: -1;
     transform: rotate(-2deg);
     margin-bottom: 10px;
+}
+
+header h2 a:hover::before {
+    background-color: var(--font-color);
 }
 
 header nav {
@@ -192,6 +198,10 @@ main p {
 main a {
     text-decoration: underline;
     text-decoration-style: dotted;
+}
+
+main a:hover {
+    text-decoration: none;
 }
 
 

@@ -14,7 +14,7 @@ language!
 - The [wiki](/wiki) (This part is under construction ⚙️)
 - Who [I](/about) am (Not really a nice page but, it will improve over time 🤞)
 
-## Important ⚠️
-This website is still under heavy development and lack a lot of features. It
+## Important
+⚠️ This website is still under heavy development and lack a lot of features. It
 will improve over time but, I wanted to have a decent base first (hence the
 code does not look good actually!).
