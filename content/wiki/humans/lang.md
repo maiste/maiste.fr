@@ -6,14 +6,17 @@ description: Resources about natural languages
 lang: ENG
 title: Languages
 ---
+## Latin
+
+## Abbreviations
+
+- _Ibid_: _ibīdem_ which means "at the same place". Commonly used when using the same reference multiple times in a book or a paper.
+- _e.g._: _exempli gratia_ wich means "for example".
+- _i.e._: _id est_ which means "that is to say".
+
+---
 
 ## English
-
-### Resources
-
-* [Thesaurus](https://www.thesaurus.com/): synonyms for words
-* [Word reference](https://www.wordreference.com): definitions, synonyms and translations
-
 ### Abbreviations
 
 - AFK: Away From Keyboard
@@ -28,4 +31,20 @@ title: Languages
 - LMK: Let Me Know
 - OP: Original Poster
 - TBH: To Be Honest
+### Dictionnary
+
+- O
+	- oblivious: inconscient / ne pas se rendre compte
+
+### Common Mistakes
+
+- Expressions:
+	- "Give the speech to [someone]" (does not exist) -> "Give the floor to [someone]"
+
+### Resources
+
+* [Thesaurus](https://www.thesaurus.com/): synonyms for words
+* [Word reference](https://www.wordreference.com): definitions, synonyms and translations
+
+
 
