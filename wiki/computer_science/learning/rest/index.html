@@ -39,14 +39,14 @@
 <div class="metadata"><p>description: Deal with REST in Java</p><p>lang: FR
     </p>
 </div>
-<p><h3>TL;DR</h3>
+<p><h3 id="tldr"><a class="anchor" aria-hidden="true" href="#tldr"></a>TL;DR</h3>
 <ul>
 <li>Les <strong>Data Transfert_Object</strong> sont utilisés en I/O. Permet de simplifier les échanges.</li>
 </ul>
-<h3>DTO</h3>
+<h3 id="dto"><a class="anchor" aria-hidden="true" href="#dto"></a>DTO</h3>
 <p>C'est un objet qui permet de cacher au niveau de l'API le vrai contenu des entités. Ils sont gérés
 par les <em>Controllers</em>. Un <em>DTO</em> vient toujours avec un Mapper. Les <code>record</code> sont particulièrement adaptés à cela.</p>
-<h4>Example</h4>
+<h4 id="example"><a class="anchor" aria-hidden="true" href="#example"></a>Example</h4>
 <ul>
 <li>Entity:</li>
 </ul>
@@ -81,12 +81,12 @@ public class PersonDtoMapper {
 }
 
 </code></pre>
-<h3>JsonView (peu utilisé)</h3>
+<h3 id="jsonview-peu-utilisé"><a class="anchor" aria-hidden="true" href="#jsonview-peu-utilisé"></a>JsonView (peu utilisé)</h3>
 <p><code>@JsonView</code> définit un ensemble de propriétés qui seront exportées en <em>JSON</em>. On peut annoter les
 propiétés avec une vue pour qu'elle soit associée à celle-ci. Quand un controller mapping est annoté
 avec une <code>@JsonView</code>, il utilisera les gens qui fonctionnent pour produire la vue associé en <em>JSON</em>.
 On peut utiliser l'héritage pour étendre le scoe des vues.</p>
-<h4>Example</h4>
+<h4 id="example-1"><a class="anchor" aria-hidden="true" href="#example-1"></a>Example</h4>
 <ul>
 <li>Entity:</li>
 </ul>
@@ -116,13 +116,13 @@ public Page&lt;Person&gt; fetchPage() {
     return personService.findAll();
 }
 </code></pre>
-<h3>JsonIdentity</h3>
-<h4>JsonIdentityInfo</h4>
+<h3 id="jsonidentity"><a class="anchor" aria-hidden="true" href="#jsonidentity"></a>JsonIdentity</h3>
+<h4 id="jsonidentityinfo"><a class="anchor" aria-hidden="true" href="#jsonidentityinfo"></a>JsonIdentityInfo</h4>
 <p>Permet de dédupliquer les champs envoyés:</p>
 <pre><code class="language-java">@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = &quot;id&quot;)
 public class Person { /* ... */}
 </code></pre>
-<h4>JsonTypeInfo</h4>
+<h4 id="jsontypeinfo"><a class="anchor" aria-hidden="true" href="#jsontypeinfo"></a>JsonTypeInfo</h4>
 <p>Ajoute un field type pour les cas où il y a du polymorphisme. Cela permet de désérialiser dans le front.</p>
 <ul>
 <li>Par exemple, avec une classe mère:</li>
@@ -142,8 +142,8 @@ public class Product { /* ... */ }
 <pre><code class="language-java">@JsonTypeName(&quot;book&quot;)
 public class Book extends Product { /* ... */ }
 </code></pre>
-<h3>Resources &amp; HTTP statuses</h3>
-<h4>Status codes</h4>
+<h3 id="resources--http-statuses"><a class="anchor" aria-hidden="true" href="#resources--http-statuses"></a>Resources &amp; HTTP statuses</h3>
+<h4 id="status-codes"><a class="anchor" aria-hidden="true" href="#status-codes"></a>Status codes</h4>
 <ul>
 <li><strong>2XX</strong>
 <ul>
@@ -169,11 +169,11 @@ public class Book extends Product { /* ... */ }
 </ul>
 </li>
 </ul>
-<h4>In Spring</h4>
+<h4 id="in-spring"><a class="anchor" aria-hidden="true" href="#in-spring"></a>In Spring</h4>
 <pre><code class="language-java">@ResponseStatus(HttpStatus.status)
 &lt;type&gt; &lt;method_name&gt;(){}
 </code></pre>
-<h3>Exception Handler</h3>
+<h3 id="exception-handler"><a class="anchor" aria-hidden="true" href="#exception-handler"></a>Exception Handler</h3>
 <p>Cf <a href="https://www.baeldung.com/exception-handling-for-rest-with-spring">here</a></p>
 <p>Possible de faire une entity pour renvoyer des erreurs. Ça permet de controller la granularité.</p>
 <ul>
@@ -209,7 +209,7 @@ public class RestResponseEntityExceptionHandler
 <ul>
 <li>For REST use <code>@RestControllerAdvice</code> instead.</li>
 </ul>
-<h4>Reminder:</h4>
+<h4 id="reminder"><a class="anchor" aria-hidden="true" href="#reminder"></a>Reminder:</h4>
 <ul>
 <li>
 <p>DO:</p>
@@ -229,7 +229,7 @@ eg: Do not write <code>NotFoundException</code>, use java.util.NoSuchElementExce
 </ul>
 </li>
 </ul>
-<h3>Hateoas</h3>
+<h3 id="hateoas"><a class="anchor" aria-hidden="true" href="#hateoas"></a>Hateoas</h3>
 <blockquote>
 <p>HAL - Hypertext Application Language</p>
 </blockquote>
@@ -266,7 +266,7 @@ eg: Do not write <code>NotFoundException</code>, use java.util.NoSuchElementExce
 <ul>
 <li>On peut utiliser le <code>RepresentationModelAssembler</code> pour créer les liens des entités automatiquement (comme les <em>serializers</em> et les <em>generators</em>).</li>
 </ul>
-<h3>OpenAPI (ex Swagger)</h3>
+<h3 id="openapi-ex-swagger"><a class="anchor" aria-hidden="true" href="#openapi-ex-swagger"></a>OpenAPI (ex Swagger)</h3>
 <ul>
 <li>To generate the <em>OpenAPI</em> specification, we have to add the following packages:</li>
 </ul>

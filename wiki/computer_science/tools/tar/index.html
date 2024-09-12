@@ -39,30 +39,30 @@
 <div class="metadata"><p>description: An archive system</p><p>lang: ENG
     </p>
 </div>
-<p><h2>Create an archive</h2>
+<p><h2 id="create-an-archive"><a class="anchor" aria-hidden="true" href="#create-an-archive"></a>Create an archive</h2>
 <pre><code class="language-sh"> tar cf &lt;name&gt;.tar [objs]
 </code></pre>
-<h2>Extract an archive</h2>
+<h2 id="extract-an-archive"><a class="anchor" aria-hidden="true" href="#extract-an-archive"></a>Extract an archive</h2>
 <pre><code class="language-sh">  tar xf &lt;name&gt;.tar
 </code></pre>
 <hr />
-<h2>Create a gzip archive</h2>
+<h2 id="create-a-gzip-archive"><a class="anchor" aria-hidden="true" href="#create-a-gzip-archive"></a>Create a gzip archive</h2>
 <pre><code class="language-sh">  tar czf &lt;name&gt;.tgz [objs]
 </code></pre>
-<h2>Extract a gzip archive</h2>
+<h2 id="extract-a-gzip-archive"><a class="anchor" aria-hidden="true" href="#extract-a-gzip-archive"></a>Extract a gzip archive</h2>
 <pre><code class="language-sh">  tar xzf &lt;name&gt;.tgz
 </code></pre>
-<h2>Activate verbose mode</h2>
+<h2 id="activate-verbose-mode"><a class="anchor" aria-hidden="true" href="#activate-verbose-mode"></a>Activate verbose mode</h2>
 <pre><code class="language-sh"> tar v [cmd]
 </code></pre>
-<h2>Extract on flight an archive with http</h2>
+<h2 id="extract-on-flight-an-archive-with-http"><a class="anchor" aria-hidden="true" href="#extract-on-flight-an-archive-with-http"></a>Extract on flight an archive with http</h2>
 <pre><code class="language-sh">  wget -c http[s]://host/path/to/file.tgz -O - | tar -xz
 </code></pre>
 <hr />
-<h2>Encrypt tar with GPG</h2>
+<h2 id="encrypt-tar-with-gpg"><a class="anchor" aria-hidden="true" href="#encrypt-tar-with-gpg"></a>Encrypt tar with GPG</h2>
 <pre><code class="language-sh">  tar czpvf - &lt;name&gt; | gpg -c [--batch --yes --passphrase &lt;password&gt;] --cipher-algo aes256 -o &lt;name&gt;.gz.gpg
 </code></pre>
-<h2>Decrypt tar with GPG</h2>
+<h2 id="decrypt-tar-with-gpg"><a class="anchor" aria-hidden="true" href="#decrypt-tar-with-gpg"></a>Decrypt tar with GPG</h2>
 <pre><code class="language-sh">  gpg -d [--batch --yes --passphrase azerty12] &lt;tar file&gt; | tar xzvf -
 </code></pre>
 </p>

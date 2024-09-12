@@ -41,7 +41,7 @@
     <p>lang: EN
     </p>
 </div>
-<p><h2>Context</h2>
+<p><h2 id="context"><a class="anchor" aria-hidden="true" href="#context"></a>Context</h2>
 <p>I will not surprise anyone if I say that documenting your code is important.
 If you host your code on GitHub, you might have heard about <a href="https://pages.github.com/">GitHub Pages</a>.
 This project allows GitHub users to deploy some static websites using GitHub.
@@ -75,7 +75,7 @@ build: [
 </code></pre>
 <p>Now we have our documentation, it's time to automatize the process with
 GitHub Actions.</p>
-<h2>Setup GitHub Actions</h2>
+<h2 id="setup-github-actions"><a class="anchor" aria-hidden="true" href="#setup-github-actions"></a>Setup GitHub Actions</h2>
 <p>At the root of your repository, you must create (if it's not already the case)
 a <strong>.github/workflows/</strong> directory. In it, you must create a <name>.yml file.
 The content of the file is:</p>
@@ -108,7 +108,7 @@ jobs:
 </code></pre>
 <p>Thanks to this file, each time the action is triggered, it will push a new commit in the
 <code>gh-pages</code> branch of your repository.</p>
-<h2>Take the mouse back and update GitHub</h2>
+<h2 id="take-the-mouse-back-and-update-github"><a class="anchor" aria-hidden="true" href="#take-the-mouse-back-and-update-github"></a>Take the mouse back and update GitHub</h2>
 <ul>
 <li>
 <p>You need to go to your repository settings:</p>
@@ -126,7 +126,7 @@ jobs:
 </ul>
 <p>And, you are done! If everything has worked well you can check your documentation at:</p>
 <p><strong>&lt;user&gt;.github.io/&lt;repo name&gt;/</strong>.</p>
-<h2>Conclusion</h2>
+<h2 id="conclusion"><a class="anchor" aria-hidden="true" href="#conclusion"></a>Conclusion</h2>
 <p>I hope this tutorial can be useful to you! Feel free to send me correction if
 I have made a mistake.</p>
 </p>

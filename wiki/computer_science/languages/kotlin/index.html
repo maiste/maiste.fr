@@ -39,7 +39,7 @@
 <div class="metadata"><p>description: Kotlin Programming Language</p><p>lang: FR
     </p>
 </div>
-<p><h2>Overview</h2>
+<p><h2 id="overview"><a class="anchor" aria-hidden="true" href="#overview"></a>Overview</h2>
 <ul>
 <li>Équivalent de bibliotèques Java:
 <ul>
@@ -49,7 +49,7 @@
 </ul>
 </li>
 </ul>
-<h2>Variables</h2>
+<h2 id="variables"><a class="anchor" aria-hidden="true" href="#variables"></a>Variables</h2>
 <ul>
 <li>Possède l'inférence de types.</li>
 <li>Déclaration :
@@ -87,7 +87,7 @@ var mutableInt =°
 </ul>
 </li>
 </ul>
-<h2>Méthodes</h2>
+<h2 id="méthodes"><a class="anchor" aria-hidden="true" href="#méthodes"></a>Méthodes</h2>
 <ul>
 <li>On définit une méthode comme suit:</li>
 </ul>
@@ -131,7 +131,7 @@ infix fun plusOne(param : Int) : Int = param + 1
 <ul>
 <li>On peut faire une lambda sans variable avec <code>{ corps }</code></li>
 </ul>
-<h2>Classe</h2>
+<h2 id="classe"><a class="anchor" aria-hidden="true" href="#classe"></a>Classe</h2>
 <ul>
 <li>Constructeur par défaut vide ou complet en fonction des paramètres.</li>
 <li>Possible d'ajouter des constructeurs avec :</li>
@@ -162,8 +162,8 @@ class D : C() {
 <li>Les enumérations sont déclarées avec le mot clef <code>enum class {}</code></li>
 <li><code>object</code> permet de faire des <em>singletons</em>.</li>
 </ul>
-<h2>Flot de contrôle</h2>
-<h3>For</h3>
+<h2 id="flot-de-contrôle"><a class="anchor" aria-hidden="true" href="#flot-de-contrôle"></a>Flot de contrôle</h2>
+<h3 id="for"><a class="anchor" aria-hidden="true" href="#for"></a>For</h3>
 <ul>
 <li><code>for (i in start..end)</code></li>
 <li><code>for(i in start until end)</code></li>
@@ -171,12 +171,12 @@ class D : C() {
 <li><code>for (content in data)</code></li>
 <li><code>data.forEach()</code></li>
 </ul>
-<h3>If</h3>
+<h3 id="if"><a class="anchor" aria-hidden="true" href="#if"></a>If</h3>
 <ul>
 <li>Fonctionne pour checker <code>null</code>, mais sur les <code>val</code> uniquement.</li>
 <li><code>if'(truc) corps else corpsElse</code> est une expression.</li>
 </ul>
-<h3>When</h3>
+<h3 id="when"><a class="anchor" aria-hidden="true" href="#when"></a>When</h3>
 <ul>
 <li>Remplace le mot clef <code>switch</code>.</li>
 <li>Permet de faire du pattern matching :</li>
@@ -199,14 +199,14 @@ class D : C() {
 ``
 - Il s'agit d'expression également donc on peut l'assigner.
 </code></pre>
-<h2>Scope functions</h2>
+<h2 id="scope-functions"><a class="anchor" aria-hidden="true" href="#scope-functions"></a>Scope functions</h2>
 <ul>
 <li><code>data.let { }</code> permet d'accès à l'objet via le mot clef <code>it</code>. Renvoie le resultat de la lambda.</li>
 <li><code>with(data) { }</code> fait la même chose que <code>let</code> mais référence l'objet avec <code>this</code> et n'est pas une méthode sur un objet. Renvoie le resultat de la lambda.</li>
 <li><code>data.run { }</code> fonctionne pareil que <code>let</code> mais en important l'object comme <code>this</code> et non comme une variable. Renvoie le resultat de la lambda.</li>
 <li><code>data.apply {}</code> prend l'objet et fait la même chose que <code>run</code> avec <code>this</code>. Il renvoie l'objet lui même cependant.</li>
 </ul>
-<h2>Interfaces</h2>
+<h2 id="interfaces"><a class="anchor" aria-hidden="true" href="#interfaces"></a>Interfaces</h2>
 <ul>
 <li>Permet de définir des valeurs par défaut et <em>getters</em> et <em>setters</em>.</li>
 </ul>
@@ -218,11 +218,11 @@ class Bidule : Truc, Truc2 {
  // corps
 }
 </code></pre>
-<h2>Abstract class</h2>
+<h2 id="abstract-class"><a class="anchor" aria-hidden="true" href="#abstract-class"></a>Abstract class</h2>
 <ul>
 <li>À faire.</li>
 </ul>
-<h2>Génériques</h2>
+<h2 id="génériques"><a class="anchor" aria-hidden="true" href="#génériques"></a>Génériques</h2>
 <ul>
 <li>On peut déclarer des génériques de la même manière que Java</li>
 </ul>
@@ -254,18 +254,18 @@ class Bidule : Truc, Truc2 {
     return p as T
 }
 </code></pre>
-<h2>Type alias</h2>
+<h2 id="type-alias"><a class="anchor" aria-hidden="true" href="#type-alias"></a>Type alias</h2>
 <ul>
 <li>Ajoute du sucre syntaxique pour les types avec <code>typealias Truc = Int</code></li>
 </ul>
-<h2>Modifiers</h2>
+<h2 id="modifiers"><a class="anchor" aria-hidden="true" href="#modifiers"></a>Modifiers</h2>
 <ul>
 <li>Par défaut ce qui est à top level est <code>public</code>.</li>
 <li>On peut ajouter le mot clefs <code>private</code> pour rendre privé à la classe. Attention ce n'est pas accessible depuis les classes mères.</li>
 <li><code>internal</code> est privé au module.</li>
 <li><code>protected</code> authorise aux sous classes aussi.</li>
 </ul>
-<h2>Coroutines</h2>
+<h2 id="coroutines"><a class="anchor" aria-hidden="true" href="#coroutines"></a>Coroutines</h2>
 <ul>
 <li>Threads légères. Une coroutine est coopérative à la différence d'une thread.</li>
 <li>On peut récupérer le resultat avec <code>Class.async</code>.</li>

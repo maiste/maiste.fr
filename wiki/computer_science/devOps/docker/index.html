@@ -39,29 +39,29 @@
 <div class="metadata"><p>description: Containers with Docker.</p><p>lang: ENG
     </p>
 </div>
-<p><h2>Connect to hub.docker.com</h2>
+<p><h2 id="connect-to-hubdockercom"><a class="anchor" aria-hidden="true" href="#connect-to-hubdockercom"></a>Connect to hub.docker.com</h2>
 <pre><code class="language-sh">  docker login --username &lt;user&gt;
 </code></pre>
-<h2>Connect to another website (UNSECURE way)</h2>
+<h2 id="connect-to-another-website-unsecure-way"><a class="anchor" aria-hidden="true" href="#connect-to-another-website-unsecure-way"></a>Connect to another website (UNSECURE way)</h2>
 <pre><code class="language-sh">  TOKEN=&lt;your website token&gt;
   echo $TOKEN | docker login &lt;url&gt; -u &lt;username&gt; --password-stdin
 </code></pre>
-<h3>Build a docker image from a Dockerfile</h3>
+<h3 id="build-a-docker-image-from-a-dockerfile"><a class="anchor" aria-hidden="true" href="#build-a-docker-image-from-a-dockerfile"></a>Build a docker image from a Dockerfile</h3>
 <pre><code class="language-sh">  docker build -t &lt;NAME&gt;:&lt;VERSION&gt; -f &lt;FILENAME&gt; &lt;PATH&gt;
 </code></pre>
-<h2>Pull an image from hub.docker.com</h2>
+<h2 id="pull-an-image-from-hubdockercom"><a class="anchor" aria-hidden="true" href="#pull-an-image-from-hubdockercom"></a>Pull an image from hub.docker.com</h2>
 <pre><code class="language-sh">  docker pull &lt;image&gt;:&lt;tag&gt;
 </code></pre>
-<h2>Pull an image from another website</h2>
+<h2 id="pull-an-image-from-another-website"><a class="anchor" aria-hidden="true" href="#pull-an-image-from-another-website"></a>Pull an image from another website</h2>
 <pre><code class="language-sh">  docker pull &lt;website_url&gt;/&lt;image&gt;:&lt;tag&gt;
 </code></pre>
-<h2>Push an image to hub.docker.com</h2>
+<h2 id="push-an-image-to-hubdockercom"><a class="anchor" aria-hidden="true" href="#push-an-image-to-hubdockercom"></a>Push an image to hub.docker.com</h2>
 <pre><code class="language-sh">  docker push &lt;user&gt;/&lt;image&gt;:tag
 </code></pre>
-<h2>Push an image to another website</h2>
+<h2 id="push-an-image-to-another-website"><a class="anchor" aria-hidden="true" href="#push-an-image-to-another-website"></a>Push an image to another website</h2>
 <pre><code class="language-sh">  docker push &lt;website_url&gt;/&lt;user&gt;/&lt;image&gt;:&lt;tag&gt;
 </code></pre>
-<h2>Launch a container</h2>
+<h2 id="launch-a-container"><a class="anchor" aria-hidden="true" href="#launch-a-container"></a>Launch a container</h2>
 <ul>
 <li>Intractif mode:</li>
 </ul>
@@ -74,23 +74,23 @@
 <pre><code class="language-sh">  docker run --rm -d --name &lt;nom&gt; -v &lt;volume-local&gt;:&lt;volume-conteneur&gt; \
              -p &lt;host-port&gt;:&lt;conteneur-port&gt;&lt;image&gt;:&lt;tag&gt;
 </code></pre>
-<h2>Connect to a running container</h2>
+<h2 id="connect-to-a-running-container"><a class="anchor" aria-hidden="true" href="#connect-to-a-running-container"></a>Connect to a running container</h2>
 <pre><code class="language-sh">	docker exec -it &lt;tag&gt; &lt;command&gt;
 </code></pre>
-<h2>Get the container logs</h2>
+<h2 id="get-the-container-logs"><a class="anchor" aria-hidden="true" href="#get-the-container-logs"></a>Get the container logs</h2>
 <pre><code class="language-sh">  docker logs &lt;name ou id&gt;
 </code></pre>
-<h2>Stop a containeur</h2>
+<h2 id="stop-a-containeur"><a class="anchor" aria-hidden="true" href="#stop-a-containeur"></a>Stop a containeur</h2>
 <pre><code class="language-sh">  docker stop &lt;name&gt;
 </code></pre>
-<h2>Save docker images</h2>
+<h2 id="save-docker-images"><a class="anchor" aria-hidden="true" href="#save-docker-images"></a>Save docker images</h2>
 <pre><code class="language-sh">  docker commit -p &lt;ID&gt; tag_name
   docker save -o &lt;name&gt;.tar &lt;tag_image&gt;
 </code></pre>
-<h2>Load a container from a save</h2>
+<h2 id="load-a-container-from-a-save"><a class="anchor" aria-hidden="true" href="#load-a-container-from-a-save"></a>Load a container from a save</h2>
 <pre><code class="language-sh">  docker load -i &lt;name&gt;.tar
 </code></pre>
-<h1>Resources</h1>
+<h1 id="resources"><a class="anchor" aria-hidden="true" href="#resources"></a>Resources</h1>
 <ul>
 <li><a href="https://github.com/hexops/dockerfile">Good practises</a></li>
 </ul>

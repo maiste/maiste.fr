@@ -39,21 +39,21 @@
 <div class="metadata"><p>description: Javascript, Typescript and Co. Messy notes to be split</p><p>lang: FR
     </p>
 </div>
-<p><h3>Terminologie</h3>
+<p><h3 id="terminologie"><a class="anchor" aria-hidden="true" href="#terminologie"></a>Terminologie</h3>
 <ul>
 <li><em>DOM</em>: Document Object Model. Représentation du Document.</li>
 <li><em>Bundler</em>: create a unique file with all the code needed. Avoid dealing with <code>import</code>.</li>
 <li><em>SPA</em>: Single Page Application: the application lives in a single html page.</li>
 <li><em>IIFE</em>:  Immediately Invoked Function Expression i.e ancêtre de <em>ESModule</em></li>
 </ul>
-<h3>NPM</h3>
+<h3 id="npm"><a class="anchor" aria-hidden="true" href="#npm"></a>NPM</h3>
 <ul>
 <li><code>npm install</code> or <code>: installe le packages spécifié dans le </code>package.json``</li>
 <li><code>npm install -D</code>: installe le package spécifié dans le <code>package.json</code> comme une dépendances dev</li>
 <li><code>npm &lt;script&gt;</code>: run the script specified in the <code>package.json</code></li>
 </ul>
-<h2>Javascript</h2>
-<h3>Pièges</h3>
+<h2 id="javascript"><a class="anchor" aria-hidden="true" href="#javascript"></a>Javascript</h2>
+<h3 id="pièges"><a class="anchor" aria-hidden="true" href="#pièges"></a>Pièges</h3>
 <ul>
 <li>Attention au scope de <code>this</code> qui est dans une <code>function() {}</code> car il prend le scope de l'appelant:</li>
 </ul>
@@ -76,18 +76,18 @@
     }
 }
 </code></pre>
-<h3>Import / export</h3>
+<h3 id="import--export"><a class="anchor" aria-hidden="true" href="#import--export"></a>Import / export</h3>
 <ul>
 <li><code>export</code> ne peut être utiliser qu'à la racine du fichier.</li>
 <li>On a le <code>default</code> import mais pour permettre le <em>Tree Shaking</em>, on doit utiliser <code>import { X, Y } from &quot;./path&quot;;</code></li>
 </ul>
-<h3>Typescript</h3>
-<h4>Infos</h4>
+<h3 id="typescript"><a class="anchor" aria-hidden="true" href="#typescript"></a>Typescript</h3>
+<h4 id="infos"><a class="anchor" aria-hidden="true" href="#infos"></a>Infos</h4>
 <ul>
 <li>Activer les <code>compilerOptions</code> à <code>&quot;strict&quot; : true</code> pour s'assurer qu'il fasse le
 maximum.</li>
 </ul>
-<h4>Types</h4>
+<h4 id="types"><a class="anchor" aria-hidden="true" href="#types"></a>Types</h4>
 <p>On peut avoir une énumération de string à partir des clefs d'un objet:</p>
 <pre><code class="language-typescript">type Point = {
     x: number,
@@ -102,40 +102,40 @@ function call(z : KeyPoint) {
     return z;
 }
 </code></pre>
-<h3>Webrowser</h3>
+<h3 id="webrowser"><a class="anchor" aria-hidden="true" href="#webrowser"></a>Webrowser</h3>
 <ul>
 <li>Utiliser la console pour débugguer, c'est fait pour.</li>
 </ul>
-<h3>Storage</h3>
-<h4>LocalStorage</h4>
+<h3 id="storage"><a class="anchor" aria-hidden="true" href="#storage"></a>Storage</h3>
+<h4 id="localstorage"><a class="anchor" aria-hidden="true" href="#localstorage"></a>LocalStorage</h4>
 <p>Stockage natif des browser mais n'utilise pas <code>indexedDB</code> donc moins de fonctionnalités.</p>
-<h4>LocalForage</h4>
+<h4 id="localforage"><a class="anchor" aria-hidden="true" href="#localforage"></a>LocalForage</h4>
 <p>Stockage qui repose sur localStorage mais support l'asynchrone.</p>
-<h2>Bundler</h2>
+<h2 id="bundler"><a class="anchor" aria-hidden="true" href="#bundler"></a>Bundler</h2>
 <ul>
 <li>Il résout les imports en faisant un fichier avec tout !</li>
 <li>Il fonctionne avec <code>require/module.exports</code> et les <code>export/import</code>.</li>
 </ul>
-<h3>Webpack</h3>
+<h3 id="webpack"><a class="anchor" aria-hidden="true" href="#webpack"></a>Webpack</h3>
 <ul>
 <li>La configuration se fait dans un <code>webpack.config.js</code>. Le fichier produit est dans <code>dist/main.js</code></li>
 <li>Il prend un unique point d'entrée.</li>
 <li>En cas de changement dans le <code>webpack.config.js</code>, il faut restart le serveur.</li>
 </ul>
-<h3>Transpiler</h3>
+<h3 id="transpiler"><a class="anchor" aria-hidden="true" href="#transpiler"></a>Transpiler</h3>
 <ul>
 <li><code>Babel</code> transpile vers du &quot;vieux&quot; (ES5) Js pour assurer la compatibilité des fonctions JS. <em>Polyfills</em> étends les capacités de &quot;transpilage&quot; de Babel.</li>
 <li><code>Core-js</code> est un <em>Polyfills</em>.</li>
 <li><code>Babel</code> a besoin d'avoir <code>babel-loader</code> pour fonctionner avec <code>webpack</code>.</li>
 </ul>
-<h2>SASS</h2>
+<h2 id="sass"><a class="anchor" aria-hidden="true" href="#sass"></a>SASS</h2>
 <ul>
 <li>Un <code>css</code> est un <code>sass</code> valide.</li>
 <li>On définit les données partielles dans les fichiers commençant par <code>_name.scss</code>. Il peut ensuite être chargé à un autre endroit via <code>@use &quot;./name&quot;;</code>.</li>
 <li><code>min-heigth: 100vh</code> signifie que le composant prend au moins la taille de la vue. En utilisant un container  <code>flex, column</code> et en assignant &quot;`margin-top: auto&quot;, le composant
 se place en bas.</li>
 </ul>
-<h2>CSS</h2>
+<h2 id="css"><a class="anchor" aria-hidden="true" href="#css"></a>CSS</h2>
 <ul>
 <li>Pour merger facilement les propriétés de tailwind :
 <pre><code class="language-js">import { type ClassValue, clsx } from &quot;clsx&quot;;
@@ -147,13 +147,13 @@ export function cn(...inputs: ClassValue[]) {
 </code></pre>
 </li>
 </ul>
-<h2>Tools</h2>
-<h3>ESLint</h3>
+<h2 id="tools"><a class="anchor" aria-hidden="true" href="#tools"></a>Tools</h2>
+<h3 id="eslint"><a class="anchor" aria-hidden="true" href="#eslint"></a>ESLint</h3>
 <ul>
 <li>Avec <code>create-react-app</code>, tout est déjà installer. Il faut juste lancer <code>npm init @eslint/config</code> et ne pas installer les dépendances.</li>
 <li>Il faut ajouter <code>plugin:react/jsx-runtime</code> dans la list <code>extends</code> du <em>.eslintrc.json</em>.</li>
 </ul>
-<h3>Prettier</h3>
+<h3 id="prettier"><a class="anchor" aria-hidden="true" href="#prettier"></a>Prettier</h3>
 <ul>
 <li>
 <p>On peut l'installer avec: <code>npm install prettier@^version -D --save-exact</code></p>
@@ -183,21 +183,21 @@ export function cn(...inputs: ClassValue[]) {
   &quot;plugins&quot;: [..., &quot;prettier&quot;]
 }
 </code></pre>
-<h3>Mrm</h3>
+<h3 id="mrm"><a class="anchor" aria-hidden="true" href="#mrm"></a>Mrm</h3>
 <ul>
 <li>Permet d'automatiser la configuration des fichiers en se basant sur la configuration présente.</li>
 </ul>
-<h3>Husky</h3>
+<h3 id="husky"><a class="anchor" aria-hidden="true" href="#husky"></a>Husky</h3>
 <ul>
 <li>Git hooks pour en JS.</li>
 </ul>
-<h2>CJS vs ESM</h2>
+<h2 id="cjs-vs-esm"><a class="anchor" aria-hidden="true" href="#cjs-vs-esm"></a>CJS vs ESM</h2>
 <ul>
 <li>Lire la doc de https://antfu.me/posts/publish-esm-and-cjs</li>
 </ul>
-<h2>Module Bundlers: Webpack</h2>
+<h2 id="module-bundlers-webpack"><a class="anchor" aria-hidden="true" href="#module-bundlers-webpack"></a>Module Bundlers: Webpack</h2>
 <p>Webpack is a module bundler that allows to resolve dependencies to make file exportable via the web.</p>
-<h2>Optimise the code</h2>
+<h2 id="optimise-the-code"><a class="anchor" aria-hidden="true" href="#optimise-the-code"></a>Optimise the code</h2>
 <ul>
 <li><a href="https://www.joshwcomeau.com/performance/embracing-modern-image-formats/">You might not need jQuery</a>: when you can do it in CSS and vanilla JavaScript</li>
 <li><a href="https://www.joshwcomeau.com/performance/embracing-modern-image-formats/">Embracing modern image format</a>: use webP if you can</li>

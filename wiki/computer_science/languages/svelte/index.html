@@ -39,11 +39,11 @@
 <div class="metadata"><p>description: Frontend Javascript &amp; Typescript</p><p>lang: FR
     </p>
 </div>
-<p><h2>Syntaxe</h2>
+<p><h2 id="syntaxe"><a class="anchor" aria-hidden="true" href="#syntaxe"></a>Syntaxe</h2>
 <ul>
 <li>Utilise les extensions <code>.svelte</code>.</li>
 </ul>
-<h3>Variables</h3>
+<h3 id="variables"><a class="anchor" aria-hidden="true" href="#variables"></a>Variables</h3>
 <ul>
 <li>On ajoute la partie scripting via les balises <code>script</code>.</li>
 <li>On peut appeler les variables en utilisant <code>{var_name}</code>.</li>
@@ -74,7 +74,7 @@
 
 &lt;p&gt;{@html balise}&lt;/p&gt;
 </code></pre>
-<h3>Style</h3>
+<h3 id="style"><a class="anchor" aria-hidden="true" href="#style"></a>Style</h3>
 <ul>
 <li>On peut rajouter du style grâce à la balise <code>&lt;style&gt;</code>.</li>
 <li>Ce style ne s'applique qu'au composant associé.</li>
@@ -87,7 +87,7 @@
     }
 &lt;/style&gt;
 </code></pre>
-<h3>Reactivité</h3>
+<h3 id="reactivité"><a class="anchor" aria-hidden="true" href="#reactivité"></a>Reactivité</h3>
 <ul>
 <li>Quand l'état du composant change, <em>Svelte</em> met automatiquement l'état à jour.</li>
 <li>On peut synchroniser l'état de l'application avec l'état du DOM en réponse à des événements :</li>
@@ -192,7 +192,7 @@ let foo = obj.foo;
 foo.bar = &quot;bar&quot;; // Don't redraw obj
 &lt;/script&gt;
 </code></pre>
-<h3>Export</h3>
+<h3 id="export"><a class="anchor" aria-hidden="true" href="#export"></a>Export</h3>
 <ul>
 <li>On peut exporter les propriétés d'un fichier via <code>export</code> et passer en paramêtre :
 <ul>
@@ -229,7 +229,7 @@ foo.bar = &quot;bar&quot;; // Don't redraw obj
 
     &lt;Nested {...obj} /&gt;
 </code></pre>
-<h3>Structures de contrôles</h3>
+<h3 id="structures-de-contrôles"><a class="anchor" aria-hidden="true" href="#structures-de-contrôles"></a>Structures de contrôles</h3>
 <ul>
 <li>On peut faire des blocs de <code>if</code> :</li>
 </ul>
@@ -279,7 +279,7 @@ foo.bar = &quot;bar&quot;; // Don't redraw obj
 	&lt;Thing name={thing.name}/&gt;
 {/each}
 </code></pre>
-<h3>Asynchrone</h3>
+<h3 id="asynchrone"><a class="anchor" aria-hidden="true" href="#asynchrone"></a>Asynchrone</h3>
 <ul>
 <li>On peut faire un bloc <code>async / await</code> :</li>
 </ul>
@@ -298,7 +298,7 @@ foo.bar = &quot;bar&quot;; // Don't redraw obj
     &lt;!-- Code html --&gt;
 {/await}
 </code></pre>
-<h2>Cycle de vie</h2>
+<h2 id="cycle-de-vie"><a class="anchor" aria-hidden="true" href="#cycle-de-vie"></a>Cycle de vie</h2>
 <ul>
 <li><code>onMount</code> correspond au moment où le composant est rendu pour la première fois au niveau du DOM.</li>
 <li><code>beforeUpdate</code> correspond au moment juste avant la mise à jour du DOM.</li>
@@ -306,7 +306,7 @@ foo.bar = &quot;bar&quot;; // Don't redraw obj
 <li><code>tick</code> renvoie une <code>Promise</code> qui est appelée quand n'importe quel changement a été appliqué au DOM.</li>
 <li><code>onDestroy</code> correspond au moment où un composant est détruit.</li>
 </ul>
-<h2>Stores</h2>
+<h2 id="stores"><a class="anchor" aria-hidden="true" href="#stores"></a>Stores</h2>
 <ul>
 <li>On peut créer des stores avec :</li>
 </ul>

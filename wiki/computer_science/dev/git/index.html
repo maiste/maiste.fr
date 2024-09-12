@@ -39,92 +39,92 @@
 <div class="metadata"><p>description: How to use Git</p><p>lang: ENG
     </p>
 </div>
-<p><h1>Commits</h1>
-<h2>Create a commit</h2>
+<p><h1 id="commits"><a class="anchor" aria-hidden="true" href="#commits"></a>Commits</h1>
+<h2 id="create-a-commit"><a class="anchor" aria-hidden="true" href="#create-a-commit"></a>Create a commit</h2>
 <pre><code class="language-sh">git commit
 </code></pre>
-<h2>Create a commit wit a message</h2>
+<h2 id="create-a-commit-wit-a-message"><a class="anchor" aria-hidden="true" href="#create-a-commit-wit-a-message"></a>Create a commit wit a message</h2>
 <pre><code class="language-sh">git commit -m &quot;&lt;message&gt;&quot;
 </code></pre>
-<h2>Create a commit as a fixup</h2>
+<h2 id="create-a-commit-as-a-fixup"><a class="anchor" aria-hidden="true" href="#create-a-commit-as-a-fixup"></a>Create a commit as a fixup</h2>
 <pre><code class="language-sh">git commit --fixup=&lt;commit&gt;
 </code></pre>
-<h2>Create a commit with a sign-off</h2>
+<h2 id="create-a-commit-with-a-sign-off"><a class="anchor" aria-hidden="true" href="#create-a-commit-with-a-sign-off"></a>Create a commit with a sign-off</h2>
 <pre><code class="language-sh">git commit -s
 </code></pre>
-<h2>Signing a commit with a GPG key</h2>
+<h2 id="signing-a-commit-with-a-gpg-key"><a class="anchor" aria-hidden="true" href="#signing-a-commit-with-a-gpg-key"></a>Signing a commit with a GPG key</h2>
 <pre><code class="language-sh">git commit -S [KEYID]
 </code></pre>
-<h2>Amend a previous commit</h2>
+<h2 id="amend-a-previous-commit"><a class="anchor" aria-hidden="true" href="#amend-a-previous-commit"></a>Amend a previous commit</h2>
 <pre><code class="language-sh">git commit --amend
 </code></pre>
 <hr />
-<h1>Branch</h1>
-<h2>List branches</h2>
+<h1 id="branch"><a class="anchor" aria-hidden="true" href="#branch"></a>Branch</h1>
+<h2 id="list-branches"><a class="anchor" aria-hidden="true" href="#list-branches"></a>List branches</h2>
 <pre><code class="language-sh">git branch [--all]
 
 </code></pre>
-<h2>Create a branch</h2>
+<h2 id="create-a-branch"><a class="anchor" aria-hidden="true" href="#create-a-branch"></a>Create a branch</h2>
 <pre><code class="language-sh">git branch &lt;name&gt; [origin branch]
 </code></pre>
-<h2>Delete a branch without forcing</h2>
+<h2 id="delete-a-branch-without-forcing"><a class="anchor" aria-hidden="true" href="#delete-a-branch-without-forcing"></a>Delete a branch without forcing</h2>
 <pre><code class="language-sh">git branch -d &lt;name&gt;
 </code></pre>
-<h2>Delete a branch with forcing</h2>
+<h2 id="delete-a-branch-with-forcing"><a class="anchor" aria-hidden="true" href="#delete-a-branch-with-forcing"></a>Delete a branch with forcing</h2>
 <pre><code class="language-sh">git branch -D &lt;name&gt;
 </code></pre>
-<h2>Switch to a branch</h2>
+<h2 id="switch-to-a-branch"><a class="anchor" aria-hidden="true" href="#switch-to-a-branch"></a>Switch to a branch</h2>
 <pre><code>git switch &lt;name&gt;
 </code></pre>
-<h2>Switch to a new branch</h2>
+<h2 id="switch-to-a-new-branch"><a class="anchor" aria-hidden="true" href="#switch-to-a-new-branch"></a>Switch to a new branch</h2>
 <pre><code class="language-sh">git switch -c &lt;name&gt; [origin]
 </code></pre>
-<h2>Switch to a branch with a detached head</h2>
+<h2 id="switch-to-a-branch-with-a-detached-head"><a class="anchor" aria-hidden="true" href="#switch-to-a-branch-with-a-detached-head"></a>Switch to a branch with a detached head</h2>
 <pre><code class="language-sh">git switch -d &lt;commit or branch&gt;
 </code></pre>
 <hr />
-<h1>Tags</h1>
+<h1 id="tags"><a class="anchor" aria-hidden="true" href="#tags"></a>Tags</h1>
 <p>There is two types of tags:</p>
 <ul>
 <li>Lightweight (~private tags)</li>
 <li>Annotated (more metadata, ~public tags)</li>
 </ul>
-<h3>Create an annotated tag</h3>
+<h3 id="create-an-annotated-tag"><a class="anchor" aria-hidden="true" href="#create-an-annotated-tag"></a>Create an annotated tag</h3>
 <pre><code class="language-shell">git tag -a [tag]
 </code></pre>
-<h3>Create an annotated tag</h3>
+<h3 id="create-an-annotated-tag-1"><a class="anchor" aria-hidden="true" href="#create-an-annotated-tag-1"></a>Create an annotated tag</h3>
 <pre><code class="language-shell">git tag -a [tag]
 </code></pre>
-<h3>Create a lightweight tag</h3>
+<h3 id="create-a-lightweight-tag"><a class="anchor" aria-hidden="true" href="#create-a-lightweight-tag"></a>Create a lightweight tag</h3>
 <pre><code class="language-shell">git tag [tag]
 </code></pre>
-<h3>Replace a tag (<code>--force</code>)</h3>
+<h3 id="replace-a-tag---force"><a class="anchor" aria-hidden="true" href="#replace-a-tag---force"></a>Replace a tag (<code>--force</code>)</h3>
 <pre><code class="language-shell">git tag -f [tag]
 </code></pre>
-<h3>Delete a tag</h3>
+<h3 id="delete-a-tag"><a class="anchor" aria-hidden="true" href="#delete-a-tag"></a>Delete a tag</h3>
 <pre><code class="language-shell">git tag -d [tag]
 </code></pre>
 <hr />
-<h1>Rebase</h1>
-<h2>Rebase a branch</h2>
+<h1 id="rebase"><a class="anchor" aria-hidden="true" href="#rebase"></a>Rebase</h1>
+<h2 id="rebase-a-branch"><a class="anchor" aria-hidden="true" href="#rebase-a-branch"></a>Rebase a branch</h2>
 <pre><code class="language-sh">git rebase &lt;rebase onto&gt; [from]
 </code></pre>
-<h2>Rebase in interactive mode (optionnaly with fixup squashing)</h2>
+<h2 id="rebase-in-interactive-mode-optionnaly-with-fixup-squashing"><a class="anchor" aria-hidden="true" href="#rebase-in-interactive-mode-optionnaly-with-fixup-squashing"></a>Rebase in interactive mode (optionnaly with fixup squashing)</h2>
 <pre><code class="language-sh">git rebase --interactive  [--autosquash] [range]
 </code></pre>
-<h2>Rewrite commit while rebasing</h2>
+<h2 id="rewrite-commit-while-rebasing"><a class="anchor" aria-hidden="true" href="#rewrite-commit-while-rebasing"></a>Rewrite commit while rebasing</h2>
 <pre><code class="language-sh">git rebase --interactive [range]
 # For each stage
 git reset HEAD^
 git commit ...
 </code></pre>
-<h2>Continue a rebase</h2>
+<h2 id="continue-a-rebase"><a class="anchor" aria-hidden="true" href="#continue-a-rebase"></a>Continue a rebase</h2>
 <pre><code class="language-sh">git rebase --continue
 </code></pre>
-<h2>Abort a rebase</h2>
+<h2 id="abort-a-rebase"><a class="anchor" aria-hidden="true" href="#abort-a-rebase"></a>Abort a rebase</h2>
 <pre><code class="language-sh">git rebase --abort
 </code></pre>
-<h2>Rebase conflicts</h2>
+<h2 id="rebase-conflicts"><a class="anchor" aria-hidden="true" href="#rebase-conflicts"></a>Rebase conflicts</h2>
 <p>First, it is better to use <code>diff3</code> to get the parent content and see what the issue is. In a rebase,
 you are trying to apply the commits from a branch as <code>patches</code> into a <code>target branch</code>. The conflict
 happens when the branch has been modified on both branches. All the following examples are coming
@@ -170,37 +170,37 @@ I love apples
 <pre><code class="language-sh">git checkout --theirs -- &lt;FILEPATH&gt;
 </code></pre>
 <hr />
-<h1>Cherry pick</h1>
-<h2>Cherry pick one commit</h2>
+<h1 id="cherry-pick"><a class="anchor" aria-hidden="true" href="#cherry-pick"></a>Cherry pick</h1>
+<h2 id="cherry-pick-one-commit"><a class="anchor" aria-hidden="true" href="#cherry-pick-one-commit"></a>Cherry pick one commit</h2>
 <pre><code class="language-sh">git cherry-pick &lt;commit&gt;
 </code></pre>
 <hr />
-<h1>Remote</h1>
-<h2>Add a remote</h2>
+<h1 id="remote"><a class="anchor" aria-hidden="true" href="#remote"></a>Remote</h1>
+<h2 id="add-a-remote"><a class="anchor" aria-hidden="true" href="#add-a-remote"></a>Add a remote</h2>
 <pre><code class="language-sh">git remote add &lt;name&gt; &lt;url&gt;
 </code></pre>
-<h2>Remove a remote</h2>
+<h2 id="remove-a-remote"><a class="anchor" aria-hidden="true" href="#remove-a-remote"></a>Remove a remote</h2>
 <pre><code class="language-sh">git remote remove &lt;name&gt;
 </code></pre>
-<h2>Update a remote</h2>
+<h2 id="update-a-remote"><a class="anchor" aria-hidden="true" href="#update-a-remote"></a>Update a remote</h2>
 <pre><code class="language-sh">git remote set-url &lt;name&gt; &lt;new_url&gt;
 </code></pre>
-<h2>Prune branches from a remote</h2>
+<h2 id="prune-branches-from-a-remote"><a class="anchor" aria-hidden="true" href="#prune-branches-from-a-remote"></a>Prune branches from a remote</h2>
 <pre><code class="language-sh">git remote prune &lt;remote&gt;
 </code></pre>
 <hr />
-<h1>Patch</h1>
-<h2>Produce a patch</h2>
+<h1 id="patch"><a class="anchor" aria-hidden="true" href="#patch"></a>Patch</h1>
+<h2 id="produce-a-patch"><a class="anchor" aria-hidden="true" href="#produce-a-patch"></a>Produce a patch</h2>
 <pre><code class="language-sh">git format-patch &lt;branch or commit range&gt; --stdout &gt; &lt;name&gt;.patch
 </code></pre>
-<h2>Use a patch</h2>
+<h2 id="use-a-patch"><a class="anchor" aria-hidden="true" href="#use-a-patch"></a>Use a patch</h2>
 <pre><code class="language-sh">git am &lt;name&gt;.patch
 </code></pre>
-<h2>Co Authored patch</h2>
+<h2 id="co-authored-patch"><a class="anchor" aria-hidden="true" href="#co-authored-patch"></a>Co Authored patch</h2>
 <pre><code>Co-authored-by: author-name &lt;name@xxx.com&gt;
 </code></pre>
 <hr />
-<h2>Resources</h2>
+<h2 id="resources"><a class="anchor" aria-hidden="true" href="#resources"></a>Resources</h2>
 <ul>
 <li><a href="https://devconnected.com/how-to-add-and-update-git-submodules/">How to add submodules</a> (TO TRANSLATE)</li>
 </ul>

@@ -39,15 +39,15 @@
 <div class="metadata"><p>description: Rust Programming Language - Low level language</p><p>lang: ENG
     </p>
 </div>
-<p><h2>Basics</h2>
+<p><h2 id="basics"><a class="anchor" aria-hidden="true" href="#basics"></a>Basics</h2>
 <ul>
 <li><code>std</code> is the standard <code>rust</code> library.</li>
 <li>Libraries brought into the scope by <code>rust</code> from the <code>std</code> library are called <em>the prelude</em>.</li>
 <li><em>Statements</em> are instructions that perform some action and do not return a value.</li>
 <li><em>Expressions</em> evaluate to a resultant value. They don't end with a <em>semicolon</em>.</li>
 </ul>
-<h2>Syntax</h2>
-<h3>Comments</h3>
+<h2 id="syntax"><a class="anchor" aria-hidden="true" href="#syntax"></a>Syntax</h2>
+<h3 id="comments"><a class="anchor" aria-hidden="true" href="#comments"></a>Comments</h3>
 <ul>
 <li>They are always the same:</li>
 </ul>
@@ -55,7 +55,7 @@
 // so you don't have to worry about various
 // styles!
 </code></pre>
-<h3>Main</h3>
+<h3 id="main"><a class="anchor" aria-hidden="true" href="#main"></a>Main</h3>
 <ul>
 <li>This is how you start a rust program:</li>
 </ul>
@@ -63,13 +63,13 @@
     // Program
 }
 </code></pre>
-<h3>Imports</h3>
+<h3 id="imports"><a class="anchor" aria-hidden="true" href="#imports"></a>Imports</h3>
 <ul>
 <li>Bring some library into the scope:</li>
 </ul>
 <pre><code class="language-rust">use std::io;
 </code></pre>
-<h3>Constants and variables</h3>
+<h3 id="constants-and-variables"><a class="anchor" aria-hidden="true" href="#constants-and-variables"></a>Constants and variables</h3>
 <ul>
 <li>Immutable variable:</li>
 </ul>
@@ -88,23 +88,23 @@ x = 6;
 </ul>
 <pre><code class="language-rust">const I_AM_A_CONSTANT: u32 = 42;
 </code></pre>
-<h3>Tuples</h3>
+<h3 id="tuples"><a class="anchor" aria-hidden="true" href="#tuples"></a>Tuples</h3>
 <pre><code class="language-rust">let tuple: (i32, f32, bool, char) = (500, 6.4, true, 'a');
 let (i,f,b,c) = tuple; // Deconstruction
 let f = tuple.1; // Field access
 </code></pre>
-<h3>Arrays</h3>
+<h3 id="arrays"><a class="anchor" aria-hidden="true" href="#arrays"></a>Arrays</h3>
 <pre><code class="language-rust">let x = [1,2,3,4,4];
 let x: [i32; 5] = [1,2,3,4,4];
 let x = [4; 5]; // = [4, 4, 4, 4, 4];
 let first = x[0];
 </code></pre>
-<h3>Functions</h3>
+<h3 id="functions"><a class="anchor" aria-hidden="true" href="#functions"></a>Functions</h3>
 <pre><code class="language-rust">fn function_name(arg: i32) -&gt; i32 {
     return arg + 2;
 }
 </code></pre>
-<h3>Printing</h3>
+<h3 id="printing"><a class="anchor" aria-hidden="true" href="#printing"></a>Printing</h3>
 <ul>
 <li>We can print value using <code>println!</code> placeholders:</li>
 </ul>
@@ -113,13 +113,13 @@ let y = 2;
 
 println!(&quot;x = {x}, y = {}&quot;, y);
 </code></pre>
-<h3>Pattern matching</h3>
+<h3 id="pattern-matching"><a class="anchor" aria-hidden="true" href="#pattern-matching"></a>Pattern matching</h3>
 <pre><code class="language-rust">let x = match res {
     Ok(num) =&gt; num,
     Err(_) =&gt; continue,
 }
 </code></pre>
-<h3>If-then-else</h3>
+<h3 id="if-then-else"><a class="anchor" aria-hidden="true" href="#if-then-else"></a>If-then-else</h3>
 <ul>
 <li><code>if-then-else</code> acts like a variable and can be consume by a variable or as a return expression from a function.</li>
 </ul>
@@ -131,7 +131,7 @@ println!(&quot;x = {x}, y = {}&quot;, y);
     // Final case!
 }
 </code></pre>
-<h3>Loop</h3>
+<h3 id="loop"><a class="anchor" aria-hidden="true" href="#loop"></a>Loop</h3>
 <ul>
 <li><em>Infinity loop</em>:</li>
 </ul>
@@ -176,33 +176,33 @@ while number != 0 {
     // Do something too.
 }
 </code></pre>
-<h2>Cmdline</h2>
-<h3>Rustc</h3>
+<h2 id="cmdline"><a class="anchor" aria-hidden="true" href="#cmdline"></a>Cmdline</h2>
+<h3 id="rustc"><a class="anchor" aria-hidden="true" href="#rustc"></a>Rustc</h3>
 <ul>
 <li>To compile a code, just run:</li>
 </ul>
 <pre><code class="language-sh">rustc file.rs
 ./file
 </code></pre>
-<h3>Cargo</h3>
-<h4>Create a new project</h4>
+<h3 id="cargo"><a class="anchor" aria-hidden="true" href="#cargo"></a>Cargo</h3>
+<h4 id="create-a-new-project"><a class="anchor" aria-hidden="true" href="#create-a-new-project"></a>Create a new project</h4>
 <pre><code class="language-sh">cargo new &lt;project_name&gt;
 </code></pre>
-<h4>Build a project</h4>
+<h4 id="build-a-project"><a class="anchor" aria-hidden="true" href="#build-a-project"></a>Build a project</h4>
 <pre><code class="language-sh">cargo build
 </code></pre>
-<h4>Build and run a project</h4>
+<h4 id="build-and-run-a-project"><a class="anchor" aria-hidden="true" href="#build-and-run-a-project"></a>Build and run a project</h4>
 <pre><code class="language-sh">cargo run
 </code></pre>
-<h4>Check the code is correct</h4>
+<h4 id="check-the-code-is-correct"><a class="anchor" aria-hidden="true" href="#check-the-code-is-correct"></a>Check the code is correct</h4>
 <pre><code class="language-sh">cargo check
 </code></pre>
-<h2>Resources</h2>
-<h3>Library docs</h3>
+<h2 id="resources"><a class="anchor" aria-hidden="true" href="#resources"></a>Resources</h2>
+<h3 id="library-docs"><a class="anchor" aria-hidden="true" href="#library-docs"></a>Library docs</h3>
 <ul>
 <li><a href="https://doc.rust-lang.org/stable/std/prelude/index.html">Rust Prelude</a></li>
 </ul>
-<h3>Learning</h3>
+<h3 id="learning"><a class="anchor" aria-hidden="true" href="#learning"></a>Learning</h3>
 <ul>
 <li><a href="https://doc.rust-lang.org/stable/book">Rust Book</a></li>
 </ul>

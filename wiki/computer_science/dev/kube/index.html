@@ -39,8 +39,8 @@
 <div class="metadata"><p>description: Comment faire tourner un cluster kube</p><p>lang: FR
     </p>
 </div>
-<p><h3>Concepts</h3>
-<h4>Terminologie</h4>
+<p><h3 id="concepts"><a class="anchor" aria-hidden="true" href="#concepts"></a>Concepts</h3>
+<h4 id="terminologie"><a class="anchor" aria-hidden="true" href="#terminologie"></a>Terminologie</h4>
 <ul>
 <li><em>Infrastructure As Code</em>: management et provisionnement d'infrastructures via du code.</li>
 <li><em>APM</em>: Application Performant Manager: monitorer et manager les performances et la disponibilité d'un service.</li>
@@ -82,7 +82,7 @@
 </ul>
 </li>
 </ul>
-<h3>ReplicaSet</h3>
+<h3 id="replicaset"><a class="anchor" aria-hidden="true" href="#replicaset"></a>ReplicaSet</h3>
 <pre><code class="language-yaml">kind: ReplicaSet
 metadata:
   name: unicorn-front-replicaset
@@ -107,8 +107,8 @@ spec:
 <li>Le <code>selector.matchLabels</code> doit matcher le label de la <code>spec</code> pour pouvoir gérer les replicas. Le nom du pod dans <code>template.metadata.name</code> est override par <code>metadata.name</code>.</li>
 <li>Dans le cas où on delete un <code>ReplicaSet</code>, on delete tous ses pods.</li>
 </ul>
-<h3>Déploiement</h3>
-<h4>Control des ressources</h4>
+<h3 id="déploiement"><a class="anchor" aria-hidden="true" href="#déploiement"></a>Déploiement</h3>
+<h4 id="control-des-ressources"><a class="anchor" aria-hidden="true" href="#control-des-ressources"></a>Control des ressources</h4>
 <pre><code class="language-yaml">resources:
   requests:
     memory: &quot;64Mi&quot;
@@ -127,7 +127,7 @@ spec:
 <ul>
 <li>Le controle CPU s'assure que la consommation ne dépasse pas. Il bloque en dessous de la limit.</li>
 </ul>
-<h3>Services</h3>
+<h3 id="services"><a class="anchor" aria-hidden="true" href="#services"></a>Services</h3>
 <p>Il agit comme un <em>load balancer</em> en transmettant les requêtes aux pods auxquels il est rattaché.</p>
 <pre><code class="language-yaml">apiVersion: v1
 kind: Service
@@ -146,7 +146,7 @@ spec:
 <li>Par défaut le service fonctionne en <code>ClusterIp</code>, ce qui fait qu'il est accessible que depuis l'intérieur du cluster. Pour pallier au problème d'exposition, on peut faire une <em>NodePort</em> qui expose l'ensemble des services ou <em>LoadBalancer</em> pour provisionner un load balancer</li>
 <li>On peut aussi faire un <em>Ingress</em> qui agit comme un reverse proxy.</li>
 </ul>
-<h3>Ingress</h3>
+<h3 id="ingress"><a class="anchor" aria-hidden="true" href="#ingress"></a>Ingress</h3>
 <p>C'est un peu un load balancer pour le service.</p>
 <pre><code class="language-yaml">apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -170,7 +170,7 @@ spec:
 <ul>
 <li>Le CertManager permet aux utilisateur de créer un Ingress en demandant l'utilisation d'un cluster-issuer de certificat.</li>
 </ul>
-<h3>CertManager</h3>
+<h3 id="certmanager"><a class="anchor" aria-hidden="true" href="#certmanager"></a>CertManager</h3>
 <p>Il faut rajouter les paramètres suivants et avoir un <code>cluster-issuer</code> à disposition dans le cluster.</p>
 <pre><code class="language-yaml"># metadata:
 #  annotations:
@@ -189,7 +189,7 @@ spec:
 <ul>
 <li>Si on a besoin d'un certificat <code>Wildcart</code>, il faut enlever <code>cert-manager.io/cluster-issuer</code> et <code>kubernetes.io/tls-acme</code> et utiliser le <code>secretName</code> pour avoir le bon certificat stocké dans les secrets.</li>
 </ul>
-<h3>Registry privé</h3>
+<h3 id="registry-privé"><a class="anchor" aria-hidden="true" href="#registry-privé"></a>Registry privé</h3>
 <ul>
 <li>Pour utiliser les registry privés, bien souvent, il faut setup les accès. Pour ce faire on crée un secret de type <code>docker-registry</code>.</li>
 </ul>
@@ -199,7 +199,7 @@ spec:
 imagePullSecrets:
   - name: takima-school-registry
 </code></pre>
-<h3>Variable d'env</h3>
+<h3 id="variable-denv"><a class="anchor" aria-hidden="true" href="#variable-denv"></a>Variable d'env</h3>
 <p>On peut ajouter des variables d'environnement</p>
 <pre><code class="language-yaml"># spec:
 #   template:
@@ -212,7 +212,7 @@ imagePullSecrets:
     fieldRef:
       fieldPath: spec.nodeName
 </code></pre>
-<h3>ConfigMap</h3>
+<h3 id="configmap"><a class="anchor" aria-hidden="true" href="#configmap"></a>ConfigMap</h3>
 <p>Le <em>ConfigMap</em> stocke les données non-confidentielles. On enregistre les données comme suit:</p>
 <pre><code class="language-yaml">apiVersion: v1
 kind: ConfigMap
@@ -231,7 +231,7 @@ data:
         key: color     # nom de la clef dans le config map
 </code></pre>
 <p>/!\ Il faut penser à restart !</p>
-<h3>Secret</h3>
+<h3 id="secret"><a class="anchor" aria-hidden="true" href="#secret"></a>Secret</h3>
 <p>Pour les données confidentielles, on utilise les secrets de deux façons:</p>
 <ol>
 <li><code>kubectl create secret generic my-secret --from-literal=username=user</code>: on peut mettre plusieur littérals à la suite</li>
@@ -264,7 +264,7 @@ data:
       key: color     # nom de la clef dans le config map
 </code></pre>
 <p>/!\ Dans lens, il est en <strong>base64</strong>, il faut penser à le <strong>convertir</strong>.</p>
-<h3>Checkhealth</h3>
+<h3 id="checkhealth"><a class="anchor" aria-hidden="true" href="#checkhealth"></a>Checkhealth</h3>
 <p>Permet d'appeler un endpoint réguliérement pour vérifier qu'il est sein.</p>
 <pre><code class="language-yaml"># container.[]
 livenessProbe:
@@ -278,14 +278,14 @@ livenessProbe:
   failureThreshold: 5 # Nombre de tentatives
   periodSeconds: 3   # Timing pour les checks
 </code></pre>
-<h3>HorizontalPodAutoscaler: mise à l'échelle automatique</h3>
+<h3 id="horizontalpodautoscaler-mise-à-léchelle-automatique"><a class="anchor" aria-hidden="true" href="#horizontalpodautoscaler-mise-à-léchelle-automatique"></a>HorizontalPodAutoscaler: mise à l'échelle automatique</h3>
 <p>Peut être créer en utilisant le <code>-o yaml</code> de <code>autoscale</code>.</p>
-<h3>NetworkPolicy</h3>
+<h3 id="networkpolicy"><a class="anchor" aria-hidden="true" href="#networkpolicy"></a>NetworkPolicy</h3>
 <p>Permet de contrôler les flux entre les pods.</p>
-<h3>Redirection interne</h3>
+<h3 id="redirection-interne"><a class="anchor" aria-hidden="true" href="#redirection-interne"></a>Redirection interne</h3>
 <p>Pour accèder à un service depuis un autre service, on peut utiliser le DNS interne. Pour un service <code>api</code> dans le namespace <code>test</code>, on peut appeler
 <code>http://api.test</code>. S'ils sont dans le même namespace, on peut juste utiliser le nom du service: <code>http://api</code>.</p>
-<h3>Persistence Volume</h3>
+<h3 id="persistence-volume"><a class="anchor" aria-hidden="true" href="#persistence-volume"></a>Persistence Volume</h3>
 <p>Cela correspond à l'abstraction du volume physique mappé sur les serveurs. Il s'agit d'une resources. Les <em>Persistence Volume Claims</em> sont une demande de stockage par l'utilisateur. On peut définir différents types de stockages avec les <em>StorageClass</em>. Les volumes peuvent être statiques ou dynamiques.</p>
 <ul>
 <li>On peut définir un système de stockage comme suit:</li>
@@ -325,7 +325,7 @@ volumeMounts:
 - mountPath: /var/lib/postgresql/data
   name: pg-data
 </code></pre>
-<h3>StatefulSet</h3>
+<h3 id="statefulset"><a class="anchor" aria-hidden="true" href="#statefulset"></a>StatefulSet</h3>
 <p>Cela permet de scaler les ressources utilisées par un pod. Cependant, ça casse le fonctionnement du DNS.</p>
 <pre><code class="language-yaml"># kind: StatefulSet
 # spec:
@@ -340,16 +340,16 @@ volumeMounts:
           storage: 1Gi
 </code></pre>
 <p>Il faut modifier le lien d'accès car le load balancer ne fonctionne plus. On doit pointer vers <code>pod.service</code> au lieu de <code>service</code>.</p>
-<h3>CronJob</h3>
+<h3 id="cronjob"><a class="anchor" aria-hidden="true" href="#cronjob"></a>CronJob</h3>
 <p>Ressource qui permet de faire des jobs en fond à intervalle régulier.</p>
-<h3>Operators</h3>
+<h3 id="operators"><a class="anchor" aria-hidden="true" href="#operators"></a>Operators</h3>
 <p>Cela correspond à une resource personalisée. On peut le faire grâce à une <em>Custom Resource Definition</em>.</p>
-<h3>Helm</h3>
+<h3 id="helm"><a class="anchor" aria-hidden="true" href="#helm"></a>Helm</h3>
 <p>Helm est le &quot;package manager&quot; de Kubernetes. Il permet de faire des templates de toutes les ressources yaml d’une application donnée et les déployer sur Kubernetes. On peut déployer des stacks applicatives directement.</p>
 <p>La stack applicative s'appelle une <strong>Chart Helm</strong>. On utilise les <em>values</em> pour faire des <em>templates</em> helm. On peut utiliser un système de variables grâce à _templates/<em>helpers.tpl</em> (il s'agit de templates Go).</p>
-<h3>Argo CD</h3>
+<h3 id="argo-cd"><a class="anchor" aria-hidden="true" href="#argo-cd"></a>Argo CD</h3>
 <p>Permet de faire du <em>GitOps</em> en faisant le lien entre l'<em>Infra-As-Code</em> et l'<em>Infrastructure</em>.</p>
-<h3>Cheatsheet</h3>
+<h3 id="cheatsheet"><a class="anchor" aria-hidden="true" href="#cheatsheet"></a>Cheatsheet</h3>
 <ul>
 <li>
 <p><code>kubectl</code>:</p>

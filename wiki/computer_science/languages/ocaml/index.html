@@ -39,50 +39,50 @@
 <div class="metadata"><p>description: About OCaml.</p><p>lang: ENG
     </p>
 </div>
-<p><h2>Opam</h2>
+<p><h2 id="opam"><a class="anchor" aria-hidden="true" href="#opam"></a>Opam</h2>
 <p>Opam is the package manager for OCaml.</p>
-<h3>Pin all the *.opam in a repo to a specific version without installing them</h3>
+<h3 id="pin-all-the-opam-in-a-repo-to-a-specific-version-without-installing-them"><a class="anchor" aria-hidden="true" href="#pin-all-the-opam-in-a-repo-to-a-specific-version-without-installing-them"></a>Pin all the *.opam in a repo to a specific version without installing them</h3>
 <pre><code class="language-sh"># -n = don't install .opam packages themselves
 opam pin &lt;path&gt; --with-version &lt;version&gt; -n
 </code></pre>
-<h3>Resources</h3>
+<h3 id="resources"><a class="anchor" aria-hidden="true" href="#resources"></a>Resources</h3>
 <ul>
 <li><a href="https://opam.ocaml.org/doc/Manual.html">Opam documentation</a></li>
 <li><a href="https://opam.ocaml.org/packages/">Opam packages</a></li>
 <li><a href="https://v3.ocaml.org/packages">Opam packages on v3.ocaml.org</a></li>
 </ul>
 <hr />
-<h2>Dune</h2>
+<h2 id="dune"><a class="anchor" aria-hidden="true" href="#dune"></a>Dune</h2>
 <p>Dune is a build system for OCaml.</p>
-<h3>Build a specific package</h3>
+<h3 id="build-a-specific-package"><a class="anchor" aria-hidden="true" href="#build-a-specific-package"></a>Build a specific package</h3>
 <pre><code class="language-sh">dune build -p &lt;package&gt;
 </code></pre>
-<h3>Build some doc</h3>
+<h3 id="build-some-doc"><a class="anchor" aria-hidden="true" href="#build-some-doc"></a>Build some doc</h3>
 <pre><code class="language-sh">dune build @doc
 </code></pre>
-<h3>Run some tests</h3>
+<h3 id="run-some-tests"><a class="anchor" aria-hidden="true" href="#run-some-tests"></a>Run some tests</h3>
 <pre><code class="language-sh">dune runtest
 </code></pre>
-<h3>Build in watch mode and clear the screen on rebuilt</h3>
+<h3 id="build-in-watch-mode-and-clear-the-screen-on-rebuilt"><a class="anchor" aria-hidden="true" href="#build-in-watch-mode-and-clear-the-screen-on-rebuilt"></a>Build in watch mode and clear the screen on rebuilt</h3>
 <pre><code class="language-sh">dune build -w --terminal-persistence=clear-on-rebuild
 </code></pre>
-<h3>Resources</h3>
+<h3 id="resources-1"><a class="anchor" aria-hidden="true" href="#resources-1"></a>Resources</h3>
 <ul>
 <li><a href="https://dune.readthedocs.io/en/stable/">Dune documentation</a></li>
 </ul>
 <hr />
-<h2>PPX</h2>
-<h3>Summary</h3>
+<h2 id="ppx"><a class="anchor" aria-hidden="true" href="#ppx"></a>PPX</h2>
+<h3 id="summary"><a class="anchor" aria-hidden="true" href="#summary"></a>Summary</h3>
 <p>PPXs are a tool included in OCaml that allows you to rewrite the AST at compile
 time. It's very powerful but also very complicated.</p>
-<h3>Resources</h3>
+<h3 id="resources-2"><a class="anchor" aria-hidden="true" href="#resources-2"></a>Resources</h3>
 <ul>
 <li><a href="https://tarides.com/blog/2019-05-09-an-introduction-to-ocaml-ppx-ecosystem">Tarides blog post</a></li>
 <li><a href="https://ppxlib.readthedocs.io/en/latest/ppx-for-plugin-authors.html#getting-started">Ppxlib documentation</a></li>
 <li><a href="https://github.com/ocaml-ppx/ppxlib/blob/master/examples/simple-extension-rewriter/dune">Github Ppxlib example</a></li>
 </ul>
-<h2>OCaml</h2>
-<h3>Note about exceptions</h3>
+<h2 id="ocaml"><a class="anchor" aria-hidden="true" href="#ocaml"></a>OCaml</h2>
+<h3 id="note-about-exceptions"><a class="anchor" aria-hidden="true" href="#note-about-exceptions"></a>Note about exceptions</h3>
 <p>Exceptions can be a bit tricky to understand. It's hard to know when it is going to generate a <em>StackOverflow</em> error. With this two examples, we can understand how it behaves.</p>
 <ul>
 <li>This example is not going to generate an error as the handler is added arround the <code>g</code> function once.</li>
@@ -102,7 +102,7 @@ let f x = try g x with Found x -&gt; (* Do something *)
     | Leaf x -&gt; raise (Found x)
     | Node (r, v) -&gt;  try g r ; g v with Found x -&gt; x
 </code></pre>
-<h3>Resources</h3>
+<h3 id="resources-3"><a class="anchor" aria-hidden="true" href="#resources-3"></a>Resources</h3>
 <ul>
 <li><a href="https://ceramichacker.com/blog/26-1x-full-stack-webdev-in-ocaml-intro">Write a website with Dream</a>: Dream is an OCaml web framework</li>
 <li><a href="https://dev.realworldocaml.org/index.html">Realworld OCaml</a>: tutorial about OCaml</li>

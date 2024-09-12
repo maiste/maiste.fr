@@ -39,7 +39,7 @@
 <div class="metadata"><p>description: Rsync with remote provider for backups - Commandline tool</p><p>lang: ENG
     </p>
 </div>
-<p><h2>Configuration file for Scaleway</h2>
+<p><h2 id="configuration-file-for-scaleway"><a class="anchor" aria-hidden="true" href="#configuration-file-for-scaleway"></a>Configuration file for Scaleway</h2>
 <p>This a sample for Scaleway that you need to store in <code>$HOME/.config/rclone/rclone.conf</code></p>
 <pre><code class="language-toml">[scaleway] # Remote name
 type = s3
@@ -51,19 +51,19 @@ endpoint = s3.fr-par.scw.cloud
 acl = private
 storage_class = STANDARD # or GLACIER
 </code></pre>
-<h2>Synchronize files with remote</h2>
+<h2 id="synchronize-files-with-remote"><a class="anchor" aria-hidden="true" href="#synchronize-files-with-remote"></a>Synchronize files with remote</h2>
 <p>It will synchronize files which means it can delete file on remote.</p>
 <pre><code class="language-sh">rclone sync -v &quot;/path/to/backup&quot; remote:bucket_name
 </code></pre>
-<h2>Copy files with remote</h2>
+<h2 id="copy-files-with-remote"><a class="anchor" aria-hidden="true" href="#copy-files-with-remote"></a>Copy files with remote</h2>
 <p>Same as <code>sync</code> but it will keep the deleted files.</p>
 <pre><code class="language-sh">rclone copy  &quot;/path/to/backup&quot; remote:bucket_name
 </code></pre>
-<h2>Restore glacier file</h2>
+<h2 id="restore-glacier-file"><a class="anchor" aria-hidden="true" href="#restore-glacier-file"></a>Restore glacier file</h2>
 <p>If the data are store with the GLACIER storage class, you first need to restore them. It can take up to <strong>48 hours</strong>!</p>
 <pre><code class="language-shell">rclone backend restore remote:bucket_name -o priority=Standard
 </code></pre>
-<h2>Restore files</h2>
+<h2 id="restore-files"><a class="anchor" aria-hidden="true" href="#restore-files"></a>Restore files</h2>
 <pre><code class="language-sh">rclone copy remote:bucket_name &quot;/path/to/restore&quot;
 </code></pre>
 </p>

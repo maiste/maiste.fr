@@ -39,21 +39,21 @@
 <div class="metadata"><p>description: Bibliotèque React JS</p><p>lang: FR
     </p>
 </div>
-<p><h2>Philosophie</h2>
-<h3>Introduction</h3>
+<p><h2 id="philosophie"><a class="anchor" aria-hidden="true" href="#philosophie"></a>Philosophie</h2>
+<h3 id="introduction"><a class="anchor" aria-hidden="true" href="#introduction"></a>Introduction</h3>
 <ul>
 <li>Dev par Facebook en 2013</li>
 <li>JSX (aujourd'hui TSX)</li>
 <li>Approche composant avec une gestion du cycle de vie et des états locaux (states)</li>
 </ul>
-<h3>Version notables</h3>
+<h3 id="version-notables"><a class="anchor" aria-hidden="true" href="#version-notables"></a>Version notables</h3>
 <ul>
 <li><code>16.0</code> (2017) -&gt; <code>Fragments</code>, changement dans le cycle de vie, Server Side Rendering</li>
 <li><code>16.3</code> (2018) -&gt; <code>Context API</code></li>
 <li><code>16.8</code> (2019) -&gt; <code>Hooks</code></li>
 <li><code>18</code> (2022) -&gt; <code>Concurrent</code> management</li>
 </ul>
-<h3>Architecture</h3>
+<h3 id="architecture"><a class="anchor" aria-hidden="true" href="#architecture"></a>Architecture</h3>
 <pre><code class="language-ascii">                        ┌───────────────────┐
                         │                   │
                         │  React Component  │
@@ -62,7 +62,7 @@
                         │                   │
                         └───────────────────┘
 </code></pre>
-<h4>Props</h4>
+<h4 id="props"><a class="anchor" aria-hidden="true" href="#props"></a>Props</h4>
 <ul>
 <li>C'est récupéré depuis le composant qui instancie. C'est une ressource immutable :</li>
 </ul>
@@ -82,7 +82,7 @@ class App extends React.Component {
   }
 }
 </code></pre>
-<h4>States</h4>
+<h4 id="states"><a class="anchor" aria-hidden="true" href="#states"></a>States</h4>
 <ul>
 <li>C'est limité au composant, modifiable et asynchrone:</li>
 </ul>
@@ -100,7 +100,7 @@ class App extends React.Component {
   }
 }
 </code></pre>
-<h4>Nouvelle version</h4>
+<h4 id="nouvelle-version"><a class="anchor" aria-hidden="true" href="#nouvelle-version"></a>Nouvelle version</h4>
 <ul>
 <li>On est passé d'une approche <code>Class component</code> à une approche <code>Functional component</code>:</li>
 </ul>
@@ -115,7 +115,7 @@ class App extends React.Component {
     return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;;
 }
 </code></pre>
-<h3>Cycle de Vie</h3>
+<h3 id="cycle-de-vie"><a class="anchor" aria-hidden="true" href="#cycle-de-vie"></a>Cycle de Vie</h3>
 <pre><code class="language-ascii">
              ┌─────────────────────────┐    ┌──────────────────────┐   ┌────────────────────────┐
              │                         │    │                      │   │                        │
@@ -144,8 +144,8 @@ class App extends React.Component {
 
 </code></pre>
 <hr />
-<h2>Code</h2>
-<h3>Fragments</h3>
+<h2 id="code"><a class="anchor" aria-hidden="true" href="#code"></a>Code</h2>
+<h3 id="fragments"><a class="anchor" aria-hidden="true" href="#fragments"></a>Fragments</h3>
 <ul>
 <li>Permet de rendre des composants HTML au même niveau sans avoir besoin de &quot;nested&quot;:</li>
 </ul>
@@ -158,23 +158,23 @@ class App extends React.Component {
 /* Mon code */
 &lt;/Fragment&gt;
 </code></pre>
-<h3>Keys</h3>
+<h3 id="keys"><a class="anchor" aria-hidden="true" href="#keys"></a>Keys</h3>
 <ul>
 <li>Penser à utiliser les <em>keys</em> dans les composant pour permettre à <code>React</code> de faire le rendu dans le bon sens.</li>
 </ul>
-<h3>Get Started</h3>
+<h3 id="get-started"><a class="anchor" aria-hidden="true" href="#get-started"></a>Get Started</h3>
 <p>Pour créer une app <code>React</code> avec <code>npx</code>, on utilise <em>Create React App</em> (CRA) :</p>
 <pre><code class="language-sh">  npx create-react-app front --template typescript
   cd front
   npm start
 </code></pre>
 <hr />
-<h2>Router</h2>
+<h2 id="router"><a class="anchor" aria-hidden="true" href="#router"></a>Router</h2>
 <ul>
 <li>Avec react on peut avoir un router qui manipule l'API <code>history</code> du DOM Html. Le package à installer est le suivant: <code>react-router-dom@6</code></li>
 </ul>
 <hr />
-<h2>Context</h2>
+<h2 id="context"><a class="anchor" aria-hidden="true" href="#context"></a>Context</h2>
 <p>Les <em>Context</em> permettent de partager des données en profondeur dans l'arbre sans avoir besoin de passer les éléments à travers les <code>props</code>.
 Il possède deux éléments clefs:</p>
 <ul>
@@ -182,7 +182,7 @@ Il possède deux éléments clefs:</p>
 <li><code>Consumer</code> qui conomme et récupère les données du contexte</li>
 </ul>
 <hr />
-<h2>Redux</h2>
+<h2 id="redux"><a class="anchor" aria-hidden="true" href="#redux"></a>Redux</h2>
 <ul>
 <li>Permet de faire ce que fait les <em>Context</em> avant leur introduction.</li>
 <li>Il possède un état global appelé le <strong>Store</strong>.</li>
@@ -193,31 +193,31 @@ Il possède deux éléments clefs:</p>
 <li>Les <em>selectors</em> permettent d'obtenir le resultat depuis le store.</li>
 </ul>
 <hr />
-<h2>Test</h2>
-<h3>React Testing Library (RTL)</h3>
+<h2 id="test"><a class="anchor" aria-hidden="true" href="#test"></a>Test</h2>
+<h3 id="react-testing-library-rtl"><a class="anchor" aria-hidden="true" href="#react-testing-library-rtl"></a>React Testing Library (RTL)</h3>
 <ul>
 <li>Permet d'interagir avec les composants <em>React</em>.</li>
 </ul>
-<h3>Smoke test</h3>
+<h3 id="smoke-test"><a class="anchor" aria-hidden="true" href="#smoke-test"></a>Smoke test</h3>
 <ul>
 <li>Permet de vérifier qu'un composant s'affiche sans crash.</li>
 </ul>
-<h3>Snapshot test</h3>
+<h3 id="snapshot-test"><a class="anchor" aria-hidden="true" href="#snapshot-test"></a>Snapshot test</h3>
 <ul>
 <li>Vérifier si le rendu d'un html est bon.</li>
 </ul>
-<h3>Mock test</h3>
+<h3 id="mock-test"><a class="anchor" aria-hidden="true" href="#mock-test"></a>Mock test</h3>
 <ul>
 <li>permet de vérifier que les composants s'affichent comme il le faut.</li>
 </ul>
 <hr />
-<h2>Formulaire</h2>
-<h3>Uncontrolled vs controlled component</h3>
+<h2 id="formulaire"><a class="anchor" aria-hidden="true" href="#formulaire"></a>Formulaire</h2>
+<h3 id="uncontrolled-vs-controlled-component"><a class="anchor" aria-hidden="true" href="#uncontrolled-vs-controlled-component"></a>Uncontrolled vs controlled component</h3>
 <ul>
 <li>Les <em>Uncontrolled components</em> sont des composants qui sont gérés par le <code>DOM</code> html.</li>
 <li>Les <em>Controlled components</em> sont des composants dont l'état interne est géré par React.</li>
 </ul>
-<h3>Uncontrolled</h3>
+<h3 id="uncontrolled"><a class="anchor" aria-hidden="true" href="#uncontrolled"></a>Uncontrolled</h3>
 <p>Pour faire un <em>uncontrolled</em>, on définit une référence que l'on donne en attribut :</p>
 <pre><code class="language-tsx">// Valeur de input est accessible via nameInputRef.current.value
 // Nous devons utiliser defaultValue pour initialiser l'input
@@ -230,7 +230,7 @@ function NameFormUncontrolled({defaultValue}: {defaultValue: string}) {
   );
 
 </code></pre>
-<h3>Controlled</h3>
+<h3 id="controlled"><a class="anchor" aria-hidden="true" href="#controlled"></a>Controlled</h3>
 <ul>
 <li>On récupère l'état interne via un <em>State</em> :</li>
 </ul>
@@ -246,7 +246,7 @@ function NameFormUncontrolled({defaultValue}: {defaultValue: string}) {
   );
 }
 </code></pre>
-<h3>React Hook Form</h3>
+<h3 id="react-hook-form"><a class="anchor" aria-hidden="true" href="#react-hook-form"></a>React Hook Form</h3>
 <p>Il s'agit d&quot;une bibliotèque permettant de construire un formulaire sans avoir trop de code redondant.</p>
 <pre><code class="language-sh">npm install react-hook-form
 </code></pre>

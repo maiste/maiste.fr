@@ -39,13 +39,13 @@
 <div class="metadata"><p>description: Backup Commandline tool</p><p>lang: ENG
     </p>
 </div>
-<p><h2>Recurrent flags</h2>
+<p><h2 id="recurrent-flags"><a class="anchor" aria-hidden="true" href="#recurrent-flags"></a>Recurrent flags</h2>
 <ul>
 <li><code>--dry-run</code> can be used to see the effect of the command.</li>
 <li><code>--list</code> allows to list concerned files.</li>
 <li><code>--stats</code> gives some statistics about the archives.</li>
 </ul>
-<h2>Init a borg repository</h2>
+<h2 id="init-a-borg-repository"><a class="anchor" aria-hidden="true" href="#init-a-borg-repository"></a>Init a borg repository</h2>
 <pre><code class="language-sh"># Generate a strong passphrase
 openssl rand -base64 50 &gt; &quot;/path/to/passphrase&quot;
 
@@ -58,7 +58,7 @@ borg init --encryption=repokey /path/to/borg/repo
 <ul>
 <li><code>--encryption=repokey</code> means with store the key with the <code>borg</code> repository. Without it, you can't restore your data.</li>
 </ul>
-<h2>Create an archive</h2>
+<h2 id="create-an-archive"><a class="anchor" aria-hidden="true" href="#create-an-archive"></a>Create an archive</h2>
 <pre><code class="language-sh"># Export command to retrieve PASSPHRASE
 export BORG_PASSCOMMAND=&quot;cat /path/to/passphrase&quot;
 
@@ -68,7 +68,7 @@ borg create &quot;/path/to/borg/repo&quot;::backup_name [FILES TO BACKUP]
 <li><code>--stats</code> can be used to display information while backing up data.</li>
 <li><code>backup_name</code> can use <code>{hostname}</code> to include the name of the host in the name.</li>
 </ul>
-<h2>Prune archives</h2>
+<h2 id="prune-archives"><a class="anchor" aria-hidden="true" href="#prune-archives"></a>Prune archives</h2>
 <pre><code class="language-sh"># Export command to retrieve PASSPHRASE
 export BORG_PASSCOMMAND=&quot;cat /path/to/passphrase&quot;
 
@@ -84,19 +84,19 @@ borg prune --keep-daily=7 --keep-monthly=4 &quot;/path/to/borg/repo&quot;
 </li>
 <li><code>--stats</code>: displays stats</li>
 </ul>
-<h2>Compact data</h2>
+<h2 id="compact-data"><a class="anchor" aria-hidden="true" href="#compact-data"></a>Compact data</h2>
 <pre><code class="language-sh"># Export command to retrieve PASSPHRASE
 export BORG_PASSCOMMAND=&quot;cat /path/to/passphrase&quot;
 
 borg compact &quot;/path/to/borg/repo&quot;
 </code></pre>
-<h2>List archives</h2>
+<h2 id="list-archives"><a class="anchor" aria-hidden="true" href="#list-archives"></a>List archives</h2>
 <pre><code class="language-sh"># Export command to retrieve PASSPHRASE
 export BORG_PASSCOMMAND=&quot;cat /path/to/passphrase&quot;
 
 borg list &quot;/path/to/borg/repo&quot;
 </code></pre>
-<h2>Extract archive</h2>
+<h2 id="extract-archive"><a class="anchor" aria-hidden="true" href="#extract-archive"></a>Extract archive</h2>
 <pre><code class="language-sh">borg extract -v --list &quot;/path/to/borg/repo&quot;::backup_name [archive_repo_paths]
 </code></pre>
 <ul>
@@ -104,7 +104,7 @@ borg list &quot;/path/to/borg/repo&quot;
 <li><code>--list</code> allows to display files taken into account.</li>
 <li><code>[archive_repo_paths]</code> is a list of path separated by space to only restore specific paths. If it's <strong>absent</strong>, it restores <strong>all of them</strong>.</li>
 </ul>
-<h2>Delete archive</h2>
+<h2 id="delete-archive"><a class="anchor" aria-hidden="true" href="#delete-archive"></a>Delete archive</h2>
 <pre><code class="language-sh"># Export command to retrieve PASSPHRASE
 export BORG_PASSCOMMAND=&quot;cat /path/to/passphrase&quot;
 

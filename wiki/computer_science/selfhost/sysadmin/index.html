@@ -39,14 +39,14 @@
 <div class="metadata"><p>description: Resources about Sys Admin - Messy, needs to be split</p><p>lang: ENG
     </p>
 </div>
-<p><h2>Apps</h2>
-<h3>Resources</h3>
+<p><h2 id="apps"><a class="anchor" aria-hidden="true" href="#apps"></a>Apps</h2>
+<h3 id="resources"><a class="anchor" aria-hidden="true" href="#resources"></a>Resources</h3>
 <ul>
 <li><a href="https://syncthing.net/">Syncthing</a>: tool to keep sync up to date</li>
 <li><a href="https://nextcloud.com/">Nextcloud</a>: cloud interface</li>
 </ul>
 <hr />
-<h2>Backup</h2>
+<h2 id="backup"><a class="anchor" aria-hidden="true" href="#backup"></a>Backup</h2>
 <ul>
 <li>rsync: backup tool</li>
 </ul>
@@ -54,17 +54,17 @@
   rsync -avhp src/ dest/
 </code></pre>
 <hr />
-<h3>Resources</h3>
+<h3 id="resources-1"><a class="anchor" aria-hidden="true" href="#resources-1"></a>Resources</h3>
 <ul>
 <li><a href="https://rclone.org/docs/">Rclone</a>: a tool to manage backup with cloud providers</li>
 <li><a href="https://www.scaleway.com/en/docs/tutorials/migrate-data-rclone/">Object Storage - Scaleway</a>: how to use Object Storage and Rclone with Scaleway</li>
 <li><a href="https://www.scaleway.com/en/docs/tutorials/encrypt-s3-data-rclone/">Encrypted Object Storage - Scaleway</a>: how to use object storage with encrypted buckets</li>
 </ul>
-<h2>Block connections on 22 port</h2>
+<h2 id="block-connections-on-22-port"><a class="anchor" aria-hidden="true" href="#block-connections-on-22-port"></a>Block connections on 22 port</h2>
 <p>Use the tool <em>endlessh</em></p>
 <hr />
-<h2>FileSystem</h2>
-<h3>Create swap memory</h3>
+<h2 id="filesystem"><a class="anchor" aria-hidden="true" href="#filesystem"></a>FileSystem</h2>
+<h3 id="create-swap-memory"><a class="anchor" aria-hidden="true" href="#create-swap-memory"></a>Create swap memory</h3>
 <ul>
 <li>First, you need to create the file:</li>
 </ul>
@@ -91,43 +91,43 @@
 <pre><code class="language-bash"># FS          mountpoint  type  option(s) dump pass
 /path/to/swap    none     swap      sw      0    0
 </code></pre>
-<h3>Resources</h3>
+<h3 id="resources-2"><a class="anchor" aria-hidden="true" href="#resources-2"></a>Resources</h3>
 <ul>
 <li><a href="https://unix.stackexchange.com/questions/672151/create-zfs-partition-on-existing-drive">ZFS partition</a>: how to create a ZFS partition</li>
 </ul>
 <hr />
-<h2>Firewall</h2>
-<h3>Resources</h3>
+<h2 id="firewall"><a class="anchor" aria-hidden="true" href="#firewall"></a>Firewall</h2>
+<h3 id="resources-3"><a class="anchor" aria-hidden="true" href="#resources-3"></a>Resources</h3>
 <ul>
 <li><a href="https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands">UFW beginner guide</a></li>
 </ul>
 <hr />
-<h2>Nginx</h2>
-<h3>Resources</h3>
+<h2 id="nginx"><a class="anchor" aria-hidden="true" href="#nginx"></a>Nginx</h2>
+<h3 id="resources-4"><a class="anchor" aria-hidden="true" href="#resources-4"></a>Resources</h3>
 <ul>
 <li><a href="https://dev.to/danielkun/nginx-everything-about-proxypass-2ona">Proxy_pass</a>: tutorial about nginx <code>proxy_pass</code> directive</li>
 </ul>
 <hr />
-<h2>SSH</h2>
-<h3>Chroot jail</h3>
-<h4>Definition</h4>
+<h2 id="ssh"><a class="anchor" aria-hidden="true" href="#ssh"></a>SSH</h2>
+<h3 id="chroot-jail"><a class="anchor" aria-hidden="true" href="#chroot-jail"></a>Chroot jail</h3>
+<h4 id="definition"><a class="anchor" aria-hidden="true" href="#definition"></a>Definition</h4>
 <p>Use <em>chroot jail</em> wit SSH. It allows to isolate a user through ssh in a
 specific directory with limited commands.</p>
-<h3>Resources</h3>
+<h3 id="resources-5"><a class="anchor" aria-hidden="true" href="#resources-5"></a>Resources</h3>
 <ul>
 <li><a href="https://allanfeid.com/content/creating-chroot-jail-ssh-access">chroot jail</a>: how to build a Chroot jail</li>
 <li><a href="https://blog.octo.com/le-bastion-ssh/">Bastion SSH (FR)</a>: how to create a SSH bastion</li>
 <li><a href="https://iximiuz.com/en/posts/ssh-tunnels/">Visual Guide to SSH Tunnels</a></li>
 </ul>
 <hr />
-<h2>VPN</h2>
-<h3>Resources</h3>
+<h2 id="vpn"><a class="anchor" aria-hidden="true" href="#vpn"></a>VPN</h2>
+<h3 id="resources-6"><a class="anchor" aria-hidden="true" href="#resources-6"></a>Resources</h3>
 <ul>
 <li><a href="https://fedoramagazine.org/build-a-virtual-private-network-with-wireguard/">Buil a VPN with Wireguard</a>: Fedora magazine post about how to build aVPN with Wireguard</li>
 </ul>
 <hr />
-<h2>Sudo &amp; su</h2>
-<h2>Su</h2>
+<h2 id="sudo--su"><a class="anchor" aria-hidden="true" href="#sudo--su"></a>Sudo &amp; su</h2>
+<h2 id="su"><a class="anchor" aria-hidden="true" href="#su"></a>Su</h2>
 <ul>
 <li>Execute a command with the default shell for a specific user
 <pre><code class="language-sh">su &lt;user&gt; -c &lt;command&gt;
