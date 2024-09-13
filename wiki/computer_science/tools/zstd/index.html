@@ -35,48 +35,22 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1>Dev</h1>
-<ul class="index"><li>
-        <h3><a href="/wiki/computer_science/dev/ack/index.html">Ack</a></h3>
-        <div class="metadata"><p>description: Commandline tool ack</p><p>lang: ENG</p>
-        </div>
-    </li>
-    <li>
-        <h3><a href="/wiki/computer_science/dev/flutter/index.html">Flutter</a></h3>
-        <div class="metadata"><p>description: How to use Flutter</p><p>lang: ENG</p>
-        </div>
-    </li>
-    <li>
-        <h3><a href="/wiki/computer_science/dev/gpg/index.html">GPG</a></h3>
-        <div class="metadata"><p>description: Safe data with encryption.</p><p>lang: ENG</p>
-        </div>
-    </li>
-    <li>
-        <h3><a href="/wiki/computer_science/dev/git/index.html">Git</a></h3>
-        <div class="metadata"><p>description: How to use Git</p><p>lang: ENG</p>
-        </div>
-    </li>
-    <li>
-        <h3><a href="/wiki/computer_science/dev/kube/index.html">Kubernetes</a></h3>
-        <div class="metadata"><p>description: Comment faire tourner un cluster kube</p><p>lang: FR</p>
-        </div>
-    </li>
-    <li>
-        <h3><a href="/wiki/computer_science/dev/neovim/index.html">NeoVIM</a></h3>
-        <div class="metadata"><p>description: Stuffs about (Neo)Vim.</p><p>lang: ENG</p>
-        </div>
-    </li>
-    <li>
-        <h3><a href="/wiki/computer_science/dev/ripgrep/index.html">Ripgrep</a></h3>
-        <div class="metadata"><p>description: Commandline tool rg</p><p>lang: ENG</p>
-        </div>
-    </li>
-    <li>
-        <h3><a href="/wiki/computer_science/dev/zsh/index.html">Zsh</a></h3>
-        <div class="metadata"><p>description: Zsh utilities.</p><p>lang: ENG</p>
-        </div>
-    </li>
-    </ul>
+    <main class="container"><h1>Zstd</h1>
+<div class="metadata"><p>description: Fast compression tool</p><p>lang: ENG
+    </p>
+</div>
+<p><h2 id="compress"><a class="anchor" aria-hidden="true" href="#compress"></a>Compress</h2>
+<h3 id="standard-command"><a class="anchor" aria-hidden="true" href="#standard-command"></a>Standard command</h3>
+<pre><code class="language-sh">zstd &lt;file&gt;
+</code></pre>
+<h3 id="compress-with-a-higher-level-of-compression"><a class="anchor" aria-hidden="true" href="#compress-with-a-higher-level-of-compression"></a>Compress with a higher level of compression</h3>
+<pre><code class="language-zsh">zstd -&lt;level between 1 and 19&gt; &lt;file&gt;
+</code></pre>
+<h2 id="decompress"><a class="anchor" aria-hidden="true" href="#decompress"></a>Decompress</h2>
+<h3 id="standard-command-1"><a class="anchor" aria-hidden="true" href="#standard-command-1"></a>Standard command</h3>
+<pre><code class="language-sh">zstd -d &lt;file.zst&gt;
+</code></pre>
+</p>
 </main>
 
     <footer class="container">

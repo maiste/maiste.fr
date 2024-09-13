@@ -35,18 +35,19 @@
         </nav>
         <hr />
     </header>
-    <main class="container"><h1>diy</h1>
-<ul class="index"><li>
-        <h3><a href="/wiki/diy/plantation/index.html">Seeding</a></h3>
-        <div class="metadata"><p>description: How to plant stuffs - Move to English</p><p>lang: FR</p>
-        </div>
-    </li>
-    <li>
-        <h3><a href="/wiki/diy/addresses/index.html">Worktable</a></h3>
-        <div class="metadata"><p>description: Disposable worktables places available for money or for free.</p><p>lang: ENG</p>
-        </div>
-    </li>
-    </ul>
+    <main class="container"><h1>Nix</h1>
+<div class="metadata"><p>description: Reproducible builds.</p><p>lang: ENG
+    </p>
+</div>
+<p><h2 id="nix-shell"><a class="anchor" aria-hidden="true" href="#nix-shell"></a>Nix-shell</h2>
+<h3 id="specify-the-wanted-packages"><a class="anchor" aria-hidden="true" href="#specify-the-wanted-packages"></a>Specify the wanted packages</h3>
+<pre><code class="language-sh">nix-shell -p &lt;package list&gt;
+</code></pre>
+<h2 id="execute-in-a-pure-environment"><a class="anchor" aria-hidden="true" href="#execute-in-a-pure-environment"></a>Execute in a pure environment</h2>
+<p>This unset the environment variables</p>
+<pre><code class="language-sh">nix-shell --pure
+</code></pre>
+</p>
 </main>
 
     <footer class="container">
