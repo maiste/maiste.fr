@@ -2,6 +2,7 @@ open Yocaml
 
 type t =
   { title : string
+  ; description : string option
   ; index : (Wiki.t * Path.t) list
   }
 
@@ -13,7 +14,7 @@ let normalize_dir_title name =
   List.map first_letter_uppercase chain |> String.concat " "
 ;;
 
-let v ~title index = { title; index }
+let v ~title ?description index = { title; index; description }
 
 let normalize_elt (elt, path) =
   let open Data in
@@ -33,7 +34,13 @@ let normalize_elt (elt, path) =
     ]
 ;;
 
-let normalize t = Data.[ "title", string t.title; "index", list_of normalize_elt t.index ]
+let normalize t =
+  Data.
+    [ "title", string t.title
+    ; "description", option string t.description
+    ; "index", list_of normalize_elt t.index
+    ]
+;;
 
 let sort t =
   { t with index = List.sort (fun (w1, _) (w2, _) -> Wiki.compare w1 w2) t.index }

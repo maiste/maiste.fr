@@ -7,8 +7,7 @@ module Tree = struct
     }
 
   and ('a, 'b) dir =
-    { title : string
-    ; path : Path.t
+    { path : Path.t
     ; children : ('a, 'b) t list
     ; content : ('b * string) option
     }
@@ -17,11 +16,9 @@ module Tree = struct
     | File of 'a file
     | Dir of ('a, 'b) dir
 
-  let dir
-    : type a b.
-      title:string -> ?content:b * string -> ?children:(a, b) t list -> Path.t -> (a, b) t
+  let dir : type a b. ?content:b * string -> ?children:(a, b) t list -> Path.t -> (a, b) t
     =
-    fun ~title ?content ?(children = []) path -> Dir { title; path; children; content }
+    fun ?content ?(children = []) path -> Dir { path; children; content }
   ;;
 
   let file path content = File { path; content }
@@ -36,13 +33,13 @@ module Tree = struct
     | File { path; _ } ->
       let s = Format.sprintf "File %s" (Path.to_string path) in
       Sexp.atom s
-    | Dir { title; path; children; content = _ } ->
-      let s = Format.sprintf "Dir(%s) %s" title (Path.to_string path) in
+    | Dir { path; children; content = _ } ->
+      let s = Format.sprintf "Dir %s" (Path.to_string path) in
       Sexp.node [ Sexp.atom s; Sexp.node (List.map to_sexp children) ]
   ;;
 end
 
-let index_name = "_index"
+let index_name = "_index.md"
 
 let filter_index_file path =
   match Path.basename path with
@@ -71,9 +68,6 @@ let compute
         let+ content = read_file_with_metadata (module P) (module D) ~on path in
         Tree.file path content
     in
-    let title =
-      Path.basename path |> Option.get |> Model.Wiki_section.normalize_dir_title
-    in
     let* children = List.traverse f files in
     let+ content =
       match index with
@@ -81,7 +75,7 @@ let compute
       | Some path ->
         read_file_with_metadata (module P) (module Dir) ~on path >|= Option.some
     in
-    Tree.dir ~title ?content ~children path
+    Tree.dir ?content ~children path
   in
   aux path
 ;;
@@ -99,8 +93,8 @@ let fetch
 let to_action ~dir_to_action ~file_to_action tree cache =
   let rec aux = function
     | Tree.File { path; content } -> [ file_to_action path content ]
-    | Tree.Dir { title; path; children; content = _ } ->
-      let action = dir_to_action ~title path children in
+    | Tree.Dir { path; children; content } ->
+      let action = dir_to_action path children content in
       let actions = List.map aux children |> List.flatten in
       action :: actions
   in
@@ -108,13 +102,26 @@ let to_action ~dir_to_action ~file_to_action tree cache =
 ;;
 
 module Default (R : S.RESOLVER) = struct
+  let extract_metadata_from_dir path content =
+    match content with
+    | None ->
+      Path.basename path
+      |> (function
+       | None -> raise (Invalid_argument "Path is wrong")
+       | Some path ->
+         let title = String.split_on_char '_' path |> String.concat " " in
+         title, None, "")
+    | Some (metadata, content) ->
+      Model.Wiki.title metadata, Model.Wiki.description metadata, content
+  ;;
+
   (* FIXME: generalize me! *)
-  let dir_to_action ~title path children =
+  let dir_to_action path children content =
     let get_index = function
-      | Tree.Dir { title; path; _ } ->
+      | Tree.Dir { path; content; _ } ->
+        let title, description, _ = extract_metadata_from_dir path content in
         let path = R.truncate path 1 |> Path.abs |> fun p -> Path.(p / "index.html") in
-        (* let path = R.truncate path 1 |> Path.abs in *)
-        Model.Wiki.v title, path
+        Model.Wiki.v title ?description, path
       | Tree.File { path; content } ->
         let path = R.truncate path 1 |> Path.abs |> R.Target.as_html_index_untouched in
         let metadata, _ = content in
@@ -124,8 +131,9 @@ module Default (R : S.RESOLVER) = struct
         Model.Wiki.v ?description ?lang title, path
     in
     let children = List.map get_index children in
-    let wiki_section = Model.Wiki_section.(v ~title children |> sort) in
-    let template = wiki_section, "" in
+    let title, description, content = extract_metadata_from_dir path content in
+    let wiki_section = Model.Wiki_section.(v ~title ?description children |> sort) in
+    let template = wiki_section, content in
     let path = R.truncate path 1 in
     let path = Path.(R.Target.root ++ path) in
     let path = Path.(path / "index.html") in
@@ -134,6 +142,7 @@ module Default (R : S.RESOLVER) = struct
       path
       (Pipeline.track_file R.Source.binary
        >>> lift (fun () -> template)
+       >>> Yocaml_cmarkit.content_to_html ()
        >>> Yocaml_jingoo.Pipeline.as_template
              (module Model.Wiki_section)
              (R.Source.template "wiki.section.html")
