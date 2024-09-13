@@ -36,7 +36,12 @@ module Tree = struct
   ;;
 end
 
-let compute (type a) (module D : Required.DATA_READABLE with type t = a) path =
+let compute
+  (type a)
+  (module P : Required.DATA_PROVIDER)
+  (module D : Required.DATA_READABLE with type t = a)
+  path
+  =
   let rec aux path =
     let open Eff in
     let on = `Source in
@@ -46,7 +51,7 @@ let compute (type a) (module D : Required.DATA_READABLE with type t = a) path =
       if is_dir
       then aux path
       else
-        let+ content = read_file_with_metadata (module Yocaml_yaml) (module D) ~on path in
+        let+ content = read_file_with_metadata (module P) (module D) ~on path in
         Tree.file path content
     in
     let title =
@@ -58,8 +63,13 @@ let compute (type a) (module D : Required.DATA_READABLE with type t = a) path =
   aux path
 ;;
 
-let fetch (type a) (module D : Required.DATA_READABLE with type t = a) root =
-  Task.from_effect (fun () -> compute (module D) root)
+let fetch
+  (type a)
+  (module P : Required.DATA_PROVIDER)
+  (module D : Required.DATA_READABLE with type t = a)
+  root
+  =
+  Task.from_effect (fun () -> compute (module P) (module D) root)
 ;;
 
 let to_action ~dir_to_action ~file_to_action tree cache =
@@ -133,6 +143,6 @@ let process (module R : S.RESOLVER) root : Action.t =
   let open Eff in
   let module W = Default (R) in
   fun cache ->
-    let* tree = compute (module Model.Wiki) root in
+    let* tree = compute (module Yocaml_yaml) (module Model.Wiki) root in
     to_action ~dir_to_action:W.dir_to_action ~file_to_action:W.file_to_action tree cache
 ;;
