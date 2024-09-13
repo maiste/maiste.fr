@@ -76,7 +76,12 @@ A way to organize items in Css as grids
   }
 ```
 
-# Resources
+
+## Memo
+
+-  _"In CSS, margin and padding are TRouBLE"_: `padding|margin: top right bottom left`
+
+## Resources
 
 * [Defensive CSS](https://ishadeed.com/article/defensive-css/): protect yourself against bad CSS behaviour
 * [Visual Design Rules](https://anthonyhobday.com/sideprojects/saferules/)

@@ -7,40 +7,62 @@ lang: ENG
 title: Tar
 ---
 
+## Basics
 
-## Create an archive
+### Create an archive
 
 ```sh
  tar cf <name>.tar [objs]
 ```
 
-## Extract an archive
+### Extract an archive
 
 ```sh
   tar xf <name>.tar
 ```
 
-<hr />
-
-## Create a gzip archive
-
-```sh
-  tar czf <name>.tgz [objs]
-```
-
-## Extract a gzip archive
-
-```sh
-  tar xzf <name>.tgz
-```
-
-## Activate verbose mode
+### Activate verbose mode
 
 ```sh
  tar v [cmd]
 ```
 
-## Extract on flight an archive with http
+<hr />
+
+## Use compression
+
+### Create a gzip archive
+
+```sh
+  tar czf <name>.tgz [objs]
+```
+
+### Extract a gzip archive
+
+```sh
+  tar xzf <name>.tgz
+```
+
+### Create an zstd archive
+
+See [zsdt](computer_science/tools/zstd.md)
+
+```sh
+tar --zstd cf <name>.tar.zst <files>
+```
+
+### Extract a zstd archive
+
+```sh
+tar --zstd xf <name>.tar.zst
+```
+
+
+<hr />
+
+## Pipe with other programs
+
+### Extract on flight an archive with http
 
 ```sh
   wget -c http[s]://host/path/to/file.tgz -O - | tar -xz
@@ -48,13 +70,15 @@ title: Tar
 
 <hr />
 
-## Encrypt tar with GPG
+## GPG
+
+### Encrypt tar with GPG
 
 ```sh
   tar czpvf - <name> | gpg -c [--batch --yes --passphrase <password>] --cipher-algo aes256 -o <name>.gz.gpg
 ```
 
-## Decrypt tar with GPG
+### Decrypt tar with GPG
 
 ```sh
   gpg -d [--batch --yes --passphrase azerty12] <tar file> | tar xzvf -
