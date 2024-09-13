@@ -17,7 +17,13 @@ module Tree = struct
     | File of 'a file
     | Dir of ('a, 'b) dir
 
-  let dir ~title ?content ?(children = []) path = Dir { title; path; children; content }
+  let dir
+    : type a b.
+      title:string -> ?content:b * string -> ?children:(a, b) t list -> Path.t -> (a, b) t
+    =
+    fun ~title ?content ?(children = []) path -> Dir { title; path; children; content }
+  ;;
+
   let file path content = File { path; content }
 
   let path = function
@@ -36,16 +42,27 @@ module Tree = struct
   ;;
 end
 
+let index_name = "_index"
+
+let filter_index_file path =
+  match Path.basename path with
+  | None -> false
+  | Some name -> name = index_name
+;;
+
 let compute
-  (type a)
+  (type a b)
   (module P : Required.DATA_PROVIDER)
   (module D : Required.DATA_READABLE with type t = a)
+  (module Dir : Required.DATA_READABLE with type t = b)
   path
   =
   let rec aux path =
     let open Eff in
     let on = `Source in
     let* files = read_directory ~on ~only:`Both ~where:Rule.wildcard path in
+    let index = Stdlib.List.find_opt filter_index_file files in
+    let files = Stdlib.List.filter (fun path -> filter_index_file path |> not) files in
     let f path =
       let* is_dir = is_directory ~on path in
       if is_dir
@@ -57,19 +74,26 @@ let compute
     let title =
       Path.basename path |> Option.get |> Model.Wiki_section.normalize_dir_title
     in
-    let+ children = List.traverse f files in
-    Tree.dir ~title ~children path
+    let* children = List.traverse f files in
+    let+ content =
+      match index with
+      | None -> Eff.return Option.none
+      | Some path ->
+        read_file_with_metadata (module P) (module Dir) ~on path >|= Option.some
+    in
+    Tree.dir ~title ?content ~children path
   in
   aux path
 ;;
 
 let fetch
-  (type a)
+  (type a b)
   (module P : Required.DATA_PROVIDER)
   (module D : Required.DATA_READABLE with type t = a)
+  (module Dir : Required.DATA_READABLE with type t = b)
   root
   =
-  Task.from_effect (fun () -> compute (module P) (module D) root)
+  Task.from_effect (fun () -> compute (module P) (module D) (module Dir) root)
 ;;
 
 let to_action ~dir_to_action ~file_to_action tree cache =
@@ -143,6 +167,9 @@ let process (module R : S.RESOLVER) root : Action.t =
   let open Eff in
   let module W = Default (R) in
   fun cache ->
-    let* tree = compute (module Yocaml_yaml) (module Model.Wiki) root in
+    let* tree =
+      (* FIXME: change the Model.Wiki to something more relevant and decoralated from the name. *)
+      compute (module Yocaml_yaml) (module Model.Wiki) (module Model.Wiki) root
+    in
     to_action ~dir_to_action:W.dir_to_action ~file_to_action:W.file_to_action tree cache
 ;;
