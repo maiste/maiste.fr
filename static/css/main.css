@@ -1,10 +1,11 @@
 :root {
-    --primary: #4d724d;
-    --secondary: #8db48e;
+    --primary: #66905A;
+    --primary-darker:  #3D483D;
+    --secondary: #8DB48E;
     --bg-color: #F5F5F5;
     --bg-color-darker: #ECECEC;
     --font-color: #090203;
-    --font-color-sub: #a6adc8;
+    --font-color-sub: #A6ADC8;
     --font-italic: #737994;
 }
 
@@ -173,7 +174,6 @@ header nav ul {
 header nav li::before {
     content: "~/";
 }
-
 
 
 /* --- Main sections --- */
