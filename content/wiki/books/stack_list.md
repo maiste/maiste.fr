@@ -12,10 +12,11 @@ title: Reading stack list
 - Ainsi parlait Zarathoustra, _Nietzsche_
 
 ## Techniques :
-- Types and Programming Languages, _Benjamin C. Pierce_
+- Types and Programming Languages, _Benjamin C. Pierce_w
 - Fundamental of Software Architecture, _Richards and Ford_
 ## Humains :
 - S'estimer et s'oublier, _Christophe André_
+- Les Quatre Accords toltèques, _Miguel Ruiz_
 
 ## Suggestion d'ami.e.s - 2022:
 - Asta, _Jon K. Stefansson_
