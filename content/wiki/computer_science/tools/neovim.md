@@ -6,7 +6,12 @@ description: Stuffs about (Neo)Vim.
 lang: ENG
 title: NeoVIM
 ---
+## Environment
 
+To run NeoVIM with a specific config located in `~/.config/<dir>`, you can pass it to the environment variable: 
+```sh
+$ NVIM_APPNAME=<dir> nvim
+```
 ## Shortcuts
 
  * <kbd>space</kbd>: Leader key
