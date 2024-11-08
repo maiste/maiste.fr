@@ -9,14 +9,15 @@ license: "GPL-3.0-or-later"
 homepage: "https://github.com/maiste/maiste.github.io"
 bug-reports: "https://github.com/maiste/maiste.github.io/issues"
 depends: [
+  "dune" {>= "3.14"}
   "ocaml" {>= "5.1.1"}
-  "dune" {>= "3.14" & >= "3.14.0"}
-  "yocaml"
+  "yocaml" {>= "2.0.0"}
   "yocaml_jingoo"
   "yocaml_yaml"
   "yocaml_cmarkit"
   "yocaml_runtime"
   "yocaml_eio"
+  "yocaml_syndication"
   "ocamlformat" {with-dev-setup}
   "utop" {with-dev-setup}
   "ocaml-lsp-server" {with-dev-setup}
@@ -37,11 +38,3 @@ build: [
   ]
 ]
 dev-repo: "git+https://github.com/maiste/maiste.github.io.git"
-pin-depends: [
-  ["yocaml.dev" "git+https://gitlab.com/funkywork/yocaml.git"]
-  ["yocaml_jingoo.dev" "git+https://gitlab.com/funkywork/yocaml.git"]
-  ["yocaml_yaml.dev" "git+https://gitlab.com/funkywork/yocaml.git"]
-  ["yocaml_cmarkit.dev" "git+https://gitlab.com/funkywork/yocaml.git"]
-  ["yocaml_runtime.dev" "git+https://gitlab.com/funkywork/yocaml.git"]
-  ["yocaml_eio.dev" "git+https://gitlab.com/funkywork/yocaml.git"]
-]

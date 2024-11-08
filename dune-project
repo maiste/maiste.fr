@@ -18,15 +18,15 @@
 
    ;; Build dependencies
    (ocaml (>= 5.1.1))
-   (dune (>= 3.14.0))
 
    ;; YOCaml dependencies
-   yocaml
+   (yocaml (>= 2.0.0))
    yocaml_jingoo
    yocaml_yaml
    yocaml_cmarkit
    yocaml_runtime
    yocaml_eio
+   yocaml_syndication
 
    ;; dev setup
    (ocamlformat :with-dev-setup)
