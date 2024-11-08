@@ -1,5 +1,5 @@
 open Yocaml
-module Index = Index.Blog
+module Index = Blog_index.Blog
 module Model = Model.Blog
 
 module Tree = struct
