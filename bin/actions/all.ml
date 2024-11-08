@@ -11,6 +11,6 @@ let process (module R : S.RESOLVER) () =
   >>= Index.process (module R)
   >>= Page.process (module R)
   >>= Wiki.process (module R)
-  >>= Project.process (module R)
+  >>= Projects.process (module R)
   >>= Action.store_cache R.Target.cache
 ;;

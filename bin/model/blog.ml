@@ -35,4 +35,3 @@ let normalize t =
     ; "has_lang", bool @@ Option.is_some t.lang
     ]
 ;;
-

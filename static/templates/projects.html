@@ -1,0 +1,29 @@
+<h1>The projects I have been working on</h1>
+
+<div class="content">
+  {%- autoescape false -%} {{ yocaml_body }} {%- endautoescape -%}
+</div>
+
+<ul>
+  {%- for project in projects -%}
+  <li>
+    <h3>{{ project.name }}</h2>
+    <div>
+     {%- autoescape false -%}{{ project.summary }}{%- endautoescape -%}
+    </div>
+      {%- if project.has_starting_year -%}
+      <p>Started in <em>{{ project.starting_year}}</em></p>
+      {%- endif -%} 
+      {%- if project.has_ending_year -%}
+      <p>Finished in <em>{{ project.ending_year }}</em></p>
+      {%- elif project.active -%}
+      <p>Currently working on it</p>
+      {%- endif -%}
+    <ul>
+      {%- for link in project.links -%}
+        <li><a href="{{ link }}">{{ link }}</a></li>
+      {% endfor %}
+    </ul>
+  </li>
+  {% endfor %}
+</ul>
