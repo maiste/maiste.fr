@@ -262,32 +262,37 @@ footer p {
   display: flex;
   flex-direction: column;
   padding: 0;
+  padding-top: 36px; /* Mimic .project > li padding */
 }
 
-.project > li {
-  padding-bottom: 50px;
-}
-
-.project > li > ul {
-  list-style-type: none;
-  padding-left: 0;
+.project ul {
+  padding: 0;
 }
 
 .project h2 {
   margin: 0;
-  padding: 0 0 5px 0;
+  padding: 0 0 6px 0;
 }
 
 .project p {
-  padding: 0 0 10px 0;
-}
-
-.project .link {
-  padding: 0 0 5px 0;
+  padding: 0 0 12px 0;
 }
 
 .project i {
   color: var(--font-color-sub);
+}
+
+.project > li {
+  padding-bottom: 36px;
+}
+
+.project > li > ul {
+  list-style-type: none;
+  padding-left: 6px;
+}
+
+.project .link {
+  padding: 0 0 4px 0;
 }
 
 /* --- Media query --- */
