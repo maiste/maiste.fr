@@ -24,7 +24,9 @@ will improve over time but, I wanted to have a decent base first (hence the
 code does not look good actually!).
 
 I plan to:
-- Port the Blog using the _tree.ml_ module,
-- Setup the RSS feed back,
-- Improve the content of the [about](/about) page,
-- Start the blog back and write regularly about what I learn.
+- [ ] Port the Blog using the _tree.ml_ module,
+- [ ] Setup the RSS feed back,
+- [ ] Improve the content of the [about](/about) page,
+- [ ] Start the blog back and write regularly about what I learn,
+- [ ] Add a logging entry
+- [ ] Change the principel font as Overpass feels to tight...
