@@ -35,7 +35,9 @@ module Project = struct
       ; "has_starting_year", bool (Option.is_some t.starting_year)
       ; "ending_year", option int t.ending_year
       ; "has_ending_year", bool (Option.is_some t.ending_year)
+      ; "has_date", bool (Option.is_some t.starting_year || Option.is_some t.ending_year)
       ; "active", bool (Option.is_some t.starting_year && Option.is_none t.ending_year)
+      ; "has_links", bool (t.links <> [])
       ; "links", list_of string t.links
       ; "summary", string t.summary
       ]
