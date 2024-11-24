@@ -28,7 +28,6 @@ module type RESOLVER = sig
     val wiki : Path.t
     val wiki_section : string -> Path.t
     val projects : Path.t
-    val index : Path.t
   end
 
   module Target : sig

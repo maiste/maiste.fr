@@ -2,7 +2,11 @@ open Yocaml
 
 let process_page (module R : S.RESOLVER) file =
   let into = R.Target.pages in
-  let file_target = R.Target.(as_html_index ~into file) in
+  let file_target =
+    if Path.basename file = Some "index.md"
+    then R.Target.as_html ~into file
+    else R.Target.as_html_index ~into file
+  in
   let open Task in
   Action.write_static_file
     file_target

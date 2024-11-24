@@ -19,7 +19,6 @@ module Make (R : S.RESOLVABLE) : S.RESOLVER = struct
     let wiki = Path.(content / "wiki")
     let wiki_section section = Path.(wiki / section)
     let projects = Path.(data / "projects.md")
-    let index = Path.(content / "index.md")
   end
 
   module Target = struct

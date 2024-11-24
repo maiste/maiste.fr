@@ -8,7 +8,6 @@ let process (module R : S.RESOLVER) () =
   >>= Fonts.process (module R)
   >>= Blog.process (module R)
   >>= Images.process (module R)
-  >>= Index.process (module R)
   >>= Page.process (module R)
   >>= Wiki.process (module R)
   >>= Projects.process (module R)

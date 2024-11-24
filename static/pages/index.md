@@ -25,7 +25,7 @@ code does not look good actually!).
 
 I plan to:
 - [✔️] Port the Blog using the _tree.ml_ module,
-- [ ] Move the `index.ml` to pages
+- [✔️] Move the `index.ml` to pages
 - [ ] Set up the RSS feed back,
 - [ ] Improve the content of the [about](/about) page,
 - [ ] Start the blog back and write regularly about what I learn,
