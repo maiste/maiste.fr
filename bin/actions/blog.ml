@@ -1,61 +1,103 @@
 open Yocaml
-module Index = Blog_index.Blog
-module Model = Model.Blog
+module Section = Model.Section
+module Peak = Section.Peak
+module Blog = Model.Blog
+module Blog_section = Model.Blog.Section
 
-module Tree = struct
-  let years = [ "2021"; "2022" ]
-  let source (module R : S.RESOLVER) year = Path.(R.Source.blog / year)
+let index_name = "_index.md"
 
-  let target (module R : S.RESOLVER) year file =
-    let into = Path.(R.Target.blog / year) in
-    R.Target.as_html_index ~into file
-  ;;
-end
+let is_section_index path =
+  match Path.basename path with
+  | None -> false
+  | Some name -> name = index_name
+;;
 
-let process_index (module R : S.RESOLVER) ~title path =
+let file_to_action (module R : S.RESOLVER) path content =
   let file_target =
-    Path.(R.(truncate_and_move ~into:Target.root path 1) / "index.html")
+    R.truncate_and_move ~into:R.Target.root path 1 |> R.Target.as_html_index_untouched
   in
   let open Task in
-  Action.write_static_file
+  Action.Static.write_file_with_metadata
     file_target
     (Pipeline.track_file R.Source.binary
-     >>> Index.compute_index ~title path
-     >>> Yocaml_jingoo.Pipeline.as_template
-           (module Index)
-           (R.Source.template "blog.section.html")
-     >>> Yocaml_jingoo.Pipeline.as_template (module Index) (R.Source.template "base.html")
-     >>> drop_first ())
-;;
-
-let process_post (module R : S.RESOLVER) year file =
-  let file_target = Tree.target (module R) year file in
-  let open Task in
-  Action.write_static_file
-    file_target
-    (Pipeline.track_file R.Source.binary
-     >>> Yocaml_yaml.Pipeline.read_file_with_metadata (module Model) file
+     >>> lift (fun () -> content)
      >>> Yocaml_cmarkit.content_to_html ()
-     >>> Yocaml_jingoo.Pipeline.as_template (module Model) (R.Source.template "blog.html")
-     >>> Yocaml_jingoo.Pipeline.as_template (module Model) (R.Source.template "base.html")
-     >>> drop_first ())
+     >>> Yocaml_jingoo.Pipeline.as_template
+           (module Blog)
+           (R.Source.template "blog.html")
+     >>> Yocaml_jingoo.Pipeline.as_template
+           (module Blog)
+           (R.Source.template "base.html"))
 ;;
 
-let process_posts (module R : S.RESOLVER) : Action.t =
-  let f year =
-    let path = Tree.source (module R) year in
-    let process_post = process_post (module R) year in
-    Utils.process_markdown ~only:`Files path process_post
+let extract_metadata_from_dir path = function
+  | None ->
+    let err = Format.sprintf "No %s file found at %s" index_name (Path.to_string path) in
+    raise (Invalid_argument err)
+  | Some (metadata, content) -> Blog_section.title metadata, content
+;;
+
+let generate_index (module R : S.RESOLVER) = function
+  | Tree.Dir { path; content; _ } ->
+    let title, _ = extract_metadata_from_dir path content in
+    let path = R.truncate path 1 |> Path.abs |> R.Target.as_html_index_untouched in
+    Peak.v ~title path []
+  | Tree.File { path; content; _ } ->
+    let path = R.truncate path 1 |> Path.abs |> R.Target.as_html_index_untouched in
+    let metadata, _ = content in
+    let title = Blog.title metadata in
+    let metadata = Blog.metadata_to_assoc metadata in
+    Peak.v ~title path metadata
+;;
+
+let compare_blog_data p1 p2 =
+  let m1 = Peak.metadata p1 in
+  let m2 = Peak.metadata p2 in
+  let order =
+    match List.assoc_opt "date" m1, List.assoc_opt "date" m2 with
+    | None, None -> String.compare (Peak.title p1) (Peak.title p2)
+    | Some d1, Some d2 -> String.compare d1 d2
+    | None, Some _ -> -1
+    | Some _, None -> 1
   in
-  List.map f Tree.years |> Utils.process_actions
+  order * -1 (* We want the reverse order *)
 ;;
 
-(* Extract index from loop *)
+let dir_to_action (module R : S.RESOLVER) path children content =
+  let index = List.map (generate_index (module R)) children in
+  let title, content = extract_metadata_from_dir path content in
+  let metadata = Section.v ~title index |> Section.sort ~f:compare_blog_data in
+  let section = metadata, content in
+  let path =
+    R.truncate_and_move ~into:R.Target.root path 1
+    |> fun path -> Path.(path / "index.html")
+  in
+  let open Task in
+  Action.Static.write_file_with_metadata
+    path
+    (Pipeline.track_file R.Source.binary
+     >>> lift (fun () -> section)
+     >>> Yocaml_cmarkit.content_to_html ()
+     >>> Yocaml_jingoo.Pipeline.as_template
+           (module Section)
+           (R.Source.template "blog.section.html")
+     >>> Yocaml_jingoo.Pipeline.as_template
+           (module Section)
+           (R.Source.template "base.html"))
+;;
+
 let process (module R : S.RESOLVER) : Action.t =
   let open Eff in
   fun cache ->
-    process_posts (module R) cache
-    >>= process_index (module R) ~title:"Blog" R.Source.blog
-    >>= process_index (module R) ~title:"2021" (R.Source.posts "2021")
-    >>= process_index (module R) ~title:"2022" (R.Source.posts "2022")
+    let* tree =
+      Tree.compute
+        (module Yocaml_yaml)
+        (module Blog)
+        (module Blog_section)
+        ~is_section_index
+        R.Source.blog
+    in
+    let dir_to_action = dir_to_action (module R) in
+    let file_to_action = file_to_action (module R) in
+    Tree.to_action ~dir_to_action ~file_to_action tree cache
 ;;

@@ -12,10 +12,10 @@ me if it was in another language (currently working on the OCaml build system,
 
 ## Explore...
 
-- The [blog](/blog) (Still need some refactoring 🔧)
+- The [blog](/blog) where I (rarelly) post stuffs
 - The [wiki](/wiki) 
 - Who [I](/about) am (Not really a nice page but, it will improve over time 🤞)
-- The [projects](/projects) I have been working on.
+- The [projects](/projects) I have been working on
 
 ## Work-In-Progress
 
@@ -24,9 +24,13 @@ will improve over time but, I wanted to have a decent base first (hence the
 code does not look good actually!).
 
 I plan to:
-- [ ] Port the Blog using the _tree.ml_ module,
-- [ ] Setup the RSS feed back,
+- [✔️] Port the Blog using the _tree.ml_ module,
+- [ ] Move the `index.ml` to pages
+- [ ] Set up the RSS feed back,
 - [ ] Improve the content of the [about](/about) page,
 - [ ] Start the blog back and write regularly about what I learn,
 - [ ] Add a logging entry
-- [ ] Change the principel font as Overpass feels to tight...
+- [ ] Find a decent design for the website:
+    - Blog post page
+    - Colors
+    - Change the principal font as Overpass feels to tight...

@@ -35,3 +35,36 @@ let normalize t =
     ; "has_lang", bool @@ Option.is_some t.lang
     ]
 ;;
+
+let date_to_string date =
+  Datetime.pp Format.str_formatter date;
+  Format.flush_str_formatter () |> String.split_on_char ' ' |> List.hd
+;;
+
+let metadata_to_assoc t =
+  let date = date_to_string t.date in
+  match t.lang with
+  | None -> [ "date", date ]
+  | Some lang -> [ "date", date; "lang", lang ]
+;;
+
+module Section = struct
+  let entity_name = "Blog.Section"
+
+  type t = { title : string }
+
+  let title t = t.title
+
+  let neutral =
+    Data.Validation.fail_with ~given:"null" "Cannot be null"
+    |> Result.map_error (fun error ->
+      Required.Validation_error { entity = entity_name; error })
+  ;;
+
+  let validate =
+    let open Data.Validation in
+    record (fun fields ->
+      let+ title = required fields "title" string in
+      { title })
+  ;;
+end
