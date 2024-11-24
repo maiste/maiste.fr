@@ -26,11 +26,11 @@ code does not look good actually!).
 I plan to:
 - [✔️] Port the Blog using the _tree.ml_ module,
 - [✔️] Move the `index.ml` to pages
-- [ ] Set up the RSS feed back,
+- [✔️] Add a [logging](/logging) page
 - [ ] Improve the content of the [about](/about) page,
-- [ ] Start the blog back and write regularly about what I learn,
-- [ ] Add a logging entry
+- [ ] Set up the RSS feed back,
 - [ ] Find a decent design for the website:
     - Blog post page
     - Colors
     - Change the principal font as Overpass feels to tight...
+- [ ] Start the blog back and write regularly about what I learn,
