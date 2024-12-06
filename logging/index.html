@@ -43,11 +43,41 @@
 conferences or anything where I want a timeline. Expect it to be absolutely
 hard to read because I expect no other person than me (maybe my girlfriend) to
 care about it.</p>
+<h2 id="todos"><a class="anchor" aria-hidden="true" href="#todos"></a>TODOs</h2>
+<ul>
+<li>[✔️] Port the Blog using the <em>tree.ml</em> module,</li>
+<li>[✔️] Move the <code>index.ml</code> to pages</li>
+<li>[✔️] Add a <a href="/logging">logging</a> page</li>
+<li>[✔️] Improve the content of the <a href="/about">about</a> page,</li>
+<li>[✔️] Set up the Atom feed back,</li>
+<li>[ ] Find a decent design for the website:
+<ul>
+<li>Follow <a href="https://xvw.lol">xvw</a> suggestion and rely on
+<a href="https://penpot.app/">Penpot</a> to create a design first</li>
+<li>Blog post page</li>
+<li>Colors</li>
+<li>Change the principal font as Overpass feels to tight...</li>
+</ul>
+</li>
+<li>[ ] Refactor the code because it is not clean:
+<ul>
+<li>[ ] <code>Tree.ml</code> with a less leaky interface and remove the <code>is_index_file</code> function</li>
+<li>[ ] Clean the <code>S.ml</code> and the <code>Resolver.ml</code></li>
+<li>[ ] Add some documentation everywhere, please!</li>
+<li>[ ] Improve the separation between actions and model and move the code in <code>lib/</code></li>
+<li>[ ] Use the <em>&quot;forest&quot;</em> language to describe all of this!</li>
+</ul>
+</li>
+<li>[ ] Start the blog back and write regularly about what I learn,</li>
+</ul>
 <h2 id="2024"><a class="anchor" aria-hidden="true" href="#2024"></a>2024</h2>
 <h2 id="2024-12-06"><a class="anchor" aria-hidden="true" href="#2024-12-06"></a>2024-12-06</h2>
 <p>Bring back the profile picture in the <a href="/about">about</a> page. Improve the content
 of the page by adding more information about employers. Add a disclaimer on all
-the pages about opinions.</p>
+the pages about opinions. I wrote the first version of the <code>Atom</code> feed. It is
+not a clean interface but at least, it works. The next stage is to improve the
+code readability. I'll take care of this after the design because I want to
+have a decent &quot;visible&quot; version before going into hard refactoring mode.</p>
 <h3 id="2024-11-24"><a class="anchor" aria-hidden="true" href="#2024-11-24"></a>2024-11-24</h3>
 <p>Add this logging section. It is still hidden for the public as I do not know
 how to expose it on the website. However, it will be built. I also cleaned the
