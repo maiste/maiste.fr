@@ -302,6 +302,22 @@ footer p {
   padding: 0 0 4px 0;
 }
 
+.profile {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+}
+
+.profile img {
+  width: 260px;
+  height: 260px;
+  border: 1px solid;
+  border-radius: 100%;
+}
+
 /* --- Media query --- */
 
 @media all and (max-width: 1024px) {
@@ -314,6 +330,10 @@ footer p {
   }
 
   header nav {
+    flex-direction: column;
+  }
+
+  .profile {
     flex-direction: column;
   }
 }

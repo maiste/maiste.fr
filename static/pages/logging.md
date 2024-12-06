@@ -9,6 +9,12 @@ care about it.
 
 ## 2024
 
+## 2024-12-06
+
+Bring back the profile picture in the [about](/about) page. Improve the content
+of the page by adding more information about employers. Add a disclaimer on all
+the pages about opinions.
+
 ### 2024-11-24
 
 Add this logging section. It is still hidden for the public as I do not know

@@ -27,9 +27,11 @@ I plan to:
 - [✔️] Port the Blog using the _tree.ml_ module,
 - [✔️] Move the `index.ml` to pages
 - [✔️] Add a [logging](/logging) page
-- [ ] Improve the content of the [about](/about) page,
+- [✔️] Improve the content of the [about](/about) page,
 - [ ] Set up the RSS feed back,
 - [ ] Find a decent design for the website:
+    - Follow [xvw](https://xvw.lol) suggestion and rely on
+      [Penpot](https://penpot.app/) to create a design first
     - Blog post page
     - Colors
     - Change the principal font as Overpass feels to tight...
