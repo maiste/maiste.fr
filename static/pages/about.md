@@ -43,9 +43,8 @@ If you want to discuss with me, feel free to reach me. Below, see some links
 that could interest you:
 
 - **Mail**: dev[at]maiste.fr
-- **Github**: [maiste](https://github.com/maiste)
-- **Rss**: flux (without a link as I haven't already written the code to have
-  it, sorry!)
+- **GitHub**: [maiste](https://github.com/maiste)
+- **Atom**: [file](/atom.xml) to follow the blog feed
 
 If you would like me to make a change or improve something, you can ask on
 GitHub [issues](https://github.com/maiste/maiste.fr/issues) :)

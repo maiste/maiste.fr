@@ -14,7 +14,7 @@ me if it was in another language (currently working on the OCaml build system,
 
 - The [blog](/blog) where I (rarely) post stuffs
 - The [wiki](/wiki)
-- Who [I](/about) am 
+- Who [I](/about) am
 - The [projects](/projects) I have been working on
 
 ## Work-In-Progress
