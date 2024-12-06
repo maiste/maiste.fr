@@ -7,13 +7,37 @@ conferences or anything where I want a timeline. Expect it to be absolutely
 hard to read because I expect no other person than me (maybe my girlfriend) to
 care about it.
 
+## TODOs
+
+- [✔️] Port the Blog using the _tree.ml_ module,
+- [✔️] Move the `index.ml` to pages
+- [✔️] Add a [logging](/logging) page
+- [✔️] Improve the content of the [about](/about) page,
+- [✔️] Set up the Atom feed back,
+- [ ] Find a decent design for the website:
+  - Follow [xvw](https://xvw.lol) suggestion and rely on
+    [Penpot](https://penpot.app/) to create a design first
+  - Blog post page
+  - Colors
+  - Change the principal font as Overpass feels to tight...
+- [ ] Refactor the code because it is not clean:
+  - [ ] `Tree.ml` with a less leaky interface and remove the `is_index_file` function
+  - [ ] Clean the `S.ml` and the `Resolver.ml`
+  - [ ] Add some documentation everywhere, please!
+  - [ ] Improve the separation between actions and model and move the code in `lib/`
+  - [ ] Use the _"forest"_ language to describe all of this!
+- [ ] Start the blog back and write regularly about what I learn,
+
 ## 2024
 
 ## 2024-12-06
 
 Bring back the profile picture in the [about](/about) page. Improve the content
 of the page by adding more information about employers. Add a disclaimer on all
-the pages about opinions.
+the pages about opinions. I wrote the first version of the `Atom` feed. It is
+not a clean interface but at least, it works. The next stage is to improve the
+code readability. I'll take care of this after the design because I want to
+have a decent "visible" version before going into hard refactoring mode.
 
 ### 2024-11-24
 

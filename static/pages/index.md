@@ -4,7 +4,7 @@ page_title: "A small garden, hidden in the vast forest of the web"
 
 ## Welcome!
 
-This is what I call my **Digital Garden**, a place where I grow my online
+This is what I call my **Knowledge Forest**, a place where I grow my online
 presence. It is a minimal website that tries to fit in the 512kB club (still
 not a member though...). Of course, it's written using OCaml, as it wouldn't be
 me if it was in another language (currently working on the OCaml build system,
@@ -12,27 +12,14 @@ me if it was in another language (currently working on the OCaml build system,
 
 ## Explore...
 
-- The [blog](/blog) where I (rarelly) post stuffs
-- The [wiki](/wiki) 
-- Who [I](/about) am (Not really a nice page but, it will improve over time 🤞)
+- The [blog](/blog) where I (rarely) post stuffs
+- The [wiki](/wiki)
+- Who [I](/about) am 
 - The [projects](/projects) I have been working on
 
 ## Work-In-Progress
 
 ⚠️ This website is still under active development and lack a lot of features. It
 will improve over time but, I wanted to have a decent base first (hence the
-code does not look good actually!).
-
-I plan to:
-- [✔️] Port the Blog using the _tree.ml_ module,
-- [✔️] Move the `index.ml` to pages
-- [✔️] Add a [logging](/logging) page
-- [✔️] Improve the content of the [about](/about) page,
-- [ ] Set up the RSS feed back,
-- [ ] Find a decent design for the website:
-    - Follow [xvw](https://xvw.lol) suggestion and rely on
-      [Penpot](https://penpot.app/) to create a design first
-    - Blog post page
-    - Colors
-    - Change the principal font as Overpass feels to tight...
-- [ ] Start the blog back and write regularly about what I learn,
+code does not look good actually!). If you are curious, you can follow the advancement
+in the [logging](/logging) page.
