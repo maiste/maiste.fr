@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Maiste Forest</title>
+    <link>https://maiste.fr</link>
+    <description><![CDATA[A flux about the posts I have published]]></description>
+    <atom:link href="https://maiste.fr/atom.xml" rel="self" type="application/rss+xml"/>
+    <docs>https://www.rssboard.org/rss-specification</docs>
+    <generator>YOCaml</generator>
+    <item>
+      <title>Up-to-date Online Documentation</title>
+      <link>https://maiste.fr/blog/2022/repost-ocurrent/index.html</link>
+      <description><![CDATA[Repost from a blog post I made on tarides.com]]></description>
+      <author>dev@maiste.fr (Etienne <Maiste> Marais)</author>
+      <pubDate>Fri, 21 Oct 2022 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Doc on GitHub pages with Odoc and Actions</title>
+      <link>https://maiste.fr/blog/2021/odoc/index.html</link>
+      <description><![CDATA[How to setup GitHub actions to publish Odoc documentation]]></description>
+      <author>dev@maiste.fr (Etienne <Maiste> Marais)</author>
+      <pubDate>Fri, 20 Aug 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>The Humble Programmer</title>
+      <link>https://maiste.fr/blog/2021/humble/index.html</link>
+      <description><![CDATA[Philosophical writing in French about being humble in programmin]]></description>
+      <author>dev@maiste.fr (Etienne <Maiste> Marais)</author>
+      <pubDate>Sat, 25 Dec 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>First Post!</title>
+      <link>https://maiste.fr/blog/2021/first/index.html</link>
+      <description><![CDATA[The first blog post of this website!]]></description>
+      <author>dev@maiste.fr (Etienne <Maiste> Marais)</author>
+      <pubDate>Fri, 20 Aug 2021 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://maiste.fr/atom.xml</id>
-  <title type="text">Maiste Digital Garden</title>
+  <title type="text">Maiste Forest</title>
   <generator uri="https://github.com/xhtmlboi/yocaml" version="2">YOCaml</generator>
   <updated>2022-10-21T00:00:00Z</updated>
   <author>
@@ -12,24 +12,28 @@
     <id>https://maiste.fr/blog/2022/repost-ocurrent/index.html</id>
     <title type="text">Up-to-date Online Documentation</title>
     <updated>2022-10-21T00:00:00Z</updated>
+    <summary type="text">Repost from a blog post I made on tarides.com</summary>
     <link href="https://maiste.fr/blog/2022/repost-ocurrent/index.html" rel="alternate" title="Up-to-date Online Documentation"/>
   </entry>
   <entry>
     <id>https://maiste.fr/blog/2021/odoc/index.html</id>
     <title type="text">Doc on GitHub pages with Odoc and Actions</title>
     <updated>2021-08-20T00:00:00Z</updated>
+    <summary type="text">How to setup GitHub actions to publish Odoc documentation</summary>
     <link href="https://maiste.fr/blog/2021/odoc/index.html" rel="alternate" title="Doc on GitHub pages with Odoc and Actions"/>
   </entry>
   <entry>
     <id>https://maiste.fr/blog/2021/humble/index.html</id>
     <title type="text">The Humble Programmer</title>
     <updated>2021-12-25T00:00:00Z</updated>
+    <summary type="text">Philosophical writing in French about being humble in programmin</summary>
     <link href="https://maiste.fr/blog/2021/humble/index.html" rel="alternate" title="The Humble Programmer"/>
   </entry>
   <entry>
     <id>https://maiste.fr/blog/2021/first/index.html</id>
     <title type="text">First Post!</title>
     <updated>2021-08-20T00:00:00Z</updated>
+    <summary type="text">The first blog post of this website!</summary>
     <link href="https://maiste.fr/blog/2021/first/index.html" rel="alternate" title="First Post!"/>
   </entry>
 </feed>
