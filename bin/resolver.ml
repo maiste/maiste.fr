@@ -36,6 +36,7 @@ module Make (R : S.RESOLVABLE) : S.RESOLVER = struct
     let wiki = Path.(R.target / "wiki")
     let wiki_section section = Path.(wiki / section)
     let atom = Path.(R.target / "atom.xml")
+    let rss = Path.(R.target / "rss.xml")
 
     (* TODO: document in interface.
        Take a file and move it to another location and replace its extension

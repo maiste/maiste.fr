@@ -44,7 +44,8 @@ that could interest you:
 
 - **Mail**: dev[at]maiste.fr
 - **GitHub**: [maiste](https://github.com/maiste)
-- **Atom**: [file](/atom.xml) to follow the blog feed
+- **Syndication**: [atom file](/atom.xml) or [RSS file](./rss.xml) to follow the blog
+  feed
 
 If you would like me to make a change or improve something, you can ask on
 GitHub [issues](https://github.com/maiste/maiste.fr/issues) :)

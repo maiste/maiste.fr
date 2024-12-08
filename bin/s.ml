@@ -47,6 +47,7 @@ module type RESOLVER = sig
     val wiki_section : string -> Path.t
     val projects : Path.t
     val atom : Path.t
+    val rss : Path.t
     val as_html : into:Path.t -> Path.t -> Path.t
     val as_html_index : into:Path.t -> Path.t -> Path.t
     val as_html_index_untouched : Path.t -> Path.t

@@ -30,6 +30,11 @@ care about it.
 
 ## 2024
 
+## 2024-12-08
+
+Add the RSS2 flux as a syndication page. This allows users to have both _Atom_
+and _RSS_ versions.
+
 ## 2024-12-06
 
 Bring back the profile picture in the [about](/about) page. Improve the content
