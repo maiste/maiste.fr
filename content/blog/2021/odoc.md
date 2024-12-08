@@ -1,5 +1,6 @@
 ---
 title: "Doc on GitHub pages with Odoc and Actions"
+description: "How to setup GitHub actions to publish Odoc documentation"
 date: 2021-08-20
 ---
 

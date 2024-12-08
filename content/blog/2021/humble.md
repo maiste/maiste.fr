@@ -1,5 +1,6 @@
 ---
 title: "The Humble Programmer"
+description: "Philosophical writing in French about being humble in programmin"
 date: 2021-12-25
 lang: "FR"
 ---

@@ -4,11 +4,13 @@ let entity_name = "Blog"
 
 type t =
   { title : string
+  ; description : string
   ; date : Archetype.Datetime.t
   ; lang : string option
   }
 
 let title t = t.title
+let description t = t.description
 let date t = t.date
 let lang t = t.lang
 
@@ -22,14 +24,16 @@ let validate =
   let open Data.Validation in
   record (fun fields ->
     let+ title = required fields "title" string
+    and+ description = required fields "description" string
     and+ date = required fields "date" Archetype.Datetime.validate
     and+ lang = optional fields "lang" string in
-    { title; date; lang })
+    { title; description; date; lang })
 ;;
 
 let normalize t =
   Data.
     [ "title", string t.title
+    ; "description", string t.description
     ; "date", Archetype.Datetime.normalize t.date
     ; "lang", option string t.lang
     ; "has_lang", bool @@ Option.is_some t.lang

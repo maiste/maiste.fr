@@ -1,5 +1,6 @@
 ---
 title: "First Post!"
+description: "The first blog post of this website!"
 date: 2021-08-20
 ---
 

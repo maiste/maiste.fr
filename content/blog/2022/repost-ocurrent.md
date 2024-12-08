@@ -1,5 +1,6 @@
 ---
 title: "Up-to-date Online Documentation"
+description: "Repost from a blog post I made on tarides.com"
 date: 2022-10-21
 ---
 

@@ -12,15 +12,15 @@ let atom_from_posts ~title ~site_url ~feed_url ~authors () =
     let content_url = site_url ^ Path.to_string path in
     let links = [ alternate content_url ~title ] in
     let title = text title in
-    entry ~id:content_url ~title ~updated ~links ())
+    let summary = text @@ Blog.description post in
+    entry ~id:content_url ~title ~updated ~links ~summary ())
 ;;
 
 let rss_from_posts ~title ~site_url ~feed_url ~description ~author () =
   let open Yocaml_syndication.Rss2 in
   from ~title ~site_url ~feed_url ~description (fun (path, post) ->
     let title = Blog.title post in
-    let description = "" in
-    (* TODO: add a summary into the blog post *)
+    let description = Blog.description post in
     let link = site_url ^ Path.to_string path in
     let pub_date = Yocaml_syndication.Datetime.make (Blog.date post) in
     item ~title ~author ~description ~link ~pub_date ())
