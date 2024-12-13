@@ -3,11 +3,18 @@
   <id>https://maiste.fr/atom.xml</id>
   <title type="text">Maiste Forest</title>
   <generator uri="https://github.com/xhtmlboi/yocaml" version="2">YOCaml</generator>
-  <updated>2022-10-21T00:00:00Z</updated>
+  <updated>2024-12-13T00:00:00Z</updated>
   <author>
     <name>Etienne &lt;Maiste&gt; Marais</name>
     <email>dev@maiste.fr</email>
   </author>
+  <entry>
+    <id>https://maiste.fr/blog/2024/donations/index.html</id>
+    <title type="text">End Of Year Donations</title>
+    <updated>2024-12-13T00:00:00Z</updated>
+    <summary type="text">Discussing giving back to NPO and OSS projects</summary>
+    <link href="https://maiste.fr/blog/2024/donations/index.html" rel="alternate" title="End Of Year Donations"/>
+  </entry>
   <entry>
     <id>https://maiste.fr/blog/2022/repost-ocurrent/index.html</id>
     <title type="text">Up-to-date Online Documentation</title>

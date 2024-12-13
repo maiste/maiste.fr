@@ -8,6 +8,13 @@
     <docs>https://www.rssboard.org/rss-specification</docs>
     <generator>YOCaml</generator>
     <item>
+      <title>End Of Year Donations</title>
+      <link>https://maiste.fr/blog/2024/donations/index.html</link>
+      <description><![CDATA[Discussing giving back to NPO and OSS projects]]></description>
+      <author>dev@maiste.fr (Etienne <Maiste> Marais)</author>
+      <pubDate>Fri, 13 Dec 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>Up-to-date Online Documentation</title>
       <link>https://maiste.fr/blog/2022/repost-ocurrent/index.html</link>
       <description><![CDATA[Repost from a blog post I made on tarides.com]]></description>
