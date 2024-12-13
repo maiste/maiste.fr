@@ -37,7 +37,7 @@ let fetch_posts (module R : S.RESOLVER) =
   let ff acc path content =
     let metadata, _ = content in
     let path = R.truncate path 1 |> Path.abs |> R.Target.as_html_index_untouched in
-    (path, metadata) :: acc
+    if not @@ Blog.is_draft metadata then (path, metadata) :: acc else acc
   in
   let fd acc _path _content _children = acc in
   Tree.fetch

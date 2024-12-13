@@ -7,12 +7,14 @@ type t =
   ; description : string
   ; date : Archetype.Datetime.t
   ; lang : string option
+  ; draft : bool
   }
 
 let title t = t.title
 let description t = t.description
 let date t = t.date
 let lang t = t.lang
+let is_draft t = t.draft
 
 let neutral =
   Data.Validation.fail_with ~given:"null" "Cannot be null"
@@ -26,8 +28,9 @@ let validate =
     let+ title = required fields "title" string
     and+ description = required fields "description" string
     and+ date = required fields "date" Archetype.Datetime.validate
-    and+ lang = optional fields "lang" string in
-    { title; description; date; lang })
+    and+ lang = optional fields "lang" string
+    and+ draft = optional_or fields "draft" ~default:false bool in
+    { title; description; date; lang; draft })
 ;;
 
 let normalize t =
@@ -37,6 +40,7 @@ let normalize t =
     ; "date", Archetype.Datetime.normalize t.date
     ; "lang", option string t.lang
     ; "has_lang", bool @@ Option.is_some t.lang
+    ; "draft", bool t.draft
     ]
 ;;
 

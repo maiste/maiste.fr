@@ -22,12 +22,9 @@ let file_to_action (module R : S.RESOLVER) path content =
     (Pipeline.track_file R.Source.binary
      >>> lift (fun () -> content)
      >>> Yocaml_cmarkit.content_to_html ()
-     >>> Yocaml_jingoo.Pipeline.as_template
-           (module Blog)
-           (R.Source.template "blog.html")
-     >>> Yocaml_jingoo.Pipeline.as_template
-           (module Blog)
-           (R.Source.template "base.html"))
+     >>> Yocaml_jingoo.Pipeline.as_template (module Blog) (R.Source.template "blog.html")
+     >>> Yocaml_jingoo.Pipeline.as_template (module Blog) (R.Source.template "base.html")
+    )
 ;;
 
 let extract_metadata_from_dir path = function
@@ -50,6 +47,13 @@ let generate_index (module R : S.RESOLVER) = function
     Peak.v ~title path metadata
 ;;
 
+let is_draft = function
+  | Tree.Dir _ -> false
+  | Tree.File { content; _ } ->
+    let metadata, _ = content in
+    Blog.is_draft metadata
+;;
+
 let compare_blog_data p1 p2 =
   let m1 = Peak.metadata p1 in
   let m2 = Peak.metadata p2 in
@@ -64,7 +68,11 @@ let compare_blog_data p1 p2 =
 ;;
 
 let dir_to_action (module R : S.RESOLVER) path children content =
-  let index = List.map (generate_index (module R)) children in
+  let index =
+    children
+    |> List.filter (fun child -> not (is_draft child))
+    |> List.map (generate_index (module R))
+  in
   let title, content = extract_metadata_from_dir path content in
   let metadata = Section.v ~title index |> Section.sort ~f:compare_blog_data in
   let section = metadata, content in

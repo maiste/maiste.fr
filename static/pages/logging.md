@@ -30,6 +30,12 @@ care about it.
 
 ## 2024
 
+## 2024-12-13
+
+Support the `draft: <bool>` metadata with `Blog.t` elements. It allows testing
+online without referencing them. Write a new blog post about the donations!
+Yeah, being a bit productive on personal time :)
+
 ## 2024-12-08
 
 Add the RSS2 flux as a syndication page. This allows users to have both _Atom_
