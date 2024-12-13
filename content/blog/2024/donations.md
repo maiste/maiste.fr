@@ -2,7 +2,7 @@
 title: "End Of Year Donations"
 description: "Discussing giving back to NPO and OSS projects"
 date: 2024-12-13
-draft: true
+draft: false
 ---
 
 ## Some context
