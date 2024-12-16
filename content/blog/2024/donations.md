@@ -39,3 +39,4 @@ Here is the list of the donations I have made at the end of this year and why.
   and, [bat](https://github.com/sharkdp/bat), some really exciting Rust projects!
 - [Daniel Eklöf](https://codeberg.org/dnkl) for his work on
   [foot](https://codeberg.org/dnkl/foot) because this is my way-to-go terminal!
+- [Organic Maps](https://organicmaps.app/) because I would be lost while navigating!
