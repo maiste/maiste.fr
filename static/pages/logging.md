@@ -30,6 +30,11 @@ care about it.
 
 ## 2024
 
+## 2024-12-19
+
+Support the `draft: <bool>` metadata with `Wiki.t` elements. It allows the same as
+for the `Blog.t` elements. Night time!
+
 ## 2024-12-13
 
 Support the `draft: <bool>` metadata with `Blog.t` elements. It allows testing

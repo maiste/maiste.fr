@@ -6,12 +6,14 @@ type t =
   { title : string
   ; description : string option
   ; lang : string option
+  ; draft : bool
   }
 
-let v ?description ?lang title = { title; description; lang }
+let v ?lang ~draft ~description title = { title; description; lang; draft }
 let title t = t.title
 let description t = t.description
 let lang t = t.lang
+let is_draft t = t.draft
 
 let neutral =
   Data.Validation.fail_with ~given:"null" "Cannot be null"
@@ -24,8 +26,9 @@ let validate =
   record (fun fields ->
     let+ title = required fields "title" string
     and+ description = optional fields "description" string
-    and+ lang = optional fields "lang" string in
-    { title; description; lang })
+    and+ lang = optional fields "lang" string
+    and+ draft = optional_or fields "draft" bool ~default:false in
+    { title; description; lang; draft })
 ;;
 
 let normalize t =
@@ -35,6 +38,7 @@ let normalize t =
     ; "lang", option string t.lang
     ; "has_description", bool @@ Option.is_some t.description
     ; "has_lang", bool @@ Option.is_some t.lang
+    ; "draft", bool t.draft
     ]
 ;;
 

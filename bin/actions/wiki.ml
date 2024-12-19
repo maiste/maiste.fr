@@ -16,28 +16,31 @@ let extract_metadata_from_dir path content =
      | None -> raise (Invalid_argument "Path is wrong")
      | Some path ->
        let title = String.split_on_char '_' path |> String.concat " " in
-       title, None, "")
+       title, None, false, "")
   | Some (metadata, content) ->
-    Model.Wiki.title metadata, Model.Wiki.description metadata, content
+    ( Model.Wiki.title metadata
+    , Model.Wiki.description metadata
+    , Model.Wiki.is_draft metadata
+    , content )
 ;;
 
 let get_index (module R : S.RESOLVER) = function
   | Tree.Dir { path; content; _ } ->
-    let title, description, _ = extract_metadata_from_dir path content in
+    let title, description, draft, _ = extract_metadata_from_dir path content in
     let path = R.truncate path 1 |> Path.abs |> fun p -> Path.(p / "index.html") in
-    Model.Wiki.v title ?description, path
+    Model.Wiki.v title ~description ~draft, path
   | Tree.File { path; content } ->
     let path = R.truncate path 1 |> Path.abs |> R.Target.as_html_index_untouched in
     let metadata, _ = content in
-    let title = Model.Wiki.title metadata in
-    let description = Model.Wiki.description metadata in
-    let lang = Model.Wiki.lang metadata in
-    Model.Wiki.v ?description ?lang title, path
+    metadata, path
 ;;
 
 let dir_to_action (module R : S.RESOLVER) path children content =
-  let children = List.map (get_index (module R)) children in
-  let title, description, content = extract_metadata_from_dir path content in
+  let children =
+    List.map (get_index (module R)) children
+    |> List.filter (fun (wiki, _) -> not @@ Model.Wiki.is_draft wiki)
+  in
+  let title, description, _, content = extract_metadata_from_dir path content in
   let wiki_section = Model.Wiki_section.(v ~title ?description children |> sort) in
   let template = wiki_section, content in
   let path = R.truncate path 1 in
