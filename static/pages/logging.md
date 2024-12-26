@@ -20,6 +20,12 @@ care about it.
   - Blog post page
   - Colors
   - Change the principal font as Overpass feels to tight...
+- [ ] Support for D2
+    - [ ] Transform code block with `d2` to image link
+    - [ ] Produce the `d2` image at the right place
+    - [ ] Add a `d2: <bool>` yaml entry to know if it needs to transform using
+    `d2`. It is verbose but it would save some computation time and requires
+    being vigilant about it.
 - [ ] Refactor the code because it is not clean:
   - [ ] `Tree.ml` with a less leaky interface and remove the `is_index_file` function
   - [ ] Clean the `S.ml` and the `Resolver.ml`
@@ -29,6 +35,10 @@ care about it.
 - [ ] Start the blog back and write regularly about what I learn,
 
 ## 2024
+
+## 2024-12-26
+
+Add Wikipedia to the donation blog post because it was missing.
 
 ## 2024-12-19
 

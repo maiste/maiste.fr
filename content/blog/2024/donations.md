@@ -25,6 +25,8 @@ Here is the list of the donations I have made at the end of this year and why.
 - [La Quadrature Du Net (LQDN)](https://www.laquadrature.net/en/), a French NPO focus
   on online privacy protection for their involvement into protecting our digital
   right in the European Union.
+- [Wikipedia](https://wikipedia.org), because this is the biggest knowledge
+  database on the internet and it needs to be preserved.
 
 ## Open Source Projects
 
