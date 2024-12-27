@@ -28,6 +28,9 @@
    yocaml_eio
    yocaml_syndication
 
+   ;; External dependencies
+   (digestif (>= 1.2.0))
+
    ;; dev setup
    (ocamlformat :with-dev-setup)
    (utop :with-dev-setup)

@@ -45,12 +45,20 @@ module type RESOLVER = sig
     val posts : string -> Path.t
     val wiki : Path.t
     val wiki_section : string -> Path.t
+    val diagrams : Path.t
     val projects : Path.t
     val atom : Path.t
     val rss : Path.t
     val as_html : into:Path.t -> Path.t -> Path.t
     val as_html_index : into:Path.t -> Path.t -> Path.t
     val as_html_index_untouched : Path.t -> Path.t
+  end
+
+  module URL : sig
+    (** Describe the resolver in the HTTP space *)
+
+    val static : Path.t
+    val diagrams : string -> Path.t
   end
 
   val truncate : Path.t -> int -> string list

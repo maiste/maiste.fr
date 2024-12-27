@@ -35,6 +35,7 @@ module Make (R : S.RESOLVABLE) : S.RESOLVER = struct
     let posts year = Path.(blog / year)
     let wiki = Path.(R.target / "wiki")
     let wiki_section section = Path.(wiki / section)
+    let diagrams = Path.(static / "diagrams")
     let atom = Path.(R.target / "atom.xml")
     let rss = Path.(R.target / "rss.xml")
 
@@ -64,6 +65,11 @@ module Make (R : S.RESOLVABLE) : S.RESOLVER = struct
       let into = Path.dirname file in
       as_html_index ~into file
     ;;
+  end
+
+  module URL = struct
+    let static = Path.abs [ "static" ]
+    let diagrams name = Path.(static / "diagrams" / name |> add_extension "svg")
   end
 
   let truncate src n = Path.to_pair src |> snd |> List.to_seq |> Seq.drop n |> List.of_seq

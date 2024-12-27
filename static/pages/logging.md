@@ -21,11 +21,11 @@ care about it.
   - Colors
   - Change the principal font as Overpass feels to tight...
 - [ ] Support for D2
-    - [ ] Transform code block with `d2` to image link
-    - [ ] Produce the `d2` image at the right place
-    - [ ] Add a `d2: <bool>` yaml entry to know if it needs to transform using
-    `d2`. It is verbose but it would save some computation time and requires
+    - [✔️] Transform code block with `d2` to image link
+    - [✔️] Add a `d2: <bool>` YAML entry to know if it needs to transform using
+    `d2`. It is verbose, but it would save some computation time and requires
     being vigilant about it.
+    - [ ] Produce the `d2` image at the right place
 - [ ] Refactor the code because it is not clean:
   - [ ] `Tree.ml` with a less leaky interface and remove the `is_index_file` function
   - [ ] Clean the `S.ml` and the `Resolver.ml`
@@ -35,6 +35,16 @@ care about it.
 - [ ] Start the blog back and write regularly about what I learn,
 
 ## 2024
+
+## 2024-12-27
+
+Support the `d2` front matter in wiki page and generate image links from
+content digest (weak caching system to not generate some files multiple times).
+The next step is to walk through the tree and generate the `d2` schemas in the
+tree using the
+[Folder](https://erratique.ch/software/cmarkit/doc/Cmarkit/Folder/index.html)
+API from Cmarkit and [the YOCaml D2
+example](https://github.com/xhtmlboi/yocaml/blob/main/examples/d2/d2.ml)
 
 ## 2024-12-26
 
