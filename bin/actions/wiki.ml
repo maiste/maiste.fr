@@ -32,6 +32,9 @@ let get_index (module R : S.RESOLVER) = function
 ;;
 
 module Transformer = struct
+  let strict = false
+  let safe = false
+
   (* HACK: this part is so dirty! Transfer me to my own file and clean me! *)
   let generate_image_link_from_block (module R : S.RESOLVER) cb meta =
     let open Cmarkit in
@@ -69,8 +72,6 @@ module Transformer = struct
   ;;
 
   let to_markdown (module R : S.RESOLVER) metadata content =
-    let strict = false in
-    let safe = false in
     let markdown = Cmarkit.Doc.of_string ~heading_auto_ids:true ~strict content in
     (if Model.Wiki.is_using_d2 metadata
      then (
@@ -104,18 +105,19 @@ let dir_to_action (module R : S.RESOLVER) path children content =
   let path = Path.(R.Target.root ++ path) in
   let path = Path.(path / "index.html") in
   let open Task in
-  Action.write_static_file
-    path
-    (Pipeline.track_file R.Source.binary
-     >>> lift (fun () -> template)
-     >>> Yocaml_cmarkit.content_to_html ()
-     >>> Yocaml_jingoo.Pipeline.as_template
-           (module Model.Wiki_section)
-           (R.Source.template "wiki.section.html")
-     >>> Yocaml_jingoo.Pipeline.as_template
-           (module Model.Wiki_section)
-           (R.Source.template "base.html")
-     >>> drop_first ())
+  [ Action.write_static_file
+      path
+      (Pipeline.track_file R.Source.binary
+       >>> lift (fun () -> template)
+       >>> Yocaml_cmarkit.content_to_html ()
+       >>> Yocaml_jingoo.Pipeline.as_template
+             (module Model.Wiki_section)
+             (R.Source.template "wiki.section.html")
+       >>> Yocaml_jingoo.Pipeline.as_template
+             (module Model.Wiki_section)
+             (R.Source.template "base.html")
+       >>> drop_first ())
+  ]
 ;;
 
 let file_to_action (module R : S.RESOLVER) path content =
@@ -123,18 +125,19 @@ let file_to_action (module R : S.RESOLVER) path content =
   let path = R.truncate path 1 in
   let path = Path.(R.Target.root ++ path) in
   let path = R.Target.as_html_index_untouched path in
-  Action.write_static_file
-    path
-    (Pipeline.track_file R.Source.binary
-     >>> lift (fun () -> content)
-     >>> Transformer.content_to_html (module R)
-     >>> Yocaml_jingoo.Pipeline.as_template
-           (module Model.Wiki)
-           (R.Source.template "wiki.html")
-     >>> Yocaml_jingoo.Pipeline.as_template
-           (module Model.Wiki)
-           (R.Source.template "base.html")
-     >>> drop_first ())
+  [ Action.write_static_file
+      path
+      (Pipeline.track_file R.Source.binary
+       >>> lift (fun () -> content)
+       >>> Transformer.content_to_html (module R)
+       >>> Yocaml_jingoo.Pipeline.as_template
+             (module Model.Wiki)
+             (R.Source.template "wiki.html")
+       >>> Yocaml_jingoo.Pipeline.as_template
+             (module Model.Wiki)
+             (R.Source.template "base.html")
+       >>> drop_first ())
+  ]
 ;;
 
 let process (module R : S.RESOLVER) root : Action.t =

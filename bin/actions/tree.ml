@@ -101,7 +101,7 @@ let fetch
 ;;
 
 let to_action ~dir_to_action ~file_to_action tree cache =
-  let ff acc path content = file_to_action path content :: acc in
-  let fd acc path content children = dir_to_action path children content :: acc in
+  let ff acc path content = file_to_action path content @ acc in
+  let fd acc path content children = dir_to_action path children content @ acc in
   leaked_fold ff fd [] tree |> fun actions -> Utils.process_actions actions cache
 ;;

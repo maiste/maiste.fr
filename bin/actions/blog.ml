@@ -17,14 +17,18 @@ let file_to_action (module R : S.RESOLVER) path content =
     R.truncate_and_move ~into:R.Target.root path 1 |> R.Target.as_html_index_untouched
   in
   let open Task in
-  Action.Static.write_file_with_metadata
-    file_target
-    (Pipeline.track_file R.Source.binary
-     >>> lift (fun () -> content)
-     >>> Yocaml_cmarkit.content_to_html ()
-     >>> Yocaml_jingoo.Pipeline.as_template (module Blog) (R.Source.template "blog.html")
-     >>> Yocaml_jingoo.Pipeline.as_template (module Blog) (R.Source.template "base.html")
-    )
+  [ Action.Static.write_file_with_metadata
+      file_target
+      (Pipeline.track_file R.Source.binary
+       >>> lift (fun () -> content)
+       >>> Yocaml_cmarkit.content_to_html ()
+       >>> Yocaml_jingoo.Pipeline.as_template
+             (module Blog)
+             (R.Source.template "blog.html")
+       >>> Yocaml_jingoo.Pipeline.as_template
+             (module Blog)
+             (R.Source.template "base.html"))
+  ]
 ;;
 
 let extract_metadata_from_dir path = function
@@ -81,17 +85,18 @@ let dir_to_action (module R : S.RESOLVER) path children content =
     |> fun path -> Path.(path / "index.html")
   in
   let open Task in
-  Action.Static.write_file_with_metadata
-    path
-    (Pipeline.track_file R.Source.binary
-     >>> lift (fun () -> section)
-     >>> Yocaml_cmarkit.content_to_html ()
-     >>> Yocaml_jingoo.Pipeline.as_template
-           (module Section)
-           (R.Source.template "blog.section.html")
-     >>> Yocaml_jingoo.Pipeline.as_template
-           (module Section)
-           (R.Source.template "base.html"))
+  [ Action.Static.write_file_with_metadata
+      path
+      (Pipeline.track_file R.Source.binary
+       >>> lift (fun () -> section)
+       >>> Yocaml_cmarkit.content_to_html ()
+       >>> Yocaml_jingoo.Pipeline.as_template
+             (module Section)
+             (R.Source.template "blog.section.html")
+       >>> Yocaml_jingoo.Pipeline.as_template
+             (module Section)
+             (R.Source.template "base.html"))
+  ]
 ;;
 
 let process (module R : S.RESOLVER) : Action.t =
