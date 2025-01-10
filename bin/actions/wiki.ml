@@ -32,6 +32,7 @@ let get_index (module R : S.RESOLVER) = function
 ;;
 
 module Transformer = struct
+  (* HACK: this part is so dirty! Transfer me to my own file and clean me! *)
   let strict = false
   let safe = false
 
@@ -46,7 +47,6 @@ module Transformer = struct
     read_code_block cb |> Digestif.SHA256.digest_string |> Digestif.SHA256.to_hex
   ;;
 
-  (* HACK: this part is so dirty! Transfer me to my own file and clean me! *)
   let generate_image_link_from_block (module R : S.RESOLVER) cb meta =
     let open Cmarkit in
     let path = compute_image_name cb |> R.URL.diagrams |> Path.to_string in
@@ -109,6 +109,28 @@ module Transformer = struct
     Yocaml.Task.lift (fun (metadata, content) ->
       metadata, to_markdown (module R) metadata content)
   ;;
+
+  let invoke_d2 source target =
+    let open Cmd in
+    make
+      "d2"
+      [ flag ~prefix:"--" "sketch"
+      ; param ~prefix:"-" "t" (int 301)
+      ; param ~suffix:"=" "layout" (string "elk")
+      ; arg (w source)
+      ; arg target
+      ]
+  ;;
+
+  let batch_diagrams (module R : S.RESOLVER) =
+    Action.batch
+      ~only:`Files
+      ~where:(Path.has_extension "d2")
+      R.Target.diagrams
+      (fun source ->
+         let target = Path.change_extension "svg" source in
+         Action.exec_cmd (invoke_d2 source) target)
+  ;;
 end
 
 let dir_to_action (module R : S.RESOLVER) path children content =
@@ -164,7 +186,7 @@ let file_to_action (module R : S.RESOLVER) path content =
           path
           (Pipeline.track_file R.Source.binary >>> lift (fun () -> content))
       in
-      List.map to_action diagrams)
+      List.map to_action diagrams @ [ Transformer.batch_diagrams (module R) ])
     else []
   in
   Action.write_static_file

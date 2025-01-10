@@ -20,19 +20,28 @@ care about it.
   - Blog post page
   - Colors
   - Change the principal font as Overpass feels to tight...
-- [ ] Support for D2
-    - [✔️] Transform code block with `d2` to image link
-    - [✔️] Add a `d2: <bool>` YAML entry to know if it needs to transform using
+- [✔️] Support for D2
+  - [✔️] Transform code block with `d2` to image link
+  - [✔️] Add a `d2: <bool>` YAML entry to know if it needs to transform using
     `d2`. It is verbose, but it would save some computation time and requires
     being vigilant about it.
-    - [ ] Produce the `d2` image at the right place
+  - [✔️] Produce the `d2` image at the right place
 - [ ] Refactor the code because it is not clean:
   - [ ] `Tree.ml` with a less leaky interface and remove the `is_index_file` function
   - [ ] Clean the `S.ml` and the `Resolver.ml`
   - [ ] Add some documentation everywhere, please!
   - [ ] Improve the separation between actions and model and move the code in `lib/`
   - [ ] Use the _"forest"_ language to describe all of this!
+  - [ ] The D2 system available for the `blog.ml` too
 - [ ] Start the blog back and write regularly about what I learn,
+
+## 2025
+
+## 2025-01-10
+
+The wiki is now able to directly extract `d2` diagrams from the markdown file
+and extract the diagrams to a svg and swap the graph code block with a newly
+create svg image. It now requires `d2` to be able to build the full wiki.
 
 ## 2024
 
