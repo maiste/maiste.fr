@@ -35,18 +35,21 @@ module Transformer = struct
   let strict = false
   let safe = false
 
+  let read_code_block cb =
+    let open Cmarkit in
+    Block.Code_block.code cb
+    |> List.map (fun line -> Block_line.to_string line)
+    |> String.concat "\n"
+  ;;
+
+  let compute_image_name cb =
+    read_code_block cb |> Digestif.SHA256.digest_string |> Digestif.SHA256.to_hex
+  ;;
+
   (* HACK: this part is so dirty! Transfer me to my own file and clean me! *)
   let generate_image_link_from_block (module R : S.RESOLVER) cb meta =
     let open Cmarkit in
-    let path =
-      Block.Code_block.code cb
-      |> List.map (fun line -> Block_line.to_string line)
-      |> String.concat "\n"
-      |> Digestif.SHA256.digest_string
-      |> Digestif.SHA256.to_hex
-      |> R.URL.diagrams
-      |> Path.to_string
-    in
+    let path = compute_image_name cb |> R.URL.diagrams |> Path.to_string in
     let reference : Inline.Link.reference =
       `Inline (Link_definition.make ~dest:(path, meta) (), meta)
     in
@@ -71,15 +74,34 @@ module Transformer = struct
     Mapper.map_doc mapper markdown
   ;;
 
+  let get_diagrams (module R : S.RESOLVER) content =
+    let markdown = Cmarkit.Doc.of_string ~heading_auto_ids:true ~strict content in
+    let open Cmarkit in
+    let block _ acc = function
+      | Block.Code_block (cb, _) ->
+        let acc =
+          match Block.Code_block.info_string cb with
+          | Some (lang, _) when lang = "d2" ->
+            let content = read_code_block cb in
+            let path =
+              compute_image_name cb
+              |> fun path -> Path.(R.Target.diagrams / path) |> Path.add_extension "d2"
+            in
+            (path, content) :: acc
+          | _ -> acc
+        in
+        Folder.ret acc
+      | _ -> Folder.default
+    in
+    let folder = Folder.make ~block () in
+    Folder.fold_doc folder [] markdown
+  ;;
+
   let to_markdown (module R : S.RESOLVER) metadata content =
     let markdown = Cmarkit.Doc.of_string ~heading_auto_ids:true ~strict content in
     (if Model.Wiki.is_using_d2 metadata
-     then (
-       Format.printf "Using d2!@.";
-       map_d2_to_img (module R) markdown)
-     else (
-       Format.printf "Not using d2@.";
-       markdown))
+     then map_d2_to_img (module R) markdown
+     else markdown)
     |> Cmarkit_html.of_doc ~safe
   ;;
 
@@ -125,19 +147,39 @@ let file_to_action (module R : S.RESOLVER) path content =
   let path = R.truncate path 1 in
   let path = Path.(R.Target.root ++ path) in
   let path = R.Target.as_html_index_untouched path in
-  [ Action.write_static_file
-      path
-      (Pipeline.track_file R.Source.binary
-       >>> lift (fun () -> content)
-       >>> Transformer.content_to_html (module R)
-       >>> Yocaml_jingoo.Pipeline.as_template
-             (module Model.Wiki)
-             (R.Source.template "wiki.html")
-       >>> Yocaml_jingoo.Pipeline.as_template
-             (module Model.Wiki)
-             (R.Source.template "base.html")
-       >>> drop_first ())
-  ]
+  let metadata, markdown = content in
+  let d2_schemas =
+    if Model.Wiki.is_using_d2 metadata
+    then (
+      let diagrams = Transformer.get_diagrams (module R) markdown in
+      List.iter
+        (fun (path, content) ->
+           Format.printf
+             "For path (%s) I'm using content\n%s@."
+             (Path.to_string path)
+             content)
+        diagrams;
+      let to_action (path, content) =
+        Action.Static.write_file
+          path
+          (Pipeline.track_file R.Source.binary >>> lift (fun () -> content))
+      in
+      List.map to_action diagrams)
+    else []
+  in
+  Action.write_static_file
+    path
+    (Pipeline.track_file R.Source.binary
+     >>> lift (fun () -> content)
+     >>> Transformer.content_to_html (module R)
+     >>> Yocaml_jingoo.Pipeline.as_template
+           (module Model.Wiki)
+           (R.Source.template "wiki.html")
+     >>> Yocaml_jingoo.Pipeline.as_template
+           (module Model.Wiki)
+           (R.Source.template "base.html")
+     >>> drop_first ())
+  :: d2_schemas
 ;;
 
 let process (module R : S.RESOLVER) root : Action.t =
