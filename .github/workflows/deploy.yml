@@ -18,6 +18,9 @@ jobs:
           ocaml-compiler: "5.1.1"
           dune-cache: true
 
+      - name: Install d2 cmdline for diagrams
+        run: curl -fsSL https://d2lang.com/install.sh | sh -s --
+
       - name: Install deps
         run: opam install . -y --deps-only
 
