@@ -16,19 +16,19 @@ let file_to_action (module R : S.RESOLVER) path content =
   let file_target =
     R.truncate_and_move ~into:R.Target.root path 1 |> R.Target.as_html_index_untouched
   in
+  let metadata, markdown = content in
+  let is_using_d2 = Model.Blog.is_using_d2 metadata in
+  let d2_action = Markdown.d2_action (module R) ~is_using_d2 markdown in
   let open Task in
-  [ Action.Static.write_file_with_metadata
-      file_target
-      (Pipeline.track_file R.Source.binary
-       >>> lift (fun () -> content)
-       >>> Yocaml_cmarkit.content_to_html ()
-       >>> Yocaml_jingoo.Pipeline.as_template
-             (module Blog)
-             (R.Source.template "blog.html")
-       >>> Yocaml_jingoo.Pipeline.as_template
-             (module Blog)
-             (R.Source.template "base.html"))
-  ]
+  Action.Static.write_file_with_metadata
+    file_target
+    (Pipeline.track_file R.Source.binary
+     >>> lift (fun () -> content)
+     >>> Markdown.content_to_html (module R) ~is_using_d2
+     >>> Yocaml_jingoo.Pipeline.as_template (module Blog) (R.Source.template "blog.html")
+     >>> Yocaml_jingoo.Pipeline.as_template (module Blog) (R.Source.template "base.html")
+    )
+  :: d2_action
 ;;
 
 let extract_metadata_from_dir path = function
