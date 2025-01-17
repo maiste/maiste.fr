@@ -32,16 +32,23 @@ care about it.
   - [ ] Add some documentation everywhere, please!
   - [ ] Improve the separation between actions and model and move the code in `lib/`
   - [ ] Use the _"forest"_ language to describe all of this!
-  - [ ] The D2 system available for the `blog.ml` too
+  - [✔️] The D2 system available for the `blog.ml` too
 - [ ] Start the blog back and write regularly about what I learn,
 
 ## 2025
 
+## 2025-01-17
+
+The code makes the blog capable of using `d2` diagrams too, the same way
+`wiki.ml` does. Finish the mock design on Pen Pot. All I need is to implement
+the CSS. For future me, it needs to be done in an atomic way: I write the new
+CSS and HTML files and just switch the path ultimately.
+
 ## 2025-01-10
 
 The wiki is now able to directly extract `d2` diagrams from the markdown file
-and extract the diagrams to a svg and swap the graph code block with a newly
-create svg image. It now requires `d2` to be able to build the full wiki.
+and extract the diagrams to an SVG and swap the graph code block with a newly
+create SVG image. It now requires `d2` to be able to build the full wiki.
 
 ## 2024
 
