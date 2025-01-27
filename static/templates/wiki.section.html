@@ -1,29 +1,26 @@
 <h1>{{ title }}</h1>
 <div class="metadata">
-    {%- if has_description -%}
-    <p>description: {{ description }}</p>
-    {%- endif -%}
+  {%- if has_description -%}
+  <p>description: {{ description }}</p>
+  {%- endif -%}
 </div>
 
 <div class="content">
-    {%- autoescape false -%}
-    {{ yocaml_body }}
-    {%- endautoescape -%}
+  {%- autoescape false -%} {{ yocaml_body }} {%- endautoescape -%}
 </div>
 
 <h2>Index</h2>
 <ul class="index">
-    {%- for item in index -%}
-    <li>
-        <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
-        <div class="metadata">
-            {%- if item.has_description -%}
-            <p>description: {{ item.description }}</p>
-            {%- endif %}
-            {%- if item.has_lang -%}
-            <p>lang: {{ item.lang }}</p>
-            {%- endif %}
-        </div>
-    </li>
-    {% endfor -%}
+  {%- for item in index -%}
+  <li>
+    <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+    <div class="metadata">
+      {%- if item.has_description -%}
+      <p>description: {{ item.description }}</p>
+      {%- endif %} {%- if item.has_lang -%}
+      <p>lang: {{ item.lang }}</p>
+      {%- endif %}
+    </div>
+  </li>
+  {% endfor -%}
 </ul>
