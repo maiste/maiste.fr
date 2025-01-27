@@ -6,6 +6,7 @@
   --tertary-color: #bf616a;
   --fg-color: #121519;
   --fg-lighter-color: #12151950;
+  --fg-footer-color: #575859;
   --bg-color: #e7eef9;
   --bg-lighter-color: #f8f8ff;
 }
@@ -16,6 +17,7 @@
   --tertary-color: #ebcb8b;
   --fg-color: #eceff4;
   --fg-lighter-color: #eceff450;
+  --fg-footer-color: #575859;
   --bg-color: #121519;
   --bg-lighter-color: #2e3440;
 }
@@ -220,19 +222,24 @@ footer {
   justify-content: center;
   align-items: center;
   width: 100%;
-  border-top: 2px dashed var(--fg-color);
   flex: 0;
-}
-
-footer p {
-  font-style: italic;
-  margin: 0px;
+  color: var(--fg-footer-color);
 }
 
 footer .container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+footer p {
+  font-style: italic;
+  margin: 0px;
+  text-align: center;
+}
+
+footer a {
+  color: var(--primary-color);
 }
 
 /*** Classes ***/
