@@ -37,14 +37,27 @@ care about it.
 
 ## 2025
 
-## 2025-01-17
+### 2025-01-24
+
+I finished implementing the new design for the desktop version. to finish the
+implementation, I need to make the adjustements for the mobile version. I know
+it is more usual to do the other way but I wanted to have the full screen
+version first because this is my primary source usage of this website.
+
+### 2025-01-19
+
+I have implemented the theme switcher with the help of [this blog
+post](https://lukelowrey.com/css-variable-theme-switcher) and I started to
+implement the design according to Penpot.
+
+### 2025-01-17
 
 The code makes the blog capable of using `d2` diagrams too, the same way
 `wiki.ml` does. Finish the mock design on Pen Pot. All I need is to implement
 the CSS. For future me, it needs to be done in an atomic way: I write the new
 CSS and HTML files and just switch the path ultimately.
 
-## 2025-01-10
+### 2025-01-10
 
 The wiki is now able to directly extract `d2` diagrams from the markdown file
 and extract the diagrams to an SVG and swap the graph code block with a newly
@@ -52,7 +65,7 @@ create SVG image. It now requires `d2` to be able to build the full wiki.
 
 ## 2024
 
-## 2024-12-27
+### 2024-12-27
 
 Support the `d2` front matter in wiki page and generate image links from
 content digest (weak caching system to not generate some files multiple times).
@@ -62,27 +75,27 @@ tree using the
 API from Cmarkit and [the YOCaml D2
 example](https://github.com/xhtmlboi/yocaml/blob/main/examples/d2/d2.ml)
 
-## 2024-12-26
+### 2024-12-26
 
 Add Wikipedia to the donation blog post because it was missing.
 
-## 2024-12-19
+### 2024-12-19
 
 Support the `draft: <bool>` metadata with `Wiki.t` elements. It allows the same as
 for the `Blog.t` elements. Night time!
 
-## 2024-12-13
+### 2024-12-13
 
 Support the `draft: <bool>` metadata with `Blog.t` elements. It allows testing
 online without referencing them. Write a new blog post about the donations!
 Yeah, being a bit productive on personal time :)
 
-## 2024-12-08
+### 2024-12-08
 
 Add the RSS2 flux as a syndication page. This allows users to have both _Atom_
 and _RSS_ versions.
 
-## 2024-12-06
+### 2024-12-06
 
 Bring back the profile picture in the [about](/about) page. Improve the content
 of the page by adding more information about employers. Add a disclaimer on all

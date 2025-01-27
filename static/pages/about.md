@@ -49,3 +49,11 @@ that could interest you:
 
 If you would like me to make a change or improve something, you can ask on
 GitHub [issues](https://github.com/maiste/maiste.fr/issues) :)
+
+## Legals about this website
+
+The various fonts I serve from this website are under specific license:
+
+- [Amatic SC license](https://fonts.google.com/specimen/Amatic+SC/license) on Google Fonts
+- [Andika license](https://fonts.google.com/specimen/Andika) on Google Fonts
+- [Quicksand license](https://fonts.google.com/specimen/Quicksand) on Google Fonts
