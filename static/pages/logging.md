@@ -14,7 +14,7 @@ care about it.
 - [✔️] Add a [logging](/logging) page
 - [✔️] Improve the content of the [about](/about) page,
 - [✔️] Set up the Atom feed back,
-- [ ] Find a decent design for the website:
+- [✔️] Find a decent design for the website:
   - Follow [xvw](https://xvw.lol) suggestion and rely on
     [Penpot](https://penpot.app/) to create a design first
   - Blog post page
@@ -37,11 +37,15 @@ care about it.
 
 ## 2025
 
+### 2025-01-27
+
+Switch to the new design, finally!
+
 ### 2025-01-24
 
-I finished implementing the new design for the desktop version. to finish the
-implementation, I need to make the adjustements for the mobile version. I know
-it is more usual to do the other way but I wanted to have the full screen
+I finished implementing the new design for the desktop version. To finish the
+implementation, I need to make the adjustments for the mobile version. I know
+it is more usual to do the other way but, I wanted to have the full screen
 version first because this is my primary source usage of this website.
 
 ### 2025-01-19
