@@ -55,7 +55,7 @@ let process (module R : S.RESOLVER) =
   let site_url = "https://maiste.fr" in
   let feed_url = "https://maiste.fr/atom.xml" in
   let author =
-    Yocaml_syndication.Person.make ~email:"dev@maiste.fr" "Etienne <Maiste> Marais"
+    Yocaml_syndication.Person.make ~email:"dev@maiste.fr" "Etienne (maiste) Marais"
   in
   let open Task in
   let posts = fetch_posts (module R) in
