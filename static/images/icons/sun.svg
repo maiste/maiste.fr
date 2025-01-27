@@ -1,0 +1,40 @@
+<svg width="24" xmlns="http://www.w3.org/2000/svg" height="24" fill="none">
+  <g class="feather feather-sun" style="fill: rgb(0, 0, 0);">
+    <ellipse cx="12" cy="12" rx="5" ry="5" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" fill="none" style="fill: rgb(18, 21, 25); fill-opacity: 0;" class="fills"/>
+    <g fill="none" stroke-linejoin="round" class="strokes">
+      <ellipse cx="12" cy="12" rx="5" ry="5" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" style="fill: none; stroke-width: 2; stroke: rgb(94, 129, 172); stroke-opacity: 1;" class="stroke-shape"/>
+    </g>
+    <path d="M12.000,1.000L12.000,3.000" fill="none" style="fill: currentColor; fill-opacity: 0;" class="fills"/>
+    <g fill="none" stroke-linejoin="round" class="strokes">
+      <path d="M12.000,1.000L12.000,3.000" style="fill: none; stroke-width: 2; stroke: rgb(94, 129, 172); stroke-opacity: 1;" class="stroke-shape"/>
+    </g>
+    <path d="M12.000,21.000L12.000,23.000" fill="none" style="fill: rgb(18, 21, 25); fill-opacity: 0;" class="fills"/>
+    <g fill="none" stroke-linejoin="round" class="strokes">
+      <path d="M12.000,21.000L12.000,23.000" style="fill: none; stroke-width: 2; stroke: rgb(94, 129, 172); stroke-opacity: 1;" class="stroke-shape"/>
+    </g>
+    <path d="M4.220,4.220L5.640,5.640" fill="none" style="fill: rgb(18, 21, 25); fill-opacity: 0;" class="fills"/>
+    <g fill="none" stroke-linejoin="round" class="strokes">
+      <path d="M4.220,4.220L5.640,5.640" style="fill: none; stroke-width: 2; stroke: rgb(94, 129, 172); stroke-opacity: 1;" class="stroke-shape"/>
+    </g>
+    <path d="M18.360,18.360L19.780,19.780" fill="none" style="fill: rgb(18, 21, 25); fill-opacity: 0;" class="fills"/>
+    <g fill="none" stroke-linejoin="round" class="strokes">
+      <path d="M18.360,18.360L19.780,19.780" style="fill: none; stroke-width: 2; stroke: rgb(94, 129, 172); stroke-opacity: 1;" class="stroke-shape"/>
+    </g>
+    <path d="M1.000,12.000L3.000,12.000" fill="none" style="fill: rgb(18, 21, 25); fill-opacity: 0;" class="fills"/>
+    <g fill="none" stroke-linejoin="round" class="strokes">
+      <path d="M1.000,12.000L3.000,12.000" style="fill: none; stroke-width: 2; stroke: rgb(94, 129, 172); stroke-opacity: 1;" class="stroke-shape"/>
+    </g>
+    <path d="M21.000,12.000L23.000,12.000" fill="none" style="fill: rgb(18, 21, 25); fill-opacity: 0;" class="fills"/>
+    <g fill="none" stroke-linejoin="round" class="strokes">
+      <path d="M21.000,12.000L23.000,12.000" style="fill: none; stroke-width: 2; stroke: rgb(94, 129, 172); stroke-opacity: 1;" class="stroke-shape"/>
+    </g>
+    <path d="M4.220,19.780L5.640,18.360" fill="none" style="fill: rgb(18, 21, 25); fill-opacity: 0;" class="fills"/>
+    <g fill="none" stroke-linejoin="round" class="strokes">
+      <path d="M4.220,19.780L5.640,18.360" style="fill: none; stroke-width: 2; stroke: rgb(94, 129, 172); stroke-opacity: 1;" class="stroke-shape"/>
+    </g>
+    <path d="M18.360,5.640L19.780,4.220" fill="none" style="fill: rgb(18, 21, 25); fill-opacity: 0;" class="fills"/>
+    <g fill="none" stroke-linejoin="round" class="strokes">
+      <path d="M18.360,5.640L19.780,4.220" style="fill: none; stroke-width: 2; stroke: rgb(94, 129, 172); stroke-opacity: 1;" class="stroke-shape"/>
+    </g>
+  </g>
+</svg>

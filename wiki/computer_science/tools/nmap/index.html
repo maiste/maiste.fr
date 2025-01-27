@@ -4,41 +4,273 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Maiste.fr</title>
+    <link rel="me" href="https://fosstodon.org/@maiste" />
 
     <!-- Main CSS -->
     <link href="/static/css/main.css" rel="stylesheet" />
 
     <!-- Fonts -->
     <link href="/static/fonts/import.css" rel="stylesheet" />
-    <link rel="me" href="https://fosstodon.org/@maiste" />
 
     <!-- Code Highlighting -->
     <link href="/static/css/code.css" rel="stylesheet" type="text/css" />
     <script src="/static/script/highlight.min.js"></script>
   </head>
 
-  <body>
-    <!-- Umami -->
-    <script
-      defer
-      src="https://analytics.maiste.fr/script.js"
-      data-website-id="b1e6219d-8044-47d9-9e91-44db862e2732"
-    ></script>
-    <!-- End Umami Code -->
+  <!-- Umami -->
+  <script
+    defer
+    src="https://analytics.maiste.fr/script.js"
+    data-website-id="b1e6219d-8044-47d9-9e91-44db862e2732"
+  ></script>
+  <!-- End Umami code -->
 
-    <header class="container">
+  <!-- Theme -->
+  <script>
+    let userTheme =
+      localStorage.getItem("theme") ??
+      (window.matchMedia("(prefers-color-scheme: light)").matches
+        ? "light"
+        : "dark");
+    if (userTheme) {
+      document.documentElement.setAttribute("data-theme", userTheme);
+    }
+    function switchTheme() {
+      let currentTheme = document.documentElement.getAttribute("data-theme");
+      let newTheme = currentTheme === "light" ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+    }
+  </script>
+  <!-- End Theme code -->
+
+  <body>
+    <header>
       <nav>
-        <h2><a href="/">Maiste 🦉</a></h2>
+        <h2><a href="/">Maiste</a></h2>
         <ul>
           <li><a href="/about">About</a></li>
           <li><a href="/blog">Blog</a></li>
           <li><a href="/projects">Projects</a></li>
           <li><a href="/wiki">Wiki</a></li>
+          <li>
+            <button id="theme-toggle" onclick="switchTheme()">
+              <svg
+                id="theme-moon"
+                width="23.977"
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                fill="none"
+              >
+                <g class="feather feather-moon" style="fill: rgb(0, 0, 0)">
+                  <path
+                    d="M20.979,12.790C20.542,17.526,16.499,21.104,11.750,20.958C7.001,20.812,3.185,16.992,3.039,12.238C2.894,7.484,6.468,3.438,11.199,3.000C9.141,5.786,9.430,9.660,11.878,12.111C14.326,14.561,18.196,14.850,20.979,12.790ZZ"
+                    fill="none"
+                    style="fill: currentColor"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M20.979,12.790C20.542,17.526,16.499,21.104,11.750,20.958C7.001,20.812,3.185,16.992,3.039,12.238C2.894,7.484,6.468,3.438,11.199,3.000C9.141,5.786,9.430,9.660,11.878,12.111C14.326,14.561,18.196,14.850,20.979,12.790ZZ"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                </g>
+              </svg>
+
+              <svg
+                id="theme-sun"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                fill="currentColor"
+              >
+                <g class="feather feather-sun">
+                  <ellipse
+                    cx="12"
+                    cy="12"
+                    rx="5"
+                    ry="5"
+                    transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)"
+                    fill="currentColor"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <ellipse
+                      cx="12"
+                      cy="12"
+                      rx="5"
+                      ry="5"
+                      transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                  <path
+                    d="M12.000,1.000L12.000,3.000"
+                    fill="none"
+                    style="fill: currentColor; fill-opacity: 0"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M12.000,1.000L12.000,3.000"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                  <path
+                    d="M12.000,21.000L12.000,23.000"
+                    fill="none"
+                    style="fill: currentColor; fill-opacity: 0"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M12.000,21.000L12.000,23.000"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                  <path
+                    d="M4.220,4.220L5.640,5.640"
+                    fill="none"
+                    style="fill: currentColor; fill-opacity: 0"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M4.220,4.220L5.640,5.640"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                  <path
+                    d="M18.360,18.360L19.780,19.780"
+                    fill="none"
+                    style="fill: currentColor; fill-opacity: 0"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M18.360,18.360L19.780,19.780"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                  <path
+                    d="M1.000,12.000L3.000,12.000"
+                    fill="none"
+                    style="fill: currentColor; fill-opacity: 0"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M1.000,12.000L3.000,12.000"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                  <path
+                    d="M21.000,12.000L23.000,12.000"
+                    fill="none"
+                    style="fill: currentColor; fill-opacity: 0"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M21.000,12.000L23.000,12.000"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                  <path
+                    d="M4.220,19.780L5.640,18.360"
+                    fill="none"
+                    style="fill: currentColor; fill-opacity: 0"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M4.220,19.780L5.640,18.360"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                  <path
+                    d="M18.360,5.640L19.780,4.220"
+                    fill="none"
+                    style="fill: currentColor; fill-opacity: 0"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M18.360,5.640L19.780,4.220"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </button>
+          </li>
         </ul>
       </nav>
-      <hr />
     </header>
-    <main class="container"><h1>NMap</h1>
+
+    <main>
+      <div class="container"><h1>NMap</h1>
 <div class="metadata"><p>description: Port scanning commandline tool</p><p>lang: ENG
     </p>
 </div>
@@ -46,29 +278,32 @@
 <pre><code class="language-sh"> nmap -sP &lt;ip pattern&gt;
 </code></pre>
 </div>
-</main>
+</div>
+    </main>
 
-    <footer class="container">
-      <hr />
-      <p>
-        All opinions expressed here are <strong>my own</strong> and do not
-        express the views or opinions of my employer or anyone else but me.
-      </p>
-      <p>
-        <a href="https://maiste.fr">Content under this website</a> is written by
-        Etienne "Maiste" Marais and is licensed under
-        <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1"
-          >CC BY-NC 4.0</a
-        >
-      </p>
-      <p>
-        Website written proudly with
-        <a href="https://gitlab.com/funkywork/yocaml">Yocaml</a> ♡ This site is
-        part of the
-        <a href="https://ring.muhokama.fun">Muhokama ring</a>
-        (<a href="https://ring.muhokama.fun/u/maiste/pred">Previous</a> -
-        <a href="https://ring.muhokama.fun/u/maiste/succ">Next</a>)
-      </p>
+    <footer>
+      <div class="container">
+        <p>
+          All opinions expressed here are <strong>my own</strong> and do not
+          express the views or opinions of my employer or anyone else but me.
+        </p>
+        <p>
+          <a href="https://maiste.fr">Content under this website</a> is written
+          by Etienne "Maiste" Marais and is licensed under
+          <a
+            href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1"
+            >CC BY-NC 4.0</a
+          >
+        </p>
+        <p>
+          Website written proudly with
+          <a href="https://gitlab.com/funkywork/yocaml">Yocaml</a> ♡ This site
+          is part of the
+          <a href="https://ring.muhokama.fun">Muhokama ring</a>
+          (<a href="https://ring.muhokama.fun/u/maiste/pred">Previous</a> -
+          <a href="https://ring.muhokama.fun/u/maiste/succ">Next</a>)
+        </p>
+      </div>
     </footer>
     <script>
       hljs.highlightAll();
