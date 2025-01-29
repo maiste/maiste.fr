@@ -1,13 +1,12 @@
 ---
-page_title: "A small garden, hidden in the vast forest of the web"
+page_title: "A glade, hidden in the vast forest of the web"
 ---
 
 ## Welcome!
 
 This is what I call my **Knowledge Forest**, a place where I grow my online
-presence. It is a minimal website that tries to fit in the 512kB club (still
-not a member though...). Of course, it's written using OCaml, as it wouldn't be
-me if it was in another language (currently working on the OCaml build system,
+presence. Of course, it's written using OCaml, as it wouldn't be me if it was
+in another language (currently working on the OCaml build system,
 [Dune](https://github.com/ocaml/dune))!
 
 ## Explore...
@@ -17,9 +16,11 @@ me if it was in another language (currently working on the OCaml build system,
 - Who [I](/about) am
 - The [projects](/projects) I have been working on
 
-## Work-In-Progress
+## Never ending story
 
-⚠️ This website is still under active development and lack a lot of features. It
-will improve over time but, I wanted to have a decent base first (hence the
-code does not look good actually!). If you are curious, you can follow the advancement
-in the [logging](/logging) page.
+This website is always under development. Now it reaches its new design and the
+structure is one I'm satisfied with, I will slow down the visual and feature
+development and move to code refactoring (you don't want to look at it today).
+If you are interested in following the changes and development, you can have a
+look at the [website logs](/logging).
+
