@@ -55,5 +55,5 @@ GitHub [issues](https://github.com/maiste/maiste.fr/issues) :)
 The various fonts I serve from this website are under specific license:
 
 - [Amatic SC license](https://fonts.google.com/specimen/Amatic+SC/license) on Google Fonts
-- [Andika license](https://fonts.google.com/specimen/Andika) on Google Fonts
 - [Quicksand license](https://fonts.google.com/specimen/Quicksand) on Google Fonts
+- [Roboto](https://fonts.google.com/specimen/Roboto/license) on Google Fonts

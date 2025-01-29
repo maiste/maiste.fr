@@ -37,6 +37,10 @@ care about it.
 
 ## 2025
 
+### 2025-01-29
+
+Move fonts to use Roboto as the primary font.
+
 ### 2025-01-27
 
 Switch to the new design, finally!
