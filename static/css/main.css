@@ -58,7 +58,7 @@ body {
   align-items: center;
   background-color: var(--bg-color);
   color: var(--fg-color);
-  font-family: "Andika", sans-serif;
+  font-family: "Roboto", serif;
   font-size: 1rem; /* Default to 16px if no user changes */
 }
 
@@ -87,6 +87,7 @@ h1 {
 h2 {
   color: var(--primary-color);
   font-size: 2.5rem; /* Default to 40px */
+  text-decoration: underline;
 }
 
 h3 {
@@ -194,6 +195,7 @@ header nav h2 {
   padding: 5px 15px 5px 15px;
   border-radius: 10px;
   margin: 0px;
+  text-decoration: none;
 }
 
 header a {
