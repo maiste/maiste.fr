@@ -1,8 +1,9 @@
 name: Deploy
 on:
+  workflow_dispatch:
   push:
     branches:
-    - main
+      - main
 
 jobs:
   build:
@@ -15,7 +16,7 @@ jobs:
       - name: Setup OCaml with cache
         uses: ocaml/setup-ocaml@v3
         with:
-          ocaml-compiler: "5.1.1"
+          ocaml-compiler: "5.2.1"
           dune-cache: true
 
       - name: Install d2 cmdline for diagrams
@@ -29,7 +30,7 @@ jobs:
 
       - name: Clean dir
         run: |
-          rm -rf bin contents dune-project LICENSE maiste-web.opam maiste-web.opam.templatepages README.md templates
+          rm -rf bin content dune-project LICENSE maiste-web.opam maiste-web.opam README.md static/templates
           mv target /tmp
           mv _opam /tmp
 
@@ -43,7 +44,7 @@ jobs:
           rm -rf ./*
           mv /tmp/target/* ./
           git add -A .
-          git commit -m "Blog v$(date +'%Y-%m-%d')" --allow-empty
+          git commit -m "Blog - $(date +'%Y-%m-%d-%H-%M')" --allow-empty
           git push origin gh-pages
 
       # We need to move opam dir to make sure it doesn't break the cache.
