@@ -150,6 +150,15 @@ blockquote p {
   margin: 0px;
 }
 
+*::selection {
+  color: var(--bg-color);
+  background-color: var(--primary-color);
+}
+
+h1::selection {
+  background-color: var(--secondary-color);
+}
+
 /*** Header ***/
 
 header {
