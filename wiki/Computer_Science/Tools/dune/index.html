@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Maiste.fr</title>
+    <link rel="me" href="https://fosstodon.org/@maiste" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="RSS Feed for maiste.fr"
+      href="/rss.xml"
+    />
+
+    <!-- Main CSS -->
+    <link href="/static/css/main.css" rel="stylesheet" />
+
+    <!-- Fonts -->
+    <link href="/static/fonts/import.css" rel="stylesheet" />
+
+    <!-- Code Highlighting -->
+    <link href="/static/css/code.css" rel="stylesheet" type="text/css" />
+    <script src="/static/script/highlight.min.js"></script>
+  </head>
+
+  <!-- Umami -->
+  <script
+    defer
+    src="https://analytics.maiste.fr/script.js"
+    data-website-id="b1e6219d-8044-47d9-9e91-44db862e2732"
+  ></script>
+  <!-- End Umami code -->
+
+  <!-- Theme -->
+  <script>
+    let userTheme =
+      localStorage.getItem("theme") ??
+      (window.matchMedia("(prefers-color-scheme: light)").matches
+        ? "light"
+        : "dark");
+    if (userTheme) {
+      document.documentElement.setAttribute("data-theme", userTheme);
+    }
+    function switchTheme() {
+      let currentTheme = document.documentElement.getAttribute("data-theme");
+      let newTheme = currentTheme === "light" ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+    }
+  </script>
+  <!-- End Theme code -->
+
+  <body>
+    <header>
+      <nav>
+        <h2><a href="/">Maiste</a></h2>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/wiki">Wiki</a></li>
+          <li>
+            <button id="theme-toggle" onclick="switchTheme()">
+              <svg
+                id="theme-moon"
+                width="23.977"
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                fill="none"
+              >
+                <g class="feather feather-moon" style="fill: rgb(0, 0, 0)">
+                  <path
+                    d="M20.979,12.790C20.542,17.526,16.499,21.104,11.750,20.958C7.001,20.812,3.185,16.992,3.039,12.238C2.894,7.484,6.468,3.438,11.199,3.000C9.141,5.786,9.430,9.660,11.878,12.111C14.326,14.561,18.196,14.850,20.979,12.790ZZ"
+                    fill="none"
+                    style="fill: currentColor"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M20.979,12.790C20.542,17.526,16.499,21.104,11.750,20.958C7.001,20.812,3.185,16.992,3.039,12.238C2.894,7.484,6.468,3.438,11.199,3.000C9.141,5.786,9.430,9.660,11.878,12.111C14.326,14.561,18.196,14.850,20.979,12.790ZZ"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                </g>
+              </svg>
+
+              <svg
+                id="theme-sun"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                fill="currentColor"
+              >
+                <g class="feather feather-sun">
+                  <ellipse
+                    cx="12"
+                    cy="12"
+                    rx="5"
+                    ry="5"
+                    transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)"
+                    fill="currentColor"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <ellipse
+                      cx="12"
+                      cy="12"
+                      rx="5"
+                      ry="5"
+                      transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                  <path
+                    d="M12.000,1.000L12.000,3.000"
+                    fill="none"
+                    style="fill: currentColor; fill-opacity: 0"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M12.000,1.000L12.000,3.000"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                  <path
+                    d="M12.000,21.000L12.000,23.000"
+                    fill="none"
+                    style="fill: currentColor; fill-opacity: 0"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M12.000,21.000L12.000,23.000"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                  <path
+                    d="M4.220,4.220L5.640,5.640"
+                    fill="none"
+                    style="fill: currentColor; fill-opacity: 0"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M4.220,4.220L5.640,5.640"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                  <path
+                    d="M18.360,18.360L19.780,19.780"
+                    fill="none"
+                    style="fill: currentColor; fill-opacity: 0"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M18.360,18.360L19.780,19.780"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                  <path
+                    d="M1.000,12.000L3.000,12.000"
+                    fill="none"
+                    style="fill: currentColor; fill-opacity: 0"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M1.000,12.000L3.000,12.000"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                  <path
+                    d="M21.000,12.000L23.000,12.000"
+                    fill="none"
+                    style="fill: currentColor; fill-opacity: 0"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M21.000,12.000L23.000,12.000"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                  <path
+                    d="M4.220,19.780L5.640,18.360"
+                    fill="none"
+                    style="fill: currentColor; fill-opacity: 0"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M4.220,19.780L5.640,18.360"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                  <path
+                    d="M18.360,5.640L19.780,4.220"
+                    fill="none"
+                    style="fill: currentColor; fill-opacity: 0"
+                    class="fills"
+                  />
+                  <g fill="none" stroke-linejoin="round" class="strokes">
+                    <path
+                      d="M18.360,5.640L19.780,4.220"
+                      style="
+                        fill: none;
+                        stroke-width: 2;
+                        stroke: currentColor;
+                        stroke-opacity: 1;
+                      "
+                      class="stroke-shape"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container"><h1>Dune</h1>
+<div class="metadata"><p>description: Quick summary about what I learned while on-boarding the Dune Project</p><p>lang: ENG
+    </p>
+</div>
+<div class="content"><h2 id="dune-terminology"><a class="anchor" aria-hidden="true" href="#dune-terminology"></a>Dune Terminology</h2>
+<ul>
+<li><strong>root</strong>: <code>dune</code> build things from this directory. It knows how to build targets that are descendants of this directory.
+<ul>
+<li>Depending on the type of structure, it can be the top of a GitHub repository, a dune workspace (<code>%{workspace_root}</code>) or a project (<code>%{project_root}</code>).</li>
+</ul>
+</li>
+<li><strong>workspace</strong>: it refers to the <strong>subtree</strong> of a <strong>root</strong>.
+<ul>
+<li>It can contain any number of <strong>projects</strong>.</li>
+<li>It contains a <code>dune-workspace</code> file.</li>
+</ul>
+</li>
+<li><strong>project</strong>: A collection of source files. It must include a <code>dune-project</code> file.
+<ul>
+<li>It can contain multiple packages.</li>
+<li>The project is a hierarchy of directories which can all hold <code>dune</code> file (including the root).</li>
+<li>Projects can be shared.</li>
+</ul>
+</li>
+<li><strong>package</strong>: A set of libraries and executables installed as one.</li>
+<li><strong>installed world</strong>: Anything outside a workspace. <em>Dune</em> doesn't know how to build this.</li>
+<li><strong>installation</strong>: Action of copying files from <code>&lt;root&gt;/_build</code> to the <strong>installed world</strong>.</li>
+<li><strong>scope</strong>: (This part of the project is still unclear for me) It is defined by any directory with a <code>&lt;package&gt;.opam</code>.
+<ul>
+<li>Most of the time, every project scope is a <strong>subtree</strong> starting from this directory.</li>
+<li>It sets the visibility of what is meant to be seen outside the scope.</li>
+<li>To make project deps available, it needs to by added in a <code>vendor</code> directory.</li>
+</ul>
+</li>
+<li><strong>build context</strong>: Specific configuration in a <code>dune-workspace</code> with a corresponding <code>&lt;root&gt;/_build</code> directory.
+<ul>
+<li>It contains all the workspace build artifacts.</li>
+<li>There is always a <code>default</code> <strong>build context</strong>.</li>
+</ul>
+</li>
+<li><strong>build context root</strong>: The root of a build context. For example, if the context is <code>bar</code> is root is <code>&lt;root&gt;/_build/&lt;bar&gt;</code></li>
+<li><strong>build target</strong>: Specified on the command line.
+<ul>
+<li>All targets that <em>Dune</em> knows how to build are in the <code>&lt;root&gt;/_build</code> directory</li>
+</ul>
+</li>
+<li><strong>build profile</strong>: a global setting that influences default configuration.
+<ul>
+<li>It can be set with <code>--profile &lt;profile&gt;</code> or in the <code>dune-workspace</code> file.</li>
+<li>There are two standard profiles: <code>dev</code> (stricter warnings) and <code>release</code></li>
+</ul>
+</li>
+<li><strong>alias</strong>: <strong>build target</strong> that do not correspond to specific files.
+<ul>
+<li>Referred in the command line by <code>@&lt;alias_name&gt;</code>.</li>
+<li><code>@@&lt;alias_name&gt;</code> is  the same but, it is not recursive in subdirectories.</li>
+<li><strong>aliases</strong> are <strong>per-directory</strong>.</li>
+</ul>
+</li>
+<li><strong>env</strong>: default values of various parameters.
+<ul>
+<li>Each directory has an <strong>env</strong> attached to it.</li>
+<li>In a scope, <strong>env</strong> is inherited from its parent.</li>
+<li>At the *<em>root</em> of a <strong>scope</strong>, there is a <strong>default env</strong>.</li>
+<li>It can be altered with the <strong>env</strong> stanza (high level rule).</li>
+</ul>
+</li>
+<li><strong>dialect</strong>: An alternative frontend to OCaml
+<ul>
+<li>Described by a pair of file extensions, one for interfaces and one for implementations.</li>
+<li>Can use OCaml syntax or use a converter to OCaml AST.</li>
+<li>Can have a custom formatter.</li>
+</ul>
+</li>
+<li><strong>placeholder substitution</strong>: build step where placeholders (e.g <code>%%VERSION%%</code>) are replaced by concrete values.</li>
+</ul>
+<h2 id="mental-model"><a class="anchor" aria-hidden="true" href="#mental-model"></a>Mental model</h2>
+<blockquote>
+<p>TL;DR: a <strong>rule</strong> reads <strong>dependencies</strong> and produces <strong>targets</strong> using an <strong>action</strong>. It can be attached to <strong>aliases</strong>.</p>
+</blockquote>
+<ul>
+<li>The model can be drawn as follows:
+<img src="/static/images/Computer_Science/Tools/dune.rule_mental_model.svg" alt="Rule mental model" ></li>
+<li>An <strong>alias</strong> can be seen as a rule with no <strong>target</strong>:
+<img src="/static/images/Computer_Science/Tools/dune.alias_mental_model.svg" alt="Rule mental model" ></li>
+<li>Interprets rules:
+<ul>
+<li><strong>Build a file</strong>: check if the file is in the source tree or, if not, it checks if it is the target of a rule.</li>
+<li><strong>Build an alias</strong>: it executes all the rules attached to this alias.</li>
+<li><strong>Execute a rule</strong>: it builds the dependencies and when they are all satisfied, it runs the action (using the various caches).</li>
+</ul>
+</li>
+<li>A <strong>stanza</strong> is a high level construction to generate <strong>rules</strong></li>
+</ul>
+<p><strong>N.B</strong>: The set of rules and the dependency graph create a <em>Direct Acyclic Graph</em> (DAG).</p>
+<p><code>(depends ...)</code> in package defines <code>opam</code> packages whereas <code>(libraries ...</code> defines archive in term of linking.</p>
+<h2 id="compile-dune"><a class="anchor" aria-hidden="true" href="#compile-dune"></a>Compile Dune</h2>
+<ul>
+<li>Install and compile:
+<ul>
+<li><code>opam switch create . --empty</code> to be sure to not build a switch with the wrong OCaml version. It <strong>must</strong> be compiled with <code>ocaml.4.14</code>.</li>
+<li><code>make dev-deps</code> to install dependencies.</li>
+<li><code>make dev</code> to build the full project.</li>
+</ul>
+</li>
+<li><code>bootstap.ml</code>:
+<ul>
+<li><code>bootstrap.ml</code> is a small build system used to create <code>dune.exe</code></li>
+<li><code>dune.exe</code> is the true <code>dune</code> that is copy to its Opam location.</li>
+</ul>
+</li>
+<li>Schema of the build flow</li>
+</ul>
+<pre><code class="language-ascii">+---------------+                  +--------------------+
+|               |                  |                    |
+|  boostrap.ml  +---------+--------+  ocamlc / ocamlopt |
+|               |         |        |                    |
++---------------+         |        +--------------------+
+                          |                              
+                          | Compile                      
+                          |                              
+                          |                              
+                   +------v-----+                        
+                   |            |                        
+                   |  dune.exe  |                        
+    +--------------+            |                        
+    |              +------+-----+                        
+    |                     |                              
+    |                     |                              
+    |                     |  Generate                    
+    |                     |                              
+    | Copy                |                              
+    |             +-------v--------+                     
+    |             |                |                     
+    |             |  dune.install  |                     
+    |             |                |                     
+    |             +--------+-------+                     
+    |                      |                             
+    |                      |                             
+    +----------------------+  Opam                       
+                           |                             
+                           |                             
+                     +-----v------+                      
+                     |            |                      
+                     |    dune    |                      
+                     |            |                      
+                     +------------+                      
+</code></pre>
+<h2 id="release-process"><a class="anchor" aria-hidden="true" href="#release-process"></a>Release process</h2>
+<ul>
+<li><a href="https://github.com/ocaml/dune/wiki/Release-process">Ref</a></li>
+<li>One minor version maintained at the time.</li>
+<li>Process:
+<ol>
+<li>Ask the team about any know blockers.</li>
+<li>Mirage CI to ensure nothing breaks.</li>
+<li>Update the changelog with <code>doc/changes</code></li>
+</ol>
+</li>
+<li>Talk with Opam maintainer</li>
+<li>Only take care about regression issues</li>
+</ul>
+<h2 id="questions"><a class="anchor" aria-hidden="true" href="#questions"></a>Questions</h2>
+<ul>
+<li>Is everything in the <code>_build</code>?
+<ul>
+<li>Almost everything and we almost never read outside.</li>
+<li>Use fast copy mechanisms (hard links) to be fast.</li>
+<li>Allow to keep the <code>dune clean &lt;=&gt; rm -rf _build</code> invariant.</li>
+</ul>
+</li>
+<li>Do we have to manually update dependencies?
+<ul>
+<li>Yes, but not always synchronize.</li>
+<li>Add some patches.</li>
+<li>Rebase can be complex...</li>
+</ul>
+</li>
+<li>What is the <code>Fiber</code> module?
+<ul>
+<li>It is a concurrency monad.</li>
+<li>Scheduler for processes.</li>
+</ul>
+</li>
+<li>What is the <code>Memo.t</code> type for?
+<ul>
+<li>Two tasks for <code>dune</code>:
+<ul>
+<li>Read configs</li>
+<li>Call actions</li>
+</ul>
+</li>
+<li>Keep in cache to reduce the number of external calls.</li>
+<li>Like a spreadsheet with <code>Lazy</code> and <code>cell</code>.</li>
+<li>Reduce performance cost and handle cache invalidation.</li>
+</ul>
+</li>
+<li>Is everything in a <code>dune-workspace</code> or is a particular structure?</li>
+<li>Does <code>dune.exe</code> rebuild the entire version of dune?</li>
+</ul>
+<h2 id="pain-section"><a class="anchor" aria-hidden="true" href="#pain-section"></a>Pain Section</h2>
+<blockquote>
+<p>This section summarizes the pain point I encountered while working with Dune.</p>
+</blockquote>
+<ul>
+<li>When rebuilding dune, if the <code>make boostrap</code> fails with <code>thread.posix</code> errors, you just need to restore <code>boot/libs.ml</code>, and rebuild.</li>
+<li>If <code>ocaml-lsp-server</code> is broken, build the switch with <code>make dev-switch</code> and <code>make dev</code>. Then, pin the dune packages with <code>opam pin add . -n</code> and finally install the LSP with <code>opam install ocaml-lsp-server</code> and <code>ocamlformat</code>.</li>
+</ul>
+<h2 id="remember-section"><a class="anchor" aria-hidden="true" href="#remember-section"></a>Remember section</h2>
+<ul>
+<li>We could rework the <em># Working on the Dune Codebase</em> section:
+<ul>
+<li>It can be moved at top level</li>
+<li>It can be split in multiple section like in the <a href="https://dune.readthedocs.io/en/latest/explanation/tour/index.html">Tour of the Dune Codebase</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="resources"><a class="anchor" aria-hidden="true" href="#resources"></a>Resources</h2>
+<ul>
+<li><a href="https://dune.readthedocs.io/en/latest/overview.html#terminology">Dune Terminology</a></li>
+<li><a href="https://dune.readthedocs.io/en/latest/explanation/mental-model.html">Dune Mental Model</a></li>
+<li><a href="https://www.microsoft.com/en-us/research/uploads/prod/2020/04/build-systems-jfp.pdf">Build Systems à la Carte</a></li>
+<li><a href="https://dune.readthedocs.io/en/latest/hacking.html">Working on the Dune Codebase</a></li>
+</ul>
+<hr>
+<h3 id="draft---fr"><a class="anchor" aria-hidden="true" href="#draft---fr"></a>Draft - FR</h3>
+<ul>
+<li>Memo :
+<ul>
+<li>Ce qui se passe en mémoire: qu'est que je dois recalculer.</li>
+<li>Etat existe que dans la RAM.</li>
+<li>Invalidation passe par Memo comme pour le watch mode</li>
+<li>C'est 1. une optimisation 2. recalculer ce qui doit être recalculer</li>
+</ul>
+</li>
+<li>Action builder :
+<ul>
+<li>Ce qui se passe dans le répertoire _build</li>
+<li>Ensemble de régle pour construire une target</li>
+</ul>
+</li>
+<li><code>-&gt; unit Memo.t</code> est equivalent à effet de bord</li>
+<li>Les règles sont enregistrées dans <code>Memo</code></li>
+<li>Les règles ajoutées par répertoire: un fichier Dune d'un coup</li>
+<li><code>Action_builder.With_targets</code> est une monade qui lit et produit des fichiers
+dans <code>_build</code>. Distinction entre les règles qui peuvent faire des targets et
+celles qui ne peuvent pas en faire. Permet de savoir statiquement de savoir
+quelles targets vont être produites.</li>
+<li><code>Action.t</code> est un type sum qui permet de décrire l'action. <code>Action.Full.t</code>
+offre des tags en plus.</li>
+<li><code>Alias</code> décrit un ensemble de règles. Équivalent de stampfile pour Makefile.</li>
+<li><code>Expander.t</code> :
+<ul>
+<li>Variable (<code>%{x}</code>).</li>
+<li>Transforme une variable en valeur.</li>
+<li>Faire le check sur les numéros de versions dans les variables.</li>
+</ul>
+</li>
+<li><code>Locks</code>: sémantique de nom de fichiers
+<ul>
+<li><code>Expander</code> traduit le nom</li>
+</ul>
+</li>
+<li><code>dune-site</code> permet de au programme de faire référence à des choses qui sont différentes à runtime.</li>
+</ul>
+</div>
+</div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>
+          All opinions expressed here are <strong>my own</strong> and do not
+          express the views or opinions of my employer or anyone else but me.
+          <a href="https://maiste.fr">Content under this website</a> is written
+          by Etienne "Maiste" Marais and is licensed under
+          <a
+            href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1"
+            >CC BY-NC 4.0</a
+          >. Website written proudly with
+          <a href="https://github.com/xhtmlboy/yocaml">Yocaml</a> ♡
+        </p>
+        <p>
+          This site is part of the
+          <a href="https://ring.muhokama.fun">Muhokama ring</a>
+          (<a href="https://ring.muhokama.fun/u/maiste/pred">Previous</a> -
+          <a href="https://ring.muhokama.fun/u/maiste/succ">Next</a>)
+        </p>
+      </div>
+    </footer>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>

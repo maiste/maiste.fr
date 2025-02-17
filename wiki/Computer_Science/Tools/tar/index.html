@@ -276,43 +276,49 @@
     </header>
 
     <main>
-      <div class="container"><h1>wiki</h1>
-<div class="metadata"></div>
-
-<div class="content"></div>
-
-<h2>Index</h2>
-<ul class="index"><li>
-    <h3><a href="/wiki/Books/index.html">Books</a></h3>
-    <div class="metadata"><p>description: All about the books I have and I will read</p><p>lang: ENG</p>
-    </div>
-  </li>
-  <li>
-    <h3><a href="/wiki/Computer_Science/index.html">Computer Science</a></h3>
-    <div class="metadata"><p>description: First class citizen as I work in it</p><p>lang: ENG</p>
-    </div>
-  </li>
-  <li>
-    <h3><a href="/wiki/Cooking/index.html">Cooking</a></h3>
-    <div class="metadata"><p>description: Because eating is life</p><p>lang: ENG</p>
-    </div>
-  </li>
-  <li>
-    <h3><a href="/wiki/DIY/index.html">DIY</a></h3>
-    <div class="metadata"><p>description: Let&apos;s get hands dirty</p><p>lang: ENG</p>
-    </div>
-  </li>
-  <li>
-    <h3><a href="/wiki/Humans/index.html">Humans</a></h3>
-    <div class="metadata"><p>description: Messy information about human life</p><p>lang: ENG</p>
-    </div>
-  </li>
-  <li>
-    <h3><a href="/wiki/Organisation/index.html">Organisation</a></h3>
-    <div class="metadata"><p>description: How to be organise and maybe more productive</p><p>lang: ENG</p>
-    </div>
-  </li>
-  </ul>
+      <div class="container"><h1>Tar</h1>
+<div class="metadata"><p>description: An archive system</p><p>lang: ENG
+    </p>
+</div>
+<div class="content"><h2 id="basics"><a class="anchor" aria-hidden="true" href="#basics"></a>Basics</h2>
+<h3 id="create-an-archive"><a class="anchor" aria-hidden="true" href="#create-an-archive"></a>Create an archive</h3>
+<pre><code class="language-sh"> tar cf &lt;name&gt;.tar [objs]
+</code></pre>
+<h3 id="extract-an-archive"><a class="anchor" aria-hidden="true" href="#extract-an-archive"></a>Extract an archive</h3>
+<pre><code class="language-sh">  tar xf &lt;name&gt;.tar
+</code></pre>
+<h3 id="activate-verbose-mode"><a class="anchor" aria-hidden="true" href="#activate-verbose-mode"></a>Activate verbose mode</h3>
+<pre><code class="language-sh"> tar v [cmd]
+</code></pre>
+<hr>
+<h2 id="use-compression"><a class="anchor" aria-hidden="true" href="#use-compression"></a>Use compression</h2>
+<h3 id="create-a-gzip-archive"><a class="anchor" aria-hidden="true" href="#create-a-gzip-archive"></a>Create a gzip archive</h3>
+<pre><code class="language-sh">  tar czf &lt;name&gt;.tgz [objs]
+</code></pre>
+<h3 id="extract-a-gzip-archive"><a class="anchor" aria-hidden="true" href="#extract-a-gzip-archive"></a>Extract a gzip archive</h3>
+<pre><code class="language-sh">  tar xzf &lt;name&gt;.tgz
+</code></pre>
+<h3 id="create-an-zstd-archive"><a class="anchor" aria-hidden="true" href="#create-an-zstd-archive"></a>Create an zstd archive</h3>
+<p>See <a href="zstd.md">zsdt</a></p>
+<pre><code class="language-sh">tar --zstd cf &lt;name&gt;.tar.zst &lt;files&gt;
+</code></pre>
+<h3 id="extract-a-zstd-archive"><a class="anchor" aria-hidden="true" href="#extract-a-zstd-archive"></a>Extract a zstd archive</h3>
+<pre><code class="language-sh">tar --zstd xf &lt;name&gt;.tar.zst
+</code></pre>
+<hr>
+<h2 id="pipe-with-other-programs"><a class="anchor" aria-hidden="true" href="#pipe-with-other-programs"></a>Pipe with other programs</h2>
+<h3 id="extract-on-flight-an-archive-with-http"><a class="anchor" aria-hidden="true" href="#extract-on-flight-an-archive-with-http"></a>Extract on flight an archive with http</h3>
+<pre><code class="language-sh">  wget -c http[s]://host/path/to/file.tgz -O - | tar -xz
+</code></pre>
+<hr>
+<h2 id="gpg"><a class="anchor" aria-hidden="true" href="#gpg"></a>GPG</h2>
+<h3 id="encrypt-tar-with-gpg"><a class="anchor" aria-hidden="true" href="#encrypt-tar-with-gpg"></a>Encrypt tar with GPG</h3>
+<pre><code class="language-sh">  tar czpvf - &lt;name&gt; | gpg -c [--batch --yes --passphrase &lt;password&gt;] --cipher-algo aes256 -o &lt;name&gt;.gz.gpg
+</code></pre>
+<h3 id="decrypt-tar-with-gpg"><a class="anchor" aria-hidden="true" href="#decrypt-tar-with-gpg"></a>Decrypt tar with GPG</h3>
+<pre><code class="language-sh">  gpg -d [--batch --yes --passphrase azerty12] &lt;tar file&gt; | tar xzvf -
+</code></pre>
+</div>
 </div>
     </main>
 

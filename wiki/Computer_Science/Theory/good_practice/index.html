@@ -276,43 +276,48 @@
     </header>
 
     <main>
-      <div class="container"><h1>wiki</h1>
-<div class="metadata"></div>
-
-<div class="content"></div>
-
-<h2>Index</h2>
-<ul class="index"><li>
-    <h3><a href="/wiki/Books/index.html">Books</a></h3>
-    <div class="metadata"><p>description: All about the books I have and I will read</p><p>lang: ENG</p>
-    </div>
-  </li>
-  <li>
-    <h3><a href="/wiki/Computer_Science/index.html">Computer Science</a></h3>
-    <div class="metadata"><p>description: First class citizen as I work in it</p><p>lang: ENG</p>
-    </div>
-  </li>
-  <li>
-    <h3><a href="/wiki/Cooking/index.html">Cooking</a></h3>
-    <div class="metadata"><p>description: Because eating is life</p><p>lang: ENG</p>
-    </div>
-  </li>
-  <li>
-    <h3><a href="/wiki/DIY/index.html">DIY</a></h3>
-    <div class="metadata"><p>description: Let&apos;s get hands dirty</p><p>lang: ENG</p>
-    </div>
-  </li>
-  <li>
-    <h3><a href="/wiki/Humans/index.html">Humans</a></h3>
-    <div class="metadata"><p>description: Messy information about human life</p><p>lang: ENG</p>
-    </div>
-  </li>
-  <li>
-    <h3><a href="/wiki/Organisation/index.html">Organisation</a></h3>
-    <div class="metadata"><p>description: How to be organise and maybe more productive</p><p>lang: ENG</p>
-    </div>
-  </li>
-  </ul>
+      <div class="container"><h1>Good Practices</h1>
+<div class="metadata"><p>description: Lessons I have learnt painfully by experience</p><p>lang: ENG
+    </p>
+</div>
+<div class="content"><h2 id="debugging"><a class="anchor" aria-hidden="true" href="#debugging"></a>Debugging</h2>
+<ol>
+<li>Even if it's seemed bad, often a <code>Printf</code> is quicker than a debugging tool</li>
+<li>Logging data is <em>important</em>: a debug mode should always be available for medium to big programs.</li>
+<li><code>git-diff</code> is a good friend, that the first step to debugging</li>
+</ol>
+<h2 id="fix-issues"><a class="anchor" aria-hidden="true" href="#fix-issues"></a>Fix issues</h2>
+<ol>
+<li>When debugging <code>docker</code> run issues, if <strong>something</strong> vanishes, looking at the <code>volumes</code> is a really nice practice.</li>
+<li>Take your time before reaching conclusions. Having a reproduce state of the bug is important.</li>
+</ol>
+<h2 id="coding-style"><a class="anchor" aria-hidden="true" href="#coding-style"></a>Coding style</h2>
+<ol>
+<li>The style is often <em>subjective</em>. However, it matters to stay consistent.</li>
+</ol>
+<h2 id="coding-methods"><a class="anchor" aria-hidden="true" href="#coding-methods"></a>Coding methods</h2>
+<ol start="2">
+<li>Pencils and papers are your friends, feel free to fill a lot of them with notes, graphs or anything relevant: it frees your mind.</li>
+<li>A good way to design a good API is actually to try to explain it with documentation ie. always start by a .mli, give a few hints on the general idea behind the API and give a few explanations on how users are supposed to use it. Writing a few examples is always a good way to find the right function and types names and the proper API to compose them (<a href="https://github.com/mirage/irmin/pull/1817">quote @samoht</a>).</li>
+</ol>
+<h2 id="devops"><a class="anchor" aria-hidden="true" href="#devops"></a>DevOps</h2>
+<ol start="4">
+<li><strong>NEVER DEPLOY</strong> on Fridays, <strong>NEVER</strong>.</li>
+<li>If the code you deploy writes in the <strong>file system</strong>, try with a subset to make sure it has the <strong>correct</strong> rights.</li>
+</ol>
+<h2 id="dont-be-a-dummy"><a class="anchor" aria-hidden="true" href="#dont-be-a-dummy"></a>Don't be a dummy</h2>
+<ol start="6">
+<li>Ensure you call the correct executable or library.</li>
+<li>Check if the features you want to test are activated.</li>
+</ol>
+<h2 id="resources"><a class="anchor" aria-hidden="true" href="#resources"></a>Resources</h2>
+<ul>
+<li><a href="https://untools.co/">Tools for better thinking</a></li>
+<li><a href="https://12factor.net/">Twelve-Factor App</a>: good practises to write SAAS (Software As a Service)</li>
+<li><a href="http://raphael-lemaire.com/2018/05/22/resume-de-livre-eco-conception-web-les-115-bonnes-pratiques/">Eco-conception-web-les-115-bonnes-pratiques</a></li>
+<li><a href="https://web.archive.org/web/20210810063956/http://boringtechnology.club/">Choose boring technologies</a></li>
+</ul>
+</div>
 </div>
     </main>
 

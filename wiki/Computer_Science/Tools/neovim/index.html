@@ -276,43 +276,98 @@
     </header>
 
     <main>
-      <div class="container"><h1>wiki</h1>
-<div class="metadata"></div>
-
-<div class="content"></div>
-
-<h2>Index</h2>
-<ul class="index"><li>
-    <h3><a href="/wiki/Books/index.html">Books</a></h3>
-    <div class="metadata"><p>description: All about the books I have and I will read</p><p>lang: ENG</p>
-    </div>
-  </li>
-  <li>
-    <h3><a href="/wiki/Computer_Science/index.html">Computer Science</a></h3>
-    <div class="metadata"><p>description: First class citizen as I work in it</p><p>lang: ENG</p>
-    </div>
-  </li>
-  <li>
-    <h3><a href="/wiki/Cooking/index.html">Cooking</a></h3>
-    <div class="metadata"><p>description: Because eating is life</p><p>lang: ENG</p>
-    </div>
-  </li>
-  <li>
-    <h3><a href="/wiki/DIY/index.html">DIY</a></h3>
-    <div class="metadata"><p>description: Let&apos;s get hands dirty</p><p>lang: ENG</p>
-    </div>
-  </li>
-  <li>
-    <h3><a href="/wiki/Humans/index.html">Humans</a></h3>
-    <div class="metadata"><p>description: Messy information about human life</p><p>lang: ENG</p>
-    </div>
-  </li>
-  <li>
-    <h3><a href="/wiki/Organisation/index.html">Organisation</a></h3>
-    <div class="metadata"><p>description: How to be organise and maybe more productive</p><p>lang: ENG</p>
-    </div>
-  </li>
-  </ul>
+      <div class="container"><h1>NeoVIM</h1>
+<div class="metadata"><p>description: Stuffs about (Neo)Vim.</p><p>lang: ENG
+    </p>
+</div>
+<div class="content"><h2 id="environment"><a class="anchor" aria-hidden="true" href="#environment"></a>Environment</h2>
+<p>To run NeoVIM with a specific config located in <code>~/.config/&lt;dir&gt;</code>, you can pass it to the environment variable:</p>
+<pre><code class="language-sh">$ NVIM_APPNAME=&lt;dir&gt; nvim
+</code></pre>
+<h2 id="shortcuts"><a class="anchor" aria-hidden="true" href="#shortcuts"></a>Shortcuts</h2>
+<ul>
+<li><kbd>space</kbd>: Leader key</li>
+<li><kbd>jk</kbd> / <kbd>kj</kbd> : Exit mode</li>
+</ul>
+<h3 id="par-défaut"><a class="anchor" aria-hidden="true" href="#par-défaut"></a>Par défaut</h3>
+<ul>
+<li><kbd>Ctrl</kbd> + <kbd>direction</kbd> : Change windows</li>
+<li><kbd>Shift</kbd> + <kbd>direction</kbd> : Change dimensions</li>
+<li><kbd>TAB</kbd> : Change buffer</li>
+<li><kbd>Shift</kbd> + <kbd>TAB</kbd> : Change buffer from back</li>
+<li><kbd>leader</kbd> + <kbd>bd</kbd> : Delete buffer</li>
+<li><kbd>leader</kbd> + <kbd>ss</kbd> : Stop research</li>
+<li><kbd>Ctrl</kbd> + <kbd>a</kbd> : Decrement a number</li>
+<li><kbd>Ctrl</kbd> + <kbd>x</kbd> : Increment a number</li>
+<li><kbd>Ctrl</kbd> + <kbd>o</kbd> : Go to the previous point before jump</li>
+<li><kbd>Ctrl</kbd> + <kbd>i</kbd> : Go to the next point before jump</li>
+<li><kbd>Ctrl</kbd> + <kbd>e</kbd> : Scroll up</li>
+<li><kbd>Ctrl</kbd> + <kbd>y</kbd> : Scroll down</li>
+<li>Macros:
+<ul>
+<li><kbd>q</kbd>&lt;name&gt;&lt;macro&gt;<kbd>q</kbd> =&gt; record</li>
+<li>&lt;nombre&gt;<kbd>@</kbd>&lt;name&gt; =&gt; call</li>
+</ul>
+</li>
+</ul>
+<h3 id="vim-surrounding"><a class="anchor" aria-hidden="true" href="#vim-surrounding"></a>Vim-surrounding</h3>
+<ul>
+<li><kbd>cs</kbd>&lt;symbole&gt;&lt;new symbole&gt; =&gt; Change surrounding</li>
+<li><kbd>ds</kbd>&lt;symbole&gt;              =&gt; Delete surrounding</li>
+<li><kbd>ys</kbd> =&gt; you surround
+<ul>
+<li><kbd>ysiw</kbd>&lt;symbole&gt;  =&gt; Surround word</li>
+<li><kbd>yss</kbd>&lt;symbole&gt;   =&gt; Surround line</li>
+</ul>
+</li>
+<li><strong>VISUAL</strong>:
+<ul>
+<li><kbd>S</kbd>&lt;symbole&gt; =&gt; Surround selection</li>
+</ul>
+</li>
+</ul>
+<h3 id="nerdcommenter"><a class="anchor" aria-hidden="true" href="#nerdcommenter"></a>Nerdcommenter</h3>
+<ul>
+<li><kbd>leader</kbd> + <kbd>cc</kbd> : Comment</li>
+<li><kbd>leader</kbd> + <kbd>ci</kbd> : Inverse comment / uncomment</li>
+</ul>
+<h3 id="telescope"><a class="anchor" aria-hidden="true" href="#telescope"></a>Telescope</h3>
+<ul>
+<li><kbd>leader</kbd> + <kbd>ff</kbd> : Walk through git files</li>
+<li><kbd>leader</kbd> + <kbd>fg</kbd> : Walk through code</li>
+<li><kbd>leader</kbd> + <kbd>b</kbd> : Walk through buffers</li>
+</ul>
+<h2 id="completion"><a class="anchor" aria-hidden="true" href="#completion"></a>Completion</h2>
+<p><strong>TODO</strong></p>
+<h3 id="lsp"><a class="anchor" aria-hidden="true" href="#lsp"></a>LSP</h3>
+<ul>
+<li><kbd>leader</kbd> + <kbd>ld</kbd> =&gt; Go to definitions</li>
+<li><kbd>leader</kbd> + <kbd>lr</kbd> =&gt; Rename</li>
+<li><kbd>leader</kbd> + <kbd>lf</kbd> =&gt; Format</li>
+<li><kbd>leader</kbd> + <kbd>lt</kbd> =&gt; Go to type definition</li>
+<li><kbd>leader</kbd> + <kbd>lx</kbd> =&gt; Go to the reference</li>
+<li><kbd>leader</kbd> + <kbd>la</kbd> =&gt; Change workspace</li>
+<li><kbd>leader</kbd> + <kbd>lc</kbd> =&gt; Completion</li>
+<li><kbd>leader</kbd> + <kbd>lh</kbd> =&gt; Object informations</li>
+<li><kbd>leader</kbd> + <kbd>ls</kbd> =&gt; Document symbols</li>
+<li><kbd>leader</kbd> + <kbd>lm</kbd> =&gt; Display menu</li>
+</ul>
+<h3 id="mardown"><a class="anchor" aria-hidden="true" href="#mardown"></a>Mardown</h3>
+<ul>
+<li><kbd>leader</kbd> + <kbd>wp</kbd> =&gt; Show markdown</li>
+<li>Format paragraphs:
+<ul>
+<li><kbd>v</kbd> (and selection) + <kbd>gw</kbd>: unify size for line (old version)</li>
+<li><kbd>v</kbd> (and selection) + <kbd>gq</kbd>: unify size for line (old version of Neovim)</li>
+</ul>
+</li>
+</ul>
+<h2 id="resources"><a class="anchor" aria-hidden="true" href="#resources"></a>Resources</h2>
+<ul>
+<li><a href="https://catonmat.net/top-10-vim-shortcuts">10 VIim shortcuts</a> (TO TRANSLATE)</li>
+<li><a href="https://thevaluable.dev/vim-advanced/">Vim-advanced</a> (TO TRANSLATE)</li>
+</ul>
+</div>
 </div>
     </main>
 
