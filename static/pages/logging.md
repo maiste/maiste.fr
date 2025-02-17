@@ -37,6 +37,10 @@ care about it.
 
 ## 2025
 
+### 2025-02-17
+
+Synchronize my notes with the public website.
+
 ### 2025-01-29
 
 Move fonts to use Roboto as the primary font.
