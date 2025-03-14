@@ -1,6 +1,6 @@
 (executable
  (name maiste)
- (public_name maiste_web)
+ (public_name maiste)
  (libraries
   yocaml
   yocaml_jingoo
