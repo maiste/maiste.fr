@@ -1,13 +1,4 @@
 (executable
  (name maiste)
  (public_name maiste)
- (libraries
-  yocaml
-  yocaml_jingoo
-  yocaml_yaml
-  yocaml_cmarkit
-  yocaml_eio
-  yocaml_syndication
-  cmarkit))
-
-(include_subdirs qualified)
+ (libraries maiste.lib))
