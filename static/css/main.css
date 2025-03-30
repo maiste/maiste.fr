@@ -85,9 +85,9 @@ h1 {
 }
 
 h2 {
-  color: var(--primary-color);
   font-size: 2.5rem; /* Default to 40px */
   text-decoration: underline;
+  text-decoration-color: var(--primary-color);
 }
 
 h3 {
@@ -166,7 +166,6 @@ header {
   justify-content: center;
   align-items: center;
   width: 100%;
-  border-bottom: 2px dashed var(--fg-color);
   padding: 15px 0px 15px 0px;
   margin-bottom: 15px;
 }
@@ -180,7 +179,7 @@ header nav {
   flex-wrap: wrap;
   padding-left: 5%;
   padding-right: 5%;
-  max-width: 1280px;
+  max-width: 1024px;
 }
 
 header nav ul {
@@ -189,8 +188,8 @@ header nav ul {
   align-items: center;
   flex-wrap: wrap;
   list-style: none;
-  font-family: "Quicksand";
-  font-size: 24px;
+  font-family: "Amatic SC", sans-serif;
+  font-size: 28px;
   gap: 16px;
   padding: 0px;
 }
@@ -198,11 +197,9 @@ header nav ul {
 header nav h2 {
   font-family: "Amatic SC", sans-serif;
   font-weight: bold;
-  font-size: 48px;
-  color: var(--bg-color);
-  background-color: var(--primary-color);
+  font-size: 52px;
+  color: var(--primary-color);
   padding: 5px 15px 5px 15px;
-  border-radius: 10px;
   margin: 0px;
   text-decoration: none;
 }
@@ -244,6 +241,7 @@ footer .container {
 }
 
 footer p {
+  font-size: 0.9rem;
   font-style: italic;
   margin: 0px;
   text-align: center;
