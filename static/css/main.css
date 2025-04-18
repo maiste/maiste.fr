@@ -69,7 +69,7 @@ h2,
 h3,
 h4,
 h5 {
-  margin: 15px 0px 15px 0px;
+  margin: 16px 0px 16px 0px;
 }
 
 h1 {
@@ -94,7 +94,7 @@ h5 {
 h1 {
   color: var(--bg-color);
   background-color: var(--primary-color);
-  padding: 5px 15px 5px 15px;
+  padding: 5px 16px 5px 16px;
   font-size: 3rem; /* Default to 48px */
   border-radius: 10px;
 }
@@ -191,8 +191,8 @@ header {
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 15px 0px 15px 0px;
-  margin-bottom: 15px;
+  padding: 16px 0px 16px 0px;
+  margin-bottom: 16px;
 }
 
 header nav {
@@ -225,7 +225,7 @@ header nav h2 {
   font-weight: bold;
   font-size: 60px;
   color: var(--primary-color);
-  padding: 5px 15px 5px 15px;
+  padding: 5px 16px 5px 16px;
   margin: 0px;
   text-decoration: none;
 }
@@ -250,8 +250,8 @@ main {
 
 footer {
   margin-top: 50px;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -284,8 +284,7 @@ footer a {
   width: 100%;
 }
 
-.metadata,
-.project p i {
+.metadata {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
@@ -302,15 +301,14 @@ footer a {
 }
 
 .index,
-.project {
+.project-list {
   list-style-type: none;
   display: flex;
   flex-direction: column;
   padding: 0px;
 }
 
-.index > li,
-.project > li {
+.index > li {
   padding: 8px 16px 8px 16px;
   border-left: 8px solid var(--primary-color);
   background-color: var(--bg-lighter-color);
@@ -318,8 +316,7 @@ footer a {
   border-radius: 5px;
 }
 
-.index h3,
-.project h3 {
+.index h3 {
   margin: 0px;
   color: var(--fg-color);
 }
@@ -340,13 +337,22 @@ footer a {
   margin: 2px 0px 0px 0px;
 }
 
+.project-list {
+  gap: 16px;
+}
+
+.project h2 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
 .project p {
+  margin-top: 8px;
   margin-bottom: 0rem;
 }
 
-.project > li > ul {
-  list-style-type: none;
-  padding: 0px 0px 0px 6px;
+.project .metadata p {
+  margin-top: 0px;
 }
 
 .profile {

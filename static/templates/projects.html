@@ -4,17 +4,17 @@
   {%- autoescape false -%} {{ yocaml_body }} {%- endautoescape -%}
 </div>
 
-<ul class="project">
+<div class="project-list">
   {%- for project in projects -%}
-  <li>
-    <h3>{{ project.name }}</h3>
+  <div class="project">
+    <h2>{{ project.name }}</h2>
     {%- if project.has_date -%}
     <div class="metadata">
       <p>
-        Date: &nbsp; {%- if project.has_starting_year -%} Started in {{
-        project.starting_year}}{%- endif -%} {%- if project.has_ending_year -%}
-        &nbsp; - Stopped in {{ project.ending_year }} {%- elif project.active
-        -%} &nbsp; - Current {%- endif -%}
+        {%- if project.has_starting_year -%} Started in
+        {{project.starting_year}} {%- endif -%} {%- if project.has_ending_year
+        -%} &nbsp;- Stopped in {{ project.ending_year }} {%- elif project.active
+        -%} &nbsp;- Current {%- endif -%}
       </p>
     </div>
     {%- endif -%}
@@ -27,10 +27,10 @@
     <p><strong>Links:</strong></p>
     <ul>
       {%- for link in project.links -%}
-      <li>- <a href="{{ link }}">{{ link }}</a></li>
+      <li><a href="{{ link }}">{{ link }}</a></li>
       {% endfor %}
     </ul>
     {%- endif -%}
-  </li>
+  </div>
   {% endfor %}
-</ul>
+</div>
