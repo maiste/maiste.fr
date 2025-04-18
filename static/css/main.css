@@ -58,7 +58,9 @@ body {
   align-items: center;
   background-color: var(--bg-color);
   color: var(--fg-color);
-  font-family: "Roboto", serif;
+  font-family: "Nebula Sans", sans-serif;
+  font-weight: 500;
+  font-style: normal;
   font-size: 1rem; /* Default to 16px if no user changes */
 }
 
@@ -67,13 +69,26 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Quicksand", sans-serif;
   margin: 15px 0px 15px 0px;
 }
 
-h1,
+h1 {
+  font-family: "Nebula Sans Book";
+  font-style: normal;
+  font-weight: normal;
+}
+
 h2 {
-  font-weight: bold;
+  font-family: "Nebula Sans", sans-serif;
+  font-weight: 900; /* Nebula Sans Black */
+}
+
+h3,
+h4,
+h5 {
+  font-family: "Nebula Sans", sans-serif;
+  font-weight: 300; /* Nebula Sans Light */
+  color: var(--primary-color);
 }
 
 h1 {
@@ -88,10 +103,11 @@ h2 {
   font-size: 2.5rem; /* Default to 40px */
   text-decoration: underline;
   text-decoration-color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 h3 {
-  font-size: 2rem; /* Default to 32px */
+  font-size: 1.7rem; /* Default to 32px */
 }
 
 h4 {
@@ -188,8 +204,9 @@ header nav ul {
   align-items: center;
   flex-wrap: wrap;
   list-style: none;
-  font-family: "Amatic SC", sans-serif;
-  font-size: 28px;
+  font-family: "Nebula Sans", sans-serif;
+  font-weight: 600;
+  font-size: 25px;
   gap: 16px;
   padding: 0px;
 }
@@ -197,7 +214,7 @@ header nav ul {
 header nav h2 {
   font-family: "Amatic SC", sans-serif;
   font-weight: bold;
-  font-size: 52px;
+  font-size: 60px;
   color: var(--primary-color);
   padding: 5px 15px 5px 15px;
   margin: 0px;
