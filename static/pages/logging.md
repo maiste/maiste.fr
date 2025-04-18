@@ -30,12 +30,24 @@ care about it.
   - [ ] `Tree.ml` with a less leaky interface and remove the `is_index_file` function
   - [ ] Clean the `S.ml` and the `Resolver.ml`
   - [ ] Add some documentation everywhere, please!
-  - [ ] Improve the separation between actions and model and move the code in `lib/`
+  - [✔️] Improve the separation between actions and model and move the code in `lib/`
   - [ ] Use the _"forest"_ language to describe all of this!
-  - [✔️] The D2 system available for the `blog.ml` too
+  - [✔️] The D2 system available for the `blog.ml` too.
+  - Unified the `blog.ml`, `project.ml` and, `wiki.ml` interface to use the same section type. (Same page?)
+- [ ] Pick a language and stick to it as much as possible, being English or French!
 - [ ] Start the blog back and write regularly about what I learn,
 
 ## 2025
+
+### 2025-04-18
+
+Many changes! I moved the website to use Nebula Sans instead of Roboto. It
+makes the website more unified and give I really like the font. I changed the
+colors to be blue dark mode and, red/purple in light mode. This is better for
+readability and also cleaner. I fixed some CSS problems I add with alignments.
+I rewrote the [/projects/index.html] page to make it lighter and, though, more
+readable. Finally, I move the legals to the about page. It's been a while since I have
+done improvements here and, it's nice to be back!
 
 ### 2025-02-17
 
