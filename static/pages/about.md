@@ -52,8 +52,20 @@ GitHub [issues](https://github.com/maiste/maiste.fr/issues) :)
 
 ## Legals about this website
 
+### Opinions
+
+All opinions expressed here are <strong>my own</strong> and do not express the
+views or opinions of my employer or anyone else but me.
+
+### Licenses
+
+[The content available under this website](https://maiste.fr) is written by Etienne "Maiste"
+Marais and is licensed under [CC BY-NC
+4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1").
+
+### Fonts
+
 The various fonts I serve from this website are under specific license:
 
-- [Amatic SC license](https://fonts.google.com/specimen/Amatic+SC/license) on Google Fonts
-- [Quicksand license](https://fonts.google.com/specimen/Quicksand) on Google Fonts
-- [Roboto](https://fonts.google.com/specimen/Roboto/license) on Google Fonts
+- [Amatic SC license](https://fonts.google.com/specimen/Amatic+SC/license) on Google Fonts.
+- [Nebula Sans](https://www.nebulasans.com/license/) on the official Nebula Sans website.
