@@ -16,9 +16,9 @@
     <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
     <div class="metadata">
       {%- if item.has_description -%}
-      <p>description: {{ item.description }}</p>
+      <p>description:"{{ item.description }}"</p>
       {%- endif %} {%- if item.has_lang -%}
-      <p>lang: {{ item.lang }}</p>
+      <p>lang:"{{ item.lang }}"</p>
       {%- endif %}
     </div>
   </li>
