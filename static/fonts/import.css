@@ -1,45 +1,129 @@
 @font-face {
-    font-family: 'Amatic SC';
-    src: url('AmaticSC-Bold.woff2') format('woff2'),
-        url('AmaticSC-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Amatic SC";
+  src:
+    url("AmaticSC-Bold.woff2") format("woff2"),
+    url("AmaticSC-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('Roboto-Italic.woff2') format('woff2'),
-        url('Roboto-Italic.woff') format('woff');
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
+  font-family: "Nebula Sans";
+  src:
+    url("NebulaSans-Semibold.woff2") format("woff2"),
+    url("NebulaSans-Semibold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('Roboto-Regular.woff2') format('woff2'),
-        url('Roboto-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Nebula Sans";
+  src:
+    url("NebulaSans-Medium.woff2") format("woff2"),
+    url("NebulaSans-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Quicksand';
-    src: url('Quicksand-Bold.woff2') format('woff2'),
-        url('Quicksand-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Nebula Sans";
+  src:
+    url("NebulaSans-LightItalic.woff2") format("woff2"),
+    url("NebulaSans-LightItalic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Quicksand';
-    src: url('Quicksand-Light.woff2') format('woff2'),
-        url('Quicksand-Light.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Nebula Sans Book";
+  src:
+    url("NebulaSans-BookItalic.woff2") format("woff2"),
+    url("NebulaSans-BookItalic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
 }
 
+@font-face {
+  font-family: "Nebula Sans Book";
+  src:
+    url("NebulaSans-Book.woff2") format("woff2"),
+    url("NebulaSans-Book.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nebula Sans";
+  src:
+    url("NebulaSans-Black.woff2") format("woff2"),
+    url("NebulaSans-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nebula Sans";
+  src:
+    url("NebulaSans-Bold.woff2") format("woff2"),
+    url("NebulaSans-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nebula Sans";
+  src:
+    url("NebulaSans-MediumItalic.woff2") format("woff2"),
+    url("NebulaSans-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nebula Sans";
+  src:
+    url("NebulaSans-Light.woff2") format("woff2"),
+    url("NebulaSans-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nebula Sans";
+  src:
+    url("NebulaSans-SemiboldItalic.woff2") format("woff2"),
+    url("NebulaSans-SemiboldItalic.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nebula Sans";
+  src:
+    url("NebulaSans-BlackItalic.woff2") format("woff2"),
+    url("NebulaSans-BlackItalic.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nebula Sans";
+  src:
+    url("NebulaSans-BoldItalic.woff2") format("woff2"),
+    url("NebulaSans-BoldItalic.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
