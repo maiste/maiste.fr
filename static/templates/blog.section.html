@@ -4,16 +4,18 @@
   {%- autoescape false -%} {{ yocaml_body }} {%- endautoescape -%}
 </div>
 
-<h2>Posts</h2>
-<ul class="index">
-  {%- for item in index -%}
-  <li>
-    <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
-    <div class="metadata">
-      {%- for data in item.metadata -%}
-      <p>{{ data }}</p>
-      {%- endfor -%}
-    </div>
-  </li>
-  {%- endfor -%}
-</ul>
+<div class="index">
+  <h2>Posts</h2>
+  <ul>
+    {%- for item in index -%}
+    <li>
+      <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+      <div class="metadata">
+        {%- for data in item.metadata -%}
+        <p>{{ data }}</p>
+        {%- endfor -%}
+      </div>
+    </li>
+    {%- endfor -%}
+  </ul>
+</div>
