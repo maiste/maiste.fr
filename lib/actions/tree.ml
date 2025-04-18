@@ -55,12 +55,12 @@ let rec to_sexp tree =
 ;;
 
 let compute
-  (type a b)
-  (module P : Required.DATA_PROVIDER)
-  (module File : Required.DATA_READABLE with type t = a)
-  (module Dir : Required.DATA_READABLE with type t = b)
-  ~is_section_index
-  path
+      (type a b)
+      (module P : Required.DATA_PROVIDER)
+      (module File : Required.DATA_READABLE with type t = a)
+      (module Dir : Required.DATA_READABLE with type t = b)
+      ~is_section_index
+      path
   =
   let rec aux path =
     let open Eff in
@@ -89,12 +89,12 @@ let compute
 ;;
 
 let fetch
-  (type a b)
-  (module P : Required.DATA_PROVIDER)
-  (module D : Required.DATA_READABLE with type t = a)
-  (module Dir : Required.DATA_READABLE with type t = b)
-  ~is_section_index
-  root
+      (type a b)
+      (module P : Required.DATA_PROVIDER)
+      (module D : Required.DATA_READABLE with type t = a)
+      (module Dir : Required.DATA_READABLE with type t = b)
+      ~is_section_index
+      root
   =
   Task.from_effect (fun () ->
     compute (module P) (module D) (module Dir) ~is_section_index root)
