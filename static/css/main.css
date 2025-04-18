@@ -64,7 +64,6 @@ body {
   font-size: 1rem; /* Default to 16px if no user changes */
 }
 
-h1,
 h2,
 h3,
 h4,
@@ -96,6 +95,8 @@ h1 {
   font-size: 3rem; /* Default to 48px */
   border-left: 8px solid var(--primary-color);
   padding-left: 12px;
+  margin-top: 32px;
+  margin-bottom: 24px;
 }
 
 h2 {
@@ -190,7 +191,7 @@ header {
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 16px 0px 16px 0px;
+  margin-top: 16px;
 }
 
 header nav {
@@ -299,23 +300,29 @@ footer a {
 
 .index,
 .project-list {
-  list-style-type: none;
   display: flex;
   flex-direction: column;
   padding: 0px;
 }
 
-.index > li {
-  padding: 8px 16px 8px 16px;
-  border-left: 8px solid var(--primary-color);
-  background-color: var(--bg-lighter-color);
-  margin-bottom: 32px;
+.index ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.index li {
+  margin-bottom: 24px;
   border-radius: 5px;
+}
+
+.index h2 {
+  margin-top: 0px;
 }
 
 .index h3 {
   margin: 0px;
   color: var(--fg-color);
+  color: var(--primary-color);
 }
 
 .index a {
