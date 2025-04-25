@@ -64,6 +64,7 @@ body {
   font-size: 1rem; /* Default to 16px if no user changes */
 }
 
+h1,
 h2,
 h3,
 h4,
@@ -71,35 +72,22 @@ h5 {
   margin: 16px 0px 16px 0px;
 }
 
-h1 {
-  font-family: "Nebula Sans Book";
-  font-style: normal;
-  font-weight: normal;
-}
-
-h1,
-h2 {
-  font-family: "Nebula Sans", sans-serif;
-  font-weight: 900; /* Nebula Sans Black */
-}
-
 h3,
 h4,
 h5 {
-  font-family: "Nebula Sans", sans-serif;
   font-weight: 300; /* Nebula Sans Light */
   color: var(--primary-color);
 }
 
 h1 {
+  font-style: normal;
+  font-weight: 900; /* Nebula Sans Black */
   font-size: 3rem; /* Default to 48px */
-  border-left: 8px solid var(--primary-color);
-  padding-left: 12px;
   margin-top: 32px;
-  margin-bottom: 24px;
 }
 
 h2 {
+  font-weight: bold;
   font-size: 2.2rem; /* Default to ~36px */
   text-decoration: underline;
   text-decoration-color: var(--primary-color);
@@ -107,6 +95,7 @@ h2 {
 }
 
 h3 {
+  font-weight: 700;
   font-size: 1.7rem; /* Default to 32px */
 }
 
@@ -286,16 +275,16 @@ footer a {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  color: var(--fg-lighter-color);
   font-style: italic;
-}
-
-.metadata p::before {
-  content: "~";
 }
 
 .metadata p {
   margin: 0;
+  background-color: rgb(from var(--primary-color) r g b / 0.5);
+  padding: 2px 6px 2px 6px;
+  border-radius: 10px;
+  width: fit-content;
+  color: var(--fg-color);
 }
 
 .index,
@@ -345,18 +334,9 @@ footer a {
   gap: 16px;
 }
 
-.project h2 {
-  margin-top: 8px;
-  margin-bottom: 8px;
-}
-
-.project p {
+.project > p {
   margin-top: 8px;
   margin-bottom: 0rem;
-}
-
-.project .metadata p {
-  margin-top: 0px;
 }
 
 .profile {
@@ -393,10 +373,6 @@ footer a {
   header nav ul {
     padding-top: 16px;
     justify-content: center;
-  }
-
-  .metadata {
-    gap: 0px;
   }
 
   .container {
