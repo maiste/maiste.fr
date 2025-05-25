@@ -1,4 +1,3 @@
-(** Generic *)
 let process_markdown ?(only = `Both) source processor =
   Yocaml.Action.batch ~only ~where:Rule.is_md source processor
 ;;
