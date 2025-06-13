@@ -1,10 +1,7 @@
 <h1>{{ title }}</h1>
 
-<div class="content">
-  {%- autoescape false -%} {{ yocaml_body }} {%- endautoescape -%}
-</div>
-
 <div class="index">
+  {%- autoescape false -%} {{ yocaml_body }} {%- endautoescape -%}
   <h2>Posts</h2>
   <ul>
     {%- for item in index -%}

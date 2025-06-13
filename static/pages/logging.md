@@ -34,10 +34,25 @@ care about it.
   - [ ] Use the _"forest"_ language to describe all of this!
   - [✔️] The D2 system available for the `blog.ml` too.
   - Unified the `blog.ml`, `project.ml` and, `wiki.ml` interface to use the same section type. (Same page?)
-- [ ] Pick a language and stick to it as much as possible, being English or French!
 - [ ] Start the blog back and write regularly about what I learn,
+- [ ] Create a script to transfert between private to the public wiki
+- Fixes:
+    - [ ] Fix the problem with `eio` and running the server. Worst case, move
+    to the Unix runtime (prefer not to).
+    - [ ] Import locally the version of the `h1` fonts and register it in the license page.
 
 ## 2025
+
+### 2025-06-13
+
+Change the theme to add more space and refine the new fonts. I have also
+restructured the website to have the `index` containing everything.
+
+### 2025-06-07
+
+It seems pinning to the latest version of `yocaml` makes the error disapear as
+[xvw](https://xvw.lol) suggested. I added the support to the "Do Not Track"
+recognition from Umami.
 
 ### 2025-04-18
 
