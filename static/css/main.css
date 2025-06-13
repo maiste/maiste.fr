@@ -62,6 +62,7 @@ body {
   font-weight: 500;
   font-style: normal;
   font-size: 1rem; /* Default to 16px if no user changes */
+  line-height: 1.5;
 }
 
 h1,
@@ -69,42 +70,39 @@ h2,
 h3,
 h4,
 h5 {
-  margin: 16px 0px 16px 0px;
+  margin: 0; /* Margin can be configured per context */
 }
 
 h3,
 h4,
 h5 {
   font-weight: 300; /* Nebula Sans Light */
-  color: var(--primary-color);
 }
 
 h1 {
   font-style: normal;
   font-weight: 900; /* Nebula Sans Black */
   font-size: 3rem; /* Default to 48px */
-  margin-top: 32px;
+  text-transform: capitalize;
 }
 
 h2 {
   font-weight: bold;
-  font-size: 2.2rem; /* Default to ~36px */
-  text-decoration: underline;
-  text-decoration-color: var(--primary-color);
-  color: var(--primary-color);
+  font-size: 2.5rem; /* Default to ~36px */
 }
 
 h3 {
   font-weight: 700;
-  font-size: 1.7rem; /* Default to 32px */
+  font-size: 1.8rem; /* Default to 32px */
 }
 
 h4 {
-  font-size: 1.5rem; /* Default to 24px */
+  font-size: 1.4rem; /* Default to 24px */
 }
 
 p {
   text-align: justify;
+  margin: 0 0 1rem 0;
 }
 
 img {
@@ -114,12 +112,12 @@ img {
 
 a {
   color: var(--secondary-color);
-  text-decoration: underline;
-  text-decoration-style: dotted;
+  text-decoration: none;
 }
 
 a:hover {
-  color: var(--tertary-color);
+  color: var(--primary-color);
+  text-decoration: underline;
 }
 
 ul {
@@ -181,6 +179,7 @@ header {
   align-items: center;
   width: 100%;
   margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 header nav {
@@ -209,7 +208,7 @@ header nav ul {
 }
 
 header nav h2 {
-  font-family: "Amatic SC", sans-serif;
+  font-family: "Rubik Doodle Shadow", "Nebula Sans", sans-serif;
   font-weight: bold;
   font-size: 60px;
   color: var(--primary-color);
@@ -219,7 +218,6 @@ header nav h2 {
 
 header a {
   color: inherit;
-  text-decoration: none;
 }
 
 /** Main body **/
@@ -231,6 +229,18 @@ main {
   justify-content: flex-start;
   align-items: center;
   flex: 1;
+}
+
+main h1 {
+  margin-bottom: 1rem;
+}
+
+main h2 {
+  margin: 3rem 0 1.7rem 0;
+}
+
+main h3 {
+  margin: 2.5rem 0 1.3rem 0;
 }
 
 /** Footer **/
@@ -280,11 +290,10 @@ footer a {
 
 .metadata p {
   margin: 0;
-  background-color: rgb(from var(--primary-color) r g b / 0.5);
+  background-color: rgb(from var(--primary-color) r g b / 0.4);
   padding: 2px 6px 2px 6px;
-  border-radius: 10px;
+  border-radius: 8px;
   width: fit-content;
-  color: var(--fg-color);
 }
 
 .index,
@@ -292,6 +301,11 @@ footer a {
   display: flex;
   flex-direction: column;
   padding: 0px;
+}
+
+.index h3,
+.project h2 {
+  margin-bottom: 0.1rem;
 }
 
 .index ul {
@@ -304,34 +318,21 @@ footer a {
   border-radius: 5px;
 }
 
-.index h2 {
-  margin-top: 0px;
-}
-
-.index h3 {
-  margin: 0px;
-  color: var(--fg-color);
-  color: var(--primary-color);
-}
-
 .index a {
-  text-decoration: none;
   color: var(--fg-color);
-  color: inherit;
+  text-decoration: none;
 }
 
 .index a:hover {
   text-decoration: underline;
-  text-decoration-style: dotted;
-  color: var(--tertary-color);
-}
-
-.index p {
-  margin: 2px 0px 0px 0px;
 }
 
 .project-list {
   gap: 16px;
+}
+
+.project .metadata {
+  margin-bottom: 16px;
 }
 
 .project > p {
