@@ -1,11 +1,10 @@
 @font-face {
-  font-family: "Amatic SC";
-  src:
-    url("AmaticSC-Bold.woff2") format("woff2"),
-    url("AmaticSC-Bold.woff") format("woff");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Rubik Doodle Shadow';
+    src: url('RubikDoodleShadow-Regular.woff2') format('woff2'),
+        url('RubikDoodleShadow-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
