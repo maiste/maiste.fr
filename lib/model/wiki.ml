@@ -46,3 +46,17 @@ let normalize t =
 ;;
 
 let compare w1 w2 = String.compare w1.title w2.title
+
+let metadata_to_assoc t =
+  let lang =
+    match t.lang with
+    | None -> []
+    | Some lang -> [ "lang", lang ]
+  in
+  let description =
+    match t.description with
+    | None -> []
+    | Some desc -> [ "description", desc ]
+  in
+  lang @ description
+;;

@@ -2,7 +2,7 @@
 
 <div class="index">
   {%- autoescape false -%} {{ yocaml_body }} {%- endautoescape -%}
-  <h2>Posts</h2>
+  <h2>{{ category }}</h2>
   <ul>
     {%- for item in index -%}
     <li>

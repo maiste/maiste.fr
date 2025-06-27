@@ -78,7 +78,7 @@ let dir_to_action (module R : S.RESOLVER) path children content =
     |> List.map (generate_index (module R))
   in
   let title, content = extract_metadata_from_dir path content in
-  let metadata = Section.v ~title index |> Section.sort ~f:compare_blog_data in
+  let metadata = Section.(v ~title Category.Posts index |> sort ~f:compare_blog_data) in
   let section = metadata, content in
   let path =
     R.truncate_and_move ~into:R.Target.root path 1
@@ -92,7 +92,7 @@ let dir_to_action (module R : S.RESOLVER) path children content =
        >>> Yocaml_cmarkit.content_to_html ()
        >>> Yocaml_jingoo.Pipeline.as_template
              (module Section)
-             (R.Source.template "blog.section.html")
+             (R.Source.template "section.html")
        >>> Yocaml_jingoo.Pipeline.as_template
              (module Section)
              (R.Source.template "base.html"))

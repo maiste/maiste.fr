@@ -1,4 +1,6 @@
 open Yocaml
+module Section = Model.Section
+module Peak = Model.Section.Peak
 
 let index_name = "_index.md"
 
@@ -11,12 +13,8 @@ let is_section_index path =
 let extract_metadata_from_dir path content =
   match content with
   | None ->
-    Path.basename path
-    |> (function
-     | None -> raise (Invalid_argument "Path is wrong")
-     | Some path ->
-       let title = String.split_on_char '_' path |> String.concat " " in
-       Model.Wiki.v title ~description:None ~draft:false ~d2:false, "")
+    let err = Format.sprintf "No %s file found at %s" index_name (Path.to_string path) in
+    raise (Invalid_argument err)
   | Some (metadata, content) -> metadata, content
 ;;
 
@@ -35,14 +33,18 @@ let dir_to_action (module R : S.RESOLVER) path children content =
   let children =
     List.map (get_index (module R)) children
     |> List.filter (fun (wiki, _) -> not @@ Model.Wiki.is_draft wiki)
+    |> List.sort (fun (w1, _) (w2, _) -> Model.Wiki.compare w1 w2)
+    |> List.map (fun (t, path) ->
+      let title = Model.Wiki.title t in
+      let data = Model.Wiki.metadata_to_assoc t in
+      Peak.v ~title path data)
   in
   let metadata, content = extract_metadata_from_dir path content in
-  let wiki_section =
+  let section =
     let title = Model.Wiki.title metadata in
-    let description = Model.Wiki.description metadata in
-    Model.Wiki_section.(v ~title ?description children |> sort)
+    Section.v ~title Section.Category.Index children
   in
-  let template = wiki_section, content in
+  let template = section, content in
   let path = R.truncate path 1 in
   let path = Path.(R.Target.root ++ path) in
   let path = Path.(path / "index.html") in
@@ -53,10 +55,10 @@ let dir_to_action (module R : S.RESOLVER) path children content =
        >>> lift (fun () -> template)
        >>> Yocaml_cmarkit.content_to_html ()
        >>> Yocaml_jingoo.Pipeline.as_template
-             (module Model.Wiki_section)
-             (R.Source.template "wiki.section.html")
+             (module Section)
+             (R.Source.template "section.html")
        >>> Yocaml_jingoo.Pipeline.as_template
-             (module Model.Wiki_section)
+             (module Section)
              (R.Source.template "base.html")
        >>> drop_first ())
   ]

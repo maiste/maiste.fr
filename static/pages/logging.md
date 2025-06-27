@@ -33,20 +33,22 @@ care about it.
   - [✔️] Improve the separation between actions and model and move the code in `lib/`
   - [ ] Use the _"forest"_ language to describe all of this!
   - [✔️] The D2 system available for the `blog.ml` too.
-  - Unified the `blog.ml`, `project.ml` and, `wiki.ml` interface to use the same section type. (Same page?)
+  - [✔️] Unified the `blog.ml`, `project.ml` and, `wiki.ml` interface to use the same section type. (Same page?)
 - [ ] Start the blog back and write regularly about what I learn,
 - [ ] Create a script to transfert between private to the public wiki
 - Fixes:
-    - [✔️] Fix the problem with `eio` and running the server. Worst case, move
+  - [✔️] Fix the problem with `eio` and running the server. Worst case, move
     to the Unix runtime (prefer not to).
-    - [✔️] Import locally the version of the `h1` fonts and register it in the license page.
+  - [✔️] Import locally the version of the `h1` fonts and register it in the license page.
 
 ## 2025
 
 ### 2025-06-27
 
-Import the _Rubik Doodle Shadow_ font in the local repository and clean _Amatic
-SC_ traces.
+I imported the _Rubik Doodle Shadow_ font in the local repository and cleaned
+_Amatic SC_ traces. I converted both `Blog` and `Wiki` to use the `Section`
+module. It allowed me to remove the `wiki.section.html` and the
+`blog.section.html`.
 
 ### 2025-06-13
 

@@ -16,7 +16,7 @@ module Peak = struct
   let normalize t =
     let open Data in
     let metadata =
-      List.map (fun (name, data) -> Format.sprintf "%s:%s" name data) t.metadata
+      List.map (fun (name, data) -> Format.sprintf "%s:\"%s\"" name data) t.metadata
     in
     record
       [ "title", string t.title
@@ -28,21 +28,31 @@ end
 
 let entity_name = "Section"
 
+module Category = struct
+  type t =
+    | Index
+    | Posts
+
+  let to_string = function
+    | Index -> "Index"
+    | Posts -> "Posts"
+  ;;
+end
+
 type t =
   { title : string
+  ; category : Category.t
   ; index : Peak.t list
   }
 
-let v ~title index = { title; index }
-
-let normalize_index_element ((peak, path) : Peak.t * Path.t) =
-  let open Data in
-  record [ "title", string peak.title; "url", string (Path.to_string path) ]
-;;
+let v ~title category index = { title; category; index }
 
 let normalize t =
   let open Data in
-  [ "title", string t.title; "index", list_of Peak.normalize t.index ]
+  [ "title", string t.title
+  ; "category", string (Category.to_string t.category)
+  ; "index", list_of Peak.normalize t.index
+  ]
 ;;
 
 let sort ~f t = { t with index = List.sort f t.index }
