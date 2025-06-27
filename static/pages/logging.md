@@ -37,11 +37,16 @@ care about it.
 - [ ] Start the blog back and write regularly about what I learn,
 - [ ] Create a script to transfert between private to the public wiki
 - Fixes:
-    - [ ] Fix the problem with `eio` and running the server. Worst case, move
+    - [✔️] Fix the problem with `eio` and running the server. Worst case, move
     to the Unix runtime (prefer not to).
-    - [ ] Import locally the version of the `h1` fonts and register it in the license page.
+    - [✔️] Import locally the version of the `h1` fonts and register it in the license page.
 
 ## 2025
+
+### 2025-06-27
+
+Import the _Rubik Doodle Shadow_ font in the local repository and clean _Amatic
+SC_ traces.
 
 ### 2025-06-13
 

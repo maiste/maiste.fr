@@ -67,5 +67,5 @@ Marais and is licensed under [CC BY-NC
 
 The various fonts I serve from this website are under specific license:
 
-- [Amatic SC license](https://fonts.google.com/specimen/Amatic+SC/license) on Google Fonts.
+- [Rubik Doodle Shadow](https://fonts.google.com/specimen/Rubik+Doodle+Shadow/license) on Google Fonts
 - [Nebula Sans](https://www.nebulasans.com/license/) on the official Nebula Sans website.
