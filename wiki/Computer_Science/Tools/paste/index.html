@@ -277,84 +277,24 @@
     </header>
 
     <main>
-      <div class="container"><h1>Golang</h1>
-<div class="metadata"><p>description: About Golang.</p><p>lang: ENG
+      <div class="container"><h1>Paste</h1>
+<div class="metadata"><p>description: Commandline tool paste</p><p>lang: ENG
     </p>
 </div>
-<div class="content"><h2 id="install"><a class="anchor" aria-hidden="true" href="#install"></a>Install</h2>
-<!-- TODO -->
-<h2 id="syntax"><a class="anchor" aria-hidden="true" href="#syntax"></a>Syntax</h2>
-<h3 id="declare-a-package"><a class="anchor" aria-hidden="true" href="#declare-a-package"></a>Declare a package</h3>
-<pre><code class="language-go">package &lt;name&gt;
+<div class="content"><p>Paste is a tool that allows to merge files together.</p>
+<h2 id="merge-files"><a class="anchor" aria-hidden="true" href="#merge-files"></a>Merge files</h2>
+<p>To merge files in parallel, you can run the following command:</p>
+<pre><code class="language-sh">paste &lt;file1&gt; &lt;file2&gt;
 </code></pre>
-<h3 id="import-packages"><a class="anchor" aria-hidden="true" href="#import-packages"></a>Import packages</h3>
-<pre><code class="language-go">import (
-    &quot;fmt&quot;
-    &quot;math/rand&quot;
-)
+<h2 id="merge-files-with-a-specific-delimiter"><a class="anchor" aria-hidden="true" href="#merge-files-with-a-specific-delimiter"></a>Merge files with a specific delimiter</h2>
+<p>The default delimiter is <kbd>Tab</kbd> but it is possible to modify it:</p>
+<pre><code class="language-sh">paste -d &quot;|&quot; [files...]
 </code></pre>
-<p>or (bad one)</p>
-<pre><code class="language-go">import &quot;fmt&quot;
-import &quot;math/rand&quot;
+<p>Note that if you specified multiple delimiters, <code>paste</code> will use it in a circular buffer and increment after each delimitation.</p>
+<h2 id="merge-files-in-serial"><a class="anchor" aria-hidden="true" href="#merge-files-in-serial"></a>Merge files in serial</h2>
+<p>The default option is to merge files in a parallel way. If you want to merge file using a serial way (row instead of column), it can be achieve with the <code>-s</code> flag:</p>
+<pre><code class="language-sh">paste -s [files]
 </code></pre>
-<p>Convention is that the package name is the last element of the import path. For <code>x/y/z</code>, it would be <code>package z</code>.</p>
-<h3 id="functions"><a class="anchor" aria-hidden="true" href="#functions"></a>Functions</h3>
-<p>Arguments in a function comes after the name declaration:</p>
-<pre><code class="language-go">func my_function_name(arg type, arg2 type2) returnType {
-    return
-}
-</code></pre>
-<p>If two arguments have the same type, it can be shortened:</p>
-<pre><code class="language-go">func f(x, y int) int {
-    return x + Y
-}
-</code></pre>
-<p>You can return any number of results:</p>
-<pre><code class="language-go">func f(x,y int) (int, int) {
-    return y, x
-}
-</code></pre>
-<p>You can returned name values that you specify in the return type. It is called &quot;naked return&quot;</p>
-<pre><code class="language-go">func f(i int) (x,y int) {
-    x = 0
-    y = 0
-    return
-}
-</code></pre>
-<h3 id="exported-names"><a class="anchor" aria-hidden="true" href="#exported-names"></a>Exported names</h3>
-<p>If names start with a <strong>capital letter</strong> it is <strong>public</strong>, otherwise it is <strong>private</strong>.</p>
-<h3 id="var"><a class="anchor" aria-hidden="true" href="#var"></a>Var</h3>
-<p>You can declare variables at package or function level with:</p>
-<pre><code class="language-go">var x, y int
-var z string
-</code></pre>
-<p>They can be initialise using an inializers. In this case, <strong>type</strong> can be <strong>ignored</strong>:</p>
-<pre><code class="language-go">var x, y, z = 1, &quot;c&quot;, false
-</code></pre>
-<p>or</p>
-<pre><code class="language-go">var (
-    x = false
-    y = &quot;c&quot;
-)
-</code></pre>
-<p>If you need to do an assignement, there is the short assignement statement:</p>
-<pre><code class="language-go">i := 1
-x,y := 1, &quot;hehe&quot;
-</code></pre>
-<h3 id="types"><a class="anchor" aria-hidden="true" href="#types"></a>Types</h3>
-<p>Basic types are:</p>
-<ul>
-<li><code>bool</code> (default: <code>false</code>)</li>
-<li><code>int</code>, <code>int8</code>, <code>int16</code>, <code>int32</code>, <code>int64</code> (default: <code>0</code>)</li>
-<li><code>uint</code>, <code>uint8</code>, <code>uint16</code>, <code>uint32</code>, <code>uint64</code>, <code>uintptr</code> (default: <code>0</code>)</li>
-<li><code>float32</code>, <code>float64</code> (default: <code>0</code>)</li>
-<li><code>complex64</code>, <code>complex128</code> (default: <code>0</code>)</li>
-<li><code>byte</code> which is an alias for <code>uint8</code></li>
-<li><code>rune</code> which is an alias for <code>int32</code>. This a representation for Unicode code point</li>
-<li><code>string</code> (default: <code>&quot;&quot;</code>)</li>
-</ul>
-<h2 id="entrypoint"><a class="anchor" aria-hidden="true" href="#entrypoint"></a>Entrypoint</h2>
-<p>Programs start running in package <code>main</code>.</p>
 </div>
 </div>
     </main>

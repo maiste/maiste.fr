@@ -438,6 +438,19 @@ I love apples
 <pre><code class="language-sh">git remote prune &lt;remote&gt;
 </code></pre>
 <hr>
+<h2 id="log"><a class="anchor" aria-hidden="true" href="#log"></a>Log</h2>
+<h3 id="display-the-diff-when-using-log"><a class="anchor" aria-hidden="true" href="#display-the-diff-when-using-log"></a>Display the diff when using log</h3>
+<pre><code class="language-shell">git log -p
+</code></pre>
+<hr>
+<h2 id="show"><a class="anchor" aria-hidden="true" href="#show"></a>Show</h2>
+<h3 id="show-the-diff-for-a-particular-commit"><a class="anchor" aria-hidden="true" href="#show-the-diff-for-a-particular-commit"></a>Show the diff for a particular commit</h3>
+<pre><code class="language-shell">git show &lt;commit&gt;
+</code></pre>
+<h3 id="show-to-extract-the-content-of-a-file-at-a-certain-commit"><a class="anchor" aria-hidden="true" href="#show-to-extract-the-content-of-a-file-at-a-certain-commit"></a>Show to extract the content of a file at a certain commit</h3>
+<pre><code class="language-sh">git show &lt;branch&gt;:path/to/file &gt; &lt;output file&gt;
+</code></pre>
+<hr>
 <h2 id="patch"><a class="anchor" aria-hidden="true" href="#patch"></a>Patch</h2>
 <h3 id="produce-a-patch"><a class="anchor" aria-hidden="true" href="#produce-a-patch"></a>Produce a patch</h3>
 <pre><code class="language-sh">git format-patch &lt;branch or commit range&gt; --stdout &gt; &lt;name&gt;.patch

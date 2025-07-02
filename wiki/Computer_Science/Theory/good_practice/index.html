@@ -301,6 +301,16 @@
 <li>Pencils and papers are your friends, feel free to fill a lot of them with notes, graphs or anything relevant: it frees your mind.</li>
 <li>A good way to design a good API is actually to try to explain it with documentation ie. always start by a .mli, give a few hints on the general idea behind the API and give a few explanations on how users are supposed to use it. Writing a few examples is always a good way to find the right function and types names and the proper API to compose them (<a href="https://github.com/mirage/irmin/pull/1817">quote @samoht</a>).</li>
 </ol>
+<h2 id="adding-new-features"><a class="anchor" aria-hidden="true" href="#adding-new-features"></a>Adding new features</h2>
+<ul>
+<li>It is better to write some code, <em>even bad one</em>, to make a feature working than not writing anything. Start with a <strong>functional version</strong> and then <strong>clean the code</strong>. At least, you would have a functional version to compare against.</li>
+<li>It can be <strong>easier</strong> to add the code at <strong>the top</strong> of the function call list than at the bottom. <strong>Refine later</strong> to get the functionality closer to what you need.</li>
+<li>The goal is to have a working feature. Thus, focus on this! <strong>The code is the means, not the end goal.</strong></li>
+</ul>
+<h2 id="understanding-code"><a class="anchor" aria-hidden="true" href="#understanding-code"></a>Understanding code</h2>
+<ul>
+<li>By adding functionalities, fixing bug or breaking the code, you will construct a mental model of the project. Don't be afraid to <strong>break things</strong> to understand the behavior (not in production, of course).</li>
+</ul>
 <h2 id="devops"><a class="anchor" aria-hidden="true" href="#devops"></a>DevOps</h2>
 <ol start="4">
 <li><strong>NEVER DEPLOY</strong> on Fridays, <strong>NEVER</strong>.</li>

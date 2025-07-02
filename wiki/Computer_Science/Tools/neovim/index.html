@@ -297,7 +297,7 @@
 <li><kbd>TAB</kbd> : Change buffer</li>
 <li><kbd>Shift</kbd> + <kbd>TAB</kbd> : Change buffer from back</li>
 <li><kbd>leader</kbd> + <kbd>bd</kbd> : Delete buffer</li>
-<li><kbd>leader</kbd> + <kbd>ss</kbd> : Stop research</li>
+<li><kbd>leader</kbd> + <kbd>os</kbd> : Stop research</li>
 <li><kbd>Ctrl</kbd> + <kbd>a</kbd> : Decrement a number</li>
 <li><kbd>Ctrl</kbd> + <kbd>x</kbd> : Increment a number</li>
 <li><kbd>Ctrl</kbd> + <kbd>o</kbd> : Go to the previous point before jump</li>
@@ -310,6 +310,11 @@
 <li>&lt;nombre&gt;<kbd>@</kbd>&lt;name&gt; =&gt; call</li>
 </ul>
 </li>
+<li><code>Ctrl</code> + <code>w</code> ; <code>_</code> : Maximum height</li>
+<li><code>Ctrl</code> + <code>w</code> ; <code>|</code> : Maximum width</li>
+<li><code>Ctrl</code> + <code>w</code> ; <code>=</code> : Equal size windows</li>
+<li><kbd>Ctrl</kbd> + <kbd>x</kbd> ; <kbd>Ctrl</kbd> + <kbd>l</kbd> : Complete the line</li>
+<li><kbd>Ctrl</kbd> + <kbd>x</kbd> ; <kbd>Ctrl</kbd> + <kbd>f</kbd> : Complete from workspace file</li>
 </ul>
 <h3 id="vim-surrounding"><a class="anchor" aria-hidden="true" href="#vim-surrounding"></a>Vim-surrounding</h3>
 <ul>
@@ -363,6 +368,16 @@
 </ul>
 </li>
 </ul>
+<h2 id="commands"><a class="anchor" aria-hidden="true" href="#commands"></a>Commands</h2>
+<h3 id="range"><a class="anchor" aria-hidden="true" href="#range"></a>Range</h3>
+<p>Many commands in NeoVIM can use a range to describe where the effect should take place. The range can be:</p>
+<ul>
+<li><code>%</code> to target the entire file</li>
+</ul>
+<h3 id="replace"><a class="anchor" aria-hidden="true" href="#replace"></a>Replace</h3>
+<p>In NeoVIM, replacing some text is done using RegExpr. It is triggered using <code>:[range]s</code>.</p>
+<pre><code>:[range]s/{pattern}/{replacement}/flags
+</code></pre>
 <h2 id="resources"><a class="anchor" aria-hidden="true" href="#resources"></a>Resources</h2>
 <ul>
 <li><a href="https://catonmat.net/top-10-vim-shortcuts">10 VIim shortcuts</a> (TO TRANSLATE)</li>

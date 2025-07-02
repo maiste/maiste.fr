@@ -281,9 +281,64 @@
 <div class="metadata"><p>description: Programming using functional idioms</p><p>lang: ENG
     </p>
 </div>
-<div class="content"><h2 id="resources"><a class="anchor" aria-hidden="true" href="#resources"></a>Resources</h2>
+<div class="content"><h2 id="programming-with-functor-applicative-and-monad"><a class="anchor" aria-hidden="true" href="#programming-with-functor-applicative-and-monad"></a>Programming with Functor, Applicative and Monad</h2>
+<h3 id="functor"><a class="anchor" aria-hidden="true" href="#functor"></a>Functor</h3>
+<p>Functors are here to send value into another space while &quot;keeping&quot; the same form.</p>
+<pre><code class="language-ocaml"> val map : ('a -&gt; 'b) -&gt; ('a t -&gt; 'b t)
+ let ( &lt;$&gt; ) = map
+</code></pre>
+<p>We can't code it like this, we need a property to not have:</p>
+<pre><code class="language-ocaml"> let map fn lst = []
+</code></pre>
+<p>FORALL fn lst,</p>
 <ul>
-<li><a href="https://backtracking.github.io/">Jean-Christophe' blos</a>: a collection of many ideas and project from a University teacher</li>
+<li>assert (List.length lst = List.length (map fn lst)) map (fun x -&gt; x) t = t map f (map g t) = map (fun x -&gt; f (g x)) t</li>
+</ul>
+<h3 id="applicative"><a class="anchor" aria-hidden="true" href="#applicative"></a>Applicative</h3>
+<p>Applicatives exist because with Functors, you can't combine things. With Applicatives you are able to combine the information to apply functions.</p>
+<pre><code class="language-ocaml">val pure/return/singleton : 'a -&gt; 'a t
+val pair : 'a t -&gt; 'b t -&gt; ('a * 'b) t
+
+val apply : ('a -&gt; 'b) t -&gt; 'a t -&gt; 'b t
+let apply fn_t a_t = pair fn_t a_t |&gt; map (fun (fn, a) -&gt; fn a)
+let ( &lt;*&gt; ) = apply
+
+val liftA2 : ('a -&gt; 'b -&gt; 'c) -&gt; 'a t -&gt; 'b t -&gt; 'c t let liftA2 fn a_t b_t = pair a_t b_t |&gt; map (fun (a,b) -&gt; fn a b)
+</code></pre>
+<pre><code class="language-ocaml">((fn : 'a -&gt; ...) &lt;$&gt; truc : 'a t) &lt;*&gt; bidule (fun t b m -&gt; ...) &lt;$&gt; truc &lt;*&gt; bidule &lt;*&gt; machin
+</code></pre>
+<p>is equivalent to</p>
+<pre><code class="language-ocaml">let+ t = truc and+ b = bidule and+ m = machin in ...
+</code></pre>
+<p>is equivalent to</p>
+<pre><code class="language-ocaml">let+ t = truc
+and+ (b, m) =
+	let+ b = bidule
+	and+ m = machin
+	in (b, m)
+in ...
+</code></pre>
+<p>We want this property to be true on Applicative:</p>
+<pre><code class="language-ocaml">map (fun (a, (b, c)) -&gt; (a, b, c)) (pair at (pair bt ct)) == map (fun ((a, b), c) -&gt; (a, b, c)) (pair (pair at bt) ct)
+</code></pre>
+<h2 id="stage-functions"><a class="anchor" aria-hidden="true" href="#stage-functions"></a>Stage functions</h2>
+<p>Partial applications are really useful. However, sometimes, you want to compute elements in the partial application and keep them in a closure. If you directly provide the function and let people partially applying it, nothing prevent them to recompute the closure every time.</p>
+<p>This is where the stage trick comes in action. You simply define a module:</p>
+<pre><code class="language-ocaml">module Stage : sig
+  type 'a t
+  val staged : 'a -&gt; 'a t
+  val unstaged 'a t -&gt; 'a
+
+end = struct
+  type 'a t = 'a
+  let stage (fn : 'a) : 'a t = fn
+  let unstage (fn : 'a t) : 'a' = fn
+end
+</code></pre>
+<p>As the function type will be constraint in an abstract <code>a t</code>, there is no risk to execute the partial application without using the <code>Stage.unstaged</code> function.</p>
+<h2 id="resources"><a class="anchor" aria-hidden="true" href="#resources"></a>Resources</h2>
+<ul>
+<li><a href="https://backtracking.github.io/">Jean-Christophe' blog</a>: a collection of many ideas and project from a University teacher</li>
 <li><a href="https://blog.janestreet.com/">JaneStreet's blog</a>: an interesting blog about <code>OCaml</code></li>
 <li><a href="https://okmij.org/ftp/Computation/">Programming and computation</a>: a kind of wiki about multiple stuff in functional languages</li>
 <li><a href="http://learnyouahaskell.com/chapters">Learn Haskell</a>: book to learn Haskell</li>
