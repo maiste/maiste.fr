@@ -27,6 +27,15 @@ title: Good Practices
 2. Pencils and papers are your friends, feel free to fill a lot of them with notes, graphs or anything relevant: it frees your mind.
 3. A good way to design a good API is actually to try to explain it with documentation ie. always start by a .mli, give a few hints on the general idea behind the API and give a few explanations on how users are supposed to use it. Writing a few examples is always a good way to find the right function and types names and the proper API to compose them ([quote @samoht](https://github.com/mirage/irmin/pull/1817)).
 
+## Adding new features
+
+- It is better to write some code, _even bad one_, to make a feature working than not writing anything. Start with a **functional version** and then **clean the code**. At least, you would have a functional version to compare against.
+- It can be **easier** to add the code at **the top** of the function call list than at the bottom. **Refine later** to get the functionality closer to what you need.
+- The goal is to have a working feature. Thus, focus on this! **The code is the means, not the end goal.**
+## Understanding code
+
+- By adding functionalities, fixing bug or breaking the code, you will construct a mental model of the project. Don't be afraid to **break things** to understand the behavior (not in production, of course).
+
 ## DevOps
 
 4. **NEVER DEPLOY** on Fridays, **NEVER**.

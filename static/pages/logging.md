@@ -35,7 +35,7 @@ care about it.
   - [✔️] The D2 system available for the `blog.ml` too.
   - [✔️] Unified the `blog.ml`, `project.ml` and, `wiki.ml` interface to use the same section type. (Same page?)
 - [ ] Start the blog back and write regularly about what I learn,
-- [ ] Create a script to transfert between private to the public wiki
+- [✔️]Create a script to transfert between private to the public wiki
 - Fixes:
   - [✔️] Fix the problem with `eio` and running the server. Worst case, move
     to the Unix runtime (prefer not to).
@@ -57,13 +57,13 @@ restructured the website to have the `index` containing everything.
 
 ### 2025-06-07
 
-It seems pinning to the latest version of `yocaml` makes the error disapear as
+It seems pinning to the latest version of `yocaml` makes the error disapeared as
 [xvw](https://xvw.lol) suggested. I added the support to the "Do Not Track"
 recognition from Umami.
 
 ### 2025-04-18
 
-Many changes! I moved the website to use Nebula Sans instead of Roboto. It
+Many changes! I moved the website to use Nebula Sans instead of _Roboto_. It
 makes the website more unified and give I really like the font. I changed the
 colors to be blue dark mode and, red/purple in light mode. This is better for
 readability and also cleaner. I fixed some CSS problems I add with alignments.
@@ -77,7 +77,7 @@ Synchronize my notes with the public website.
 
 ### 2025-01-29
 
-Move fonts to use Roboto as the primary font.
+Move fonts to use _Roboto_ as the primary font.
 
 ### 2025-01-27
 

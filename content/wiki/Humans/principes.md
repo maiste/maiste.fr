@@ -41,6 +41,7 @@ title: Principles, effects and quotations
     6. "Le contenu fonctionnel d'un système de type E doit être continuellement augmenté pour maintenir la satisfaction des utilisateurs tout au long de sa vie."
     7. "La qualité d'un système de type E apparaîtra comme décroissante, à moins qu'il ne soit rigoureusement maintenu et adapté aux changements de son environnement de fonctionnement."
     8. "Les processus d'évolution de type E constituent des systèmes de rétroaction à plusieurs niveaux, à plusieurs boucles et à plusieurs agents ; et ils doivent être traités comme tels pour obtenir des améliorations significatives par rapport à toute base raisonnable."
+- Loi de Tesler: Chaque système informatique possède une quantité de complexité qui ne peut être enlevée. Cette loi pose la question de répartir la complexité entre le code et l'interface de l'utilisateur.
 
 ### Régle des deux pizza
 

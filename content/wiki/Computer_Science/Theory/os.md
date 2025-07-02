@@ -19,3 +19,6 @@ title: Operating systems
 
 - [What is MirageOS?](https://www.youtube.com/watch?app=desktop&v=aQuEu9bpnVY) (YouTube)
 
+## Threads and process
+
+TODO: do some research about `threads` and `processes` in UNIX and documents the difference between `fork`, `vfork` and `create_thread`.

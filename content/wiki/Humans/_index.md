@@ -1,7 +1,10 @@
 ---
-title: Humans
+id: _index
+aliases: []
+tags: []
 description: Messy information about human life
 lang: ENG
+title: Humans
 ---
 
 ## Note

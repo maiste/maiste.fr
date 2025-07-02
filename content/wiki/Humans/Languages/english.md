@@ -2,9 +2,9 @@
 id: lang
 aliases: []
 tags: []
-title: English
 description: Resources about English language
 lang: ENG
+title: English
 ---
 
 ## Abbreviations
@@ -25,10 +25,19 @@ lang: ENG
 
 ## Dictionnary English to French
 
+- E
+	- eager: want something, impatient to do somethingsss
+    - even: contrary of odd (_MEMO_: the number of letters is even)
+- G
+	- greedy: gluttonous or want some money)
 - O
-	- oblivious: inconscient / ne pas se rendre compte
+	- oblivious: unconscious / no seeing something
+    - odd: contrary to even (_MEMO_: the number of letters is odd)
 - S:
 	- shenanigan: manigances
+	- stubborn: when someone has a fixed idea and will not listen to others
+- T:
+	- tedious: things that requires a lot of efforts
 
 ## Common Mistakes
 

@@ -34,3 +34,7 @@ It also work with range:
 ```excel
 ='my sheet'!A1:A100
 ```
+
+## Google Docs
+
+- <kbd>CTRL</kbd>+<kbd>k</kbd> opens the link dialog.

@@ -24,7 +24,7 @@ $ NVIM_APPNAME=<dir> nvim
  - <kbd>TAB</kbd> : Change buffer
  - <kbd>Shift</kbd> + <kbd>TAB</kbd> : Change buffer from back
  - <kbd>leader</kbd> + <kbd>bd</kbd> : Delete buffer
- - <kbd>leader</kbd> + <kbd>ss</kbd> : Stop research
+ - <kbd>leader</kbd> + <kbd>os</kbd> : Stop research
  - <kbd>Ctrl</kbd> + <kbd>a</kbd> : Decrement a number
  - <kbd>Ctrl</kbd> + <kbd>x</kbd> : Increment a number
  - <kbd>Ctrl</kbd> + <kbd>o</kbd> : Go to the previous point before jump
@@ -34,6 +34,11 @@ $ NVIM_APPNAME=<dir> nvim
  - Macros:
    - <kbd>q</kbd>\<name>\<macro><kbd>q</kbd> => record
    - \<nombre><kbd>@</kbd>\<name> => call
+- `Ctrl` + `w` ; `_` : Maximum height
+- `Ctrl` + `w` ; `|` : Maximum width
+- `Ctrl` + `w` ; `=` : Equal size windows
+- <kbd>Ctrl</kbd> + <kbd>x</kbd> ; <kbd>Ctrl</kbd> + <kbd>l</kbd> : Complete the line
+- <kbd>Ctrl</kbd> + <kbd>x</kbd> ; <kbd>Ctrl</kbd> + <kbd>f</kbd> : Complete from workspace file
 
 ### Vim-surrounding
 
@@ -79,6 +84,23 @@ $ NVIM_APPNAME=<dir> nvim
 - Format paragraphs:
 	- <kbd>v</kbd> (and selection) + <kbd>gw</kbd>: unify size for line (old version)
 	- <kbd>v</kbd> (and selection) + <kbd>gq</kbd>: unify size for line (old version of Neovim)
+
+## Commands
+
+### Range
+
+Many commands in NeoVIM can use a range to describe where the effect should take place. The range can be:
+- `%` to target the entire file
+
+### Replace
+
+In NeoVIM, replacing some text is done using RegExpr. It is triggered using `:[range]s`.
+
+```
+:[range]s/{pattern}/{replacement}/flags
+```
+
+
 ## Resources
 
 - [10 VIim shortcuts](https://catonmat.net/top-10-vim-shortcuts) (TO TRANSLATE)

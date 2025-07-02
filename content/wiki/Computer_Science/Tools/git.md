@@ -270,7 +270,30 @@ git remote prune <remote>
 ```
 
 ---
+## Log
 
+### Display the diff when using log
+
+```shell
+git log -p
+```
+
+---
+## Show
+
+### Show the diff for a particular commit
+
+```shell
+git show <commit>
+```
+
+### Show to extract the content of a file at a certain commit
+
+```sh
+git show <branch>:path/to/file > <output file>
+```
+
+---
 ## Patch
 
 ### Produce a patch

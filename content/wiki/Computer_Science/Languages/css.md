@@ -7,42 +7,42 @@ lang: ENG
 title: CSS
 ---
 
-# Flexbox
+## Flexbox
 
-## Resources
+### Resources
 
 A way to organize items as movable elements in CSS.
  * [Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
-# Grid
+## Grid
 
-## Center elements
+### Center elements
 
 ```css
 display: grid;
 place-items: center;
 ```
 
-## Resources
+### Resources
 
 A way to organize items in Css as grids
 * [Guide](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
-# Fonts
+## Fonts
 
-## Resources
+### Resources
 
 * [Google fonts](https://fonts.google.com)
 
-# Charts
+## Charts
 
-## Resources
+### Resources
 
 * [Charts.css](https://chartscss.org/)
 
-# Custom components
+## Custom components
 
-## Create a homemade radio button
+### Create a homemade radio button
 
 - Thanks Pierre-Louis for the trick:
 ```html
@@ -76,7 +76,20 @@ A way to organize items in Css as grids
   }
 ```
 
+### Change the symbol in a `ul` component
 
+```css
+ul {
+ list-style: none;
+}
+
+li::before {
+  content: ">>";
+  display: block;
+  float: left;
+  margin-right: 4px;
+}
+```
 ## Memo
 
 -  _"In CSS, margin and padding are TRouBLE"_: `padding|margin: top right bottom left`
