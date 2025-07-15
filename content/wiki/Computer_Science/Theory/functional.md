@@ -8,7 +8,8 @@ title: Functional Programming
 ---
 
 ## Programming with Functor, Applicative and Monad
-### Functor 
+
+### Functor
 
 Functors are here to send value into another space while "keeping" the same form.
 
