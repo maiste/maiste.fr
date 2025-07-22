@@ -42,7 +42,7 @@ I suggest you to have a look at the [Projects](/projects) page.
 If you want to discuss with me, feel free to reach me. Below, see some links
 that could interest you:
 
-- **Mail**: dev[at]maiste.fr
+- **Mail**: self[at]maiste.fr
 - **GitHub**: [maiste](https://github.com/maiste)
 - **Syndication**: [atom file](/atom.xml) or [RSS file](./rss.xml) to follow the blog
   feed
