@@ -9,8 +9,8 @@ license: "GPL-3.0-or-later"
 homepage: "https://codeberg.org/maiste/maiste.fr"
 bug-reports: "https://codeberg.org/maiste/maiste.fr/issues"
 depends: [
-  "dune" {>= "3.14"}
-  "ocaml" {>= "5.1.1"}
+  "dune" {>= "3.19"}
+  "ocaml" {>= "5.0.0"}
   "yocaml" {>= "2.0.0"}
   "yocaml_jingoo"
   "yocaml_yaml"

@@ -1,4 +1,4 @@
-(lang dune 3.14)
+(lang dune 3.19)
 
 (name maiste)
 
@@ -24,7 +24,7 @@
  (depends
   ;; Build dependencies
   (ocaml
-   (>= 5.1.1))
+   (>= 5.0.0))
   ;; YOCaml dependencies
   (yocaml
    (>= 2.0.0))
