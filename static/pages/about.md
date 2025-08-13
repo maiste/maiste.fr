@@ -43,12 +43,14 @@ If you want to discuss with me, feel free to reach me. Below, see some links
 that could interest you:
 
 - **Mail**: self[at]maiste.fr
+- **Codeberg**: [maiste](https://codeberg.org/maiste) 
+- **GitLab**: [maiste](https://gitlab.comm/maiste) 
 - **GitHub**: [maiste](https://github.com/maiste)
 - **Syndication**: [atom file](/atom.xml) or [RSS file](./rss.xml) to follow the blog
   feed
 
 If you would like me to make a change or improve something, you can ask on
-GitHub [issues](https://github.com/maiste/maiste.fr/issues) :)
+GitHub [issues](https://codeberg.org/maiste/maiste.fr/issues) :)
 
 ## Legals about this website
 

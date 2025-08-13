@@ -9,7 +9,7 @@
 (executables_implicit_empty_intf)
 
 (source
- (github maiste/maiste.fr))
+ (codeberg maiste/maiste.fr))
 
 (license GPL-3.0-or-later)
 

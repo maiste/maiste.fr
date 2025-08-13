@@ -76,7 +76,7 @@
   ending_year: 2021
   links:
     - "https://gitlab.com/tezos/tezos"
-    - "https://github.com/maiste/tezos-oxymeter"
+    - "https://codeberg.org/maiste/tezos-oxymeter"
   summary: |
         I did my intership at [Nomadic Labs](https://www.nomadic-labs.com/)
         working on the Tezos Blockchain. I have helped improving the test
@@ -84,7 +84,7 @@
         extracting as a standalone project) by adding support to SSH to run
         some tests. My internship was about quantifying the energy consumption
         of the blockchain. To do so, I wrote a library named
-        [tezos-oxymeter](https://github.com/maiste/tezos-oxymeter) to
+        [tezos-oxymeter](https://codeberg.org/maiste/tezos-oxymeter) to
         instrument the code and get information about the energy consumption.
 - name: "Wireshark"
   starting_year: 2019
@@ -117,4 +117,5 @@ about them. However, as a person loving Open Source, most of my contributions
 are available to the public.
 
 Most of my public projects can be found on my [GitHub
-Profile](https://github.com/maiste) page.
+Profile](https://github.com/maiste) page or my [Codeberg
+Profile](https://codeberg.org/maiste).

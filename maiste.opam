@@ -6,8 +6,8 @@ description: "A YOcaml generator to build maiste.fr, my static website"
 maintainer: ["Etienne \"Maiste\" Marais <dev@maiste.fr>"]
 authors: ["Etienne \"Maiste\" Marais <dev@maiste.fr>"]
 license: "GPL-3.0-or-later"
-homepage: "https://github.com/maiste/maiste.fr"
-bug-reports: "https://github.com/maiste/maiste.fr/issues"
+homepage: "https://codeberg.org/maiste/maiste.fr"
+bug-reports: "https://codeberg.org/maiste/maiste.fr/issues"
 depends: [
   "dune" {>= "3.14"}
   "ocaml" {>= "5.1.1"}
@@ -38,4 +38,5 @@ build: [
     "@doc" {with-doc}
   ]
 ]
-dev-repo: "git+https://github.com/maiste/maiste.fr.git"
+dev-repo: "git+https://codeberg.org/maiste/maiste.fr.git"
+x-maintenance-intent: ["(latest)"]
