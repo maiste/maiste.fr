@@ -13,9 +13,9 @@
 
 (license GPL-3.0-or-later)
 
-(authors "Etienne \"Maiste\" Marais <dev@maiste.fr>")
+(authors "Etienne \"Maiste\" Marais <self@maiste.fr>")
 
-(maintainers "Etienne \"Maiste\" Marais <dev@maiste.fr>")
+(maintainers "Etienne \"Maiste\" Marais <self@maiste.fr>")
 
 (package
  (name maiste)

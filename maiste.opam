@@ -3,8 +3,8 @@ opam-version: "2.0"
 version: "dev"
 synopsis: "A YOcaml program to generate my website"
 description: "A YOcaml generator to build maiste.fr, my static website"
-maintainer: ["Etienne \"Maiste\" Marais <dev@maiste.fr>"]
-authors: ["Etienne \"Maiste\" Marais <dev@maiste.fr>"]
+maintainer: ["Etienne \"Maiste\" Marais <self@maiste.fr>"]
+authors: ["Etienne \"Maiste\" Marais <self@maiste.fr>"]
 license: "GPL-3.0-or-later"
 homepage: "https://codeberg.org/maiste/maiste.fr"
 bug-reports: "https://codeberg.org/maiste/maiste.fr/issues"
