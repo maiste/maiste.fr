@@ -277,22 +277,148 @@
     </header>
 
     <main>
-      <div class="container"><h1>Wiki</h1>
-
-<div class="index"><h2>Index</h2>
-  <ul><li>
-      <h3><a href="/wiki/B-Books/index.html">Books</a></h3>
-      <div class="metadata"><p>lang:&quot;ENG&quot;</p><p>description:&quot;All about the books I have and I will read&quot;</p></div>
-    </li><li>
-      <h3><a href="/wiki/C-Computer-science/index.html">Computer Science</a></h3>
-      <div class="metadata"><p>lang:&quot;ENG&quot;</p><p>description:&quot;First class citizen as I work in it&quot;</p></div>
-    </li><li>
-      <h3><a href="/wiki/E-Do-it-yourself/index.html">DIY</a></h3>
-      <div class="metadata"><p>lang:&quot;ENG&quot;</p><p>description:&quot;Let&apos;s get hands dirty&quot;</p></div>
-    </li><li>
-      <h3><a href="/wiki/D-Humans/index.html">Humans</a></h3>
-      <div class="metadata"><p>lang:&quot;ENG&quot;</p><p>description:&quot;Messy information about human life&quot;</p></div>
-    </li></ul>
+      <div class="container"><h1>NeoVIM</h1>
+<div class="metadata"><p>description: Stuffs about (Neo)Vim.</p><p>lang: ENG
+    </p>
+</div>
+<div class="content"><h2 id="environment"><a class="anchor" aria-hidden="true" href="#environment"></a>Environment</h2>
+<p>To run NeoVIM with a specific config located in <code>~/.config/&lt;dir&gt;</code>, you can pass
+it to the environment variable:</p>
+<pre><code class="language-sh">$ NVIM_APPNAME=&lt;dir&gt; nvim
+</code></pre>
+<h2 id="shortcuts"><a class="anchor" aria-hidden="true" href="#shortcuts"></a>Shortcuts</h2>
+<ul>
+<li><kbd>space</kbd>: Leader key</li>
+<li><kbd>jk</kbd> / <kbd>kj</kbd> : Exit mode</li>
+</ul>
+<h3 id="by-default"><a class="anchor" aria-hidden="true" href="#by-default"></a>By default</h3>
+<ul>
+<li><kbd>TAB</kbd> : Change buffer</li>
+<li><kbd>Shift</kbd> + <kbd>TAB</kbd> : Change buffer from back</li>
+<li><kbd>leader</kbd> + <kbd>bd</kbd> : Delete buffer</li>
+<li><kbd>leader</kbd> + <kbd>os</kbd> : Stop research</li>
+<li><kbd>Ctrl</kbd> + <kbd>a</kbd> : Decrement a number</li>
+<li><kbd>Ctrl</kbd> + <kbd>x</kbd> : Increment a number</li>
+<li><kbd>Ctrl</kbd> + <kbd>o</kbd> : Go to the previous point before jump</li>
+<li><kbd>Ctrl</kbd> + <kbd>i</kbd> : Go to the next point before jump</li>
+<li><kbd>Ctrl</kbd> + <kbd>e</kbd> : Scroll up</li>
+<li><kbd>Ctrl</kbd> + <kbd>y</kbd> : Scroll down</li>
+</ul>
+<p>Related to macros :</p>
+<ul>
+<li><kbd>q</kbd>&lt;name&gt;&lt;macro&gt;<kbd>q</kbd> =&gt; record</li>
+<li>&lt;nombre&gt;<kbd>@</kbd>&lt;name&gt; =&gt; call</li>
+</ul>
+<p>Related to window spaces:</p>
+<ul>
+<li><kbd>Ctrl</kbd> + <kbd>direction</kbd> : Change windows</li>
+<li><kbd>Shift</kbd> + <kbd>direction</kbd> : Change dimensions</li>
+<li><kbd>Ctrl</kdb> + <kbd>w</kbd> ; <kbd>_</kbd> : Maximum height</li>
+<li><kdb>Ctrl</kdb> + <kbd>w</kbd> ; <kbd>r</kbd> : Maximum width</li>
+<li><kbd>Ctrl</kbd> + <kbd>w</kbd> ; <kbd>=</kbd> : Equal size windows</li>
+</ul>
+<p>Related to auto-completion:</p>
+<ul>
+<li><kbd>Ctrl</kbd> + <kbd>x</kbd> ; <kbd>Ctrl</kbd> + <kbd>l</kbd> : Complete
+the line</li>
+<li><kbd>Ctrl</kbd> + <kbd>x</kbd> ; <kbd>Ctrl</kbd> + <kbd>f</kbd> : Complete
+from workspace file</li>
+</ul>
+<h3 id="minisurround"><a class="anchor" aria-hidden="true" href="#minisurround"></a>Mini.surround</h3>
+<p>In <em>Normal</em> mode:</p>
+<ul>
+<li><kbd>sr</kbd>&lt;symbole&gt;&lt;new symbole&gt; : Change surrounding</li>
+<li><kbd>sd</kbd>&lt;symbole&gt; : Delete surrounding</li>
+</ul>
+<p>In <em>Visual</em> mode</p>
+<ul>
+<li><kbd>sa</kbd>&lt;symbole&gt; : Surround selection</li>
+</ul>
+<p>You can choose the symbol for the <em>input</em> and the <em>output</em> by using:</p>
+<ul>
+<li>any unique character,</li>
+<li><code>t</code> for a tag (HTML kind)</li>
+<li><code>?</code> for the interactive mode</li>
+</ul>
+<h3 id="commentnvim"><a class="anchor" aria-hidden="true" href="#commentnvim"></a>Comment.nvim</h3>
+<ul>
+<li><kbd>leader</kbd> + <kbd>cc</kbd> : Comment</li>
+<li><kbd>leader</kbd> + <kbd>ci</kbd> : Inverse comment / uncomment</li>
+</ul>
+<h3 id="telescope"><a class="anchor" aria-hidden="true" href="#telescope"></a>Telescope</h3>
+<ul>
+<li><kbd>leader</kbd> + <kbd>ff</kbd> : Walk through git files</li>
+<li><kbd>leader</kbd> + <kbd>fg</kbd> : Walk through code</li>
+<li><kbd>leader</kbd> + <kbd>b</kbd> : Walk through buffers</li>
+</ul>
+<h3 id="completion"><a class="anchor" aria-hidden="true" href="#completion"></a>Completion</h3>
+<p>When completion menu is opened:</p>
+<ul>
+<li><kbd>Ctrl</kbd> + <kbd>e</kbd>: Complete or triger snippets</li>
+<li><kbd>Ctrl</kbd> + <kbd>c</kbd>: Cancel completion</li>
+<li><kbd>Ctrl</kbd> + <kbd>space</kbd>: Show or hide documentation</li>
+</ul>
+<h3 id="lsp"><a class="anchor" aria-hidden="true" href="#lsp"></a>LSP</h3>
+<ul>
+<li><kbd>leader</kbd> + <kbd>ld</kbd> =&gt; Go to definitions</li>
+<li><kbd>leader</kbd> + <kbd>lr</kbd> =&gt; Rename</li>
+<li><kbd>leader</kbd> + <kbd>lf</kbd> =&gt; Format</li>
+<li><kbd>leader</kbd> + <kbd>lgt</kbd> =&gt; Go to type definition</li>
+<li><kbd>leader</kbd> + <kbd>lgr</kbd> =&gt; Go to the reference</li>
+<li><kbd>leader</kbd> + <kbd>lw</kbd> =&gt; Change workspace</li>
+<li><kbd>leader</kbd> + <kbd>lca</kbd> =&gt; Code action</li>
+<li><kbd>leader</kbd> + <kbd>lh</kbd> =&gt; Object informations</li>
+<li><kbd>leader</kbd> + <kbd>ls</kbd> =&gt; Signatures</li>
+</ul>
+<h3 id="markdown"><a class="anchor" aria-hidden="true" href="#markdown"></a>Markdown</h3>
+<p>Using the markdown mode:</p>
+<ul>
+<li><kbd>leader</kbd> + <kbd>wg</kbd>: Glowish markdown</li>
+<li><kbd>leader</kbd> + <kbd>wu</kbd>: Go back to raw markdown</li>
+</ul>
+<p>By default in <em>NeoVIM</em>:</p>
+<ul>
+<li>Format paragraphs:
+<ul>
+<li><kbd>v</kbd> (and selection) + <kbd>gw</kbd>: unify size for line (old
+version)</li>
+<li><kbd>v</kbd> (and selection) + <kbd>gq</kbd>: unify size for line (old
+version of Neovim)</li>
+</ul>
+</li>
+</ul>
+<h2 id="mode"><a class="anchor" aria-hidden="true" href="#mode"></a>Mode</h2>
+<h3 id="visual"><a class="anchor" aria-hidden="true" href="#visual"></a>Visual</h3>
+<p>In visual mode it is possible to select the with:</p>
+<ul>
+<li><kbd>iw</kbd> to select a specific word</li>
+</ul>
+<h2 id="commands"><a class="anchor" aria-hidden="true" href="#commands"></a>Commands</h2>
+<h3 id="range"><a class="anchor" aria-hidden="true" href="#range"></a>Range</h3>
+<p>Many commands in NeoVIM can use a range to describe where the effect should
+take place. The range can be:</p>
+<ul>
+<li><code>%</code> to target the entire file</li>
+</ul>
+<h3 id="replace"><a class="anchor" aria-hidden="true" href="#replace"></a>Replace</h3>
+<p>In NeoVIM, replacing some text is done using RegExpr. It is triggered using
+<code>:[range]s</code>.</p>
+<pre><code>:[range]s/{pattern}/{replacement}/flags
+</code></pre>
+<h3 id="dot"><a class="anchor" aria-hidden="true" href="#dot"></a>Dot</h3>
+<p><code>.</code> can be used to replay an action store in registers. For example you can
+delete multiple lines with: <code>dd....</code>.</p>
+<h3 id="macros"><a class="anchor" aria-hidden="true" href="#macros"></a>Macros</h3>
+<p>You can register a macro by using <code>q&lt;letter&gt;</code>, then register the macro and
+finish with <code>q</code>. The macro will be stored inside of <code>&lt;letter&gt;</code>. Once it is
+done, you can <em>apply</em> the macro with <code>@&lt;letter&gt;</code>. It is possible to mix it with
+range. For example, you can apply it five times with <code>5@&lt;letter&gt;</code>. If you want
+to apply the previous macro, you can run <code>@@</code>. It also works with ranges.</p>
+<h2 id="resources"><a class="anchor" aria-hidden="true" href="#resources"></a>Resources</h2>
+<ul>
+<li><a href="https://catonmat.net/top-10-vim-shortcuts">10 VIim shortcuts</a> (TO TRANSLATE)</li>
+<li><a href="https://thevaluable.dev/vim-advanced/">Vim-advanced</a> (TO TRANSLATE)</li>
+</ul>
 </div>
 </div>
     </main>
