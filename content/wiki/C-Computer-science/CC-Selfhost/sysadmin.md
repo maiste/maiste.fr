@@ -138,3 +138,30 @@ The `MX` is to specify that there is no mail server in the domain. The first
 `TXT` specifies that no mail server can send mail in your domain name. The last
 one says that every mail saying they are sent on your behalf should be consider
 as trash.
+
+## Upgrade Debian
+
+Make sure you have created your system backups and then proceed.
+
+- First, you need to update your current system:
+```sh
+apt update && apt upgrade
+apt dist-upgrade
+```
+- Then, clean the cache and remove the unused packages:
+```sh
+apt clean && apt autoremove
+```
+- Then, update the repositories in `/etc/apt/*.list` and replace the old version name with the new one. It tends to do it using vim but this is a script you can automatize.
+- Then update to the new repository:
+```sh
+apt update
+```
+- Then upgrade the packages without conflicts:
+```sh
+apt upgrade --without-new-pkgs
+```
+- Finally, run the full system upgrade:
+```sh
+apt full-upgrade
+```

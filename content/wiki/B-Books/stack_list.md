@@ -24,6 +24,12 @@ title: Reading stack list
 
 - Crossing the Chasm, _Geoffrey Moore_
 
+## SciFi
+
+- Permutation City, _Greg Egan_
+- Diaspora, _Greg Egan_
+- Axiomatic, _Greg Egan_
+
 ## Suggestion d'ami.e.s
 
 - Asta, _Jon K. Stefansson_
