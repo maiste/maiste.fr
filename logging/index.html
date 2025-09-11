@@ -277,36 +277,14 @@
     </header>
 
     <main>
-      <div class="container"><h1>Logs</h1>
-<p><p>This page summarizes everything that I want to log about my personal projects,
+      <div class="container"><article>
+  <h1>Logs</h1>
+  <p><p>This page summarizes everything that I want to log about my personal projects,
 conferences or anything where I want a timeline. Expect it to be absolutely
 hard to read because I expect no other person than me (maybe my girlfriend) to
 care about it.</p>
 <h2 id="todos"><a class="anchor" aria-hidden="true" href="#todos"></a>TODOs</h2>
 <ul>
-<li>[✔️] Port the Blog using the <em>tree.ml</em> module,</li>
-<li>[✔️] Move the <code>index.ml</code> to pages</li>
-<li>[✔️] Add a <a href="/logging">logging</a> page</li>
-<li>[✔️] Improve the content of the <a href="/about">about</a> page,</li>
-<li>[✔️] Set up the Atom feed back,</li>
-<li>[✔️] Find a decent design for the website:
-<ul>
-<li>Follow <a href="https://xvw.lol">xvw</a> suggestion and rely on
-<a href="https://penpot.app/">Penpot</a> to create a design first</li>
-<li>Blog post page</li>
-<li>Colors</li>
-<li>Change the principal font as Overpass feels to tight...</li>
-</ul>
-</li>
-<li>[✔️] Support for D2
-<ul>
-<li>[✔️] Transform code block with <code>d2</code> to image link</li>
-<li>[✔️] Add a <code>d2: &lt;bool&gt;</code> YAML entry to know if it needs to transform using
-<code>d2</code>. It is verbose, but it would save some computation time and requires
-being vigilant about it.</li>
-<li>[✔️] Produce the <code>d2</code> image at the right place</li>
-</ul>
-</li>
 <li>[ ] Refactor the code because it is not clean:
 <ul>
 <li>[ ] <code>Tree.ml</code> with a less leaky interface and remove the <code>is_index_file</code> function</li>
@@ -319,16 +297,11 @@ being vigilant about it.</li>
 </ul>
 </li>
 <li>[ ] Start the blog back and write regularly about what I learn,</li>
-<li>[✔️]Create a script to transfert between private to the public wiki</li>
-<li>Fixes:
-<ul>
-<li>[✔️] Fix the problem with <code>eio</code> and running the server. Worst case, move
-to the Unix runtime (prefer not to).</li>
-<li>[✔️] Import locally the version of the <code>h1</code> fonts and register it in the license page.</li>
-</ul>
-</li>
 </ul>
 <h2 id="2025"><a class="anchor" aria-hidden="true" href="#2025"></a>2025</h2>
+<h3 id="2025-09-11"><a class="anchor" aria-hidden="true" href="#2025-09-11"></a>2025-09-11</h3>
+<p>Rewrite the CSS code by adding some space variables and font size variables. It
+makes the website more responsive.</p>
 <h3 id="2025-06-27"><a class="anchor" aria-hidden="true" href="#2025-06-27"></a>2025-06-27</h3>
 <p>I imported the <em>Rubik Doodle Shadow</em> font in the local repository and cleaned
 <em>Amatic SC</em> traces. I converted both <code>Blog</code> and <code>Wiki</code> to use the <code>Section</code>
@@ -411,24 +384,23 @@ more time. Will look at this later.</p>
 <p>Move the <code>blog.ml</code> file to use the <code>tree.ml</code> structure. It is not clean at all
 right now: it needs a little cleaning.</p>
 </p>
+</article>
 </div>
     </main>
 
     <footer>
-      <div class="container">
-        <p>
-          This site is part of the
-          <a href="https://ring.muhokama.fun">Muhokama ring</a>
-        </p>
-        <p>
-          (<a href="https://ring.muhokama.fun/u/maiste/pred">Previous</a> -
-          <a href="https://ring.muhokama.fun/u/maiste/succ">Next</a>)
-        </p>
-        <p>
-          Website written proudly with
-          <a href="https://github.com/xhtmlboy/yocaml">Yocaml</a> ♡
-        </p>
-      </div>
+      <p>
+        This site is part of the
+        <a href="https://ring.muhokama.fun">Muhokama ring</a>
+      </p>
+      <p>
+        <a href="https://ring.muhokama.fun/u/maiste/pred">Previous</a> -
+        <a href="https://ring.muhokama.fun/u/maiste/succ">Next</a>
+      </p>
+      <p>
+        Website written proudly with
+        <a href="https://github.com/xhtmlboy/yocaml">Yocaml</a> ♡
+      </p>
     </footer>
     <script>
       hljs.highlightAll();
