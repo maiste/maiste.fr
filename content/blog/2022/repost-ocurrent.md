@@ -4,6 +4,8 @@ description: "Repost from a blog post I made on tarides.com"
 date: 2022-10-21
 ---
 
+## Let's repost!
+
 I wrote an article about `OCurrent` on `Tarides.com`. It describes how the `ocurrent.org` pipeline was written. It's a good base to understand how to write an `ocurrent` pipeline.
 Here is the link of the article: [https://tarides.com/blog/2022-10-20-up-to-date-online-documentation](https://tarides.com/blog/2022-10-20-up-to-date-online-documentation)
 
