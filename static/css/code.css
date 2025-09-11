@@ -50,14 +50,12 @@ code {
 
 pre {
   overflow-x: scroll;
-  border-radius: 10px;
   padding: 12px;
 }
 
 li code,
 p code {
   padding: 1px 3px 1px 3px;
-  border-radius: 5px;
 }
 
 .hljs {

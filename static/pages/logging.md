@@ -9,23 +9,6 @@ care about it.
 
 ## TODOs
 
-- [✔️] Port the Blog using the _tree.ml_ module,
-- [✔️] Move the `index.ml` to pages
-- [✔️] Add a [logging](/logging) page
-- [✔️] Improve the content of the [about](/about) page,
-- [✔️] Set up the Atom feed back,
-- [✔️] Find a decent design for the website:
-  - Follow [xvw](https://xvw.lol) suggestion and rely on
-    [Penpot](https://penpot.app/) to create a design first
-  - Blog post page
-  - Colors
-  - Change the principal font as Overpass feels to tight...
-- [✔️] Support for D2
-  - [✔️] Transform code block with `d2` to image link
-  - [✔️] Add a `d2: <bool>` YAML entry to know if it needs to transform using
-    `d2`. It is verbose, but it would save some computation time and requires
-    being vigilant about it.
-  - [✔️] Produce the `d2` image at the right place
 - [ ] Refactor the code because it is not clean:
   - [ ] `Tree.ml` with a less leaky interface and remove the `is_index_file` function
   - [ ] Clean the `S.ml` and the `Resolver.ml`
@@ -35,13 +18,13 @@ care about it.
   - [✔️] The D2 system available for the `blog.ml` too.
   - [✔️] Unified the `blog.ml`, `project.ml` and, `wiki.ml` interface to use the same section type. (Same page?)
 - [ ] Start the blog back and write regularly about what I learn,
-- [✔️]Create a script to transfert between private to the public wiki
-- Fixes:
-  - [✔️] Fix the problem with `eio` and running the server. Worst case, move
-    to the Unix runtime (prefer not to).
-  - [✔️] Import locally the version of the `h1` fonts and register it in the license page.
 
 ## 2025
+
+### 2025-09-11
+
+Rewrite the CSS code by adding some space variables and font size variables. It
+makes the website more responsive.
 
 ### 2025-06-27
 
