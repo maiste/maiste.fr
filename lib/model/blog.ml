@@ -6,7 +6,7 @@ type t =
   { title : string
   ; description : string
   ; date : Archetype.Datetime.t
-  ; lang : string option
+  ; language : string option
   ; draft : bool
   ; d2 : bool
   }
@@ -14,7 +14,7 @@ type t =
 let title t = t.title
 let description t = t.description
 let date t = t.date
-let lang t = t.lang
+let language t = t.language
 let is_draft t = t.draft
 let is_using_d2 t = t.d2
 
@@ -30,10 +30,10 @@ let validate =
     let+ title = required fields "title" string
     and+ description = required fields "description" string
     and+ date = required fields "date" Archetype.Datetime.validate
-    and+ lang = optional fields "lang" string
+    and+ language = optional fields "language" string
     and+ draft = optional_or fields "draft" ~default:false bool
     and+ d2 = optional_or fields "d2" ~default:false bool in
-    { title; description; date; lang; draft; d2 })
+    { title; description; date; language; draft; d2 })
 ;;
 
 let normalize t =
@@ -41,8 +41,8 @@ let normalize t =
     [ "title", string t.title
     ; "description", string t.description
     ; "date", Archetype.Datetime.normalize t.date
-    ; "lang", option string t.lang
-    ; "has_lang", bool @@ Option.is_some t.lang
+    ; "language", option string t.language
+    ; "has_language", bool @@ Option.is_some t.language
     ; "draft", bool t.draft
     ]
 ;;
@@ -54,9 +54,9 @@ let date_to_string date =
 
 let metadata_to_assoc t =
   let date = date_to_string t.date in
-  match t.lang with
+  match t.language with
   | None -> [ "date", date ]
-  | Some lang -> [ "date", date; "lang", lang ]
+  | Some language -> [ "date", date; "language", language ]
 ;;
 
 module Section = struct

@@ -5,15 +5,15 @@ let entity_name = "Wiki"
 type t =
   { title : string
   ; description : string option
-  ; lang : string option
+  ; language : string option
   ; draft : bool
   ; d2 : bool
   }
 
-let v ?lang ~draft ~d2 ~description title = { title; description; lang; draft; d2 }
+let v ?language ~draft ~d2 ~description title = { title; description; language; draft; d2 }
 let title t = t.title
 let description t = t.description
-let lang t = t.lang
+let language t = t.language
 let is_draft t = t.draft
 let is_using_d2 t = t.d2
 
@@ -28,19 +28,19 @@ let validate =
   record (fun fields ->
     let+ title = required fields "title" string
     and+ description = optional fields "description" string
-    and+ lang = optional fields "lang" string
+    and+ language = optional fields "language" string
     and+ draft = optional_or fields "draft" bool ~default:false
     and+ d2 = optional_or fields "d2" bool ~default:false in
-    { title; description; lang; draft; d2 })
+    { title; description; language; draft; d2 })
 ;;
 
 let normalize t =
   Data.
     [ "title", string t.title
     ; "description", option string t.description
-    ; "lang", option string t.lang
+    ; "language", option string t.language
     ; "has_description", bool @@ Option.is_some t.description
-    ; "has_lang", bool @@ Option.is_some t.lang
+    ; "has_language", bool @@ Option.is_some t.language
     ; "draft", bool t.draft
     ]
 ;;
@@ -48,15 +48,15 @@ let normalize t =
 let compare w1 w2 = String.compare w1.title w2.title
 
 let metadata_to_assoc t =
-  let lang =
-    match t.lang with
+  let language =
+    match t.language with
     | None -> []
-    | Some lang -> [ "lang", lang ]
+    | Some language -> [ "language", language ]
   in
   let description =
     match t.description with
     | None -> []
     | Some desc -> [ "description", desc ]
   in
-  lang @ description
+  language @ description
 ;;
