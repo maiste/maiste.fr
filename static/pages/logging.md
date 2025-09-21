@@ -21,6 +21,12 @@ care about it.
 
 ## 2025
 
+### 202-09-21
+
+Update the parser to match the `ltex-ls-plus` language server front matter. It
+allows me to have a per file grammar correction, in function of the language.
+Default to American English (I might change to British English later).
+
 ### 2025-09-11
 
 Rewrite the CSS code by adding some space variables and font size variables. It
