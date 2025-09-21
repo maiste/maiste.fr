@@ -3,7 +3,7 @@ id: kube
 aliases: []
 tags: []
 description: Comment faire tourner un cluster kube
-lang: FR
+language: fr
 title: Kubernetes
 ---
 

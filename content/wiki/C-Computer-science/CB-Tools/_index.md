@@ -1,7 +1,7 @@
 ---
 title: Tooling
 description: All about the tools I might use
-lang: ENG
+language: en
 ---
 
 ## Note

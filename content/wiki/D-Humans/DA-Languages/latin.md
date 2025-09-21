@@ -4,7 +4,7 @@ aliases: []
 tags: []
 title: Latin
 description: Resources about Latin language
-lang: ENG
+language: en
 ---
 
 ## Abbreviations

@@ -3,7 +3,7 @@ id: games
 aliases: []
 tags: []
 description: Rules and list of Board Games
-lang: ENG
+language: en
 title: Games
 ---
 

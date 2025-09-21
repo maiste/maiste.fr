@@ -3,7 +3,7 @@ id: note_taking
 aliases: 
 tags: 
 description: How to take notes on a Computer
-lang: ENG
+language: en
 title: Computer Note taking
 ---
 

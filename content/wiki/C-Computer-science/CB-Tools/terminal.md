@@ -3,7 +3,7 @@ id: terminal
 aliases: []
 tags: []
 description: Terminal and CLI
-lang: ENG
+language: en
 title: Terminal
 ---
 

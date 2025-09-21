@@ -3,7 +3,7 @@ id: maths
 aliases: []
 tags: []
 description: Keep learning Maths
-lang: ENG
+language: en
 title: Maths
 ---
 

@@ -4,7 +4,7 @@ aliases:
 tags: 
 title: Tranportation
 description: All about travelling and moving
-lang: ENG
+language: en
 ---
 
 ## Trains

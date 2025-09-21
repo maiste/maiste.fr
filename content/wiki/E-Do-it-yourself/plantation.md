@@ -4,7 +4,7 @@ aliases: []
 tags: []
 description: How to plant stuffs - Move to English
 draft: true
-lang: FR
+language: fr
 title: Seeding
 ---
 

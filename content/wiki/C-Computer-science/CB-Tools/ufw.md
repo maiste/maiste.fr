@@ -3,7 +3,7 @@ id: ufw
 aliases: []
 tags: []
 description: Firewall
-lang: ENG
+language: en
 title: UFW
 ---
 

@@ -3,7 +3,7 @@ id: css
 aliases: []
 tags: []
 description: About css.
-lang: ENG
+language: en
 title: CSS
 ---
 
@@ -98,3 +98,4 @@ li::before {
 
 * [Defensive CSS](https://ishadeed.com/article/defensive-css/): protect yourself against bad CSS behaviour
 * [Visual Design Rules](https://anthonyhobday.com/sideprojects/saferules/)
+- [UI Spacing Cheat Sheet](https://designforducks.com/ui-spacing-cheat-sheet-a-complete-guide-2/)

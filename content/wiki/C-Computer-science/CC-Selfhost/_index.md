@@ -1,7 +1,7 @@
 ---
 title: Systems
 description: Selfhosting and sysadmin
-lang: ENG
+language: en
 ---
 
 ## Note

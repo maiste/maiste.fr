@@ -3,7 +3,7 @@ id: addresses
 aliases: []
 tags: []
 description: Disposable worktables places available for money or for free.
-lang: ENG
+language: en
 title: Worktable
 ---
 

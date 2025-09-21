@@ -3,7 +3,7 @@ id: exiftool
 aliases: []
 tags: []
 description: Metadata manipulation commandline tool
-lang: ENG
+language: en
 title: Exiftool
 ---
 

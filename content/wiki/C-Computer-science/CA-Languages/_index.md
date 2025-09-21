@@ -1,7 +1,7 @@
 ---
 title: Languages
 description: Programming languages
-lang: ENG
+language: en
 ---
 
 ## Note

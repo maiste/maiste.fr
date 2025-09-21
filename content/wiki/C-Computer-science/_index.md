@@ -1,7 +1,7 @@
 ---
 title: Computer Science
 description: First class citizen as I work in it
-lang: ENG
+language: en
 ---
 
 ## Organisation

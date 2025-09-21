@@ -3,7 +3,7 @@ title: "Remote: Office Not Required - David Heinemeir & Jason Fried"
 id: it_doesnt_have_to_be_crazy_at_work_dhh_fried
 aliases: 
 tags: 
-lang: ENG
+language: en
 ---
 ## Notes
 

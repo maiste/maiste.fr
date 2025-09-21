@@ -3,7 +3,7 @@ id: sysadmin
 aliases: []
 tags: []
 description: Resources about Sys Admin - Messy, needs to be split
-lang: ENG
+language: en
 title: Sys Admin
 ---
 

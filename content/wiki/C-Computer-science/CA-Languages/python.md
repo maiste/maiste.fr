@@ -3,7 +3,7 @@ id: python
 aliases: []
 tags: []
 description: The Python Programming Language
-lang: ENG
+language: en
 title: Python
 ---
 

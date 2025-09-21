@@ -3,7 +3,7 @@ id: _index
 aliases: []
 tags: []
 description: The basics
-lang: ENG
+language: en
 title: Theories
 ---
 

@@ -3,7 +3,7 @@ id: zsh
 aliases: []
 tags: []
 description: Zsh utilities.
-lang: ENG
+language: en
 title: Zsh
 ---
 

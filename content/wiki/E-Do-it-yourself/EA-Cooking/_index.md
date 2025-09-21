@@ -1,7 +1,7 @@
 ---
 title: Cooking
 description: Because eating is life
-lang: ENG
+language: en
 ---
 
 ## Note

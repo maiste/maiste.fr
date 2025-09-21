@@ -3,7 +3,7 @@ id: sway
 aliases: []
 tags: []
 description: Sway Window Manager
-lang: ENG
+language: en
 title: Sway
 ---
 

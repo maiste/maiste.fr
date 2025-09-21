@@ -3,7 +3,7 @@ id: stack_list
 aliases: []
 tags: []
 description: Books I'd like to read.
-lang: FR
+language: fr
 title: Reading stack list
 ---
 ## General

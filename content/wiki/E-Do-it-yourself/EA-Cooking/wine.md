@@ -3,7 +3,7 @@ id: wine
 aliases: []
 tags: []
 description: Understanding about Wine
-lang: FR
+language: fr
 title: Wine
 ---
 

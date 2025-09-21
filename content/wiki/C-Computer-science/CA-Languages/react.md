@@ -3,7 +3,7 @@ id: react
 aliases: []
 tags: []
 description: Bibliotèque React JS
-lang: FR
+language: fr
 title: React
 ---
 

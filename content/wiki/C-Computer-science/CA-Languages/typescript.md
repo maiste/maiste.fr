@@ -3,7 +3,7 @@ id: typescript
 aliases: []
 tags: []
 description: Typed JavaScript
-lang: ENG
+language: en
 title: TypeScript
 ---
 

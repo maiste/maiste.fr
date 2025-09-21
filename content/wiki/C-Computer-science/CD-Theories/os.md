@@ -3,7 +3,7 @@ id: os
 aliases: []
 tags: []
 description: Random resources about OS.
-lang: ENG
+language: en
 title: Operating systems
 ---
 

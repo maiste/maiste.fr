@@ -3,7 +3,7 @@ id: principes
 aliases: 
 tags: 
 description: Quotations, laws and principles I want to remember
-lang: FR
+language: fr
 title: Principles, effects and quotations
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: DIY
 description: Let's get hands dirty
-lang: ENG
+language: en
 ---
 
 ## Note

@@ -3,7 +3,7 @@ id: lang
 aliases: []
 tags: []
 description: Resources about English language
-lang: ENG
+language: en
 title: English
 ---
 

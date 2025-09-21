@@ -3,7 +3,7 @@ id: scp
 aliases: []
 tags: []
 description: SSH remote copy commandline tool
-lang: ENG
+language: en
 title: Scp
 ---
 

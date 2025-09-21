@@ -3,7 +3,7 @@ id: nix
 aliases: []
 tags: []
 description: Reproductible package manager
-lang: ENG
+language: en
 title: Nix
 ---
 

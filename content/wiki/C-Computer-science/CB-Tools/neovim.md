@@ -3,7 +3,7 @@ id: neovim
 aliases: []
 tags: []
 description: Stuffs about (Neo)Vim.
-lang: ENG
+lang: en
 title: NeoVIM
 ---
 
@@ -70,6 +70,9 @@ You can choose the symbol for the _input_ and the _output_ by using:
 - any unique character,
 - `t` for a tag (HTML kind)
 - `?` for the interactive mode
+
+In the case of the unique character, the left version will add a space (_e.g._ `(`)
+whereas the right version will not (_e.g._ `)`). 
 
 ### Comment.nvim
 
@@ -155,6 +158,14 @@ finish with `q`. The macro will be stored inside of `<letter>`. Once it is
 done, you can _apply_ the macro with `@<letter>`. It is possible to mix it with
 range. For example, you can apply it five times with `5@<letter>`. If you want
 to apply the previous macro, you can run `@@`. It also works with ranges.
+
+## Debugging Neovim
+
+To print the variables, it is possible to use the
+`print(vim.inspect(<variable>))` directive. The value can be found in
+`:messages` at startup.
+
+To inspect the `treesitter` tree, you can use `:InspectTree`.
 
 ## Resources
 

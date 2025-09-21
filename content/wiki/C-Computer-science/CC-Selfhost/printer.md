@@ -3,7 +3,7 @@ id: printer
 aliases: []
 tags: []
 description: How to configure a printer
-lang: ENG
+language: en
 title: Printer Management
 ---
 

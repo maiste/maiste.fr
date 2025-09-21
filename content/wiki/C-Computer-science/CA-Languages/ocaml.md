@@ -3,7 +3,7 @@ id: ocaml
 aliases: []
 tags: []
 description: About OCaml.
-lang: ENG
+language: en
 title: OCaml
 ---
 

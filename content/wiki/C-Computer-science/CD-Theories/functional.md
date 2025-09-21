@@ -3,7 +3,7 @@ id: functional
 aliases: []
 tags: []
 description: Programming using functional idioms
-lang: ENG
+language: en
 title: Functional Programming
 ---
 

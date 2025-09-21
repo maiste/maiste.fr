@@ -3,7 +3,7 @@ id: sqlite
 aliases: []
 tags: []
 description: In file SQL database
-lang: ENG
+language: en
 title: SQLite
 ---
 
