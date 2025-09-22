@@ -3,7 +3,7 @@
   <div class="metadata">
     <p>date: {{ date.repr.date }}</p>
     <p>
-      {%- if has_language -%} language: {{ language }} {%- else -%} language: EN {%- endif %}
+      {%- if has_lang -%} lang: {{ lang }} {%- else -%} lang: en {%- endif %}
     </p>
   </div>
   <p>{%- autoescape false -%} {{ yocaml_body }} {%- endautoescape -%}</p>

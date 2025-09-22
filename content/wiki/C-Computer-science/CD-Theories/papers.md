@@ -3,7 +3,7 @@ id: papers
 aliases: []
 tags: []
 description: Content related to scientific papers and presentation.
-language: en
+lang: en-GB
 title: Scientific Papers
 ---
 

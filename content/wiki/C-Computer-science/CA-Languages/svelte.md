@@ -3,7 +3,7 @@ id: svelte
 aliases: []
 tags: []
 description: Frontend Javascript & Typescript
-language: fr
+lang: fr
 title: Svelte
 ---
 

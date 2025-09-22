@@ -3,7 +3,7 @@ id: digital_garden
 aliases: 
 tags: 
 description: How to grow your online garden
-language: en
+lang: en-GB
 title: Digital Gardens
 ---
 ## Resources

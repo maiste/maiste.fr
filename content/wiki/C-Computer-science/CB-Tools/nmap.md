@@ -3,7 +3,7 @@ id: nmap
 aliases: []
 tags: []
 description: Port scanning commandline tool
-language: en
+lang: en-GB
 title: NMap
 ---
 

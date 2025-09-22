@@ -3,7 +3,7 @@ id: latex
 aliases: []
 tags: []
 description: About LaTex
-language: en
+lang: en-GB
 title: LaTex
 ---
 

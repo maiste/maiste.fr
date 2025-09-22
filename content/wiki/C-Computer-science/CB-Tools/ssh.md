@@ -3,7 +3,7 @@ id: ssh
 aliases: []
 tags: []
 description: Manipulate SSH utilities
-language: en
+lang: en-GB
 title: SSH
 ---
 

@@ -4,7 +4,7 @@ aliases: []
 tags: []
 description: How to maintain a bike.
 draft: true
-language: fr
+lang: fr
 title: Repairing a bike
 ---
 

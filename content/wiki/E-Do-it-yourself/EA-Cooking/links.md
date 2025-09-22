@@ -3,7 +3,7 @@ id: links
 aliases: []
 tags: []
 description: Cooking resources over the Internet
-language: en
+lang: en-GB
 title: Links
 ---
 

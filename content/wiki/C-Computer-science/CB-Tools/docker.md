@@ -3,7 +3,7 @@ id: docker
 aliases: []
 tags: []
 description: Containers with Docker.
-language: en
+lang: en-GB
 title: Docker
 ---
 

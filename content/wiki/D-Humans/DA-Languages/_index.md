@@ -1,7 +1,7 @@
 ---
 title: Languages
 description: Data about the spoken and written language
-language: en
+lang: en-GB
 ---
 
 ## Note

@@ -3,7 +3,7 @@ id: paste
 aliases: 
 tags: 
 description: Commandline tool paste
-language: en
+lang: en-GB
 title: Paste
 ---
 

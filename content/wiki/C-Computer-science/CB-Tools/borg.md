@@ -3,7 +3,7 @@ id: borg
 aliases: []
 tags: []
 description: Backup Commandline tool
-language: en
+lang: en-GB
 title: Borg
 ---
 

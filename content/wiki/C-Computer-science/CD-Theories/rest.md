@@ -3,7 +3,7 @@ id: rest
 aliases: []
 tags: []
 description: Deal with REST in Java
-language: fr
+lang: fr
 title: REST Api
 ---
 

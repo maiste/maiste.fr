@@ -3,7 +3,7 @@ id: good_practice
 aliases: 
 tags: 
 description: Lessons I have learnt painfully by experience
-language: en
+lang: en-GB
 title: Good Practices
 ---
 

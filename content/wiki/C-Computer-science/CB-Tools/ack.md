@@ -3,7 +3,7 @@ id: ack
 aliases: []
 tags: []
 description: Commandline tool ack
-language: en
+lang: en-GB
 title: Ack
 ---
 

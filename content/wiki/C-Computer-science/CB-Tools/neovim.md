@@ -3,7 +3,7 @@ id: neovim
 aliases: []
 tags: []
 description: Stuffs about (Neo)Vim.
-lang: en
+lang: en-GB
 title: NeoVIM
 ---
 

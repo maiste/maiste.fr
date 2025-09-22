@@ -3,7 +3,7 @@ id: tar
 aliases: []
 tags: []
 description: An archive system
-language: en
+lang: en-GB
 title: Tar
 ---
 

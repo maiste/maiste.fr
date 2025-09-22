@@ -3,7 +3,7 @@ id: age
 aliases: []
 tags: []
 description: Encryption tool for modern encryption
-language: en
+lang: en-GB
 title: Age
 ---
 

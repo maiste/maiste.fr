@@ -3,7 +3,7 @@ id: rclone
 aliases: []
 tags: []
 description: Rsync with remote provider for backups - Commandline tool
-language: en
+lang: en-GB
 title: Rclone
 ---
 

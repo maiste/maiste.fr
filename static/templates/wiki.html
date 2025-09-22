@@ -5,7 +5,7 @@
     <p>description: {{ description }}</p>
     {%- endif -%}
     <p>
-      {%- if has_language -%} language: {{ language }} {%- else -%} language: ENG {%- endif %}
+      {%- if has_lang -%} lang: {{ lang }} {%- else -%} lang: en {%- endif %}
     </p>
   </div>
   {%- autoescape false -%} {{ yocaml_body }} {%- endautoescape-%}

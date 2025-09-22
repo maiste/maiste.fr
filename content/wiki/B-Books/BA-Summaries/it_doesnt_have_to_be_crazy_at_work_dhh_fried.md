@@ -3,7 +3,7 @@ title: It doesn't have to be crazy at work - David Heinemeir & Jason Fried
 id: it_doesnt_have_to_be_crazy_at_work_dhh_fried
 aliases: 
 tags: 
-language: en
+lang: en-GB
 ---
 ## Notes
 

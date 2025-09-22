@@ -3,7 +3,7 @@ id: _index
 aliases: []
 tags: []
 description: Data about the books I have to be linked
-language: en
+lang: en-GB
 title: Book summaries
 ---
 

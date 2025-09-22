@@ -3,7 +3,7 @@ id: _index
 aliases: []
 tags: []
 description: Messy information about human life
-language: en
+lang: en-GB
 title: Humans
 ---
 

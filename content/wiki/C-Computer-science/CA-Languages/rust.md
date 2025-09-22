@@ -3,7 +3,7 @@ id: rust
 aliases: 
 tags: 
 description: Rust Programming Language - Low level language
-language: en
+lang: en-GB
 title: Rust
 ---
 

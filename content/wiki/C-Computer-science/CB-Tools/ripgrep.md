@@ -3,7 +3,7 @@ id: ripgrep
 aliases: []
 tags: []
 description: Commandline tool rg
-language: en
+lang: en-GB
 title: Ripgrep
 ---
 

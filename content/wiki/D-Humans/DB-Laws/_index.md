@@ -3,7 +3,7 @@ id: laws
 aliases: []
 tags: []
 description: Everything related to laws and legislations
-language: en
+lang: en-GB
 title: Laws
 ---
 

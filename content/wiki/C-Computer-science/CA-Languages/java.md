@@ -3,7 +3,7 @@ id: java
 aliases: 
 tags: 
 description: Java Programming Language
-language: fr
+lang: fr
 title: Java
 ---
 

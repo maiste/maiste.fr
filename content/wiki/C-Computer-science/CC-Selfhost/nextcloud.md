@@ -3,7 +3,7 @@ id: nextcloud
 aliases: []
 tags: []
 description: A Selfhosted Cloud
-language: en
+lang: en-GB
 title: Nextcloud
 ---
 

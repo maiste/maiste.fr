@@ -3,7 +3,7 @@ id: gpg
 aliases: []
 tags: []
 description: Safe data with encryption.
-language: en
+lang: en-GB
 title: GPG
 ---
 

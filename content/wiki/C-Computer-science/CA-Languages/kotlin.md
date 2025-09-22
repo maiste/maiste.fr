@@ -3,7 +3,7 @@ id: kotlin
 aliases: 
 tags: 
 description: Kotlin Programming Language
-language: fr
+lang: fr
 title: Kotlin
 ---
 

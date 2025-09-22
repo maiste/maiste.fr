@@ -1,7 +1,7 @@
 ---
 title: Proprietary tools
 description: Tools that are closed source
-language: en
+lang: en-GB
 ---
 
 ## Note

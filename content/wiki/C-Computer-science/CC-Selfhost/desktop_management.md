@@ -3,7 +3,7 @@ id: system
 aliases: []
 tags: []
 description: Desktop Management - Messy, needs to be split
-language: en
+lang: en-GB
 title: Desktop Management
 ---
 

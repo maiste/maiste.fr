@@ -1,7 +1,7 @@
 ---
 title: Organisation
 description: How to be organise and maybe more productive
-language: en
+lang: en-GB
 ---
 
 ## Note

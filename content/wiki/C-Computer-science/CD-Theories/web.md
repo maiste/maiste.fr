@@ -3,7 +3,7 @@ id: web
 aliases: []
 tags: []
 description: Javascript, Typescript and Co. Messy notes to be split
-language: fr
+lang: fr
 title: WebDev - Front
 ---
 

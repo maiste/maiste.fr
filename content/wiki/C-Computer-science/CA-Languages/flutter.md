@@ -3,7 +3,7 @@ id: flutter
 aliases: []
 tags: []
 description: How to use Flutter
-language: en
+lang: en-GB
 title: Flutter
 ---
 

@@ -3,7 +3,7 @@ id: remote
 aliases: []
 tags: []
 description: Guide to remote work
-language: en
+lang: en-GB
 title: Remote
 ---
 

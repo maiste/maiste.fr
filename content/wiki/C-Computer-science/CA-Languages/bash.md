@@ -3,7 +3,7 @@ id: bash
 aliases: []
 tags: []
 description: About Bash scripts.
-language: en
+lang: en-GB
 title: Bash
 ---
 ## Here document

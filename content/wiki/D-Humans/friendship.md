@@ -3,7 +3,7 @@ id: friendship
 aliases: 
 tags: 
 description: Theory and stats about friendships
-language: en
+lang: en-GB
 title: Friendship
 draft: true
 ---

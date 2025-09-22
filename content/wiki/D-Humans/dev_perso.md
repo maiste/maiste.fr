@@ -3,7 +3,7 @@ id: dev_perso
 aliases: 
 tags: 
 description: Be a better person for me and the others - Understand and progress
-language: en
+lang: en-GB
 title: Personal Development
 ---
 

@@ -3,7 +3,7 @@ id: _index
 aliases: []
 tags: []
 description: The title is self explanatory
-language: en
+lang: en-GB
 title: Databases
 ---
 

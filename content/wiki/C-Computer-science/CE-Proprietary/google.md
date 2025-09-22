@@ -3,7 +3,7 @@ id: google
 aliases: []
 tags: []
 description: About Google Softwares.
-language: en
+lang: en-GB
 title: Google Softwares
 ---
 

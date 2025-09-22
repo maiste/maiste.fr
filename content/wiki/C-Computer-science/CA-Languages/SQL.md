@@ -4,7 +4,7 @@ aliases:
 tags: 
 description: Notes about SQL Language & PosgreSQL
 title: SQL
-language: en
+lang: en-GB
 ---
 
 ### Optimize sequence

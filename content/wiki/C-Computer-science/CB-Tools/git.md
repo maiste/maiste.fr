@@ -3,7 +3,7 @@ id: git
 aliases: []
 tags: []
 description: How to use Git
-language: en
+lang: en-GB
 title: Git
 ---
 

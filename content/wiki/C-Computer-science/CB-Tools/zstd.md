@@ -3,7 +3,7 @@ id: zstd
 aliases: []
 tags: []
 description: Fast compression tool
-language: en
+lang: en-GB
 title: Zstd
 ---
 

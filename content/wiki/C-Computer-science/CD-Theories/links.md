@@ -3,7 +3,7 @@ id: links
 aliases: []
 tags: []
 description: A list of links I regularly use in CS
-language: en
+lang: en-GB
 title: Links
 ---
 

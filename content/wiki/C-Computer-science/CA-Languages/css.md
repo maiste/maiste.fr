@@ -3,7 +3,7 @@ id: css
 aliases: []
 tags: []
 description: About css.
-language: en
+lang: en-GB
 title: CSS
 ---
 

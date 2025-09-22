@@ -1,7 +1,7 @@
 ---
 title: Books
 description: All about the books I have and I will read
-language: en
+lang: en-GB
 ---
 
 ## Note

@@ -3,7 +3,7 @@ id: vegetarian
 aliases: []
 tags: []
 description: Notes about vegetarian food
-language: en
+lang: en-GB
 title: Vegetarian
 ---
 

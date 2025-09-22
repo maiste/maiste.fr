@@ -3,7 +3,7 @@ id: ffmpeg
 aliases: []
 tags: []
 description: Video manipulation commandline tool
-language: en
+lang: en-GB
 title: FFmepg
 ---
 
