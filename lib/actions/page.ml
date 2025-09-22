@@ -1,28 +1,34 @@
 open Yocaml
 
-let process_page (module R : S.RESOLVER) file =
-  let into = R.Target.pages in
-  let file_target =
-    if Path.basename file = Some "index.md"
-    then R.Target.as_html ~into file
-    else R.Target.as_html_index ~into file
-  in
+let from_file_to_template r file =
   let open Task in
-  Action.write_static_file
-    file_target
-    (Pipeline.track_file R.Source.binary
-     >>> Yocaml_yaml.Pipeline.read_file_with_metadata (module Archetype.Page) file
-     >>> Yocaml_cmarkit.content_to_html ()
-     >>> Yocaml_jingoo.Pipeline.as_template
-           (module Archetype.Page)
-           (R.Source.template "page.html")
-     >>> Yocaml_jingoo.Pipeline.as_template
-           (module Archetype.Page)
-           (R.Source.template "base.html")
-     >>> drop_first ())
+  let files =
+    let+ () = Pipeline.track_file Resolver.binary
+    and+ content =
+      Yocaml_yaml.Pipeline.read_file_with_metadata (module Archetype.Page) file
+    in
+    content
+  in
+  files
+  >>> Yocaml_markdown.Pipeline.With_metadata.make ~strict:false ()
+  >>> Yocaml.Pipeline.chain_templates
+        (module Yocaml_jingoo)
+        (module Archetype.Page)
+        [ Resolver.Source.template r "page.html"; Resolver.Source.template r "base.html" ]
+  >>> drop_first ()
 ;;
 
-let process (module R : S.RESOLVER) =
-  let process_page = process_page (module R) in
-  Utils.process_markdown ~only:`Files R.Source.pages process_page
+let process_page r file =
+  let into = Resolver.Target.pages r in
+  let file_target =
+    if Path.basename file = Some "index.md"
+    then Resolver.Path.as_html ~into file
+    else Resolver.Path.as_html_index ~into file
+  in
+  Action.write_static_file file_target (from_file_to_template r file)
+;;
+
+let process r =
+  let process_page = process_page r in
+  Utils.process_markdown ~only:`Files (Resolver.Source.pages r) process_page
 ;;

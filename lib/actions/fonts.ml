@@ -1,9 +1,9 @@
 open Yocaml
 
-let process (module R : S.RESOLVER) =
+let process r =
   Action.batch
     ~only:`Files
     ~where:Rule.wildcard
-    R.Source.fonts
-    (Action.copy_file ~into:R.Target.fonts)
+    (Resolver.Source.fonts r)
+    (Action.copy_file ~into:(Resolver.Target.fonts r))
 ;;

@@ -26,7 +26,7 @@ let rss_from_posts ~title ~site_url ~feed_url ~description ~author () =
     item ~title ~author ~description ~link ~pub_date ())
 ;;
 
-let fetch_posts (module R : S.RESOLVER) =
+let fetch_posts r =
   let open Task in
   let is_section_index path =
     let index_name = "_index.md" in
@@ -36,7 +36,9 @@ let fetch_posts (module R : S.RESOLVER) =
   in
   let ff acc path content =
     let metadata, _ = content in
-    let path = R.truncate path 1 |> Path.abs |> R.Target.as_html_index_untouched in
+    let path =
+      Resolver.Path.truncate path 1 |> Path.abs |> Resolver.Path.as_html_index_untouched
+    in
     if not @@ Blog.is_draft metadata then (path, metadata) :: acc else acc
   in
   let fd acc _path _content _children = acc in
@@ -45,11 +47,11 @@ let fetch_posts (module R : S.RESOLVER) =
     (module Blog)
     (module Blog_section)
     ~is_section_index
-    R.Source.blog
+    (Resolver.Source.blog r)
   >>> lift (Tree.leaked_fold ff fd [])
 ;;
 
-let process (module R : S.RESOLVER) =
+let process r =
   let title = "Maiste Forest" in
   let description = "A flux about the posts I have published" in
   let site_url = "https://maiste.fr" in
@@ -58,11 +60,11 @@ let process (module R : S.RESOLVER) =
     Yocaml_syndication.Person.make ~email:"dev@maiste.fr" "Etienne (maiste) Marais"
   in
   let open Task in
-  let posts = fetch_posts (module R) in
+  let posts = fetch_posts r in
   let atom =
     Action.write_static_file
-      R.Target.atom
-      (Pipeline.track_file R.Source.binary
+      (Resolver.Target.atom r)
+      (Pipeline.track_file Resolver.binary
        >>> posts
        >>> atom_from_posts
              ~title
@@ -73,8 +75,8 @@ let process (module R : S.RESOLVER) =
   in
   let rss =
     Action.write_static_file
-      R.Target.rss
-      (Pipeline.track_file R.Source.binary
+      (Resolver.Target.rss r)
+      (Pipeline.track_file Resolver.binary
        >>> posts
        >>> rss_from_posts ~title ~site_url ~feed_url ~description ~author ())
   in

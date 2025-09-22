@@ -14,9 +14,9 @@ let compute_image_name cb =
   read_code_block cb |> Digestif.SHA256.digest_string |> Digestif.SHA256.to_hex
 ;;
 
-let generate_image_link_from_block (module R : S.RESOLVER) cb meta =
+let generate_image_link_from_block cb meta =
   let open Cmarkit in
-  let path = compute_image_name cb |> R.URL.diagrams |> Path.to_string in
+  let path = compute_image_name cb |> Resolver.URL.diagrams |> Path.to_string in
   let reference : Inline.Link.reference =
     `Inline (Link_definition.make ~dest:(path, meta) (), meta)
   in
@@ -27,13 +27,13 @@ let generate_image_link_from_block (module R : S.RESOLVER) cb meta =
   Block.Paragraph (Block.Paragraph.make image, meta)
 ;;
 
-let map_d2_to_img (module R : S.RESOLVER) markdown =
+let map_d2_to_img markdown =
   let open Cmarkit in
   let block _m = function
     | Block.Code_block (cb, _) ->
       (match Block.Code_block.info_string cb with
        | Some (lang, meta) when lang = "d2" ->
-         Mapper.ret @@ generate_image_link_from_block (module R) cb meta
+         Mapper.ret @@ generate_image_link_from_block cb meta
        | _ -> Mapper.default)
     | _ -> Mapper.default
   in
@@ -41,7 +41,7 @@ let map_d2_to_img (module R : S.RESOLVER) markdown =
   Mapper.map_doc mapper markdown
 ;;
 
-let get_diagrams (module R : S.RESOLVER) content =
+let get_diagrams r content =
   let markdown = Cmarkit.Doc.of_string ~heading_auto_ids:true ~strict content in
   let open Cmarkit in
   let block _ acc = function
@@ -52,7 +52,8 @@ let get_diagrams (module R : S.RESOLVER) content =
           let content = read_code_block cb in
           let path =
             compute_image_name cb
-            |> fun path -> Path.(R.Target.diagrams / path) |> Path.add_extension "d2"
+            |> fun path ->
+            Path.(Resolver.Target.diagrams r / path) |> Path.add_extension "d2"
           in
           (path, content) :: acc
         | _ -> acc
@@ -64,15 +65,13 @@ let get_diagrams (module R : S.RESOLVER) content =
   Folder.fold_doc folder [] markdown
 ;;
 
-let to_markdown (module R : S.RESOLVER) ~is_using_d2 content =
+let to_markdown ~is_using_d2 content =
   let markdown = Cmarkit.Doc.of_string ~heading_auto_ids:true ~strict content in
-  (if is_using_d2 then map_d2_to_img (module R) markdown else markdown)
-  |> Cmarkit_html.of_doc ~safe
+  (if is_using_d2 then map_d2_to_img markdown else markdown) |> Cmarkit_html.of_doc ~safe
 ;;
 
-let content_to_html (module R : S.RESOLVER) ~is_using_d2 =
-  Yocaml.Task.lift (fun (metadata, content) ->
-    metadata, to_markdown ~is_using_d2 (module R) content)
+let content_to_html ~is_using_d2 =
+  Yocaml.Task.lift (fun (metadata, content) -> metadata, to_markdown ~is_using_d2 content)
 ;;
 
 let invoke_d2 source target =
@@ -87,26 +86,26 @@ let invoke_d2 source target =
     ]
 ;;
 
-let batch_diagrams (module R : S.RESOLVER) =
+let batch_diagrams r =
   Action.batch
     ~only:`Files
     ~where:(Path.has_extension "d2")
-    R.Target.diagrams
+    (Resolver.Target.diagrams r)
     (fun source ->
        let target = Path.change_extension "svg" source in
        Action.exec_cmd (invoke_d2 source) target)
 ;;
 
-let d2_action (module R : S.RESOLVER) ~is_using_d2 markdown =
+let d2_action r ~is_using_d2 markdown =
   let open Task in
   if is_using_d2
   then (
-    let diagrams = get_diagrams (module R) markdown in
+    let diagrams = get_diagrams r markdown in
     let to_action (path, content) =
       Action.Static.write_file
         path
-        (Pipeline.track_file R.Source.binary >>> lift (fun () -> content))
+        (Pipeline.track_file Resolver.binary >>> lift (fun () -> content))
     in
-    List.map to_action diagrams @ [ batch_diagrams (module R) ])
+    List.map to_action diagrams @ [ batch_diagrams r ])
   else []
 ;;

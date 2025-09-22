@@ -1,16 +1,17 @@
 open Yocaml
 
-let process (module R : S.RESOLVER) () =
+let process r =
   let open Eff in
-  Action.restore_cache R.Target.cache
-  >>= Css.process (module R)
-  >>= Js.process (module R)
-  >>= Fonts.process (module R)
-  >>= Images.process (module R)
-  >>= Page.process (module R)
-  >>= Blog.process (module R)
-  >>= Syndicate.process (module R)
-  >>= Wiki.process (module R)
-  >>= Projects.process (module R)
-  >>= Action.store_cache R.Target.cache
+  let cache = Resolver.Target.cache r in
+  Action.restore_cache cache
+  >>= Css.process r
+  >>= Js.process r
+  >>= Fonts.process r
+  >>= Images.process r
+  >>= Page.process r
+  >>= Blog.process r
+  >>= Syndicate.process r
+  >>= Wiki.process r
+  >>= Projects.process r
+  >>= Action.store_cache cache
 ;;

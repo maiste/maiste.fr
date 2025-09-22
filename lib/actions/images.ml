@@ -1,9 +1,9 @@
 open Yocaml
 
-let process (module R : S.RESOLVER) =
+let process r =
   Action.batch
     ~only:`Both
     ~where:Rule.wildcard
-    R.Source.images
-    (Action.copy_directory ~into:R.Target.images)
+    (Resolver.Source.images r)
+    (Action.copy_directory ~into:(Resolver.Target.images r))
 ;;

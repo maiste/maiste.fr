@@ -2,4 +2,4 @@
 
 (** [process] generates the rss and atom flux for the website, based on the
     [Path.t] provided by the [S.RESOLVER] module. *)
-val process : (module S.RESOLVER) -> Yocaml.Action.t
+val process : Resolver.t -> Yocaml.Action.t

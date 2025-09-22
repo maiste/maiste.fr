@@ -2,4 +2,4 @@
 
 (** [process] generates an [Action.t] based on the [Path.t] provided inside of
    the [S.RESOLVER] module. *)
-val process : (module S.RESOLVER) -> Yocaml.Action.t
+val process : Resolver.t -> Yocaml.Action.t

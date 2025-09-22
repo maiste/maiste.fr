@@ -2,4 +2,4 @@
 
 (** [process] defines an [Action.t] to generate the font based on the
     [S.RESOLVER] module. *)
-val process : (module S.RESOLVER) -> Yocaml.Action.t
+val process : Resolver.t -> Yocaml.Action.t

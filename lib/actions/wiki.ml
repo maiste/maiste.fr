@@ -18,20 +18,24 @@ let extract_metadata_from_dir path content =
   | Some (metadata, content) -> metadata, content
 ;;
 
-let get_index (module R : S.RESOLVER) = function
+let get_index = function
   | Tree.Dir { path; content; _ } ->
     let metadata, _ = extract_metadata_from_dir path content in
-    let path = R.truncate path 1 |> Path.abs |> fun p -> Path.(p / "index.html") in
+    let path =
+      Resolver.Path.truncate path 1 |> Path.abs |> fun p -> Path.(p / "index.html")
+    in
     metadata, path
   | Tree.File { path; content } ->
-    let path = R.truncate path 1 |> Path.abs |> R.Target.as_html_index_untouched in
+    let path =
+      Resolver.Path.truncate path 1 |> Path.abs |> Resolver.Path.as_html_index_untouched
+    in
     let metadata, _ = content in
     metadata, path
 ;;
 
-let dir_to_action (module R : S.RESOLVER) path children content =
+let dir_to_action r path children content =
   let children =
-    List.map (get_index (module R)) children
+    List.map get_index children
     |> List.filter (fun (wiki, _) -> not @@ Model.Wiki.is_draft wiki)
     |> List.sort (fun (w1, _) (w2, _) -> Model.Wiki.compare w1 w2)
     |> List.map (fun (t, path) ->
@@ -45,49 +49,50 @@ let dir_to_action (module R : S.RESOLVER) path children content =
     Section.v ~title Section.Category.Index children
   in
   let template = section, content in
-  let path = R.truncate path 1 in
-  let path = Path.(R.Target.root ++ path) in
+  let path = Resolver.Path.truncate path 1 in
+  let path = Path.(Resolver.Target.target r ++ path) in
   let path = Path.(path / "index.html") in
   let open Task in
   [ Action.write_static_file
       path
-      (Pipeline.track_file R.Source.binary
+      (Pipeline.track_file Resolver.binary
        >>> lift (fun () -> template)
        >>> Yocaml_cmarkit.content_to_html ()
        >>> Yocaml_jingoo.Pipeline.as_template
              (module Section)
-             (R.Source.template "section.html")
+             (Resolver.Source.template r "section.html")
        >>> Yocaml_jingoo.Pipeline.as_template
              (module Section)
-             (R.Source.template "base.html")
+             (Resolver.Source.template r "base.html")
        >>> drop_first ())
   ]
 ;;
 
-let file_to_action (module R : S.RESOLVER) path content =
+let file_to_action r path content =
   let open Task in
-  let path = R.truncate path 1 in
-  let path = Path.(R.Target.root ++ path) in
-  let path = R.Target.as_html_index_untouched path in
+  let path = Resolver.Path.truncate path 1 in
+  let path = Path.(Resolver.Target.target r ++ path) in
+  let path = Resolver.Path.as_html_index_untouched path in
   let metadata, markdown = content in
   let is_using_d2 = Model.Wiki.is_using_d2 metadata in
-  let d2_action = Markdown.d2_action (module R) ~is_using_d2 markdown in
+  let d2_action = Markdown.d2_action r ~is_using_d2 markdown in
   Action.write_static_file
     path
-    (Pipeline.track_file R.Source.binary
+    (Pipeline.track_file Resolver.binary
      >>> lift (fun () -> content)
-     >>> Markdown.content_to_html (module R) ~is_using_d2
+     >>> Markdown.content_to_html ~is_using_d2
      >>> Yocaml_jingoo.Pipeline.as_template
            (module Model.Wiki)
-           (R.Source.template "wiki.html")
+           (Resolver.Source.template r "wiki.html")
      >>> Yocaml_jingoo.Pipeline.as_template
            (module Model.Wiki)
-           (R.Source.template "base.html")
+           (Resolver.Source.template r "base.html")
      >>> drop_first ())
   :: d2_action
 ;;
 
-let process (module R : S.RESOLVER) root : Action.t =
+let process r : Action.t =
+  let root = Resolver.Source.wiki r in
   let open Eff in
   fun cache ->
     let* tree =
@@ -98,9 +103,7 @@ let process (module R : S.RESOLVER) root : Action.t =
         ~is_section_index
         root
     in
-    let dir_to_action = dir_to_action (module R) in
-    let file_to_action = file_to_action (module R) in
+    let dir_to_action = dir_to_action r in
+    let file_to_action = file_to_action r in
     Tree.to_action ~dir_to_action ~file_to_action tree cache
 ;;
-
-let process (module R : S.RESOLVER) = process (module R) R.Source.wiki

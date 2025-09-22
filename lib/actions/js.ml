@@ -1,9 +1,9 @@
 open Yocaml
 
-let process (module R : S.RESOLVER) =
+let process r =
   Action.batch
     ~only:`Files
     ~where:Rule.is_js
-    R.Source.js
-    (Action.copy_file ~into:R.Target.js)
+    (Resolver.Source.js r)
+    (Action.copy_file ~into:(Resolver.Target.js r))
 ;;

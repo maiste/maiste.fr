@@ -1,9 +1,9 @@
 open Yocaml
 
-let process (module R : S.RESOLVER) =
+let process r =
   Action.batch
     ~only:`Files
     ~where:Rule.is_css
-    R.Source.css
-    (Action.copy_file ~into:R.Target.css)
+    (Resolver.Source.css r)
+    (Action.copy_file ~into:(Resolver.Target.css r))
 ;;
