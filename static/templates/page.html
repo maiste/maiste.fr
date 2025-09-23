@@ -1,4 +1,6 @@
 <article>
-  <h1>{{ page_title }}</h1>
-  <p>{%- autoescape false -%} {{ yocaml_body }} {%- endautoescape -%}</p>
+  <div class="title-section">
+    <h1>{{ page_title }}</h1>
+  </div>
+  {%- autoescape false -%} {{ yocaml_body }} {%- endautoescape -%}
 </article>

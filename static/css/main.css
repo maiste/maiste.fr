@@ -100,23 +100,20 @@ p {
 
 h1 {
   font-weight: 900; /* Nebula Sans Black */
-  font-size: var(--font-xxl);
-  text-transform: capitalize;
-  margin-bottom: var(--space-xl);
-  margin-bottom: var(--space-s);
-  border-left: 8px solid var(--primary-color);
-  padding-left: var(--space-s);
+  margin-bottom: var(--space-xs);
+  font-size: var(--font-xl);
 }
 
 h2 {
   font-weight: 700; /* Nebula Sans Black */
-  font-size: var(--font-xl);
+  font-size: var(--font-l);
   margin-bottom: var(--space-m);
+  border-bottom: 2px solid var(--primary-color);
 }
 
 h3 {
-  font-weight: 600;
-  font-size: var(--font-l);
+  font-weight: 700;
+  font-size: var(--font-m);
 }
 
 h4 {
@@ -222,8 +219,8 @@ header nav h2 {
   font-family: "Rubik Doodle Shadow", "Nebula Sans", sans-serif;
   font-weight: bold;
   font-size: var(--font-xxl);
-  color: var(--bg-color);
-  background-color: var(--primary-color);
+  color: var(--primary-color);
+  border-bottom: none;
   text-decoration: none;
   padding: 0 12px;
   margin: 0;
@@ -271,6 +268,10 @@ article ul {
   margin-bottom: var(--space-s);
 }
 
+article p img {
+  margin: 0 auto;
+}
+
 article blockquote p {
   margin: 0;
 }
@@ -282,6 +283,29 @@ article blockquote {
 article pre {
   margin-top: var(--space-xs);
   margin-bottom: var(--space-m);
+}
+
+.title-section {
+  border-left: var(--space-s) solid var(--primary-color);
+  padding-left: var(--space-s);
+  margin-bottom: var(--space-l);
+  margin-top: var(--space-l);
+}
+
+/* Handle the section for footnotes */
+section[role="doc-endnotes"] {
+  margin-top: var(--space-xl);
+  counter-reset: endnotes;
+  & ol {
+    list-style-position: inside;
+    padding-left: 0;
+    & li {
+      & p {
+        margin-bottom: var(--space-3xs);
+        display: inline;
+      }
+    }
+  }
 }
 
 /** Footer **/
@@ -344,6 +368,7 @@ footer p {
 .index h3,
 .project h2 {
   margin-bottom: var(--space-3xs);
+  border-bottom: none;
 }
 
 .index ul {
@@ -397,26 +422,40 @@ footer p {
 
 /*** Specific media queries ***/
 
-@media (max-width: 1280px) {
+@media (max-width: 1080px) {
   .container {
     padding-right: 5%;
     padding-left: 5%;
     width: 90%;
   }
-}
 
-@media (max-width: 768px) and (orientation: portrait) {
   header {
     margin-bottom: var(--space-l);
   }
 
   header nav {
     flex-direction: column;
+    width: 90%;
   }
 
   header nav ul {
     padding-top: 16px;
     justify-content: center;
+  }
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+  .title-section {
+    border-left: none;
+    margin-top: var(--space-s);
+    padding-left: 0;
+  }
+
+  .title-section h1 {
+    font-size: var(--font-l);
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    padding: 8px;
   }
 
   .container {

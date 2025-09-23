@@ -1,10 +1,12 @@
 <article>
-  <h1>{{ title }}</h1>
-  <div class="metadata">
-    <p>date: {{ date.repr.date }}</p>
-    <p>
-      {%- if has_lang -%} lang: {{ lang }} {%- else -%} lang: en {%- endif %}
-    </p>
+  <div class="title-section">
+    <h1>{{ title }}</h1>
+    <div class="metadata">
+      <p>date: {{ date.repr.date }}</p>
+      <p>
+        {%- if has_lang -%} lang: {{ lang }} {%- else -%} lang: en {%- endif %}
+      </p>
+    </div>
   </div>
-  <p>{%- autoescape false -%} {{ yocaml_body }} {%- endautoescape -%}</p>
+  {%- autoescape false -%} {{ yocaml_body }} {%- endautoescape -%}
 </article>
