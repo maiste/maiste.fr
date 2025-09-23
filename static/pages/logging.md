@@ -21,7 +21,12 @@ care about it.
 
 ## 2025
 
-### 202-09-21
+### 2025-09-23
+
+Update the CSS to support footnotes. Rewrite the CSS to change the way the
+title is written. Change the title font to use the Knewave font.
+
+### 2025-09-21
 
 Update the parser to match the `ltex-ls-plus` language server front matter. It
 allows me to have a per file grammar correction, in function of the language.
