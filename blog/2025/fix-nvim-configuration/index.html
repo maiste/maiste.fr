@@ -279,14 +279,116 @@
     <main>
       <div class="container"><article>
   <div class="title-section">
-    <h1>FFmepg</h1>
-    <div class="metadata"><p>description: Video manipulation commandline tool</p><p>lang: en-GB
+    <h1>A little Odysseus: How I solve my latency problem in NeoVIM </h1>
+    <div class="metadata">
+      <p>date: 2025-09-25</p>
+      <p>lang: en-GB
       </p>
     </div>
-  </div><h1 id="manipulate-videos"><a class="anchor" aria-hidden="true" href="#manipulate-videos"></a>Manipulate videos</h1>
-<h2 id="shortcute-a-video"><a class="anchor" aria-hidden="true" href="#shortcute-a-video"></a>Shortcute a video</h2>
-<pre><code>ffmpeg -i input -ss hh:mm:ss -to hh:mm:ss -c copy &lt;output&gt;
+  </div><h2 id="a-bit-of-context"><a class="anchor" aria-hidden="true" href="#a-bit-of-context"></a>A bit of context</h2>
+<p>I used to say that I should write more blog posts. It was about a year ago. You
+hold in your hands the first blog post of 2025. Yeah! 🎉</p>
+<p>Now we have done the presentation, let's dig into the problem. Now that we've
+done the introduction, let's delve into the problem. For a while, when I was
+editing some large files on
+<a href="../../wiki/C-Computer-science/CB-Tools/neovim.md">NeoVIM</a>, it would lag and
+insert the same character multiple time. It was quite painful, but it didn't
+occur frequently enough to become &quot;a Problem&quot; (with a capital P). I would
+simply remove the extra text and carry on until it happened again. It was not
+out of laziness but because I read that it could become a problem with the
+language server when dealing with large files.</p>
+<p>At some point, it started printing things like:</p>
+<pre><code class="language-markdown">Wriiiiiiii|
 </code></pre>
+<h2 id="rewriting-the-config"><a class="anchor" aria-hidden="true" href="#rewriting-the-config"></a>Rewriting the config</h2>
+<p>A few weeks ago, I started doing what any <code>NeoVIM</code> developer would do when they
+have some free time: I rewrote my configuration. Apart the fact I'm happy with
+the more readable version (you can <a href="https://codeberg.org/maiste/dotfiles/src/branch/main/editor/.config/nvim">have a
+look</a>),
+I realized it was time to get my hands dirty and dig into this lagging issue.</p>
+<p>After some investigations, I came to understand the problem mostly occurred
+editing large markdown files. The lag was also showing up on large files when
+they were comments in it.</p>
+<p>At some point, I saw this small popup at the bottom of my <code>NeoVIM</code> window:</p>
+<p><img src="/static/images/blog/2025/ltex-ls.png" alt="Notification of a check from ltex-ls" ></p>
+<p>It is a notification informing me the
+<a href="https://github.com/valentjn/ltex-ls">ltex-ls</a> had completed its job. It was
+doing this on <strong>every keystroke</strong>.</p>
+<p>My first test was to disable it, and... It worked! 🥳 However, while disabling
+it was a solution, the conscientious reader can easily understand this is not a
+pleasant solution: I want my editor to yell at me when doing grammar mistakes.</p>
+<h2 id="duckduckgo-is-my-friend"><a class="anchor" aria-hidden="true" href="#duckduckgo-is-my-friend"></a>DuckDuckGo is my friend</h2>
+<p>I opened <code>Firefox</code> and started looking for a solution. The first interesting
+point I found was <a href="https://github.com/valentjn/ltex-ls">ltex-ls</a> had
+not been maintained for two years! 🤦🏻‍♂️ Some people have forked the project and named
+it <a href="https://github.com/ltex-plus/ltex-ls-plus">ltex-ls-plus</a>. The first step
+was to replace it in my configuration:</p>
+<pre><code class="language-lua">local servers = {
+    -- I have removed
+    -- ltex = {
+    -- [...]
+    -- },
+    -- and replaced it with;
+    ltex_plus = {
+        -- [...] We will see this part later.
+    }
+}
+</code></pre>
+<p>The &quot;nice part&quot; of being a late adopter is that the people at
+<a href="https://github.com/neovim/nvim-lspconfig">nvim-lspconfig</a> already added a
+<a href="https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ltex_plus.lua">configuration for
+it</a>.</p>
+<p>However, I want the server to be &quot;slower&quot; and only perform checks when I want
+it to, specially when I save (<code>:w</code>) files. That's when I discovered two
+interesting configuration: <code>debounce_text_changes</code> and <code>checkFrequency</code>. The
+first one is a flag that asks <code>NeoVIM</code> to send the data only every <code>X</code> time
+unit. The second allows the server to choose when to run. I changed the
+settings to make it run only on save:</p>
+<pre><code class="language-lua">local servers = {
+    ltex_plus = {
+        settings = {
+            ltex = {
+                checkFrequency = &quot;save&quot;, -- TADA!
+                -- [...]
+            }
+        },
+        flags = { debounce_text_changes = 300 }, -- TADA number 2! Here the time is in ms
+    }
+}
+</code></pre>
+<p>Thanks to this, I can now write in large files and check for grammar only when
+I save. It reduces the load because it checks the file only once. Plus, as the
+sending is delayed, it asks the server less frequently, also reducing the load
+on the LSP<sup><a href="#fn-2" id="ref-1-fn-2" role="doc-noteref" class="fn-label">[1]</a></sup>.</p>
+<h2 id="toward-an-improvement"><a class="anchor" aria-hidden="true" href="#toward-an-improvement"></a>Toward an improvement?</h2>
+<p>As I had to delve into the <a href="https://ltex-plus.github.io/ltex-plus/advanced-usage.html#set-language-in-markdown-with-yaml-front-matter">ltext-plus-ls
+documentation</a>,
+I discovered I could use the Front Matter<sup><a href="#fn-1" id="ref-1-fn-1" role="doc-noteref" class="fn-label">[2]</a></sup> to specify the language. Since my
+<a href="../../wiki/">wiki</a> mixes English and French, this is convenient.</p>
+<p>Now I can specify the language with:</p>
+<pre><code class="language-markdown">---
+lang: en-GB
+---
+
+Blabla bla bla blabla [...]
+</code></pre>
+<p>Thanks to a <code>sed</code> script, I have updated my website code to parse the new
+format. Honestly, this is now a very neat experience!</p>
+<h2 id="conclusion"><a class="anchor" aria-hidden="true" href="#conclusion"></a>Conclusion</h2>
+<p>Sometimes, it is good to clean up the configuration as long as it doesn't take
+more time than the time you will use software. It also shows how easy it is to
+forget the dependencies of the tools we work with (contrary to the conscious
+checks we do on the projects we work on).</p>
+<p>Looking at my watch, it is herbal tea time for me 🫖 I leave you with this.
+Hope you enjoyed the article and that it might have helped you with your own
+lagging issues.</p>
+<section role="doc-endnotes"><ol>
+<li id="fn-2">
+<p>Language Server Protocol</p>
+<span><a href="#ref-1-fn-2" role="doc-backlink" class="fn-label">↩︎︎</a></span></li><li id="fn-1">
+<p>Front Matter refers to the data (in <code>YAML</code> or <code>JSON</code>) you have at the
+beginning of a file.</p>
+<span><a href="#ref-1-fn-1" role="doc-backlink" class="fn-label">↩︎︎</a></span></li></ol></section>
 </article>
 </div>
     </main>

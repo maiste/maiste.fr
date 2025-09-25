@@ -278,28 +278,29 @@
 
     <main>
       <div class="container"><article>
-  <h1>Logs</h1>
-  <p><p>This page summarizes everything that I want to log about my personal projects,
+  <div class="title-section">
+    <h1>Logs</h1>
+  </div><p>This page summarizes everything that I want to log about my personal projects,
 conferences or anything where I want a timeline. Expect it to be absolutely
 hard to read because I expect no other person than me (maybe my girlfriend) to
 care about it.</p>
 <h2 id="todos"><a class="anchor" aria-hidden="true" href="#todos"></a>TODOs</h2>
 <ul>
-<li>[ ] Refactor the code because it is not clean:
-<ul>
-<li>[ ] <code>Tree.ml</code> with a less leaky interface and remove the <code>is_index_file</code> function</li>
-<li>[ ] Clean the <code>S.ml</code> and the <code>Resolver.ml</code></li>
-<li>[ ] Add some documentation everywhere, please!</li>
+<li><div class="task"><input type="checkbox" disabled><div>Refactor the code because it is not clean:</div></div></li>
+<li><div class="task"><input type="checkbox" disabled><div><code>Tree.ml</code> with a less leaky interface and remove the <code>is_index_file</code> function</div></div></li>
+<li><div class="task"><input type="checkbox" disabled><div>Clean the <code>S.ml</code> and the <code>Resolver.ml</code></div></div></li>
+<li><div class="task"><input type="checkbox" disabled><div>Add some documentation everywhere, please!</div></div></li>
 <li>[✔️] Improve the separation between actions and model and move the code in <code>lib/</code></li>
-<li>[ ] Use the <em>&quot;forest&quot;</em> language to describe all of this!</li>
+<li><div class="task"><input type="checkbox" disabled><div>Use the <em>&quot;forest&quot;</em> language to describe all of this!</div></div></li>
 <li>[✔️] The D2 system available for the <code>blog.ml</code> too.</li>
 <li>[✔️] Unified the <code>blog.ml</code>, <code>project.ml</code> and, <code>wiki.ml</code> interface to use the same section type. (Same page?)</li>
-</ul>
-</li>
-<li>[ ] Start the blog back and write regularly about what I learn,</li>
+<li><div class="task"><input type="checkbox" disabled><div>Start the blog back and write regularly about what I learn,</div></div></li>
 </ul>
 <h2 id="2025"><a class="anchor" aria-hidden="true" href="#2025"></a>2025</h2>
-<h3 id="202-09-21"><a class="anchor" aria-hidden="true" href="#202-09-21"></a>202-09-21</h3>
+<h3 id="2025-09-23"><a class="anchor" aria-hidden="true" href="#2025-09-23"></a>2025-09-23</h3>
+<p>Update the CSS to support footnotes. Rewrite the CSS to change the way the
+title is written. Change the title font to use the Knewave font.</p>
+<h3 id="2025-09-21"><a class="anchor" aria-hidden="true" href="#2025-09-21"></a>2025-09-21</h3>
 <p>Update the parser to match the <code>ltex-ls-plus</code> language server front matter. It
 allows me to have a per file grammar correction, in function of the language.
 Default to American English (I might change to British English later).</p>
@@ -387,7 +388,6 @@ more time. Will look at this later.</p>
 <h3 id="2024-11-22"><a class="anchor" aria-hidden="true" href="#2024-11-22"></a>2024-11-22</h3>
 <p>Move the <code>blog.ml</code> file to use the <code>tree.ml</code> structure. It is not clean at all
 right now: it needs a little cleaning.</p>
-</p>
 </article>
 </div>
     </main>
