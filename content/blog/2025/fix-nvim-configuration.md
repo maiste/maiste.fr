@@ -3,13 +3,12 @@ title: "A little Odysseus: How I solve my latency problem in NeoVIM "
 description: "Fixing ltex-ls setup on NeoVIM"
 date: 2025-09-25
 lang: en-GB
-draft: true
 ---
 
 ## A bit of context
 
 I used to say that I should write more blog posts. It was about a year ago. You
-hold in your hands the first blog post of 2025. Yeah! 🎉
+hold in your hands the first blog post of 2025. Nice, yeah! 🎉
 
 Now we have done the presentation, let's dig into the problem. Now that we've
 done the introduction, let's delve into the problem. For a while, when I was
