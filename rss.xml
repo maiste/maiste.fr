@@ -8,6 +8,13 @@
     <docs>https://www.rssboard.org/rss-specification</docs>
     <generator>YOCaml</generator>
     <item>
+      <title>A little Odysseus: How I solve my latency problem in NeoVIM </title>
+      <link>https://maiste.fr/blog/2025/fix-nvim-configuration/index.html</link>
+      <description><![CDATA[Fixing ltex-ls setup on NeoVIM]]></description>
+      <author>dev@maiste.fr (Etienne (maiste) Marais)</author>
+      <pubDate>Thu, 25 Sep 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>End Of Year Donations</title>
       <link>https://maiste.fr/blog/2024/donations/index.html</link>
       <description><![CDATA[Discussing giving back to NPO and OSS projects]]></description>

@@ -3,11 +3,18 @@
   <id>https://maiste.fr/atom.xml</id>
   <title type="text">Maiste Forest</title>
   <generator uri="https://github.com/xhtmlboi/yocaml" version="2">YOCaml</generator>
-  <updated>2024-12-13T00:00:00Z</updated>
+  <updated>2025-09-25T00:00:00Z</updated>
   <author>
     <name>Etienne (maiste) Marais</name>
     <email>dev@maiste.fr</email>
   </author>
+  <entry>
+    <id>https://maiste.fr/blog/2025/fix-nvim-configuration/index.html</id>
+    <title type="text">A little Odysseus: How I solve my latency problem in NeoVIM </title>
+    <updated>2025-09-25T00:00:00Z</updated>
+    <summary type="text">Fixing ltex-ls setup on NeoVIM</summary>
+    <link href="https://maiste.fr/blog/2025/fix-nvim-configuration/index.html" rel="alternate" title="A little Odysseus: How I solve my latency problem in NeoVIM "/>
+  </entry>
   <entry>
     <id>https://maiste.fr/blog/2024/donations/index.html</id>
     <title type="text">End Of Year Donations</title>
