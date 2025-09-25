@@ -10,7 +10,7 @@ let from_file_to_template r file =
     content
   in
   files
-  >>> Yocaml_markdown.Pipeline.With_metadata.make ~strict:false ()
+  >>> Markdown.content_to_html ~is_using_d2:false
   >>> Yocaml.Pipeline.chain_templates
         (module Yocaml_jingoo)
         (module Archetype.Page)
