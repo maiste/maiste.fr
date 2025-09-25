@@ -31,6 +31,7 @@
   yocaml_jingoo
   yocaml_yaml
   yocaml_cmarkit
+  yocaml_markdown
   yocaml_runtime
   yocaml_eio
   yocaml_syndication
