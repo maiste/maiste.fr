@@ -102,6 +102,7 @@ h1 {
   font-weight: 900; /* Nebula Sans Black */
   margin-bottom: var(--space-xs);
   font-size: var(--font-xl);
+  line-height: 3.2rem;
 }
 
 h2 {
@@ -286,8 +287,6 @@ article pre {
 }
 
 .title-section {
-  border-left: var(--space-s) solid var(--primary-color);
-  padding-left: var(--space-s);
   margin-bottom: var(--space-l);
   margin-top: var(--space-l);
 }
