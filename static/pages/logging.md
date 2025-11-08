@@ -21,6 +21,12 @@ care about it.
 
 ## 2025
 
+### 2025-11-08
+
+Delete the link to mastodon. Remove the link to the companies I have been
+working at. Fix typo to move the repository to Codeberg. Add a draft message
+when the notes or blog posts are in draft mode.
+
 ### 2025-09-23
 
 Update the CSS to support footnotes. Rewrite the CSS to change the way the
