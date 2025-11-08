@@ -336,6 +336,13 @@ footer p {
   width: 100%;
 }
 
+.is-draft {
+  width: 100%;
+  color: black;
+  background-color: orange;
+  padding: 5px;
+}
+
 /*** Metadata ***/
 
 .metadata {

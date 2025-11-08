@@ -7,6 +7,11 @@
         {%- if has_lang -%} lang: {{ lang }} {%- else -%} lang: en {%- endif %}
       </p>
     </div>
+    {%- if draft -%}
+    <p class="is-draft">
+      Hey! This is a <strong>draft</strong>, it not ready to be read 🔧
+    </p>
+    {%- endif %}
   </div>
   {%- autoescape false -%} {{ yocaml_body }} {%- endautoescape -%}
 </article>
