@@ -22,20 +22,8 @@ page_title: "About"
     </div>
 </div>
 
-## Companies I work or have been working at
-
-- [Tarides](https://tarides.com/): Currently working here, I'm mostly working
-  on the OCaml build system, [dune](https://github.com/ocaml/dune).
-- [Takima](https://www.takima.fr/): Consulting firm where I have been working
-  on a project under NDA after following the internal courses for 3 months.
-- [Nomadic Labs](https://www.nomadic-labs.com/): I did my internship in the
-  company. It was about quantifying the energetic consumption of the blockchain
-  to ensure it was a linear and not an exponential growth.
-
 If you are more interesting in the Open Source projects I have been working on,
-I suggest you to have a look at the [Projects](/projects) page.
-
-<!-- TODO: Add more details about the company and my work there -->
+I suggest you to look at the [Projects](/projects) page.
 
 ## Contact
 
