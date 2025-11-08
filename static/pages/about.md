@@ -37,8 +37,8 @@ that could interest you:
 - **Syndication**: [atom file](/atom.xml) or [RSS file](./rss.xml) to follow the blog
   feed
 
-If you would like me to make a change or improve something, you can ask on
-GitHub [issues](https://codeberg.org/maiste/maiste.fr/issues) :)
+If you would like to suggest a change or improve something, you can ask on
+Codeberg [issues](https://codeberg.org/maiste/maiste.fr/issues) :)
 
 ## Legals about this website
 
