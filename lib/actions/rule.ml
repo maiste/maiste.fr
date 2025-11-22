@@ -9,7 +9,6 @@ let is_image path =
   Yocaml.Path.has_extension "png" path
   || Yocaml.Path.has_extension "jpeg" path
   || Yocaml.Path.has_extension "jpg" path
-  || Yocaml.Path.has_extension "png" path
 ;;
 
 let wildcard _ = true
